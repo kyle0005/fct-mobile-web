@@ -3,17 +3,16 @@
 namespace App\Http\Controllers\Mobile;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
-class FavoriteController extends BaseController
+class ArtistCommentController extends BaseController
 {
     public function index(Request $request)
     {
-
-        return view('favorite.index');
+        return view('artist-comment.index');
     }
 
     public function store(Request $request)
     {
-
     }
 }

@@ -10,15 +10,15 @@ use Illuminate\Http\Request;
  */
 class ProductController extends BaseController
 {
-    public function index(Request $request)
-    {
-        return view('product.index');
-    }
 
+    /**产品详情
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function show(Request $request, $id)
     {
         return view('product.show');
     }
-
 
 }

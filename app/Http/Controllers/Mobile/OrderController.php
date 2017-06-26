@@ -15,12 +15,12 @@ class OrderController  extends BaseController
         return view('order.index');
     }
 
-    public function show(Request $request, $id)
+    public function show(Request $request, $order_id)
     {
         return view('order.show');
     }
 
-    public function checkout(Request $request)
+    public function create(Request $request)
     {
 
         return view('order.checkount');

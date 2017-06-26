@@ -30,12 +30,12 @@ class MemberAddressController extends BaseController
 
     }
 
-    public function update(Request $request)
+    public function setDefault(Request $request, $id)
     {
 
     }
 
-    public function setDefault(Request $request, $id)
+    public function setDelete(Request $request, $id)
     {
 
     }

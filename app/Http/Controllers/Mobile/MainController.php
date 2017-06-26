@@ -32,7 +32,10 @@ class MainController extends BaseController
      */
     public function welcome(Request $request)
     {
-        return view('welcome', Main::welcome());
+        $result = Main::welcome();
+        $result['title'] = '欢迎使用';
+
+        return view('welcome', $result);
     }
 
     public function sendCaptcha(Request $request)
@@ -53,6 +56,16 @@ class MainController extends BaseController
         {
             return $this->autoReturn($e->getMessage());
         }
+    }
+
+    public function newCoupon(Request $request)
+    {
+        return view('new-coupon');
+    }
+
+    public function downloadApp(Request $request)
+    {
+        return view('download-app');
     }
 
     public function success()

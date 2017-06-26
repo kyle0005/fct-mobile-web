@@ -10,13 +10,23 @@ use Illuminate\Http\Request;
  */
 class PayController extends BaseController
 {
-    public function index()
+    public function index(Request $request)
     {
 
         return view('pay.index');
     }
 
-    public function store()
+    public function store(Request $request)
+    {
+
+    }
+
+    public function notice(Request $request)
+    {
+
+    }
+
+    public function callback(Request $request)
     {
 
     }

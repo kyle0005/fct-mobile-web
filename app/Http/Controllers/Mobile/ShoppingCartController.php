@@ -12,10 +12,15 @@ class ShoppingCartController extends BaseController
 {
     public function index(Request $request)
     {
-
+        return view('cart.index');
     }
 
     public function store(Request $request)
+    {
+
+    }
+
+    public function setDelete(Request $request, $id)
     {
 
     }

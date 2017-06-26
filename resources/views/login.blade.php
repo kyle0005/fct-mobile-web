@@ -1,91 +1,55 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends("layout")
 
-    <title>Laravel</title>
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
-
-    <!-- Styles -->
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Raleway', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .top-right {
-            position: absolute;
-            right: 10px;
-            top: 18px;
-        }
-
-        .content {
-            text-align: center;
-        }
-
-        .title {
-            font-size: 84px;
-        }
-
-        .links > a {
-            color: #636b6f;
-            padding: 0 25px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .1rem;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .m-b-md {
-            margin-bottom: 30px;
-        }
-    </style>
-</head>
-<body>
-<div class="flex-center position-ref full-height">
-    @if (Route::has('login'))
-        <div class="top-right links">
-            @if (Auth::check())
-                <a href="{{ url('/home') }}">Home</a>
-            @else
-                <a href="{{ url('/login') }}">Login</a>
-                <a href="{{ url('/register') }}">Register</a>
-            @endif
+@section("title", $title)
+@section('content')
+    <div class="login-container" id="login">
+        <div class="logo"></div>
+        <form id="userLogin" action="{{ url('login') }}" method="post">
+            <ul class="form-data">
+                <li class="items clearfix">
+                    <div class="left">账号</div>
+                    <div class="right">
+                        <input type="tel" name="cellphone" class=""
+                               placeholder="请输入手机号码" v-model.number="phoneNumber"/>
+                    </div>
+                </li>
+                <li class="items clearfix">
+                    <div class="left">密码</div>
+                    <div class="right">
+                        <input type="password" name="password" class="val-code"
+                               placeholder="请输入登录密码" v-model="passWord"/>
+                    </div>
+                </li>
+            </ul>
+            <div class="log-btn">
+                <div class="sub" @click="mobileLogin">登录</div>
+            </div>
+            <div class="options">
+                <a href="javascript:;">忘记密码？</a>
+                <a href="quicklogin.html">手机号快捷登录</a>
+            </div>
+        </form>
+        <div class="others">
+            <a href="javascript:;">
+                <img src="images/qq.png">
+            </a>
+            <a href="javascript:;">
+                <img src="images/weibo.png">
+            </a>
         </div>
-    @endif
-
-    <div class="content">
-        <div class="links">
-            <form id="form-content" action="" method="post">
-                <label>用户名：<input name="username" type="text" value="" maxlength="20"></label>
-                <label>密码：<input name="username" type="text" value="" maxlength="20"></label>
-                <input id="form-btn" type="submit" value="登录" />
-            </form>
-        </div>
+        <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-</div>
-</body>
-</html>
+
+    <template id="pop">
+        <div class="alet_container">
+            <section class="tip_text_container">
+                <!-- <div class="tip_icon">
+                   <span></span>
+                   <span></span>
+                 </div>-->
+                <p class="tip_text">@{{ msg }}</p>
+                <div class="confrim" @click="close">确认</div>
+            </section>
+        </div>
+    </template>
+@endsection

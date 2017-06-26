@@ -20,8 +20,15 @@ class RechargeController extends BaseController
         return view('recharge.create');
     }
 
-    public static function store(Request $request)
+    public function show(Request $request, $id)
+    {
+        return view('recharge.show');
+    }
+
+    public function store(Request $request)
     {
 
     }
+
+
 }

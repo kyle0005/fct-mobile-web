@@ -62,7 +62,7 @@ class MemberController extends BaseController
 
 
 
-        return view('login');
+        return view('login', ['title' => "用户登录"]);
     }
 
     /**注册
@@ -101,7 +101,7 @@ class MemberController extends BaseController
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
      */
-    public function profile(Request $request)
+    public function updateInfo(Request $request)
     {
         if ($request->getMethod() == 'POST') {
             try

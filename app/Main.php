@@ -27,12 +27,12 @@ class Main
 
     public static function welcome()
     {
-        return (object) [
-            'mall' => ['name' => '进入商城', 'url' => 'xxxx'],
-            'download' =>  ['name' => '下载APP', 'url' => 'xxxx'],
+        return  [
+            'mall' => (object)['name' => '进入商城', 'url' => 'xxxx'],
+            'download' =>  (object)['name' => '下载APP', 'url' => 'xxxx'],
             'images' => [
-                ['image' => 'xxxxx', 'url' =>'xxxxx'],
-                ['image' => 'xxxxx', 'url' =>'xxxxx'],
+                (object)['image' => 'xxxxx', 'url' =>'xxxxx'],
+                (object)['image' => 'xxxxx', 'url' =>'xxxxx'],
             ]
         ];
     }

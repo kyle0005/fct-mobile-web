@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Mobile;
 
 use Illuminate\Http\Request;
 
-class ShareController extends BaseController
+class SettlementController extends BaseController
 {
     public function index(Request $request)
     {
-        return view('share.index');
+        return view('settlement.index');
     }
-
+    
     public function show(Request $request, $id)
     {
-        return view('share.show');
+        return view('settlement.show');
     }
 }
