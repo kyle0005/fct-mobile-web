@@ -4,28 +4,42 @@ namespace App\Http\Controllers\Mobile;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cookie;
-use Illuminate\Support\Facades\Request;
 
 class BaseController extends Controller
 {
 
+    protected $redirectKey = 'redirect-url';
+
+    protected function cacheRedirectSourceUrl($url = '', $hasCacheCookie = false)
+    {
+        $url = $url ? $url : $this->getRedirectSourceUrl();
+        if ($hasCacheCookie)
+        {
+            Cookie::queue($this->redirectKey, $url, 10);
+        }
+        else
+        {
+            request()->merge([$this->redirectKey => $url]);
+        }
+    }
     /**获取用户自定义返回原地址
      * @return \Illuminate\Contracts\Routing\UrlGenerator|mixed|string
      */
     protected function getRedirectSourceUrl()
     {
-
-        $redirectKey = 'redirect-url';
         //主动传递跳转url
-        if (request()->has($redirectKey) && request()->get($redirectKey))
+        $redirectUrl = request()->get($this->redirectKey);
+        if ($redirectUrl)
         {
-            return request()->get($redirectKey);
+            return $redirectUrl;
         }
 
         //系统与第三方系统交互，临时存入cookie中
-        if (Cookie::has($redirectKey) && Cookie::get($redirectKey))
+        if (Cookie::has($this->redirectKey) && Cookie::get($this->redirectKey))
         {
-            return Cookie::get($redirectKey);
+            $redirectUrl = Cookie::get($this->redirectKey);
+            Cookie::forget($this->redirectKey);
+            return $redirectUrl;
         }
 
         //返回默认指定页面
@@ -72,7 +86,7 @@ class BaseController extends Controller
      */
     protected function autoReturn($message, $url = null, $code = 404, $extras = null)
     {
-        if (Request::ajax()) {
+        if (request()->ajax()) {
             return json_encode([
                 'code' => $code,
                 'message' => $message,
