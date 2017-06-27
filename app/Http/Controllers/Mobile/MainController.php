@@ -33,7 +33,6 @@ class MainController extends BaseController
     public function welcome(Request $request)
     {
         $result = Main::welcome();
-        $result['title'] = '欢迎使用';
 
         return view('welcome', $result);
     }
@@ -50,11 +49,16 @@ class MainController extends BaseController
             $sessionId = FctCommon::createMobileSessionId();
             $result = Base::sendCaptcha($cellphone, $sessionId, $request->ip(), $action);
 
-            return $this->autoReturn($result->message, '', $result->code, $result->data);
+            if ($result->code == 200)
+            {
+                $this->returnAjaxSuccess($result->message);
+            }
+
+            return $this->returnAjaxError($result->message);
 
         } catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->returnAjaxError($e->getMessage());
         }
     }
 

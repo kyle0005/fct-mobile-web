@@ -8,9 +8,10 @@
 
 namespace App;
 
-
+use App\Exceptions\BusinessException;
 use GuzzleHttp\Client;
-use GuzzleHttp\Exception\ServerException;
+use GuzzleHttp\Exception\BadResponseException;
+use GuzzleHttp\Exception\ClientException;
 
 class Base
 {
@@ -26,19 +27,25 @@ class Base
             $options['headers'] = $headers;
         }
 
-        $client = new Client();
         try
         {
+            $client = new Client();
             $result = $client->request($method, $url, $options);
         }
-        catch (\Exception $e)
+        catch (BadResponseException $e)
         {
-            throw new ServerException($e->getMessage());
+            throw new BusinessException('系统异常，请联系管理员');
+        }
+        catch (ClientException $e)
+        {
+            throw new BusinessException('系统异常，请联系管理员');
         }
 
-        $result = \GuzzleHttp\json_decode($result);
-        if ($result) {
-            return $result;
+        if ($result->getStatusCode() == 200) {
+            $result = \GuzzleHttp\json_decode($result->getBody());
+            if ($result) {
+                return $result;
+            }
         }
         return (object) [
             'message' => '系统异常，请联系管理员',

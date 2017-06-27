@@ -9,6 +9,8 @@
 namespace App;
 
 
+use Illuminate\Support\Facades\Cookie;
+
 class Member
 {
 
@@ -21,6 +23,7 @@ class Member
      */
     public static function login($cellphone, $password, $captcha, $sessionId, $ip)
     {
+        $expireDay = 3;
         $result = Base::http(
             env('API_URL') . '/member/login',
             [
@@ -29,9 +32,13 @@ class Member
                 'captcha' => $captcha,
                 'session_id' => $sessionId,
                 'ip' => $ip,
-                'expire_day' => 86400,
+                'expire_day' => $expireDay,
             ]
         );
+        if ($result->code == 200)
+        {
+            Cookie::queue('fct_token', $result->data->token, $expireDay * 1440);
+        }
         return $result;
     }
 

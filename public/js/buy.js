@@ -1,0 +1,1 @@
+"use strict";var app=new Vue({computed:{},mounted:function(){},activated:function(){},deactivated:function(){},data:{show_coup:!1,coupPri:.08},watch:{},methods:{showCoup:function(){var o=this;o.show_coup?o.show_coup=!1:o.show_coup=!0}},components:{}}).$mount("#buy");

@@ -29,7 +29,7 @@ class BaseController extends Controller
         }
 
         //返回默认指定页面
-        return route('home');
+        return url('/');
     }
 
     /**成功ajax返回内容
@@ -44,7 +44,7 @@ class BaseController extends Controller
             'code' => 200,
             'message' => $message,
             'url' => $url,
-            'extras' => $extras,
+            'data' => $extras,
         ]);
     }
 
@@ -60,7 +60,7 @@ class BaseController extends Controller
             'code' => 404,
             'message' => $message,
             'url' => $url,
-            'extras' => $extras,
+            'data' => $extras,
         ]);
     }
 
@@ -77,7 +77,7 @@ class BaseController extends Controller
                 'code' => $code,
                 'message' => $message,
                 'url' => $url,
-                'extras' => $extras,
+                'data' => $extras,
             ]);
         }
 

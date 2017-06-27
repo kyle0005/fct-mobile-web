@@ -31,7 +31,7 @@ class FctCommon
      */
     public static function createMobileSessionId()
     {
-        $uuid = Uuid::uuid1('fct:captcha')->getHex();
+        $uuid = Uuid::uuid1()->getHex();
         Cookie::queue('_mvsid', $uuid, 10);
         return $uuid;
     }

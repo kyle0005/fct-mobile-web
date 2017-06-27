@@ -1,0 +1,1 @@
+"use strict";var app=new Vue({computed:{},mounted:function(){this.load()},activated:function(){},deactivated:function(){},data:{},watch:{},methods:{load:function(){new Swiper(".swiper-container",{effect:"coverflow",centeredSlides:!0,slidesPerView:"auto",loop:!0,coverflow:{rotate:50,stretch:0,depth:100,modifier:1,slideShadows:!1}})}},components:{}}).$mount("#artist_list");

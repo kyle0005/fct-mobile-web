@@ -12,12 +12,9 @@
     <!-- endbuild -->
 </head>
 <body>
-    @section('header')
-    @show
-
+    @yield('header')
     @yield('content')
-
     <script src="js/vue.js"></script>
-    <script src="js/app.js"></script>
+    @yield('javascript')
 </body>
 </html>

@@ -13,27 +13,32 @@ class Main
 {
     public static function index()
     {
-        $result = (object)[];
-        $result->links = (object)[
-            'artist' => ['name' => '合作大师', icon => '', 'url' => ''],
-            'wiki' => ['name' => '百科', icon => '', 'url' => ''],
-            'custom' => ['name' => '个性定制', icon => '', 'url' => ''],
-            'download' => ['name' => 'APP下载', icon => '', 'url' => ''],
-            'brand' => ['name' => '品牌理念', icon => '', 'url' => ''],
+        $result = [];
+        $result['links'] = (object)[
+            'artist' => ['name' => '合作大师', 'icon' => '', 'url' => ''],
+            'wiki' => ['name' => '百科', 'icon' => '', 'url' => ''],
+            'custom' => ['name' => '个性定制', 'icon' => '', 'url' => ''],
+            'download' => ['name' => 'APP下载', 'icon' => '', 'url' => ''],
+            'brand' => ['name' => '品牌理念', 'icon' => '', 'url' => ''],
         ];
+        $result['title'] = '方寸堂';
 
         return $result;
     }
 
     public static function welcome()
     {
-        return  [
-            'mall' => (object)['name' => '进入商城', 'url' => 'xxxx'],
-            'download' =>  (object)['name' => '下载APP', 'url' => 'xxxx'],
-            'images' => [
-                (object)['image' => 'xxxxx', 'url' =>'xxxxx'],
-                (object)['image' => 'xxxxx', 'url' =>'xxxxx'],
-            ]
+        $slides = [
+            ["image" => "images/resource/01.png", "url" => "javascript:;"],
+            ["image" => "images/resource/02.png", "url" => "javascript:;"],
+            ["image" => "images/resource/03.png", "url" => "javascript:;"],
+            //["image" => "images/resource/04.png", "url" => "javascript:;"],
         ];
+
+        return [
+            'title' => '欢迎使用方寸堂',
+            'slides' => json_encode($slides, JSON_UNESCAPED_UNICODE),
+        ];
+
     }
 }
