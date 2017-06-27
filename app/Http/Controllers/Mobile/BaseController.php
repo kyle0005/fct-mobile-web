@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Http\Controllers\Controller;
+use App\Member;
 use Illuminate\Support\Facades\Cookie;
 
 class BaseController extends Controller
@@ -96,6 +97,20 @@ class BaseController extends Controller
         }
 
         return redirect($url ? $url : '', 301);
+    }
+
+    /**用户没登录跳转到登录页面
+     * @return string
+     */
+    protected function memberLogged()
+    {
+        $member = Member::getAuth();
+        if (!$member)
+        {
+            return $this->autoReturn('请先登录后再执行操作', $this->getRedirectSourceUrl(), 404);
+        }
+
+        return $member;
     }
 
 }

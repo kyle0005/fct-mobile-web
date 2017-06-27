@@ -9,11 +9,13 @@
 namespace App;
 
 
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 
 class Member
 {
 
+    protected static $cookieKey = 'fct_token';
     /**登录
      * @param $username
      * @param $password
@@ -37,7 +39,9 @@ class Member
         );
         if ($result->code == 200)
         {
-            Cookie::queue('fct_token', $result->data->token, $expireDay * 1440);
+            //缓存用户数据
+            Cache::put($result->data->token, $result->data, $expireDay * 1440);
+            Cookie::queue(self::$cookieKey, $result->data->token, $expireDay * 1440);
         }
         return $result;
     }
@@ -126,6 +130,18 @@ class Member
             ]
         );
         return $result;
+    }
+
+    public static function getAuth()
+    {
+        $member = false;
+        $token = Cookie::has(self::$cookieKey) ? Cookie::get(self::$cookieKey) : "";
+        if ($token)
+        {
+            $member = Cache::has($token) && Cache::get($token) ? Cache::get($token) : false;
+        }
+
+        return $member;
     }
 
     /**退出

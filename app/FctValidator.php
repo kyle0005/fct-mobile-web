@@ -14,6 +14,28 @@ use App\Exceptions\BusinessException;
 class FctValidator
 {
 
+    public static function hasRealName($name)
+    {
+        self::hasRequire($name, '姓名');
+    }
+
+    public static function hasIDCardNO($idCardNo)
+    {
+        self::hasRequire($idCardNo, '身份证号');
+
+    }
+
+    public static function hasBankInfo($bankName, $bankCardNo)
+    {
+        self::hasRequire($bankName, '银行名称');
+        self::hasRequire($bankCardNo, '银行卡号');
+        if (mb_strpos($bankName, "银行") === false)
+        {
+            throw new BusinessException('请输入正确的银行名称，如中国银行');
+        }
+
+    }
+
     /**验证是否为手机号码
      * @param $mobile
      * @return mixed
@@ -28,9 +50,9 @@ class FctValidator
         return $mobile;
     }
 
-    public static function hasPassword($password)
+    public static function hasPassword($password, $fieldName = '')
     {
-        $fieldName = '密码';
+        $fieldName = $fieldName ? $fieldName : '密码';
         self::hasRequire($password, $fieldName);
         self::hasLengthBetween($password, 6, 16, $fieldName);
 
@@ -109,6 +131,16 @@ class FctValidator
         }
 
         return $str;
+    }
+
+    public static function hasEqual($str1, $str2, $fieldName1, $fieldName2)
+    {
+        if ($str1 != $str2)
+        {
+            throw new BusinessException($fieldName1 . '与' . $fieldName2 . '不相同');
+        }
+
+        return $str1;
     }
 
     /**所有未知请求都定义为非法请求

@@ -72,9 +72,9 @@ class MemberController extends BaseController
         if ($request->getMethod() == 'POST') {
             try
             {
-                $username = FctCommon::trimAll($request->get('username'));
+                $cellphone = FctCommon::trimAll($request->get('cellphone'));
                 $password = null;
-                FctValidator::hasMobile($username);
+                FctValidator::hasMobile($cellphone);
 
                 $captcha = FctCommon::trimAll($request->get('captcha'));
                 FctValidator::hasMobileCaptcha($captcha);
@@ -101,16 +101,19 @@ class MemberController extends BaseController
      */
     public function updateInfo(Request $request)
     {
+        $member = $this->memberLogged();
+
         if ($request->getMethod() == 'POST') {
             try
             {
                 $username = FctCommon::trimAll($request->get('username'));
-                $password = null;
-                FctValidator::hasMobile($username);
+                $gender = FctCommon::trimAll($request->get('gender'));
+                $weixin = FctCommon::trimAll($request->get('weixin'));
+
                 //csrf验证
 
                 //用户登录操作
-                $member = [];
+                Member::updateInfo($member->memberId, $username, $gender, $weixin);
 
                 //成功返回成功提示和跳转的url
                 return $this->returnAjaxSuccess('修改成功');
@@ -120,7 +123,12 @@ class MemberController extends BaseController
                 return $this->returnAjaxError($e->getMessage());
             }
         }
-        return view('update');
+        $result = [
+            'title' => '更新信息',
+            'member' => $member,
+        ];
+
+        return view('update', $result);
     }
 
     /**修改密码
@@ -129,13 +137,21 @@ class MemberController extends BaseController
      */
     public function changePassword(Request $request)
     {
+        $member = $this->memberLogged();
+
         if ($request->getMethod() == 'POST') {
             try
             {
-                //csrf验证
+                $oldPassword = FctCommon::trimAll($request->get('old_password'));
+                $newPassword = FctCommon::trimAll($request->get('new_password'));
+                $confirmNewPassword = FctCommon::trimAll($request->get('confirm_new_password'));
+                FctValidator::hasPassword($oldPassword, '旧密码');
+                FctValidator::hasPassword($newPassword, '新密码');
+                FctValidator::hasPassword($confirmNewPassword, '确认新密码');
+                FctValidator::hasEqual($newPassword, $confirmNewPassword, '新密码', '确认新密码');
 
                 //用户登录操作
-                $member = [];
+                Member::changePassowrd($member->memberId,$oldPassword, $newPassword);
 
                 //成功返回成功提示和跳转的url
                 return $this->returnAjaxSuccess('密码修改成功');
@@ -145,6 +161,12 @@ class MemberController extends BaseController
                 return $this->returnAjaxError($e->getMessage());
             }
         }
+
+        $result = [
+            'title' => '修改密码',
+            'member' => $member,
+        ];
+
         return view('change-password');
     }
 
@@ -157,9 +179,9 @@ class MemberController extends BaseController
         if ($request->getMethod() == 'POST') {
             try
             {
-                $username = FctCommon::trimAll($request->get('username'));
+                $cellphone = FctCommon::trimAll($request->get('cellphone'));
                 $password = null;
-                FctValidator::hasMobile($username);
+                FctValidator::hasMobile($cellphone);
 
                 $captcha = FctCommon::trimAll($request->get('captcha'));
                 FctValidator::hasMobileCaptcha($captcha);
@@ -173,7 +195,7 @@ class MemberController extends BaseController
                 $member = [];
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('密码修改成功');
+                return $this->returnAjaxSuccess('密码找回成功');
             }
             catch (BusinessException $e)
             {
@@ -189,23 +211,42 @@ class MemberController extends BaseController
      */
     public function realAuth(Request $request)
     {
+        $member = $this->memberLogged();
+
         if ($request->getMethod() == 'POST') {
             try
             {
+                $name = FctCommon::trimAll($request->get('name'));
+                $idCardNo = FctCommon::trimAll($request->get('idcard_no'));
+                $idCardImageUrl = FctCommon::trimAll($request->get('idcard_image_url'));
+                $bankName = FctCommon::trimAll($request->get('bank_name'));
+                $bankAccount = FctCommon::trimAll($request->get('bank_account'));
+
+                FctValidator::hasRealName($name);
+                FctValidator::hasIDCardNO($idCardNo);
+                FctValidator::hasRequire($idCardImageUrl, '身份证图片');
+                FctValidator::hasBankInfo($bankName, $bankAccount);
+
                 //csrf验证
 
                 //用户登录操作
-                $member = [];
+                Member::realAuth($member->memberId,$name, $idCardNo, $idCardImageUrl, $bankName, $bankAccount);
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('密码修改成功');
+                return $this->returnAjaxSuccess('提交认证信息成功');
             }
             catch (BusinessException $e)
             {
                 return $this->returnAjaxError($e->getMessage());
             }
         }
-        return view('real-auth');
+
+        $result = [
+            'title' => '修改密码',
+            'member' => $member,
+        ];
+
+        return view('real-auth', $result);
     }
 
     /**退出
