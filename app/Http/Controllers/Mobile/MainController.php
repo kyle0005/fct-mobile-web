@@ -6,7 +6,7 @@ use App\Base;
 use App\Exceptions\BusinessException;
 use App\FctCommon;
 use App\FctValidator;
-use App\Main;
+use App\Home;
 use Illuminate\Http\Request;
 
 /**默认入口页面
@@ -22,8 +22,26 @@ class MainController extends BaseController
     {
         $categoryId = $request->get('category_id');
         $levelId = $request->get('level_id');
+        $pageIndex = $request->get('page', 1);
 
-        return view('index', Main::index($categoryId, $levelId));
+        try
+        {
+            $result = Home::getHome($categoryId, $levelId, $pageIndex);
+        }
+        catch (BusinessException $e)
+        {
+            //错误处理
+            return $this->errorPage($e->getMessage());
+        }
+
+        if ($request->ajax())
+        {
+            return $this->returnAjaxSuccess($request->message, "", $result->products ? $result->products : []);
+        }
+        else
+        {
+            return view('index', $result);
+        }
     }
 
     /**欢迎页
@@ -32,7 +50,7 @@ class MainController extends BaseController
      */
     public function welcome(Request $request)
     {
-        $result = Main::welcome();
+        $result = Home::welcome();
 
         return view('welcome', $result);
     }

@@ -33,7 +33,13 @@ Route::match(['get', 'post'], 'find-express', 'Mobile\MainController@findExpress
 
 //产品详情
 //ajax获取评论数据
-Route::get('products/{:product_id}/comments', 'Mobile\ProductCommentController@index')
+Route::get('products/{:product_id}/comments', 'Mobile\ProductController@getProductComments')
+    ->where('product_id', '[0-9]+');
+//ajax获取艺术家数据
+Route::get('products/{:product_id}/artists', 'Mobile\ProductController@getProductArtists')
+    ->where('product_id', '[0-9]+');
+//ajax获取泥料数据
+Route::get('products/{:product_id}/materials', 'Mobile\ProductController@getProductaMaterials')
     ->where('product_id', '[0-9]+');
 
 Route::resource('products', 'Mobile\ProductController', ['show']);
@@ -100,7 +106,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('settlement', 'Mobile\SettlementController', ['index', 'show']);
 
     //大师评论
-    Route::post('artists/{:artist_id}/comments', 'Mobile\ProductCommentController@store')
+    Route::post('artists/{:artist_id}/comments', 'Mobile\ArtistCommentController@store')
         ->where('artist_id', '[0-9]+');
 
 });

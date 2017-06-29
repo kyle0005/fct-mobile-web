@@ -9,7 +9,7 @@
             <ul>
                 <li class="item" v-for="(item, index) in tabs" :class="{chosen: index===tab_num}" @click="linkTo(index)">
                     <a href="javascript:;">
-                        {{ item }}
+                        @{{ item }}
                     </a>
                 </li>
             </ul>
@@ -41,7 +41,7 @@
                         </div>
                         <ul class="spec">
                             <li class="item" v-for="(item, index) in specs" :class="{active: index===specs_num}" @click="footLinkTo(index)">
-                                {{ item }}
+                                @{{ item }}
                             </li>
                         </ul>
                         <div class="num">
@@ -96,7 +96,7 @@
                 <div class="container">
                     <ul class="types">
                         <li class="item" v-for="(types, index) in typeList" @click="change(index)">
-                            <span>{{ types }}</span>
+                            <span>@{{ types }}</span>
                             <i class="fa fa-angle-right"></i>
                         </li>
                     </ul>
@@ -397,7 +397,7 @@
     <template id="pop">
         <div class="alet_container">
             <section class="tip_text_container">
-                <p class="tip_text">{{ msg }}</p>
+                <p class="tip_text">@{{ msg }}</p>
                 <div class="confrim" @click="close">确认</div>
             </section>
         </div>

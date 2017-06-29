@@ -99,13 +99,19 @@ class BaseController extends Controller
         return redirect($url ? $url : '', 301);
     }
 
+    protected function errorPage($message, $url = '')
+    {
+        return $message;
+        //return view('error');
+    }
+
     /**用户没登录跳转到登录页面
      * @return string
      */
-    protected function memberLogged()
+    protected function memberLogged($hasReturnError = true)
     {
         $member = Member::getAuth();
-        if (!$member)
+        if ($hasReturnError && !$member)
         {
             return $this->autoReturn('请先登录后再执行操作', $this->getRedirectSourceUrl(), 404);
         }

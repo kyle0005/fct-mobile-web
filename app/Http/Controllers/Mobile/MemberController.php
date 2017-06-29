@@ -59,7 +59,6 @@ class MemberController extends BaseController
         }
 
 
-
         return view('login', ['title' => "用户登录"]);
     }
 
@@ -113,7 +112,7 @@ class MemberController extends BaseController
                 //csrf验证
 
                 //用户登录操作
-                Member::updateInfo($member->memberId, $username, $gender, $weixin);
+                Member::updateInfo($username, $gender, $weixin);
 
                 //成功返回成功提示和跳转的url
                 return $this->returnAjaxSuccess('修改成功');
@@ -151,7 +150,7 @@ class MemberController extends BaseController
                 FctValidator::hasEqual($newPassword, $confirmNewPassword, '新密码', '确认新密码');
 
                 //用户登录操作
-                Member::changePassowrd($member->memberId,$oldPassword, $newPassword);
+                Member::changePassowrd($oldPassword, $newPassword);
 
                 //成功返回成功提示和跳转的url
                 return $this->returnAjaxSuccess('密码修改成功');
@@ -230,7 +229,7 @@ class MemberController extends BaseController
                 //csrf验证
 
                 //用户登录操作
-                Member::realAuth($member->memberId,$name, $idCardNo, $idCardImageUrl, $bankName, $bankAccount);
+                Member::realAuth($name, $idCardNo, $idCardImageUrl, $bankName, $bankAccount);
 
                 //成功返回成功提示和跳转的url
                 return $this->returnAjaxSuccess('提交认证信息成功');

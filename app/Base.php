@@ -18,12 +18,15 @@ class Base
     public static function http($url, $formParams = [], $headers = [], $method = "POST")
     {
         $options = [];
-        if ($formParams)
+        $method = strtoupper($method) == 'POST' ? 'POST' : 'GET';
+        if ($method == 'GET' && $formParams)
         {
+            $url = $url . '?' . http_build_query($formParams);
+        }elseif ($formParams) {
             $options['form_params'] = $formParams;
         }
-        if ($headers)
-        {
+
+        if ($headers) {
             $options['headers'] = $headers;
         }
 
@@ -42,7 +45,7 @@ class Base
         }
 
         if ($result->getStatusCode() == 200) {
-            $result = \GuzzleHttp\json_decode($result->getBody());
+            $result = \GuzzleHttp\json_decode($result->getBody()->getContents());
             if ($result) {
                 return $result;
             }
@@ -67,6 +70,73 @@ class Base
             ]
         );
         return $result;
+    }
+
+    public static function listByFields($items, $fields = [], $replaceFileds = [])
+    {
+        if (!$items)
+            return [];
+        $entries = [];
+        foreach ($items as $item)
+        {
+            $entry = (object) [];
+            foreach ($fields as $field)
+            {
+                if (isset($item->$field))
+                {
+                    if ($replaceFileds && isset($replaceFileds[$field]) && $replaceFileds[$field])
+                    {
+                        $entry->$replaceFileds[$field] = $item->$field;
+                    }
+                    else
+                    {
+                        $entry->$field = $item->$field;
+                    }
+                }
+            }
+
+            $entries[] = $entry;
+        }
+
+        return $entries;
+    }
+
+
+    public static function pagination($result, $pageSize = 20, $fields = [])
+    {
+        if ($result && $result->totalCount > 0)
+        {
+            if ($fields)
+            {
+                $items = self::listByFields($result->elements, $fields);
+            }
+            else
+            {
+                $items = $result->elements;
+            }
+
+            $totalPage = ceil($result->totalCount / $pageSize);
+
+            $pager = (object) [
+                'prev' => 0,
+                'current' => $result->current,
+                'next' => 0,
+                'page_size' => $pageSize,
+                'total_page' => $totalPage,
+                'total' => $result->totalCount,
+            ];
+            if (($result->current - 1) > 0 && ($result->current - 1 <= $totalPage) && $totalPage > 1)
+                $pager->prev = $result->current - 1;
+            if ($result->current + 1 <= $totalPage)
+                $pager->next = $result->current + 1;
+
+            return (object) [
+                'entries' => $items,
+                'pager' => $pager
+            ];
+        }
+
+        return [];
     }
 
 }

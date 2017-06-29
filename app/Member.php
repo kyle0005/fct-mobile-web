@@ -40,8 +40,9 @@ class Member
         if ($result->code == 200)
         {
             //缓存用户数据
-            Cache::put($result->data->token, $result->data, $expireDay * 1440);
-            Cookie::queue(self::$cookieKey, $result->data->token, $expireDay * 1440);
+            $expire = $expireDay * 1440;
+            Cache::put($result->data->token, $result->data, $expire);
+            Cookie::queue(self::$cookieKey, $result->data->token, $expire);
         }
         return $result;
     }
@@ -62,16 +63,16 @@ class Member
      * @param $weixin
      * @return mixed|object|\Psr\Http\Message\ResponseInterface
      */
-    public static function updateInfo($memberId, $username, $gender, $weixin)
+    public static function updateInfo($username, $gender, $weixin)
     {
         $result = Base::http(
             env('API_URL') . '/member/update-info',
             [
-                'member_id' => $memberId,
                 'username' => $username,
                 'gender' => $gender,
                 'weixin' => $weixin,
-            ]
+            ],
+            [env('MEMBER_TOKEN_NAME') => self::getToken()]
         );
         return $result;
     }
@@ -80,15 +81,15 @@ class Member
      * @param $memberId
      * @param $password
      */
-    public static function changePassowrd($memberId, $oldPassword, $newPassword)
+    public static function changePassowrd($oldPassword, $newPassword)
     {
         $result = Base::http(
             env('API_URL') . '/member/change-password',
             [
-                'member_id' => $memberId,
                 'old_password' => $oldPassword,
                 'new_password' => $newPassword,
-            ]
+            ],
+            [env('MEMBER_TOKEN_NAME') => self::getToken()]
         );
         return $result;
     }
@@ -116,29 +117,57 @@ class Member
      * @param $memberId
      * @param $realInfo 认证信息
      */
-    public static function realAuth($memberId, $name, $idCardNo, $idCardImageUrl, $bankName, $bankAccount)
+    public static function realAuth($name, $idCardNo, $idCardImageUrl, $bankName, $bankAccount)
     {
         $result = Base::http(
             env('API_URL') . '/member/real-auth',
             [
-                'member_id' => $memberId,
                 'name' => $name,
                 'idcard_no' => $idCardNo,
                 'idcard_image_url' => $idCardImageUrl,
                 'bank_name' => $bankName,
                 'bank_account' => $bankAccount,
-            ]
+            ],
+            [env('MEMBER_TOKEN_NAME') => self::getToken()]
         );
         return $result;
+    }
+
+    public static function getMemberByToken($token = '')
+    {
+        $token = $token ? $token : self::getToken();
+        $result = Base::http(
+            env('API_URL') . '/member/get-by-token',
+            [],
+            [env('MEMBER_TOKEN_NAME') => $token],
+            'GET'
+        );
+        if ($result->code == 200)
+            return $result->data;
+        return false;
+    }
+
+    public static function getToken()
+    {
+        return Cookie::has(self::$cookieKey) ? Cookie::get(self::$cookieKey) : "";
     }
 
     public static function getAuth()
     {
         $member = false;
-        $token = Cookie::has(self::$cookieKey) ? Cookie::get(self::$cookieKey) : "";
+        $token = self::getToken();
         if ($token)
         {
             $member = Cache::has($token) && Cache::get($token) ? Cache::get($token) : false;
+            if (!$member)
+            {
+                $member = self::getMemberByToken($token);
+                if ($member)
+                {
+                    $expire = intval((intval($member->expireTime / 1000) - time()) / 60);
+                    Cache::put($token, $member, $expire);
+                }
+            }
         }
 
         return $member;
