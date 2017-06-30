@@ -12,35 +12,67 @@ namespace App;
 class Artist
 {
 
-    public static function getRows()
+    public static function getRows($pageIndex)
     {
-        return [
-            (object)[
-                'name' => '顾景舟',
-                'image' => '/images/photos/12/12312.jpg',
-                'win_title' => '紫砂第一人',
-                'followed' => 123456,
-                'product' => 99,
-                'description' => '紫砂第一人紫砂第一人紫砂第一人紫砂第一人紫砂第一人紫砂第一人紫砂第一人紫砂第一人紫砂第一人',
-            ]
-        ];
+        $pageSize = 20;
+        $result = Base::http(
+            env('API_URL') . '/artists',
+            [
+                'page_index' => $pageIndex,
+                'page_size' => $pageSize,
+            ],
+            [],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            return false;
+        }
+
+        $pagination = Base::pagination($result->data, $pageSize);
+
+        return $pagination;
     }
 
     public static function getRow($id)
     {
-        $row = (object)[
-            'image' => 'xxxxxx',
-            'description' => 'xxxxxxxxxxxx',
+        $result = Base::http(
+            env('API_URL') . sprintf('/artists/%d', $id),
+            [],
+            [],
+            'GET'
+        );
 
-            'items' => [
-                (object) [
-                    'content' => 'xxxx',
-                    'image' => 'xxxxxx',
-                    'vod' => 'xxxx,xxx',
-                    'vod_image' => '',
-                ]
-            ]
+        if ($result->code != 200)
+        {
+            return false;
+        }
 
+        $artist = $result->data;
+
+        return [
+            'title' => (isset($artist->name) && $artist->name ? $artist->name : '艺术家详情') . '方寸堂',
+            'artist' => json_encode($artist, JSON_UNESCAPED_UNICODE),
         ];
+    }
+
+    public static function getRowsByProductId($productId)
+    {
+        $result = Base::http(
+            env('API_URL') . '/artists/by-product',
+            [
+                'product_id' => $productId,
+            ],
+            [],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            return false;
+        }
+
+        return $result;
     }
 }

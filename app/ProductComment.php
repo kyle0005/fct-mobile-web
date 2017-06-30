@@ -28,7 +28,7 @@ class ProductComment
             return false;
         }
 
-        $pagination = Base::pagination($result->data->goodsList, $pageSize);
+        $pagination = Base::pagination($result->data, $pageSize);
 
         return $pagination;
     }

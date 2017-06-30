@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Cookie;
 class Member
 {
 
-    protected static $cookieKey = 'fct_token';
+    protected static $cookieKey = 'fct_auth';
     /**登录
      * @param $username
      * @param $password

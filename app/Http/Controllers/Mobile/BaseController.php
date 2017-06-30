@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Cookie;
 class BaseController extends Controller
 {
 
-    protected $redirectKey = 'redirect-url';
+    protected $redirectKey = 'redirecturl';
 
     protected function cacheRedirectSourceUrl($url = '', $hasCacheCookie = false)
     {

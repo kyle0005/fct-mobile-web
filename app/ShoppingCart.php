@@ -3,47 +3,95 @@
 namespace App;
 
 
+use App\Exceptions\BusinessException;
+
 class ShoppingCart
 {
     /**购物车列表
-     *
+     * @return bool|mixed|object|\Psr\Http\Message\ResponseInterface
      */
-    public static function index($memberId)
+    public static function findShoppingCarts()
     {
+        $result = Base::http(
+            env('API_URL') . '/carts',
+            [],
+            [],
+            'GET'
+        );
 
+        if ($result->code != 200)
+        {
+            return false;
+        }
+
+        return $result;
     }
 
-    /**增加（添加）购物车产品数量
+    /**增加（添加）或减少购物车产品数量
      * @param $productId
      * @param $extendId
      * @param $number
+     * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
      */
-    public static function add($memberId, $productId, $extendId, $number)
+    public static function saveShoppingCart($productId, $extendId, $number)
     {
+        $result = Base::http(
+            env('API_URL') . '/carts',
+            [
+                'product_id' => $productId,
+                'spec_id' => $extendId,
+                'buy_number' => $number,
+            ],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()]
+        );
 
-    }
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->message);
+        }
 
-    /**减少购物车中产品数量
-     * @param $productId
-     * @param $extendId
-     * @param $number
-     */
-    public static function sub($memberId, $productId, $extendId, $number)
-    {
-
+        return $result;
     }
 
     /**从购物车中删除产品
-     * @param $productId
-     * @param $extendId
+     * @param $id
+     * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
      */
-    public static function remove($memberId, $productId, $extendId)
+    public static function remove($id)
     {
+        $result = Base::http(
+            env('API_URL') . sprintf('/carts/%d/delete', $id),
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()]
+        );
 
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->message);
+        }
+
+        return $result;
     }
 
-    public static function clear($memberId)
+    /**清空购物车（底层没创建）
+     * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
+     */
+    public static function clean()
     {
+        $result = Base::http(
+            env('API_URL') . '/carts/clean',
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()]
+        );
 
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->message);
+        }
+
+        return $result;
     }
 }
