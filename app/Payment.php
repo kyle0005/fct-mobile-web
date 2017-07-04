@@ -4,12 +4,12 @@ namespace App;
 
 class Payment
 {
-    public static function listData()
+    public static function getPayments()
     {
 
     }
 
-    public static function getRow($id)
+    public static function getPayment($id)
     {
 
     }

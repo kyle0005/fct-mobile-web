@@ -4,12 +4,12 @@ namespace App;
 
 class Recharge
 {
-    public static function index($memberId)
+    public static function getRecharges()
     {
 
     }
 
-    public static function add($memberId, $pice)
+    public static function saveRecharge($memberId, $pice)
     {
 
     }

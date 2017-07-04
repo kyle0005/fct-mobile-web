@@ -6,7 +6,7 @@ use App\Base;
 use App\Exceptions\BusinessException;
 use App\FctCommon;
 use App\FctValidator;
-use App\Home;
+use App\Main;
 use Illuminate\Http\Request;
 
 /**默认入口页面
@@ -26,7 +26,7 @@ class MainController extends BaseController
 
         try
         {
-            $result = Home::getHome($categoryId, $levelId, $pageIndex);
+            $result = Main::getHome($categoryId, $levelId, $pageIndex);
         }
         catch (BusinessException $e)
         {
@@ -50,7 +50,7 @@ class MainController extends BaseController
      */
     public function welcome(Request $request)
     {
-        $result = Home::welcome();
+        $result = Main::welcome();
 
         return view('welcome', $result);
     }

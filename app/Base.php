@@ -51,7 +51,7 @@ class Base
             }
         }
         return (object) [
-            'message' => '系统异常，请联系管理员',
+            'msg' => '系统异常，请联系管理员', //接口变量是msg
             'code' => 500,
             'data' => [],
         ];

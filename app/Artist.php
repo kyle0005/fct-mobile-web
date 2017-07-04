@@ -9,6 +9,8 @@
 namespace App;
 
 
+use App\Exceptions\BusinessException;
+
 class Artist
 {
 
@@ -27,7 +29,7 @@ class Artist
 
         if ($result->code != 200)
         {
-            return false;
+            throw new BusinessException($result->msg);
         }
 
         $pagination = Base::pagination($result->data, $pageSize);
@@ -46,7 +48,7 @@ class Artist
 
         if ($result->code != 200)
         {
-            return false;
+            throw new BusinessException($result->msg);
         }
 
         $artist = $result->data;
@@ -70,9 +72,9 @@ class Artist
 
         if ($result->code != 200)
         {
-            return false;
+            throw new BusinessException($result->msg);
         }
 
-        return $result;
+        return $result->data;
     }
 }

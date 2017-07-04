@@ -9,7 +9,9 @@
 namespace App;
 
 
-class Home
+use App\Exceptions\BusinessException;
+
+class Main
 {
     public static function getHome($categoryId = 1, $levelId = 1, $pageIndex = 1)
     {
@@ -28,20 +30,17 @@ class Home
 
         if ($result->code != 200)
         {
-            return false;
+            throw new BusinessException($result->msg);
         }
-        $categories = [
-            (object)['name' => '全部', 'code' => ""],
-        ];
 
         $pagination = Base::pagination($result->data->goodsList, $pageSize);
 
         return [
             'title' => '方寸堂',
-            'categories' => json_encode(array_merge($categories, $result->data->categoryList), JSON_UNESCAPED_UNICODE),
-            'levels' =>  json_encode($result->data->goodsGradeList, JSON_UNESCAPED_UNICODE),
-            'products' => json_encode($pagination->entries, JSON_UNESCAPED_UNICODE),
-            'pager' => json_encode($pagination->pager, JSON_UNESCAPED_UNICODE),
+            'categories' => ProductCategory::getCategories(),
+            'levels' =>  $result->data->goodsGradeList,
+            'products' => $pagination->entries,
+            'pager' => $pagination->pager,
         ];
     }
 

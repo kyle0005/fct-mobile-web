@@ -4,17 +4,12 @@ namespace App;
 
 class Discount
 {
-    public function index($memberId)
+    public static function getDiscounts()
     {
 
     }
 
-    public function show($memberId)
-    {
-
-    }
-
-    public function store($memberId)
+    public static function getDiscount()
     {
 
     }

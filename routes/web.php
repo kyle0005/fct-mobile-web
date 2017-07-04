@@ -33,20 +33,20 @@ Route::match(['get', 'post'], 'find-express', 'Mobile\MainController@findExpress
 
 //产品详情
 //ajax获取评论数据
-Route::get('products/{:product_id}/comments', 'Mobile\ProductController@getProductComments')
+Route::get('products/{product_id}/comments', 'Mobile\ProductController@getProductComments')
     ->where('product_id', '[0-9]+');
 //ajax获取艺术家数据
-Route::get('products/{:product_id}/artists', 'Mobile\ProductController@getProductArtists')
+Route::get('products/{product_id}/artists', 'Mobile\ProductController@getProductArtists')
     ->where('product_id', '[0-9]+');
 //ajax获取泥料数据
-Route::get('products/{:product_id}/materials', 'Mobile\ProductController@getProductaMaterials')
+Route::get('products/{product_id}/materials', 'Mobile\ProductController@getProductaMaterials')
     ->where('product_id', '[0-9]+');
 
 Route::resource('products', 'Mobile\ProductController', ['show']);
 
 //大师
 //ajax获取大师评论数据
-Route::get('artists/{:artist_id}/comments', 'Mobile\ProductCommentController@index')
+Route::get('artists/{artist_id}/comments', 'Mobile\ProductCommentController@index')
     ->where('artist_id', '[0-9]+');
 Route::resource('artists', 'Mobile\ArtistController', ['index', 'show']);
 
@@ -70,16 +70,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     //购物车
     //购物车中删除
-    Route::post('carts/{id}/delete', 'Mobile\MemberAddressController@setDelete')
+    Route::post('carts/{id}/delete', 'Mobile\ShoppingCartController@setDelete')
         ->where('id', '[0-9]+');
-    Route::resource('carts', 'Mobile\OrderController', ['index', 'store']);
+    Route::resource('carts', 'Mobile\ShoppingCartController', ['index', 'store']);
 
     //订单
     //取消
-    Route::post('orders/{:order_id}/cancel', 'Mobile\OrderController@setCancel')
+    Route::post('orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
         ->where('order_id', '[0-9]+');
     //评论
-    Route::post('orders/{:order_id}/comments', 'Mobile\ProductCommentController@store')
+    Route::post('orders/{order_id}/comments', 'Mobile\ProductCommentController@store')
         ->where('order_id', '[0-9]+');
     Route::resource('orders', 'Mobile\OrderController', ['index', 'create', 'store', 'show']);
 
@@ -106,7 +106,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('settlement', 'Mobile\SettlementController', ['index', 'show']);
 
     //大师评论
-    Route::post('artists/{:artist_id}/comments', 'Mobile\ArtistCommentController@store')
+    Route::post('artists/{artist_id}/comments', 'Mobile\ArtistCommentController@store')
         ->where('artist_id', '[0-9]+');
 
 });

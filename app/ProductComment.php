@@ -25,7 +25,7 @@ class ProductComment
 
         if ($result->code != 200)
         {
-            return false;
+            throw new BusinessException($result->msg);
         }
 
         $pagination = Base::pagination($result->data, $pageSize);
@@ -53,7 +53,7 @@ class ProductComment
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->message);
+            throw new BusinessException($result->msg);
         }
 
         return $result;

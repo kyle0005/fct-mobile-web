@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Mobile;
 
+use App\Artist;
+use App\Exceptions\BusinessException;
 use App\Product;
 use App\ProductComment;
 use Illuminate\Http\Request;
@@ -20,7 +22,15 @@ class ProductController extends BaseController
      */
     public function show(Request $request, $id)
     {
-        $result = Product::getProduct($id);
+        try
+        {
+            $result = Product::getProduct($id);
+        }
+        catch (BusinessException $e)
+        {
+            //错误处理
+            return $this->errorPage($e->getMessage());
+        }
 
         return view('product.show', $result);
     }
@@ -29,19 +39,46 @@ class ProductController extends BaseController
     {
         $pageIndex = $request->get('page', 1);
 
-        $result = ProductComment::getComments($product_id, $pageIndex);
+        try
+        {
+            $result = ProductComment::getComments($product_id, $pageIndex);
+        }
+        catch (BusinessException $e)
+        {
+            //错误处理
+            return $this->errorPage($e->getMessage());
+        }
 
         return $this->returnAjaxSuccess("获取评论列表成功", null, $result);
     }
 
     public function getProductArtists(Request $request, $product_id)
     {
-        return view('product.artist-index');
+
+        try
+        {
+            $result = Artist::getRowsByProductId($product_id);
+            return $this->returnAjaxSuccess('获取产品艺术家列表成功', $result);
+        }
+        catch (BusinessException $e)
+        {
+            //错误处理
+            return $this->errorPage($e->getMessage());
+        }
     }
 
     public function getProductaMaterials(Request $request, $product_id)
     {
-        return view('product.material-index');
+        try
+        {
+            $result = 0;//
+            return $this->returnAjaxSuccess('获取产品泥料列表成功', $result);
+        }
+        catch (BusinessException $e)
+        {
+            //错误处理
+            return $this->errorPage($e->getMessage());
+        }
     }
 
 }

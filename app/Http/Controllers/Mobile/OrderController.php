@@ -24,9 +24,9 @@ class OrderController  extends BaseController
 
     public function create(Request $request)
     {
-        $productId = $request->get('product_id', 0);
-        $buyNumber = $request->get('buy_number', 0);
-        $extendId = 0;
+        $productId = intval($request->get('product_id', 0));
+        $buyNumber = intval($request->get('buy_number', 0));
+
         $cartProducts = $request->get('cart_products', '');
         $productInfo = [];
 
@@ -34,10 +34,10 @@ class OrderController  extends BaseController
         //直接购买
         if ($productId && $buyNumber)
         {
-            $extendId = $request->get('extend_id', 0);
+            $extendId = intval($request->get('spec_id', 0));
             $productInfo[] = [
                 'goodsId' =>$productId,
-                'goodsSpecId' => $extendId,
+                'specId' => $extendId,
                 'buyCount' => $buyNumber,
             ];
         }
@@ -56,7 +56,7 @@ class OrderController  extends BaseController
 
                 $productInfo[] = [
                     'goodsId' =>$productId,
-                    'SpecId' => $extendId,
+                    'specId' => $extendId,
                     'buyCount' => $buyNumber,
                 ];
             }

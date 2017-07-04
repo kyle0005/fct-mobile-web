@@ -49,70 +49,12 @@
     </div>
 @endsection
 @section('javascript')
-    <script src="js/api/index.js"></script>
-    <script type="text/x-template" id="head_top">
-        <header class="head-container">
-            <ul class="nav">
-                <li class="toggle" @click="toggle()">
-                    <i class="fa fa-bars"></i>
-                </li>
-                <li class="logo" @click="toIndex()">
-                    <img :src="img_url + '/logo.png'">
-                </li>
-                <li class="user" @click="toLogin()">
-                    <i class="fa fa-user-circle-o"></i>
-                </li>
-            </ul>
-            <div class="aside" :class="{open:open,docked:docked}" @click="toggle()">
-                <div class="container">
-                    <ul class="types">
-                        <li class="item" v-for="(types, index) in typeList" @click="change(types.code, '')">
-                            <span>@{{ types.name }}</span>
-                            <i class="fa fa-angle-right"></i>
-                        </li>
-                    </ul>
 
-                    <ul class="lines clearfix">
-                        <li class="item">
-                            <a href="javascript:;">
-                                <img :src="img_url + '/menu1.png'">
-                                <span>合作艺师</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="javascript:;">
-                                <img :src="img_url + '/menu2.png'">
-                                <span>百科</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="javascript:;">
-                                <img :src="img_url + '/menu3.png'">
-                                <span>个性定制</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="javascript:;">
-                                <img :src="img_url + '/menu4.png'">
-                                <span>APP下载</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="javascript:;">
-                                <img :src="img_url + '/menu5.png'">
-                                <span>品牌理念</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </header>
-    </script>
     <script>
         var config = {
-            "productsType": {!! $categories !!},
-            "productsRank": {!! $levels !!},
-            "products": {!! $products !!},
+            "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!},
+            "productsRank": {!! json_encode($levels, JSON_UNESCAPED_UNICODE) !!},
+            "products": {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!}
         }
     </script>
     <script src="js/head.js"></script>

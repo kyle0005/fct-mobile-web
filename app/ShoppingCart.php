@@ -10,21 +10,21 @@ class ShoppingCart
     /**购物车列表
      * @return bool|mixed|object|\Psr\Http\Message\ResponseInterface
      */
-    public static function findShoppingCarts()
+    public static function getShoppingCarts()
     {
         $result = Base::http(
             env('API_URL') . '/carts',
             [],
-            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
         );
 
         if ($result->code != 200)
         {
-            return false;
+            throw new BusinessException($result->msg);
         }
 
-        return $result;
+        return $result->data;
     }
 
     /**增加（添加）或减少购物车产品数量
@@ -48,7 +48,7 @@ class ShoppingCart
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->message);
+            throw new BusinessException($result->msg);
         }
 
         return $result;
@@ -69,7 +69,7 @@ class ShoppingCart
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->message);
+            throw new BusinessException($result->msg);
         }
 
         return $result;
@@ -89,7 +89,7 @@ class ShoppingCart
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->message);
+            throw new BusinessException($result->msg);
         }
 
         return $result;

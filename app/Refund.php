@@ -8,12 +8,12 @@ namespace App;
  */
 class Refund
 {
-    public static function add($memberId, $productId, $extendId, $refund)
+    public static function saveRefund($productId, $extendId, $refund)
     {
 
     }
 
-    public static function cancel($memberId, $refundId)
+    public static function cancel($refundId)
     {
 
     }

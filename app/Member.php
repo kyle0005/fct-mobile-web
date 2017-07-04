@@ -9,6 +9,7 @@
 namespace App;
 
 
+use App\Exceptions\BusinessException;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Cookie;
 
@@ -37,13 +38,15 @@ class Member
                 'expire_day' => $expireDay,
             ]
         );
-        if ($result->code == 200)
+        if ($result->code != 200)
         {
-            //缓存用户数据
-            $expire = $expireDay * 1440;
-            Cache::put($result->data->token, $result->data, $expire);
-            Cookie::queue(self::$cookieKey, $result->data->token, $expire);
+            throw new BusinessException($result->msg);
         }
+        //缓存用户数据
+        $expire = $expireDay * 1440;
+        Cache::put($result->data->token, $result->data, $expire);
+        Cookie::queue(self::$cookieKey, $result->data->token, $expire);
+
         return $result;
     }
 
@@ -74,6 +77,10 @@ class Member
             ],
             [env('MEMBER_TOKEN_NAME') => self::getToken()]
         );
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
         return $result;
     }
 
@@ -91,6 +98,10 @@ class Member
             ],
             [env('MEMBER_TOKEN_NAME') => self::getToken()]
         );
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
         return $result;
     }
 
@@ -110,6 +121,10 @@ class Member
                 'session_id' => $sessionId,
             ]
         );
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
         return $result;
     }
 
@@ -130,6 +145,10 @@ class Member
             ],
             [env('MEMBER_TOKEN_NAME') => self::getToken()]
         );
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
         return $result;
     }
 

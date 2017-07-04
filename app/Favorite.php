@@ -8,12 +8,16 @@ namespace App;
  */
 class Favorite
 {
-    public static function add($memberId, $fromType, $fromId)
+    public static function getFavorites($fromType) {
+
+    }
+
+    public static function saveFavorite($fromType, $fromId)
     {
 
     }
 
-    public static function remove($memberId, $id)
+    public static function remove($id)
     {
 
     }

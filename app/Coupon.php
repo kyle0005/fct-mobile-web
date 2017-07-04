@@ -4,17 +4,17 @@ namespace App;
 
 class Coupon
 {
-    public function index($memberId)
+    public static function getCoupons()
     {
 
     }
 
-    public function show($memberId)
+    public static function getCoupon()
     {
 
     }
 
-    public function store($memberId)
+    public static function saveCoupon()
     {
 
     }
