@@ -32,6 +32,7 @@ class Member
             [
                 'cellphone' => $cellphone,
                 'password' => $password,
+                'platform' => 'h5',
                 'captcha' => $captcha,
                 'session_id' => $sessionId,
                 'ip' => $ip,

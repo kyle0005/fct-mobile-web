@@ -17,13 +17,12 @@ class ShoppingCartController extends BaseController
         try{
 
             $result = ShoppingCart::getShoppingCarts();
-            print_r($result);die;
         } catch (BusinessException $e) {
 
             return $this->errorPage($e->getMessage());
         }
 
-        return view('cart.index');
+        return view('cart.index', $result);
     }
 
     public function store(Request $request)
@@ -41,11 +40,11 @@ class ShoppingCartController extends BaseController
 
         try {
 
-            ShoppingCart::saveShoppingCart($productId, $extendId, $buyNumber);
-            return $this->returnAjaxSuccess('添加购物车成功');
+            $result = ShoppingCart::saveShoppingCart($productId, $extendId, $buyNumber);
+            return $this->returnAjaxSuccess('添加购物车成功', null, ['cartProductCount' => $result->data]);
         } catch (BusinessException $e) {
 
-            return $this->returnAjaxError($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
 
     }
@@ -59,7 +58,7 @@ class ShoppingCartController extends BaseController
             return $this->returnAjaxSuccess('从购物车删除产品成功');
         } catch (BusinessException $e) {
 
-            return $this->returnAjaxError($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
     }
 }

@@ -24,7 +24,11 @@ class ShoppingCart
             throw new BusinessException($result->msg);
         }
 
-        return $result->data;
+        return [
+            'title' => '购物车 - 方寸堂',
+            'carts' => json_encode($result->data->cartList, JSON_UNESCAPED_UNICODE),
+            'likes' => json_encode($result->data->likeList, JSON_UNESCAPED_UNICODE),
+        ];
     }
 
     /**增加（添加）或减少购物车产品数量

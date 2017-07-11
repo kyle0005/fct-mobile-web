@@ -46,9 +46,19 @@ Route::resource('products', 'Mobile\ProductController', ['show']);
 
 //大师
 //ajax获取大师评论数据
-Route::get('artists/{artist_id}/comments', 'Mobile\ProductCommentController@index')
+Route::get('artists/{artist_id}/comments', 'Mobile\ArtistCommentController@index')
+    ->where('artist_id', '[0-9]+');
+//大师动态
+Route::get('artists/{artist_id}/dynamics', 'Mobile\ArtistDynamicController@index')
+    ->where('artist_id', '[0-9]+');
+//大师动态
+Route::get('artists/{artist_id}/products', 'Mobile\ArtistController@products')
     ->where('artist_id', '[0-9]+');
 Route::resource('artists', 'Mobile\ArtistController', ['index', 'show']);
+
+//wiki
+Route::get('wiki', 'Mobile\WikiController@index');
+Route::get('wiki/item', 'Mobile\WikiController@show');
 
 /** 用户需要登录后操作 */
 Route::group(['middleware' => 'auth'], function () {

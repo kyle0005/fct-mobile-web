@@ -2,7 +2,7 @@
 
 @section("title", $title)
 @section('content')
-    <div class="detail-container" id="detail">
+    <div class="detail-container" id="detail" v-cloak>
         <head-top></head-top>
         <section class="nav-bar">
             <ul>
@@ -75,20 +75,22 @@
                         <img src="/images/msg.png">
                     </a>
                 </li>
-                <li class="cart" @click="choose()">
+                <li class="cart">
                     <a href="{{ url('carts') }}" class="foot-link">
                         <img src="/images/cart.png">
-                        <span class="nums" v-if="numsshow">@{{ product.cartProductCount }}</span>
+                        <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
                     </a>
                 </li>
                 <li class="collection" :class="{red:collected}"  @click="collection()">
                     <i class="fa fa-heart"></i>
                 </li>
-                <li class="add">
-                    <a href="javascript:;" @click="choose(0)">加入购物车</a>
+                <li class="add" :class="{ disabled: !product.discount.canBuy }">
+                    <a href="javascript:;" @click="choose(0)" v-if="product.discount.canBuy">加入购物车</a>
+                    <a href="javascript:;" v-else>加入购物车</a>
                 </li>
-                <li class="buy">
-                    <a href="javascript:;" @click="choose(1)">立即购买</a>
+                <li class="buy" :class="{ disabled: !product.discount.canBuy }">
+                    <a href="javascript:;" @click="choose(1)" v-if="product.discount.canBuy">立即购买</a>
+                    <a href="javascript:;" v-else>立即购买</a>
                 </li>
             </ul>
         </footer>
@@ -100,49 +102,14 @@
         var config = {
             "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!},
             "product": {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!},
-            "fav_url" : "{{ url('favorites') }}",
+            "fav_url" : "{!! url('favorites?from_type=0&from_id=' . $product->id) !!}",
             "discuss_url" : "{{ url('products/'.$product->id .'/comments') }}",
             "artist_url" : "{{ url('products/'.$product->id .'/artists') }}",
-            "pug_url" : "{{ url('products/'.$product->id .'/materials') }}",
+            "pug_url" : "{{ url('products/'.$product->id .'/materials?material_ids=' . urlencode($product->materialId)) }}",
             "addcart_url": "{{ url('carts') }}",
             "buy_url": "{{ url('orders/create') }}",
-            "tab_artist": {
-                //请求 文本编辑器html内容 和 底部产品内容
-                "text": "<div class='text-container'>" +
-                "<section class='artist'>" +
-                "<div class='intro'>" +
-                "<span class='photo'>" +
-                "<img src='/images/resource/artist.png'>" +
-                "</span>" +
-                "<span class='artist-info'>" +
-                "<span class='artist-name'>顾景舟&nbsp;GU&nbsp;JING&nbsp;ZHOU</span><br>" +
-                "<span>宜兴紫砂壶名艺xxx<br>中国美术协会会员<br>中国工艺美术大师</span>" +
-                "</span>" +
-                "</div>" +
-                "<div class=''>" +
-                "顾景舟，（1915-1966），原名景洲。18岁拜名师学艺xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" +
-                "</div>" +
-                "</section>" +
-                "<section class='record'>" +
-                "<div class='title'>成交记录</div>" +
-                "<div class='list'>" +
-                "<span>xxxx壶拍卖 成交价1234万</span>" +
-                "<span>xxxx壶拍卖 成交价1234万</span>" +
-                "<span>xxxx壶拍卖 成交价1234万</span>" +
-                "</div>" +
-                "</section>" +
-                "<section class='comment'>" +
-                "<div class='title'>社会评价</div>" +
-                "<p class='context'>" +
-                "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" +
-                "</p>" +
-                "</section>" +
-                "</div>",
-                "": ""
-            },
-            "tab_pug": {
-                //请求 数据对象 和 底部产品内容
-            },
+            "tab_artist": [],
+            "tab_pug": [],
             "tab_service": "<div class='title'>退换货政策</div><p>自您签收商品之日起10日内，淘壶人将为您办理退换货服务，且寄回商品实际运费由客户承担；如需办理退换货业务，请您致电客服热线400-0510-570咨询办理。</p><p>" +
             "<br>政策说明：<br><br>1、一张订单淘壶人只为您提供一次退换货服务，为了确保您的权益，请考虑周全后与我们联系。<br>2、请您确保退换货时，商品各种包装完整。<br>" +
             "3、因您个人原因造成的商品损坏（如壶身破损等），不予退换。<br>4、由于物品质量问题造成的退换货，由淘壶人承担双程运费。由于个人喜好原因造成退货，由客户支付双程邮费。感谢您的理解！<br>" +
@@ -155,37 +122,47 @@
         }
     </script>
 
-
     <script type="text/x-template" id="overview">
         <div>
             <section class="video-container">
                 <video id="my-player" class="video-js vjs-big-play-centered" controls></video>
             </section>
-            <section class="product-context">
+            <section class="product-context" v-if="!(product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy))">
                 <div class="title">@{{ product.name }}</div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
                 <div class="price">￥@{{ product.salePrice }}</div>
             </section>
+            <section class="product-context dis" v-else>
+                <div class="title">
+                    @{{ product.name }}
+                    <div class="discount-container"><span v-if="canBuy">秒杀</span><span v-else>促销</span></div>
+                </div>
+                <div class="vice-title">@{{ product.subTitle }}</div>
+                <div class="price">
+                    ￥@{{ product.salePrice }}
+                    <del class="del-price">@{{ product.price }}</del>
+                </div>
+            </section>
             <section class="info">
-                <div class="item" v-if="product.hasCoupon">
+                <div class="item" v-if="product.hasDiscount">
                     <span class="left">优惠</span>
-                    <span class="right"><a href="{{ url('discounts', 'product_id='. $product->id) }}">首单优惠活动</a></span>
+                    <span class="right">@{{ product.discount.name }}、
+                        享受<span class="discount-color">@{{ product.discount.discountRate * 10 }}折</span>
+                        (还剩<span class="discount-color">@{{ product.discount.discountTime }}天</span>@{{ product.discount.hasBegin ? '结束' : '开始' }})</span>
                 </div>
                 <div class="item">
                     <span class="left">服务</span>
-                    <span class="right">&bull;&nbsp;顺丰包邮&nbsp;&bull;&nbsp;30天无忧退货&nbsp;&bull;&nbsp;48小时快速退货</span>
+                    <span class="right">&bull;&nbsp;顺丰包邮&emsp;&bull;&nbsp;30天无忧退货&emsp;&bull;&nbsp;48小时快速退货</span>
                 </div>
                 <div class="item">
                     <span class="left">库存</span>
                     <span class="right">@{{ calstock }}</span>
                 </div>
                 <div class="coupon" v-if="product.hasCoupon">
-                    <a href="{{ url('coupons', 'product_id=' . $product->id) }}" class="get-coupon">领取优惠券</a>
+                    <a :href="product.coupon_url" class="get-coupon">领取优惠券</a>
                 </div>
             </section>
-            <section class="edit-context" v-html="product.content">
-                @{{ product.content }}
-            </section>
+            <section class="edit-context" v-html="product.content"></section>
         </div>
     </script>
     <script type="text/x-template" id="artist">
@@ -228,22 +205,10 @@
                     </a>
                 </li>
             </ul>
-            <section class="pug-container">
-                <div class="intro">
-          <span class="photo">
-            <img :src="pugsingle.pug_photo">
-          </span>
-                    <span class="pug">
-            <span class="pug-name">@{{ pugsingle.pug_name }}</span><br>
-            <span class="pug-detail">@{{ pugsingle.pug_detail }}</span>
-          </span>
-                </div>
+            <section class="pug-container" v-html="pugsingle.spec_content">
+                @{{ pugsingle.spec_content }}
             </section>
             <section class="spec">
-                <div class="title">@{{ pugsingle.spec }}</div>
-                <div class="details">
-                    @{{ pugsingle.spec_content }}
-                </div>
                 <ul class="others">
                     <li v-for="img_item in pugsingle.img">
                         <a href="javascript:;" class="item">
@@ -256,7 +221,9 @@
         </div>
     </script>
     <script type="text/x-template" id="service">
-        <section class="service" v-html="tab_service"></section>
+        <section class="service">
+            @{{ tab_service }}
+        </section>
     </script>
     <script type="text/x-template" id="discuss">
         <section class="discuss">

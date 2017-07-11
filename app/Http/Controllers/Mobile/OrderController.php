@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Exceptions\BusinessException;
+use App\FctCommon;
 use App\ProductOrder;
 use Illuminate\Http\Request;
 
@@ -26,10 +27,8 @@ class OrderController  extends BaseController
     {
         $productId = intval($request->get('product_id', 0));
         $buyNumber = intval($request->get('buy_number', 0));
-
-        $cartProducts = $request->get('cart_products', '');
+        $cartProducts = json_decode($request->get('product', ''), true);
         $productInfo = [];
-
 
         //直接购买
         if ($productId && $buyNumber)
@@ -40,18 +39,23 @@ class OrderController  extends BaseController
                 'specId' => $extendId,
                 'buyCount' => $buyNumber,
             ];
+            if ($productId < 1 || $buyNumber <= 0)
+            {
+                throw new BusinessException("产品不存在或数量小于1");
+            }
         }
+
         //购物车中选择选择购买
         elseif ($cartProducts)
         {
             foreach ($cartProducts as $cartProduct)
             {
-                $productId = intval($cartProduct['product_id']);
-                $buyNumber = intval($cartProduct['extend_id']);
-                $extendId = intval($cartProduct['buy_number']);
-                if ($productId <= 0 || $buyNumber <= 0)
+                $productId = intval($cartProduct['goodsId']);
+                $extendId = intval($cartProduct['specId']);
+                $buyNumber = intval($cartProduct['buyCount']);
+                if ($productId < 1 || $buyNumber <= 0)
                 {
-                    throw new BusinessException("购物车中的产品不存在或数量不能小于1个");
+                    throw new BusinessException("购物车中的产品不存在或数量小于1");
                 }
 
                 $productInfo[] = [
@@ -67,24 +71,50 @@ class OrderController  extends BaseController
             return $this->returnAjaxError('非法操作');
         }
 
-        $order = ProductOrder::calc($productInfo);
+        try
+        {
+            $result = ProductOrder::checkoutOrderGoods($productInfo);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->returnAjaxSuccess($e->getMessage());
+        }
 
-
-
-
-        return view('order.create');
+        $result[env('REDIRECT_KEY')] = urlencode($request->getUri());
+        return view('order.create', $result);
     }
 
     public function store(Request $request)
     {
-        $points = $request->get('points');
-        $accountAmount = $request->get('account_amount');
-        $couponCode = $request->get('coupon_code');
+        $has_terms = $request->get('has_terms');
+
+        $points = intval($request->get('points'));
+        $points = $points <= 0 ? 0 : $points;
+
+        $accountAmount = floatval($request->get('accountAmount'));
+        $accountAmount = $accountAmount <= 0 ? 0 : $accountAmount;
+
+        $couponCode = $request->get('couponCode');
         $remark = $request->get('remark');
-        $addressId = $request->get('address_id');
-        $orderGoodsInfo = $request->get('goods_info'); //json
+        $addressId = intval($request->get('addressId'));
 
+        $orderGoodsInfo = FctCommon::fctBase64Decode($request->get('orderGoodsInfo'));
+        if (!$orderGoodsInfo)
+        {
+            return $this->autoReturn("没找到需下单的产品");
+        }
+        $orderGoodsInfo = json_decode($orderGoodsInfo);
 
+        try
+        {
+            $result = ProductOrder::saveOrder($points, $accountAmount, $couponCode,
+                $remark, $addressId, $orderGoodsInfo);
 
+            return $this->returnAjaxSuccess("订单创建成功", env('PAY_URL') . '?tradetype=buy&tradeid=' . $result);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
     }
 }

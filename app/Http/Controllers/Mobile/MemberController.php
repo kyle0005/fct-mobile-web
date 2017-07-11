@@ -54,7 +54,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->returnAjaxError($e->getMessage());
+                return $this->autoReturn($e->getMessage());
             }
         }
 
@@ -88,7 +88,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->returnAjaxError($e->getMessage());
+                return $this->autoReturn($e->getMessage());
             }
         }
         return view('register');
@@ -119,7 +119,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->returnAjaxError($e->getMessage());
+                return $this->autoReturn($e->getMessage());
             }
         }
         $result = [
@@ -157,7 +157,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->returnAjaxError($e->getMessage());
+                return $this->autoReturn($e->getMessage());
             }
         }
 
@@ -198,7 +198,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->returnAjaxError($e->getMessage());
+                return $this->autoReturn($e->getMessage());
             }
         }
         return view('forget-password', ['title' => '找回密码']);
@@ -236,7 +236,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->returnAjaxError($e->getMessage());
+                return $this->autoReturn($e->getMessage());
             }
         }
 

@@ -14,7 +14,7 @@ use App\Exceptions\BusinessException;
 class Artist
 {
 
-    public static function getRows($pageIndex)
+    public static function getArtists($pageIndex)
     {
         $pageSize = 20;
         $result = Base::http(
@@ -34,10 +34,14 @@ class Artist
 
         $pagination = Base::pagination($result->data, $pageSize);
 
-        return $pagination;
+        return [
+            'title' => '签约艺人 - 方寸堂',
+            'products' => $pagination->entries,
+            'pager' => $pagination->pager,
+        ];
     }
 
-    public static function getRow($id)
+    public static function getArtist($id)
     {
         $result = Base::http(
             env('API_URL') . sprintf('/artists/%d', $id),
@@ -54,12 +58,12 @@ class Artist
         $artist = $result->data;
 
         return [
-            'title' => (isset($artist->name) && $artist->name ? $artist->name : '艺术家详情') . '方寸堂',
+            'title' => (isset($artist->name) && $artist->name ? $artist->name : '签约艺人详情') . ' - 方寸堂',
             'artist' => json_encode($artist, JSON_UNESCAPED_UNICODE),
         ];
     }
 
-    public static function getRowsByProductId($productId)
+    public static function getArtistsByProductId($productId)
     {
         $result = Base::http(
             env('API_URL') . '/artists/by-product',

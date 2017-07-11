@@ -8,19 +8,16 @@ use Illuminate\Support\Facades\Cookie;
 
 class BaseController extends Controller
 {
-
-    protected $redirectKey = 'redirecturl';
-
     protected function cacheRedirectSourceUrl($url = '', $hasCacheCookie = false)
     {
         $url = $url ? $url : $this->getRedirectSourceUrl();
         if ($hasCacheCookie)
         {
-            Cookie::queue($this->redirectKey, $url, 10);
+            Cookie::queue(env('REDIRECT_KEY'), $url, 10);
         }
         else
         {
-            request()->merge([$this->redirectKey => $url]);
+            request()->merge([env('REDIRECT_KEY') => $url]);
         }
     }
     /**获取用户自定义返回原地址
@@ -29,17 +26,17 @@ class BaseController extends Controller
     protected function getRedirectSourceUrl()
     {
         //主动传递跳转url
-        $redirectUrl = request()->get($this->redirectKey);
+        $redirectUrl = request()->get(env('REDIRECT_KEY'));
         if ($redirectUrl)
         {
             return $redirectUrl;
         }
 
         //系统与第三方系统交互，临时存入cookie中
-        if (Cookie::has($this->redirectKey) && Cookie::get($this->redirectKey))
+        if (Cookie::has(env('REDIRECT_KEY')) && Cookie::get(env('REDIRECT_KEY')))
         {
-            $redirectUrl = Cookie::get($this->redirectKey);
-            Cookie::forget($this->redirectKey);
+            $redirectUrl = Cookie::get(env('REDIRECT_KEY'));
+            Cookie::forget(env('REDIRECT_KEY'));
             return $redirectUrl;
         }
 
@@ -60,7 +57,7 @@ class BaseController extends Controller
             'message' => $message,
             'url' => $url,
             'data' => $extras,
-        ]);
+        ], JSON_UNESCAPED_UNICODE);
     }
 
     /**失败ajax返回内容
@@ -76,7 +73,7 @@ class BaseController extends Controller
             'message' => $message,
             'url' => $url,
             'data' => $extras,
-        ]);
+        ], JSON_UNESCAPED_UNICODE);
     }
 
     /**自动判断是AJAX还是post
@@ -93,7 +90,16 @@ class BaseController extends Controller
                 'message' => $message,
                 'url' => $url,
                 'data' => $extras,
-            ]);
+            ], JSON_UNESCAPED_UNICODE);
+        }
+
+        if ($code != 200)
+        {
+            $errorUrl = url('error') . '?message=' . $message;
+            if ($url)
+                $errorUrl .= '&' . env('REDIRECT_KEY') . '=' . $url;
+
+            return redirect($errorUrl, 301);
         }
 
         return redirect($url ? $url : '', 301);

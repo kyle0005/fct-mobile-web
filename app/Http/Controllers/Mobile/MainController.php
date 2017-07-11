@@ -76,7 +76,7 @@ class MainController extends BaseController
 
         } catch (BusinessException $e)
         {
-            return $this->returnAjaxError($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
     }
 

@@ -69,6 +69,12 @@ class Base
                 'action' => $action,
             ]
         );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
         return $result;
     }
 

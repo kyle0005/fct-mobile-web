@@ -10,6 +10,7 @@ namespace App;
 
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Crypt;
 
 class ProductOrder
 {
@@ -95,7 +96,7 @@ class ProductOrder
             throw new BusinessException($result->msg);
         }
 
-        return $result;
+        return $result->data;
     }
 
     /**取消订单
@@ -127,7 +128,7 @@ class ProductOrder
      * @param $points
      * @param $couponCode
      */
-    public static function calc($productInfo, $accountAmount = 0, $points = 0, $couponCode = "")
+    public static function checkoutOrderGoods($productInfo)
     {
         $result = Base::http(
             env('API_URL') . '/orders/order-products',
@@ -143,11 +144,19 @@ class ProductOrder
             throw new BusinessException($result->msg);
         }
 
-        if (!$result->data)
+        if ((!$result->data) || (!$result->data->goodsList))
         {
             throw new BusinessException("数据异常");
         }
 
-        $result;
+        return [
+            'title' => '订单确认',
+            'address' => json_encode($result->data->address ,JSON_UNESCAPED_UNICODE),
+            'products' => json_encode($result->data->goodsList ,JSON_UNESCAPED_UNICODE),
+            'submitCouponProducts' => Crypt::encrypt(json_encode($result->data->couponGoodsList ,JSON_UNESCAPED_UNICODE)),
+            'coupon' => json_encode($result->data->coupon ,JSON_UNESCAPED_UNICODE),
+            'points' => $result->data->points,
+            'availableAmount' => $result->data->availableAmount,
+        ];
     }
 }

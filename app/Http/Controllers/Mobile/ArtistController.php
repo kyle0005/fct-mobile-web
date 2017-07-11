@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers\Mobile;
 
+use App\Artist;
+use App\Exceptions\BusinessException;
+use App\Product;
 use Illuminate\Http\Request;
 
 /**大师
@@ -16,7 +19,17 @@ class ArtistController extends BaseController
      */
     public function index(Request $request)
     {
-        return view('artist.index');
+        $page = $request->get('page', 1);
+        try
+        {
+            $result = Artist::getArtists($page);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
+        return view('artist.index', $result);
     }
 
     /**大师详情
@@ -26,6 +39,29 @@ class ArtistController extends BaseController
      */
     public function show(Request $request, $id)
     {
-        return view('artist.show');
+        try
+        {
+            $result = Artist::getArtist($id);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
+        return view('artist.show', $result);
+    }
+
+    public function products(Request $request, $artist_id)
+    {
+
+        try
+        {
+            $result = Product::getPrdocutsByArtistId($artist_id);
+            return $this->returnAjaxSuccess("获取作品列表成功", null, $result);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
     }
 }

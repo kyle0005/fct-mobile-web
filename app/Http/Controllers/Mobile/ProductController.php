@@ -6,6 +6,7 @@ use App\Artist;
 use App\Exceptions\BusinessException;
 use App\Product;
 use App\ProductComment;
+use App\ProductMaterial;
 use Illuminate\Http\Request;
 
 /**产品
@@ -57,8 +58,8 @@ class ProductController extends BaseController
 
         try
         {
-            $result = Artist::getRowsByProductId($product_id);
-            return $this->returnAjaxSuccess('获取产品艺术家列表成功', $result);
+            $result = Artist::getArtistsByProductId($product_id);
+            return $this->returnAjaxSuccess('获取产品艺术家列表成功', null, $result);
         }
         catch (BusinessException $e)
         {
@@ -69,10 +70,12 @@ class ProductController extends BaseController
 
     public function getProductaMaterials(Request $request, $product_id)
     {
+        $materialIds = $request->get('material_ids');
         try
         {
-            $result = 0;//
-            return $this->returnAjaxSuccess('获取产品泥料列表成功', $result);
+            $result = ProductMaterial::getMaterialsByIds($materialIds, $product_id);
+
+            return $this->returnAjaxSuccess('获取产品泥料列表成功', null, $result);
         }
         catch (BusinessException $e)
         {

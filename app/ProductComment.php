@@ -14,8 +14,9 @@ class ProductComment
     {
         $pageSize = 20;
         $result = Base::http(
-            env('API_URL') . sprintf('/products/%d/comments', $productId),
+            env('API_URL') . '/order/comments',
             [
+                'product_id' => $productId,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
             ],
