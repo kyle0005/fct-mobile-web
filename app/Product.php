@@ -13,6 +13,8 @@ use App\Exceptions\BusinessException;
 
 class Product
 {
+    public static $resourceUrl = '/mall/products';
+
     /**产品详情
      * @param $id
      * @return array
@@ -26,7 +28,7 @@ class Product
             throw new BusinessException("无此产品");
         }
         $result = Base::http(
-            env('API_URL') . sprintf('/products/%d', $id),
+            env('API_URL') . sprintf('%s/%d', self::$resourceUrl, $id),
             [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
@@ -66,11 +68,43 @@ class Product
     public static function getPrdocutsByArtistId($artistId)
     {
         $result = Base::http(
-            env('API_URL') . '/products/by-artist',
+            env('API_URL') . sprintf('%s/by-artist', self::$resourceUrl),
             [
                 'artist_id' => $artistId,
             ],
             [],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return $result->data;
+    }
+
+    /**获取分享的产品
+     * @param $categoryCode
+     * @param $name
+     * @param $page
+     * @return mixed
+     * @throws BusinessException
+     */
+    public static function getShareProducts($categoryCode, $name, $page)
+    {
+        $pageIndex = $page < 1 ? 1 : $page;
+        $pageSize = 20;
+
+        $result = Base::http(
+            env('API_URL') . self::$resourceUrl,
+            [
+                'name' => $name,
+                'category_code' => $categoryCode,
+                'page_index' => $pageIndex,
+                'page_size' => $pageSize,
+            ],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
         );
 

@@ -32,7 +32,7 @@ class Member
             [
                 'cellphone' => $cellphone,
                 'password' => $password,
-                'platform' => 'h5',
+                'platform' => env('WEB_PLATFORM'),
                 'captcha' => $captcha,
                 'session_id' => $sessionId,
                 'ip' => $ip,
@@ -43,10 +43,8 @@ class Member
         {
             throw new BusinessException($result->msg);
         }
-        //缓存用户数据
-        $expire = $expireDay * 1440;
-        Cache::put($result->data->token, $result->data, $expire);
-        Cookie::queue(self::$cookieKey, $result->data->token, $expire);
+
+        self::setAuth($result->data, $expireDay);
 
         return $result;
     }
@@ -170,6 +168,14 @@ class Member
     public static function getToken()
     {
         return Cookie::has(self::$cookieKey) ? Cookie::get(self::$cookieKey) : "";
+    }
+
+    public static function setAuth($member, $expireDay = 3)
+    {
+        //缓存用户数据
+        $expire = $expireDay * 1440;
+        Cache::put($member->token, $member, $expire);
+        Cookie::queue(self::$cookieKey, $member, $expire);
     }
 
     public static function getAuth()

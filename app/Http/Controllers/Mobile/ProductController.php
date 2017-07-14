@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Mobile;
 use App\Artist;
 use App\Exceptions\BusinessException;
 use App\Product;
-use App\ProductComment;
+use App\OrderComment;
 use App\ProductMaterial;
 use Illuminate\Http\Request;
 
@@ -42,7 +42,7 @@ class ProductController extends BaseController
 
         try
         {
-            $result = ProductComment::getComments($product_id, $pageIndex);
+            $result = OrderComment::getComments($product_id, $pageIndex);
         }
         catch (BusinessException $e)
         {

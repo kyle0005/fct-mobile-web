@@ -2,17 +2,23 @@
 
 namespace App\Http\Controllers\Mobile;
 
+use App\Exceptions\BusinessException;
+use App\Settlement;
 use Illuminate\Http\Request;
 
 class SettlementController extends BaseController
 {
     public function index(Request $request)
     {
-        return view('settlement.index');
-    }
-    
-    public function show(Request $request, $id)
-    {
-        return view('settlement.show');
+        try
+        {
+            $result = Settlement::getSettlements();
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
+        return view('settlement.index', $result);
     }
 }

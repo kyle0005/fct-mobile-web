@@ -8,13 +8,15 @@ use App\Exceptions\BusinessException;
  * Class ProductComment
  * @package App
  */
-class ProductComment
+class OrderComment
 {
+    public static $resourceUrl = '/mall/order/comments';
+
     public static function getComments($productId, $pageIndex = 1)
     {
         $pageSize = 20;
         $result = Base::http(
-            env('API_URL') . '/order/comments',
+            env('API_URL') . self::$resourceUrl,
             [
                 'product_id' => $productId,
                 'page_index' => $pageIndex,
@@ -34,19 +36,17 @@ class ProductComment
         return $pagination;
     }
 
-    public static function saveComment($orderId, $productId, $content,
-                                       $descScore, $expressScore, $saleScore, $picture)
+    //(String order_id, Integer express_score, Integer has_anonymous, Integer sale_score, String productInfo
+    //[{goodsId:1, descScore:5, content:xxx, picture:xxxx},...]
+    public static function saveComment($orderId, $expressScore, $hasAnonymous, $saleScore, $productInfo)
     {
         $result = Base::http(
-            env('API_URL') . sprintf('/products/%d/comments', $productId),
+            env('API_URL') . self::$resourceUrl,
             [
                 'order_id' => $orderId,
-                'product_id' => $productId,
-                'content' => $content,
-                'desc_score' => $descScore,
                 'express_score' => $expressScore,
                 'sale_score' => $saleScore,
-                'picture' => $picture,
+                'product_info' => $productInfo,
                 //评论字段
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]

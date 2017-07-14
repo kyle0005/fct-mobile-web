@@ -99,10 +99,10 @@ class BaseController extends Controller
             if ($url)
                 $errorUrl .= '&' . env('REDIRECT_KEY') . '=' . $url;
 
-            return redirect($errorUrl, 301);
+            return redirect($errorUrl);
         }
 
-        return redirect($url ? $url : '', 301);
+        return redirect($url ? $url : '');
     }
 
     protected function errorPage($message, $url = '')

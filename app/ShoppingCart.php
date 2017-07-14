@@ -7,13 +7,15 @@ use App\Exceptions\BusinessException;
 
 class ShoppingCart
 {
+    public static $resourceUrl = '/mall/carts';
+
     /**购物车列表
      * @return bool|mixed|object|\Psr\Http\Message\ResponseInterface
      */
     public static function getShoppingCarts()
     {
         $result = Base::http(
-            env('API_URL') . '/carts',
+            env('API_URL') . self::$resourceUrl,
             [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
@@ -41,7 +43,7 @@ class ShoppingCart
     public static function saveShoppingCart($productId, $extendId, $number)
     {
         $result = Base::http(
-            env('API_URL') . '/carts',
+            env('API_URL') . self::$resourceUrl,
             [
                 'product_id' => $productId,
                 'spec_id' => $extendId,
@@ -66,7 +68,7 @@ class ShoppingCart
     public static function remove($id)
     {
         $result = Base::http(
-            env('API_URL') . sprintf('/carts/%d/delete', $id),
+            env('API_URL') . sprintf('%s/%d/delete', self::$resourceUrl, $id),
             [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );
@@ -86,7 +88,7 @@ class ShoppingCart
     public static function clean()
     {
         $result = Base::http(
-            env('API_URL') . '/carts/clean',
+            env('API_URL') . sprintf('%s/clean', self::$resourceUrl),
             [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );

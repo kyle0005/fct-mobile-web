@@ -14,10 +14,12 @@ use App\Exceptions\BusinessException;
 class ProductCategory
 {
 
+    public static $resourceUrl = '/mall/products';
+
     public static function getCategories()
     {
         $result = Base::http(
-            env('API_URL') . '/products/categories',
+            env('API_URL') . sprintf('%s/categories', self::$resourceUrl),
             [],
             [],
             'GET'

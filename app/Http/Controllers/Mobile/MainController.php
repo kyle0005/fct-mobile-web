@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Base;
+use App\Coupon;
 use App\Exceptions\BusinessException;
 use App\FctCommon;
 use App\FctValidator;
@@ -82,7 +83,16 @@ class MainController extends BaseController
 
     public function newCoupon(Request $request)
     {
-        return view('new-coupon');
+        $productId = $request->get('product_id', 0);
+        try
+        {
+            $result = Coupon::getCoupons($productId);
+        } catch (BusinessException $e)
+        {
+            //return $this->autoReturn($e->getMessage());
+        }
+
+        return view('new-coupon', $result);
     }
 
     public function downloadApp(Request $request)

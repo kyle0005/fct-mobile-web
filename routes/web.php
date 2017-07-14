@@ -14,7 +14,8 @@
 use Illuminate\Support\Facades\Route;
 
 /** 不用登录页面 */
-Route::get('/', 'Mobile\MainController@index');
+Route::get('/', 'PC\MainController@index');
+//Route::get('/', 'Mobile\MainController@index');
 Route::get('welcome', 'Mobile\MainController@welcome');
 Route::get('download/app', 'Mobile\MainController@downloadApp');
 //领取优惠券
@@ -23,6 +24,13 @@ Route::get('coupons/new', 'Mobile\MainController@newCoupon');
 Route::get('success', 'Mobile\MainController@success');
 //用户
 Route::match(['get', 'post'], 'login', 'Mobile\MemberController@login');
+//第三方授权
+Route::get('oauth', 'Mobile\MemberController@oAuth');
+//授权回调
+Route::get('oauth/callback', 'Mobile\MemberController@oAuthCallback');
+//绑定第三方授权
+Route::match(['get', 'post'], 'oauth/bind', 'Mobile\MemberController@oAuthBind');
+
 //Route::match(['get', 'post'], 'register', 'Mobile\MemberController@register');
 Route::match(['get', 'post'], 'forget-password', 'Mobile\MemberController@forgetPassword');
 Route::any('logout', 'Mobile\MemberController@logout');
@@ -89,7 +97,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
         ->where('order_id', '[0-9]+');
     //评论
-    Route::post('orders/{order_id}/comments', 'Mobile\ProductCommentController@store')
+    Route::post('orders/{order_id}/comments', 'Mobile\OrderCommentController@store')
         ->where('order_id', '[0-9]+');
     Route::resource('orders', 'Mobile\OrderController', ['index', 'create', 'store', 'show']);
 

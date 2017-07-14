@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Crypt;
 
 class ProductOrder
 {
+    public static $resourceUrl = '/mall/orders';
+
     /**获取订单列表
      * @param $orderId
      * @param $status
@@ -24,7 +26,7 @@ class ProductOrder
     {
         $pageSize = 20;
         $result = Base::http(
-            env('API_URL') . '/orders',
+            env('API_URL') . self::$resourceUrl,
             [
                 'order_id' => $orderId,
                 'status' => $status,
@@ -52,7 +54,7 @@ class ProductOrder
     public static function getOrder($orderId)
     {
         $result = Base::http(
-            env('API_URL') . sprintf('/orders/%s', $orderId),
+            env('API_URL') . sprintf('%s/%s', self::$resourceUrl, $orderId),
             [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
@@ -79,7 +81,7 @@ class ProductOrder
         }
 
         $result = Base::http(
-            env('API_URL') . '/orders',
+            env('API_URL') . self::$resourceUrl,
             [
                 'points' => $points,
                 'accountAmount' => $accountAmount,
@@ -107,7 +109,7 @@ class ProductOrder
     public static function cancelOrder($orderId)
     {
         $result = Base::http(
-            env('API_URL') . sprintf('/orders/%s/cancel', $orderId),
+            env('API_URL') . sprintf('%s/%s/cancel', self::$resourceUrl, $orderId),
             [
                 'order_id' => $orderId,
             ],
@@ -131,7 +133,7 @@ class ProductOrder
     public static function checkoutOrderGoods($productInfo)
     {
         $result = Base::http(
-            env('API_URL') . '/orders/order-products',
+            env('API_URL') . sprintf('%s/order-products', self::$resourceUrl),
             [
                 'orderProductInfo' => json_encode($productInfo, JSON_UNESCAPED_UNICODE),
             ],

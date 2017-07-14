@@ -13,10 +13,12 @@ use App\Exceptions\BusinessException;
 
 class ProductMaterial
 {
+    public static $resourceUrl = '/mall/materials';
+
     public static function getMaterialsByIds($materialIds, $productId)
     {
         $result = Base::http(
-            env('API_URL') . '/materials/by-product',
+            env('API_URL') . sprintf('%s/by-product', self::$resourceUrl),
             [
                 'product_id' => $productId,
                 'ids' => $materialIds,

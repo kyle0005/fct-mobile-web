@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Exceptions\BusinessException;
-use App\ProductComment;
+use App\OrderComment;
 use Illuminate\Http\Request;
 
-class ProductCommentController extends BaseController
+class OrderCommentController extends BaseController
 {
     public function store(Request $request, $product_id)
     {
@@ -19,7 +19,7 @@ class ProductCommentController extends BaseController
 
         try
         {
-            $result = ProductComment::saveComment($orderId, $product_id, $content,
+            $result = OrderComment::saveComment($orderId, $product_id, $content,
                 $descScore, $expressScore, $saleScore, $picture);
 
             return $this->returnAjaxSuccess($result->message);

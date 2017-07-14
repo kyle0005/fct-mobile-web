@@ -27,7 +27,7 @@
 @section('javascript')
     <script>
         var config = {
-            "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!},
+            "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!}
         }
     </script>
     <script src="/js/head.js"></script>

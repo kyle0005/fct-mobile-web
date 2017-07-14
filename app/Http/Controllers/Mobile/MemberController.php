@@ -6,6 +6,7 @@ use App\Exceptions\BusinessException;
 use App\FctCommon;
 use App\FctValidator;
 use App\Member;
+use App\MemberOAuth;
 use Illuminate\Http\Request;
 
 /**用户操作
@@ -14,6 +15,34 @@ use Illuminate\Http\Request;
  */
 class MemberController extends BaseController
 {
+    public function oAuth(Request $request)
+    {
+        try
+        {
+            $result = MemberOAuth::getURL();
+            echo $result;die;
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+    }
+
+    public function oAuthCallback(Request $request)
+    {
+        //
+    }
+
+    public function oAuthBind(Request $request)
+    {
+        if ($request->getMethod() == 'POST') {
+
+        }
+
+        return view("bind");
+    }
+
+
     /**用户登录
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
@@ -254,5 +283,17 @@ class MemberController extends BaseController
     public function logout(Request $request)
     {
 
+    }
+
+
+    public function index(Request $request) {
+
+
+        $member = Member::getAuth();
+
+        return view("member.index", [
+            'title' => '用户中心',
+            'member' => $member
+        ]);
     }
 }

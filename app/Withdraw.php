@@ -3,7 +3,85 @@
 namespace App;
 
 
+use App\Exceptions\BusinessException;
+
 class Withdraw
 {
-    //
+    public static $resourceUrl = '/finance/withdraws';
+
+    public static function getWithdraws($page = 1)
+    {
+        $pageIndex = $page < 1 ? 1 : $page;
+        $pageSize = 20;
+
+        $result = Base::http(
+            env('API_URL') . self::$resourceUrl,
+            [
+                'page_index' => $pageIndex,
+                'page_size' => $pageSize,
+            ],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return $result->data;
+    }
+
+    public static function getWithdraw($id)
+    {
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/%d', self::$resourceUrl, $id),
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return $result->data;
+    }
+
+    public static function saveWithdraw($amount, $remark)
+    {
+        $result = Base::http(
+            env('API_URL') . self::$resourceUrl,
+            [
+                'amount' => $amount,
+                'remark' => $remark,
+            ],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()]
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return $result->data;
+    }
+
+    public static function create()
+    {
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/create', self::$resourceUrl),
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return $result->data;
+    }
 }

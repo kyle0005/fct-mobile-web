@@ -17,7 +17,7 @@ class Main
     {
         $pageSize = 10;
         $result = Base::http(
-            env('API_URL') . '/home',
+            env('API_URL') . '/mall/home',
             [
                 'category_id' => $categoryId,
                 'level_id' => $levelId,

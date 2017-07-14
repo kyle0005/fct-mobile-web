@@ -6,12 +6,14 @@ use App\Exceptions\BusinessException;
 
 class MemberAddress
 {
+    public static $resourceUrl = '/member/address';
+
     public static function getAddresses()
     {
         $result = Base::http(
-            env('API_URL') . '/address',
+            env('API_URL') . self::$resourceUrl,
             [],
-            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
         );
 
@@ -26,7 +28,7 @@ class MemberAddress
     public static function getAddress($id)
     {
         $result = Base::http(
-            env('API_URL') . sprintf('/address/%d', $id),
+            env('API_URL') . sprintf('%s/%d', self::$resourceUrl, $id),
             [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
@@ -43,7 +45,7 @@ class MemberAddress
     public static function saveAddress($id, $name, $phone, $province, $city, $region, $address, $isDefault)
     {
         $result = Base::http(
-            env('API_URL') . '/address',
+            env('API_URL') . self::$resourceUrl,
             [
                 'id' => $id,
                 'name' => $name,
@@ -68,7 +70,7 @@ class MemberAddress
     public static function setDefault($id)
     {
         $result = Base::http(
-            env('API_URL') . sprintf('/address/%d/default', $id),
+            env('API_URL') . sprintf('%s/%d/default', self::$resourceUrl, $id),
             [
                 'id' => $id,
             ],
@@ -86,7 +88,7 @@ class MemberAddress
     public static function setDelete($id)
     {
         $result = Base::http(
-            env('API_URL') . sprintf('/address/%d/delete', $id),
+            env('API_URL') . sprintf('%s/%d/delete', self::$resourceUrl, $id),
             [
                 'id' => $id,
             ],

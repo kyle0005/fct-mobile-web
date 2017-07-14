@@ -10,14 +10,15 @@ use App\Exceptions\BusinessException;
  */
 class Favorite
 {
-    public static function getFavorites($fromType) {
+    public static function getFavorites($fromType)
+    {
 
     }
 
     public static function saveFavorite($fromType, $fromId)
     {
         $result = Base::http(
-            env('API_URL') . '/favorites',
+            env('API_URL') . '/member/favorites',
             [
                 'from_id' => $fromId,
                 'from_type' => $fromType,

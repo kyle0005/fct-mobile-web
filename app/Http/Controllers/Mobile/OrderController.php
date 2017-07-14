@@ -86,7 +86,11 @@ class OrderController  extends BaseController
 
     public function store(Request $request)
     {
-        $has_terms = $request->get('has_terms');
+        $hasTerms = $request->get('has_terms');
+        if (!$hasTerms)
+        {
+            return $this->returnAjaxError("请先同意协议才能购买");
+        }
 
         $points = intval($request->get('points'));
         $points = $points <= 0 ? 0 : $points;
