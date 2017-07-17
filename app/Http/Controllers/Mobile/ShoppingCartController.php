@@ -19,7 +19,7 @@ class ShoppingCartController extends BaseController
             $result = ShoppingCart::getShoppingCarts();
         } catch (BusinessException $e) {
 
-            return $this->errorPage($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
 
         return view('cart.index', $result);

@@ -50,7 +50,7 @@ class ArtistCommentController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->errorPage($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
     }
 }

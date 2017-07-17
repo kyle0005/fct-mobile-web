@@ -30,7 +30,7 @@ class ProductController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->errorPage($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
 
         return view('product.show', $result);
@@ -47,7 +47,7 @@ class ProductController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->errorPage($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
 
         return $this->returnAjaxSuccess("获取评论列表成功", null, $result);
@@ -64,7 +64,7 @@ class ProductController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->errorPage($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
     }
 
@@ -80,7 +80,7 @@ class ProductController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->errorPage($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
     }
 

@@ -32,7 +32,7 @@ class MainController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->errorPage($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
 
         if ($request->ajax())
@@ -89,7 +89,7 @@ class MainController extends BaseController
             $result = Coupon::getCoupons($productId);
         } catch (BusinessException $e)
         {
-            //return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
 
         return view('new-coupon', $result);

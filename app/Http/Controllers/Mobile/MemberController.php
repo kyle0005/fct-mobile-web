@@ -32,13 +32,44 @@ class MemberController extends BaseController
 
     public function oAuthCallback(Request $request)
     {
-        //
+        $code = $request->get('code', '');
+        if (!$code)
+        {
+            return $this->autoReturn('授权失败');
+        }
+
+        try
+        {
+            MemberOAuth::saveOAuth($code);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
     }
 
     public function oAuthBind(Request $request)
     {
+        $openid = FctCommon::trimAll($request->get('openid'));
+
         if ($request->getMethod() == 'POST') {
 
+            try
+            {
+                $cellphone = FctCommon::trimAll($request->get('cellphone'));
+                $captcha = FctCommon::trimAll($request->get('captcha'));
+                $sessionId = FctCommon::getMobileSessionId();
+
+                FctValidator::hasMobile($cellphone);
+                FctValidator::hasMobileCaptcha($captcha);
+
+                MemberOAuth::bindOAuth($openid, $cellphone, $captcha, $sessionId, $request->ip());
+                return $this->returnAjaxSuccess('授权成功');
+            }
+            catch (BusinessException $e)
+            {
+                return $this->autoReturn($e->getMessage());
+            }
         }
 
         return view("bind");
@@ -89,6 +120,7 @@ class MemberController extends BaseController
             }
         }
 
+        $this->cacheRedirectSourceUrl($request->server('HTTP_REFERER'), true);
 
         return view('login', ['title' => "用户登录"]);
     }

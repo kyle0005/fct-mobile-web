@@ -175,7 +175,7 @@ class Member
         //缓存用户数据
         $expire = $expireDay * 1440;
         Cache::put($member->token, $member, $expire);
-        Cookie::queue(self::$cookieKey, $member, $expire);
+        Cookie::queue(self::$cookieKey, $member->token, $expire);
     }
 
     public static function getAuth()
