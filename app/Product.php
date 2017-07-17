@@ -91,16 +91,17 @@ class Product
      * @return mixed
      * @throws BusinessException
      */
-    public static function getShareProducts($categoryCode, $name, $page)
+    public static function getShareProducts($categoryCode, $name, $sortIndex, $page)
     {
         $pageIndex = $page < 1 ? 1 : $page;
         $pageSize = 20;
 
         $result = Base::http(
-            env('API_URL') . self::$resourceUrl,
+            env('API_URL') . sprintf('%s/share', self::$resourceUrl),
             [
                 'name' => $name,
                 'category_code' => $categoryCode,
+                'sort_index' => $sortIndex,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
             ],

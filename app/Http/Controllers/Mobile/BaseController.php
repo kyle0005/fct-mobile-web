@@ -4,10 +4,42 @@ namespace App\Http\Controllers\Mobile;
 
 use App\Http\Controllers\Controller;
 use App\Member;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
 class BaseController extends Controller
 {
+
+    public function __construct(Request $request)
+    {
+        $this->setShopId();
+    }
+
+    /**设置分享id
+     *
+     */
+    protected function setShopId()
+    {
+        $shopId= request()->get(env('SHARE_SHOP_ID_KEY'), 0);
+        //设置微店长分享的ID
+        if ($shopId > 0 && $shopId <> $this->getShopId())
+        {
+            Cookie::queue(env('REDIRECT_KEY'), $shopId, 10080);
+        }
+    }
+
+    /**获取分享id
+     * @return string
+     */
+    protected function getShopId()
+    {
+        return Cookie::get(env('SHARE_SHOP_ID_KEY'), 0);
+    }
+
+    /**缓存用户跳转地址
+     * @param string $url
+     * @param bool $hasCacheCookie
+     */
     protected function cacheRedirectSourceUrl($url = '', $hasCacheCookie = false)
     {
         $url = $url ? $url : $this->getRedirectSourceUrl();

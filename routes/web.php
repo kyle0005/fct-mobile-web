@@ -124,6 +124,9 @@ Route::group(['middleware' => 'auth'], function () {
     //结算
     Route::resource('settlement', 'Mobile\SettlementController', ['index', 'show']);
 
+    //分享
+    Route::resource('share', 'Mobile\ShareController', ['index']);
+
     //大师评论
     Route::post('artists/{artist_id}/comments', 'Mobile\ArtistCommentController@store')
         ->where('artist_id', '[0-9]+');
