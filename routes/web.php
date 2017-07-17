@@ -64,6 +64,10 @@ Route::get('artists/{artist_id}/products', 'Mobile\ArtistController@products')
     ->where('artist_id', '[0-9]+');
 Route::resource('artists', 'Mobile\ArtistController', ['index', 'show']);
 
+//test
+Route::match(['get', 'post'], 'upload/image', 'Mobile\UploadController@image');
+
+
 //wiki
 Route::get('wiki', 'Mobile\WikiController@index');
 Route::get('wiki/item', 'Mobile\WikiController@show');

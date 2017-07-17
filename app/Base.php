@@ -15,15 +15,33 @@ use GuzzleHttp\Exception\ClientException;
 
 class Base
 {
-    public static function http($url, $formParams = [], $headers = [], $method = "POST")
+    public static function http($url, $formParams = [], $headers = [], $method = "POST", $hasMultipart = false)
     {
         $options = [];
         $method = strtoupper($method) == 'POST' ? 'POST' : 'GET';
         if ($method == 'GET' && $formParams)
         {
             $url = $url . '?' . http_build_query($formParams);
-        }elseif ($formParams) {
+        } elseif ($formParams && !$hasMultipart) {
+
             $options['form_params'] = $formParams;
+        } elseif ($hasMultipart) {
+
+            $multiparts = [];
+            foreach ($formParams as $key=>$param) {
+
+                if (is_array($param)) {
+                    $param['name'] = $key;
+                    $multiparts[] = $param;
+                } else {
+                    $multiparts[] = [
+                        'name' => $key,
+                        'contents' => $param,
+                    ];
+                }
+            }
+
+            $options['multipart'] = $multiparts;
         }
 
         if ($headers) {

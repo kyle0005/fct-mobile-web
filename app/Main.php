@@ -59,4 +59,31 @@ class Main
         ];
 
     }
+
+    public static function getPcHome()
+    {
+        $result = Base::http(
+            env('API_URL') . '/mall/pc-home',
+            [
+                'article_code' => "",
+                'article_count' => 4,
+                'product_count' => 10,
+                'artist_count' => 7,
+            ],
+            [],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return [
+            'title' => '方寸堂',
+            'articles' =>  $result->data ? $result->data->articleList : "",
+            'products' => $result->data ? $result->data->productList : "",
+            'artists' => $result->data ? $result->data->artistList : "",
+        ];
+    }
 }
