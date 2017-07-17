@@ -20,7 +20,9 @@ class MemberController extends BaseController
         try
         {
             $result = MemberOAuth::getURL();
-            echo $result;die;
+            $this->cacheRedirectSourceUrl($request->server('HTTP_REFERER'));
+
+            redirect($result);
         }
         catch (BusinessException $e)
         {

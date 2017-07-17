@@ -13,14 +13,14 @@ use App\Exceptions\BusinessException;
 
 class MemberOAuth
 {
-    public static $resourceUrl = '/member/address';
+    public static $resourceUrl = '/member/oauth';
 
     public static function getURL()
     {
         $callback = url('callback');
 
         $result = Base::http(
-            env('API_URL') . sprintf('%s/oauth', self::$resourceUrl),
+            env('API_URL') . sprintf('%s', self::$resourceUrl),
             [
                 'callback_url' => $callback,
             ],
@@ -31,6 +31,10 @@ class MemberOAuth
         if ($result->code != 200)
         {
             throw new BusinessException($result->msg);
+        }
+        if(!$result->data)
+        {
+            throw new BusinessException('URL地址错误');
         }
 
         return $result->data;

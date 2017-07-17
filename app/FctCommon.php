@@ -88,4 +88,15 @@ class FctCommon
         return base64_decode(str_replace(['-', '_', '*'], ['+', '/', '='], $base64Str));
     }
 
+    public static function hasWeChat()
+    {
+        $userAgent = request()->server('HTTP_USER_AGENT');
+        if (strpos($userAgent, 'MicroMessenger') === false)
+        {
+            return false;
+        }
+
+        return true;
+    }
+
 }

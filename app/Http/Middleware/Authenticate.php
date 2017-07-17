@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\FctCommon;
 use App\Member;
 use Closure;
 
@@ -28,6 +29,7 @@ class Authenticate
                 'data' => [],
             ], JSON_UNESCAPED_UNICODE);
         }
-        return redirect('login');
+
+        return redirect(FctCommon::hasWeChat() ? 'oauth' : 'login');
     }
 }

@@ -64,9 +64,6 @@ Route::get('artists/{artist_id}/products', 'Mobile\ArtistController@products')
     ->where('artist_id', '[0-9]+');
 Route::resource('artists', 'Mobile\ArtistController', ['index', 'show']);
 
-//test
-Route::match(['get', 'post'], 'upload/image', 'Mobile\UploadController@image');
-
 
 //wiki
 Route::get('wiki', 'Mobile\WikiController@index');
@@ -131,6 +128,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('artists/{artist_id}/comments', 'Mobile\ArtistCommentController@store')
         ->where('artist_id', '[0-9]+');
 
+    //上传图片
+    Route::post('upload/image', 'Mobile\UploadController@image');
 });
 
 

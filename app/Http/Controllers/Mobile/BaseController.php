@@ -44,6 +44,11 @@ class BaseController extends Controller
         return url('/');
     }
 
+    protected function cleanRedirectSourceUrl()
+    {
+        Cookie::forget(env('REDIRECT_KEY'));
+    }
+
     /**成功ajax返回内容
      * @param $message
      * @param null $url
