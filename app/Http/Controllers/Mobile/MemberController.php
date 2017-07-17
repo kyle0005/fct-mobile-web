@@ -20,7 +20,7 @@ class MemberController extends BaseController
         try
         {
             $result = MemberOAuth::getURL();
-            $this->cacheRedirectSourceUrl($request->server('HTTP_REFERER'));
+            $this->cacheRedirectSourceUrl($request->server('HTTP_REFERER'), true);
 
             redirect($result);
         }
