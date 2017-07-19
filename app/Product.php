@@ -40,7 +40,7 @@ class Product
         }
 
         $product = $result->data;
-        if ($product && $product->discount)
+        if ($product && $product->discount && isset($product->discount->discountTime))
         {
             $product->discount->discountTime = FctCommon::secondToString($product->discount->discountTime);
         }
