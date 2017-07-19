@@ -18,7 +18,7 @@ Route::group(['domain' => 'www.fangcun.com'], function () {
     Route::get('/', 'PC\MainController@index');
 });
 
-Route::group(['domain' => 'm.fangcun.com'], function () {
+Route::group(['domain' => 'test.fangcuntang.com'], function () {
     Route::get('/', 'Mobile\MainController@index');
     Route::get('welcome', 'Mobile\MainController@welcome');
     Route::get('download/app', 'Mobile\MainController@downloadApp');
