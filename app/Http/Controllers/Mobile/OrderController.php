@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Mobile;
 
 use App\Exceptions\BusinessException;
 use App\FctCommon;
-use App\Member;
 use App\ProductOrder;
 use Illuminate\Http\Request;
 
@@ -116,7 +115,7 @@ class OrderController  extends BaseController
                 $remark, $addressId, $orderGoodsInfo);
 
             return $this->returnAjaxSuccess("订单创建成功",
-                sprintf('%s?tradetype=buy&tradeid=%s&sessionid=%s', env('PAY_URL'), $result, Member::getToken()));
+                sprintf('%s?tradetype=buy&tradeid=%s', env('PAY_URL'), $result));
         }
         catch (BusinessException $e)
         {

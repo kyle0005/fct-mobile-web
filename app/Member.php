@@ -16,13 +16,14 @@ use Illuminate\Support\Facades\Cookie;
 class Member
 {
 
-    protected static $cookieKey = 'fct_auth';
     /**登录
-     * @param $username
+     * @param $cellphone
      * @param $password
      * @param $captcha
      * @param $sessionId
+     * @param $ip
      * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
      */
     public static function login($cellphone, $password, $captcha, $sessionId, $ip)
     {
@@ -59,11 +60,11 @@ class Member
     }
 
     /**更新个人资料
-     * @param $memberId
      * @param $username
      * @param $gender
      * @param $weixin
      * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
      */
     public static function updateInfo($username, $gender, $weixin)
     {
@@ -84,8 +85,10 @@ class Member
     }
 
     /**修改密码
-     * @param $memberId
-     * @param $password
+     * @param $oldPassword
+     * @param $newPassword
+     * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
      */
     public static function changePassowrd($oldPassword, $newPassword)
     {
@@ -105,9 +108,12 @@ class Member
     }
 
     /**通过手机验证码找回密码
-     * @param $username
+     * @param $cellphone
      * @param $captcha
      * @param $password
+     * @param $sessionId
+     * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
      */
     public static function forgetPassword($cellphone, $captcha, $password, $sessionId)
     {
@@ -128,8 +134,13 @@ class Member
     }
 
     /**个人实名认证信息
-     * @param $memberId
-     * @param $realInfo 认证信息
+     * @param $name
+     * @param $idCardNo
+     * @param $idCardImageUrl
+     * @param $bankName
+     * @param $bankAccount
+     * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
      */
     public static function realAuth($name, $idCardNo, $idCardImageUrl, $bankName, $bankAccount)
     {
@@ -160,14 +171,26 @@ class Member
             [env('MEMBER_TOKEN_NAME') => $token],
             'GET'
         );
-        if ($result->code == 200)
-            return $result->data;
-        return false;
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+        return $result->data;
     }
 
     public static function getToken()
     {
-        return Cookie::has(self::$cookieKey) ? Cookie::get(self::$cookieKey) : "";
+        $result = Cookie::has(env('MEMBER_COOKIE_NAME')) ? Cookie::get(env('MEMBER_COOKIE_NAME')) : "";
+        if ($result)
+        {
+            $aes = new FctCryptAES();
+            $aes->set_key(env('MEMBER_COOKIE_MCRYPT_KEY'));
+            $aes->require_pkcs5();
+            $result = $aes->decrypt($result);
+        }
+
+        return $result;
     }
 
     public static function setAuth($member, $expireDay = 3)
@@ -175,7 +198,13 @@ class Member
         //缓存用户数据
         $expire = $expireDay * 1440;
         Cache::put($member->token, $member, $expire);
-        Cookie::queue(self::$cookieKey, $member->token, $expire);
+
+        $aes = new FctCryptAES();
+        $aes->set_key(env('MEMBER_COOKIE_MCRYPT_KEY'));
+        $aes->require_pkcs5();
+        $encText = $aes->encrypt($member->token);
+
+        Cookie::queue(env('MEMBER_COOKIE_NAME'), $encText, $expire);
     }
 
     public static function getAuth()

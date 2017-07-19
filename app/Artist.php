@@ -36,13 +36,14 @@ class Artist
 
         return [
             'title' => '签约艺人 - 方寸堂',
-            'products' => $pagination->entries,
-            'pager' => $pagination->pager,
+            'entries' => $pagination->entries,
+            //'pager' => $pagination->pager,
         ];
     }
 
     public static function getArtist($id)
     {
+        $pageSize = 20;
         $result = Base::http(
             env('API_URL') . sprintf('/artists/%d', $id),
             [],
@@ -56,6 +57,7 @@ class Artist
         }
 
         $artist = $result->data;
+        $artist->dynamicList = Base::pagination($artist->dynamicList, $pageSize);
 
         return [
             'title' => (isset($artist->name) && $artist->name ? $artist->name : '签约艺人详情') . ' - 方寸堂',

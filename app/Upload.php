@@ -18,6 +18,15 @@ class Upload
     public static function uploadImage($action, $file)
     {
 
+        if (!$action)
+        {
+            throw new BusinessException("上传的类型不存在");
+        }
+        if (!self::uploadAction($action))
+        {
+            throw new BusinessException("上传的类型不存在");
+        }
+
         $result = Base::http(
             env('API_URL') . sprintf('%s/image', self::$resourceUrl),
             [
@@ -39,5 +48,23 @@ class Upload
         }
 
         return $result;
+    }
+
+    public static function uploadAction($action)
+    {
+        switch ($action)
+        {
+            case "idcard":
+                return "身份证";
+                break;
+
+            case "head":
+                return "头像";
+                break;
+
+            default:
+                return "";
+                break;
+        }
     }
 }

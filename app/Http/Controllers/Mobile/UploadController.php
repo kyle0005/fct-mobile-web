@@ -20,7 +20,7 @@ class UploadController extends BaseController
     {
 
         if ($request->getMethod() == 'POST') {
-            $action = "";//$request->get('action');
+            $action = $request->get('action');
             $file = $request->file('file');
             if (!$file)
             {
