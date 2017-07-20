@@ -75,20 +75,23 @@ Route::group(['domain' => 'test.fangcuntang.com'], function () {
 
     /** 用户需要登录后操作 */
     Route::group(['middleware' => 'auth'], function () {
+
+        //用户中心
+        Route::get('my', 'Mobile\MemberController@index');
         //更新资料
-        Route::match(['get', 'post'], 'update-info', 'Mobile\MemberController@updateInfo');
+        Route::match(['get', 'post'], 'my/update-info', 'Mobile\MemberController@updateInfo');
         //修改密码
-        Route::match(['get', 'post'], 'change-password', 'Mobile\MemberController@changePassword');
+        Route::match(['get', 'post'], 'my/change-password', 'Mobile\MemberController@changePassword');
         //实名认证并绑定银行卡
-        Route::match(['get', 'post'], 'real-auth', 'Mobile\MemberController@realAuth');
+        Route::match(['get', 'post'], 'my/real-auth', 'Mobile\MemberController@realAuth');
         //地址管理
         //设置默认
-        Route::match(['get', 'post'], 'address/{id}/default', 'Mobile\MemberAddressController@setDefault')
+        Route::match(['get', 'post'], 'my/address/{id}/default', 'Mobile\MemberAddressController@setDefault')
             ->where('id', '[0-9]+');
         //删除
-        Route::post('address/{id}/delete', 'Mobile\MemberAddressController@setDelete')
+        Route::post('my/address/{id}/delete', 'Mobile\MemberAddressController@setDelete')
             ->where('id', '[0-9]+');
-        Route::resource('address', 'Mobile\MemberAddressController',
+        Route::resource('my/address', 'Mobile\MemberAddressController',
             ['index', 'create', 'edit', 'store', 'show']);
 
         //购物车
@@ -99,10 +102,10 @@ Route::group(['domain' => 'test.fangcuntang.com'], function () {
 
         //订单
         //取消
-        Route::post('orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
+        Route::post('my/orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
             ->where('order_id', '[0-9]+');
         //评论
-        Route::post('orders/{order_id}/comments', 'Mobile\OrderCommentController@store')
+        Route::post('my/orders/{order_id}/comments', 'Mobile\OrderCommentController@store')
             ->where('order_id', '[0-9]+');
         Route::resource('orders', 'Mobile\OrderController', ['index', 'create', 'store', 'show']);
 

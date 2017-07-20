@@ -100,6 +100,8 @@
     <script src="/js/video.js"></script>
     <script>
         var config = {
+            "index": "{{ url('/') }}",
+            "login": "{{ url('my') }}",
             "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!},
             "product": {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!},
             "fav_url" : "{!! url('favorites?from_type=0&from_id=' . $product->id) !!}",

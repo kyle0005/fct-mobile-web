@@ -21,7 +21,8 @@ class MainController extends BaseController
      */
     public function index(Request $request)
     {
-        $categoryId = $request->get('category_id');
+        //?code={code}&level_id={id}
+        $categoryId = $request->get('code');
         $levelId = $request->get('level_id');
         $pageIndex = $request->get('page', 1);
 
@@ -37,7 +38,7 @@ class MainController extends BaseController
 
         if ($request->ajax())
         {
-            return $this->returnAjaxSuccess($request->message, "", $result->products ? $result->products : []);
+            return $this->returnAjaxSuccess($request->message, "", $result['products'] ? $result['products'] : []);
         }
         else
         {

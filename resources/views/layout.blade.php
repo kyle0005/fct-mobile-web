@@ -32,7 +32,7 @@
             <div class="aside" :class="{open:open,docked:docked}" @click="toggle()">
                 <div class="container">
                     <ul class="types">
-                        <li class="item" v-for="(types, index) in typeList" @click="change(types.code, '')">
+                        <li class="item" v-for="(types, index) in typeList" @click="change(types.code)">
                             <span>@{{ types.name }}</span>
                             <i class="fa fa-angle-right"></i>
                         </li>
@@ -40,13 +40,13 @@
 
                     <ul class="lines clearfix">
                         <li class="item">
-                            <a href="javascript:;">
+                            <a href="{{ url('artists') }}">
                                 <img src="/images/menu1.png">
                                 <span>合作艺师</span>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="javascript:;">
+                            <a href="{{ url('wiki') }}">
                                 <img src="/images/menu2.png">
                                 <span>百科</span>
                             </a>
@@ -58,13 +58,13 @@
                             </a>
                         </li>
                         <li class="item">
-                            <a href="javascript:;">
+                            <a href="{{ url('download/app') }}">
                                 <img src="/images/menu4.png">
                                 <span>APP下载</span>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="javascript:;">
+                            <a href="{{ url('about') }}">
                                 <img src="/images/menu5.png">
                                 <span>品牌理念</span>
                             </a>

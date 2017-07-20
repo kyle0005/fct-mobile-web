@@ -26,8 +26,7 @@ class ArtistCommentController extends BaseController
 
     public function store(Request $request, $artist_id)
     {
-        $content = $request->get('content');
-
+        $content = $request->get('message');
         try
         {
             ArtistComment::saveComment($artist_id, $content);
@@ -35,21 +34,6 @@ class ArtistCommentController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
-        }
-    }
-
-    public function getArtistProducts(Request $request, $product_id)
-    {
-
-        try
-        {
-            $result = Artist::getArtistsByProductId($product_id);
-            return $this->returnAjaxSuccess('获取产品艺术家列表成功', null, $result);
-        }
-        catch (BusinessException $e)
-        {
-            //错误处理
             return $this->autoReturn($e->getMessage());
         }
     }

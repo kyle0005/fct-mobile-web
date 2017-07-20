@@ -61,7 +61,8 @@ class Artist
 
         return [
             'title' => (isset($artist->name) && $artist->name ? $artist->name : '签约艺人详情') . ' - 方寸堂',
-            'artist' => json_encode($artist, JSON_UNESCAPED_UNICODE),
+            'artist' => $artist,
+            'categories' => ProductCategory::getCategories(),
         ];
     }
 

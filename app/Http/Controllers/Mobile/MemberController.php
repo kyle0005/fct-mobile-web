@@ -7,6 +7,7 @@ use App\FctCommon;
 use App\FctValidator;
 use App\Member;
 use App\MemberOAuth;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 
 /**用户操作
@@ -327,7 +328,11 @@ class MemberController extends BaseController
 
         return view("member.index", [
             'title' => '用户中心',
-            'member' => $member
+            'member' => (object) [
+                'userName' =>$member->userName,
+                'headPortrait' => $member->headPortrait,
+            ],
+            'categories' => ProductCategory::getCategories(),
         ]);
     }
 }
