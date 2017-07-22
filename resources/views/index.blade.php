@@ -7,7 +7,7 @@
             <head-top @changelist="getprolist" :isindex="isindex"></head-top>
             <section class="cat-container">
                 <ul class="category clearfix">
-                    <li class="item" v-for="(ranks, index) in ranks_list" @click="change('', ranks.id)">
+                    <li class="item" v-for="(ranks, index) in ranks_list" @click="getprolist('', ranks.id)">
                         <img :src= "ranks.img">
                         <span>@{{ ranks.name }}</span>
                     </li>
@@ -50,16 +50,12 @@
 @endsection
 @section('javascript')
     <script>
-        var config = {
-            "isindex": true,
-            "index": "{{ url('/') }}",
-            "login": "{{ url('my') }}",
-            "product_url": "{{ url('/') }}",
-            "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!},
-            "productsRank": {!! json_encode($levels, JSON_UNESCAPED_UNICODE) !!},
-            "products": {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!}
-        }
+        config.isindex = true;
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
+        config.productsRank = {!! json_encode($levels, JSON_UNESCAPED_UNICODE) !!};
+        config.products = {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!};
     </script>
+    <script src="/js/common/tools.js"></script>
     <script src="/js/head.js"></script>
     <script src="/js/main.js"></script>
 @endsection

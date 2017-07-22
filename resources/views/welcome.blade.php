@@ -34,7 +34,6 @@
 @endsection
 @section('javascript')
     <script>
-        var config = {};
         config.slides = {!! $slides !!};
     </script>
     <script src="js/swiper.js"></script>

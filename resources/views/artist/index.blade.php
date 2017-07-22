@@ -29,9 +29,7 @@
         </div>
     </script>
     <script>
-        var config = {
-            "artist": {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!},
-        }
+        config.artist = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/artist_list.js"></script>
 @endsection

@@ -134,16 +134,12 @@
         </div>
     </script>
     <script>
-        config = {
-            "index": "{{ url('/') }}",
-            "login": "{{ url('my') }}",
-            "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!},
-            "artist": {!! json_encode($artist, JSON_UNESCAPED_UNICODE) !!},
-            "artistPage_url": "{{ url('artists/' . $artist->id) }}",
-            "artistWorks_url": "{{ url('artists/' . $artist->id . '/products') }}",
-            "artistChat_url": "{{ url('artists/' . $artist->id . '/comments') }}",
-            "chat_url": "{{ url('artists/' . $artist->id . '/comments') }}"
-        }
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
+        config.artist = {!! json_encode($artist, JSON_UNESCAPED_UNICODE) !!};
+        config.artistPage_url = "{{ url('artists/' . $artist->id) }}";
+        config.artistWorks_url = "{{ url('artists/' . $artist->id . '/products') }}";
+        config.artistChat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
+        config.chat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
     </script>
     <script src="/js/common/tools.js"></script>
     <script src="/js/head.js"></script>

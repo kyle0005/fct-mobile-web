@@ -19,6 +19,10 @@ class SettlementController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('settlement.index', $result);
+        return view('settlement.index', [
+            'title' => '佣金结算',
+            'entries' => $result->entries,
+            'pager' => $result->pager,
+        ]);
     }
 }

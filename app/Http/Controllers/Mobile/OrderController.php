@@ -15,11 +15,35 @@ class OrderController  extends BaseController
 {
     public function index(Request $request)
     {
-        return view('order.index');
+        $orderId = $request->get('order_id', '');
+        $status = $request->get('status', -1);
+        $commentStatus = $request->get('status', -1);
+        try
+        {
+            $result = ProductOrder::getOrders("", -1, $commentStatus, 1);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
+        return view('order.index', [
+            'title' => '我的订单',
+            'orderlist' => $result
+        ]);
     }
 
     public function show(Request $request, $order_id)
     {
+        try
+        {
+            $result = ProductOrder::getOrder($order_id);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
         return view('order.show');
     }
 

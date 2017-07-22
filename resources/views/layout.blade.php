@@ -74,6 +74,13 @@
             </div>
         </header>
     </script>
+    <script>
+        var config = {
+            "index": "{{ url('/') }}",
+            "login": "{{ url('profile') }}",
+            "product_url": "{{ url('/') }}"
+        }
+    </script>
     @yield('javascript')
 </body>
 </html>

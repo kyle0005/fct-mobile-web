@@ -22,14 +22,26 @@ class ProductOrder
      * @param int $pageIndex
      * @return array|bool|object
      */
-    public static function getOrders($orderId, $status, $pageIndex = 1)
+    public static function getOrders($orderId, $status, $commentStatus, $pageIndex = 1)
     {
+        $commentStatuses = [0, 1];
+        $statuses = [0,1,2,3,4];
+        if (!in_array($commentStatus, $commentStatuses))
+        {
+            $commentStatus = -1;
+        }
+        if (!in_array($status, $statuses))
+        {
+            $status = -1;
+        }
+
         $pageSize = 20;
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
                 'order_id' => $orderId,
                 'status' => $status,
+                'comment_status' => $commentStatus,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
             ],
@@ -42,7 +54,7 @@ class ProductOrder
             throw new BusinessException($result->msg);
         }
 
-        $pagination = Base::pagination($result->data->goodsList, $pageSize);
+        $pagination = Base::pagination($result->data, $pageSize);
 
         return $pagination;
     }
@@ -133,7 +145,7 @@ class ProductOrder
     public static function checkoutOrderGoods($productInfo)
     {
         $result = Base::http(
-            env('API_URL') . sprintf('%s/order-products', self::$resourceUrl),
+            env('API_URL') . sprintf('%s/products', self::$resourceUrl),
             [
                 'orderProductInfo' => json_encode($productInfo, JSON_UNESCAPED_UNICODE),
             ],
@@ -160,5 +172,27 @@ class ProductOrder
             'points' => $result->data->points,
             'availableAmount' => $result->data->availableAmount,
         ];
+    }
+
+    /**获取订单商品
+     * @param $id
+     * @return mixed
+     * @throws BusinessException
+     */
+    public static function getOrderProduct($id)
+    {
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/products/%d', self::$resourceUrl, $id),
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return $result->data;
     }
 }

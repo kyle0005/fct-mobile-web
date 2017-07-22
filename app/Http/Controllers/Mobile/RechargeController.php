@@ -23,7 +23,10 @@ class RechargeController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('recharge.index', $result);
+        return view('recharge.index', [
+            'title' => '充值记录',
+            'recharge' => $result,
+        ]);
     }
 
     public function create(Request $request)
@@ -37,7 +40,10 @@ class RechargeController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('recharge.create', $result);
+        return view('recharge.create', [
+            'title' => '充值',
+            'recharge' => $result,
+        ]);
     }
 
     public function show(Request $request, $id)

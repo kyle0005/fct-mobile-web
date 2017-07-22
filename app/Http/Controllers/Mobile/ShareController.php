@@ -27,8 +27,8 @@ class ShareController extends BaseController
 
         return view('share.index', [
             'title' => '分享',
-            'entries' => $result->data->entries,
-            'pager' => $result->data->pager,
+            'entries' => $result->entries,
+            'pager' => $result->pager,
         ]);
     }
 }

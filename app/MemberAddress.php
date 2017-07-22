@@ -22,7 +22,10 @@ class MemberAddress
             throw new BusinessException($result->msg);
         }
 
-        return $result->data;
+        return [
+            'title' => '收货地址管理',
+            'addressList' => $result->data,
+        ];
     }
 
     public static function getAddress($id)
@@ -39,7 +42,10 @@ class MemberAddress
             throw new BusinessException($result->msg);
         }
 
-        return $result->data;
+        return [
+            'title' => '修改地址',
+            'address' => $result->data,
+        ];
     }
 
     public static function saveAddress($id, $name, $phone, $province, $city, $region, $address, $isDefault)

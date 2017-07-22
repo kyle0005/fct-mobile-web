@@ -9,6 +9,8 @@
 namespace App;
 
 
+use App\Exceptions\BusinessException;
+
 class Settlement
 {
     public static $resourceUrl = '/finance/settlements';
@@ -33,6 +35,7 @@ class Settlement
             throw new BusinessException($result->msg);
         }
 
-        return $result->data;
+        $pagination = Base::pagination($result->data, $pageSize);
+        return $pagination;
     }
 }

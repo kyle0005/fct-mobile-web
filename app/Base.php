@@ -128,6 +128,10 @@ class Base
 
     public static function pagination($result, $pageSize = 20, $fields = [])
     {
+        $pageResponse = (object) [
+            'entries' => [],
+            'pager' => (object) [],
+        ];
         if ($result && $result->totalCount > 0)
         {
             if ($fields)
@@ -154,13 +158,11 @@ class Base
             if ($result->current + 1 <= $totalPage)
                 $pager->next = $result->current + 1;
 
-            return (object) [
-                'entries' => $items,
-                'pager' => $pager
-            ];
+            $pageResponse->entries = $items;
+            $pageResponse->pager = $pager;
         }
 
-        return [];
+        return $pageResponse;
     }
 
 }

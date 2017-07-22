@@ -50,29 +50,24 @@ class Member
         return $result;
     }
 
-    /**快捷登录
-     * @param $username
-     * @param $captcha
-     */
-    public static function register($username, $captcha)
-    {
-
-    }
-
     /**更新个人资料
      * @param $username
+     * @param $avatar
      * @param $gender
+     * @param $birthday
      * @param $weixin
      * @return mixed|object|\Psr\Http\Message\ResponseInterface
      * @throws BusinessException
      */
-    public static function updateInfo($username, $gender, $weixin)
+    public static function updateInfo($username, $avatar, $gender, $birthday, $weixin)
     {
         $result = Base::http(
             env('API_URL') . '/member/update-info',
             [
                 'username' => $username,
+                'avatar' => $avatar,
                 'gender' => $gender,
+                'birthday' => $birthday,
                 'weixin' => $weixin,
             ],
             [env('MEMBER_TOKEN_NAME') => self::getToken()]
@@ -162,6 +157,31 @@ class Member
         return $result;
     }
 
+    /**用户详情情
+     *
+     */
+    public static function getMemberInfo()
+    {
+        $result = Base::http(
+            env('API_URL') . '/member/info',
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return $result->data;
+    }
+
+    /**根据token获取用户登录信息
+     * @param string $token
+     * @return mixed
+     * @throws BusinessException
+     */
     public static function getMemberByToken($token = '')
     {
         $token = $token ? $token : self::getToken();

@@ -93,7 +93,7 @@ class MainController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('new-coupon', $result);
+        return view('coupon.new', $result);
     }
 
     public function downloadApp(Request $request)

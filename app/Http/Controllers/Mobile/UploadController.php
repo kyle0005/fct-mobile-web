@@ -18,7 +18,6 @@ class UploadController extends BaseController
 
     public function image(Request $request)
     {
-
         if ($request->getMethod() == 'POST') {
             $action = $request->get('action');
             $file = $request->file('file');
@@ -43,6 +42,7 @@ class UploadController extends BaseController
             }
         }
 
+        //return '<form action="" method="post" enctype="multipart/form-data"><input name="file" type="file"><input name="action" type="hidden" value="head"><input type="submit">';
         return $this->autoReturn("只支持POST提交");
     }
 }

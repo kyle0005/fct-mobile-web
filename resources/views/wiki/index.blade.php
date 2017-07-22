@@ -57,7 +57,7 @@
                 <m-swipe swipeid="swipet" ref="swipert" :autoplay="0" effect="slide">
                     <div v-for="(item, index) in list_t" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
-                            <a href="'{{ url('wiki/item') }}?from_type=material&from_id=' + i_item.id" class="link">
+                            <a :href="'{{ url('wiki/item') }}?from_type=material&from_id=' + i_item.id" class="link">
                                 <img :src="i_item.img">
                                 <span>@{{ i_item.name }}</span>
                             </a>
@@ -78,11 +78,9 @@
 @endsection
 @section('javascript')
     <script>
-        var config = {
-            "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!},
-            "wikiCategories": {!! json_encode($wikiCategories, JSON_UNESCAPED_UNICODE) !!},
-            "materials": {!! json_encode($materials, JSON_UNESCAPED_UNICODE) !!},
-        }
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
+        config.wikiCategories = {!! json_encode($wikiCategories, JSON_UNESCAPED_UNICODE) !!};
+        config.materials = {!! json_encode($materials, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/head.js"></script>
     <script src="/js/swiper.js"></script>

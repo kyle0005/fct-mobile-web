@@ -30,7 +30,7 @@ class MemberAddressController extends BaseController
     {
         $result = [
             'title' => '新建收货地址',
-            'address' => json_encode([]),
+            'address' => "{}",
         ];
 
         return view('address.form', $result);

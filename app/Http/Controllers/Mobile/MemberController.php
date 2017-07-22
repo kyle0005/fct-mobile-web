@@ -170,13 +170,15 @@ class MemberController extends BaseController
             try
             {
                 $username = FctCommon::trimAll($request->get('username'));
-                $gender = FctCommon::trimAll($request->get('gender'));
+                $avatar = FctCommon::trimAll($request->get('avatar'));
+                $gender = FctCommon::trimAll($request->get('sex'));
+                $birthday = FctCommon::trimAll($request->get('birthday'));
                 $weixin = FctCommon::trimAll($request->get('weixin'));
-
+var_dump($_POST);die;
                 //csrf验证
 
                 //用户登录操作
-                Member::updateInfo($username, $gender, $weixin);
+                Member::updateInfo($username, $avatar, $gender, $birthday, $weixin);
 
                 //成功返回成功提示和跳转的url
                 return $this->returnAjaxSuccess('修改成功');
@@ -186,12 +188,22 @@ class MemberController extends BaseController
                 return $this->autoReturn($e->getMessage());
             }
         }
+
+        try
+        {
+            $result = Member::getMemberInfo();
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
         $result = [
             'title' => '更新信息',
-            'member' => $member,
+            'member' => $result,
         ];
 
-        return view('update', $result);
+        return view('member.profile', $result);
     }
 
     /**修改密码
@@ -305,11 +317,11 @@ class MemberController extends BaseController
         }
 
         $result = [
-            'title' => '修改密码',
+            'title' => '实名认证',
             'member' => $member,
         ];
 
-        return view('real-auth', $result);
+        return view('member.real-auth', $result);
     }
 
     /**退出
@@ -321,14 +333,13 @@ class MemberController extends BaseController
     }
 
 
-    public function index(Request $request) {
-
-
+    public function index(Request $request)
+    {
         $member = Member::getAuth();
 
         return view("member.index", [
             'title' => '用户中心',
-            'member' => (object) [
+            'memberBanner' => (object) [
                 'userName' =>$member->userName,
                 'headPortrait' => $member->headPortrait,
             ],

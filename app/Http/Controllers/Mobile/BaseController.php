@@ -13,6 +13,10 @@ class BaseController extends Controller
     public function __construct(Request $request)
     {
         $this->setShopId();
+        $member = $this->memberLogged(false);
+        if ($member) {
+            view()->share('member', $member);
+        }
     }
 
     /**设置分享id

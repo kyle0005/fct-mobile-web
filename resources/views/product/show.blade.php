@@ -99,20 +99,17 @@
 @section('javascript')
     <script src="/js/video.js"></script>
     <script>
-        var config = {
-            "index": "{{ url('/') }}",
-            "login": "{{ url('my') }}",
-            "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!},
-            "product": {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!},
-            "fav_url" : "{!! url('favorites?from_type=0&from_id=' . $product->id) !!}",
-            "discuss_url" : "{{ url('products/'.$product->id .'/comments') }}",
-            "artist_url" : "{{ url('products/'.$product->id .'/artists') }}",
-            "pug_url" : "{{ url('products/'.$product->id .'/materials?material_ids=' . urlencode($product->materialId)) }}",
-            "addcart_url": "{{ url('carts') }}",
-            "buy_url": "{{ url('orders/create') }}",
-            "tab_artist": [],
-            "tab_pug": [],
-            "tab_service": "<div class='title'>退换货政策</div><p>自您签收商品之日起10日内，淘壶人将为您办理退换货服务，且寄回商品实际运费由客户承担；如需办理退换货业务，请您致电客服热线400-0510-570咨询办理。</p><p>" +
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
+        config.product = {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!};
+        config.fav_url = "{!! url('favorites?from_type=0&from_id=' . $product->id) !!}";
+        config.discuss_url = "{{ url('products/'.$product->id .'/comments') }}";
+        config.artist_url = "{{ url('products/'.$product->id .'/artists') }}";
+        config.pug_url = "{{ url('products/'.$product->id .'/materials?material_ids=' . urlencode($product->materialId)) }}";
+        config.addcart_url = "{{ url('carts') }}";
+        config.buy_url = "{{ url('orders/create') }}";
+        config.tab_artist = [];
+        config.tab_pug = [];
+        config.tab_service = "<div class='title'>退换货政策</div><p>自您签收商品之日起10日内，淘壶人将为您办理退换货服务，且寄回商品实际运费由客户承担；如需办理退换货业务，请您致电客服热线400-0510-570咨询办理。</p><p>" +
             "<br>政策说明：<br><br>1、一张订单淘壶人只为您提供一次退换货服务，为了确保您的权益，请考虑周全后与我们联系。<br>2、请您确保退换货时，商品各种包装完整。<br>" +
             "3、因您个人原因造成的商品损坏（如壶身破损等），不予退换。<br>4、由于物品质量问题造成的退换货，由淘壶人承担双程运费。由于个人喜好原因造成退货，由客户支付双程邮费。感谢您的理解！<br>" +
             "5、退换货发生时，请您选择顺丰快递将商品寄回给我们。<br>6、礼包或超值组合装中的商品不可以选择部分退换货，因退货后，原礼包或套装中商品将无法享受购买时优惠。<br>" +
@@ -120,8 +117,7 @@
             "</p><div class='title'>拒收政策</div><p>在您签收商品前，请先核查商品外包装是否完好，并确认您对产品是否满意。</p><p>1、无专用封箱胶<br>" +
             "在收取快递包时，若发现外包装中无“淘壶人”专用封箱胶，或“淘壶人”专用封箱胶被严重损坏(特别是有被重新封装的痕迹)，您可以拒收。<br>" +
             "2、物品与所购不符<br>签收后，若包装完好但是包裹中的商品数量与您实际购买的商品不吻合时，或所接收的物品与您所购的物品不相符时，请先与快递人员确认，现场拍照；并及时联系我们的客服，我们在与快递公司确认后，将及时为您补发/换发所缺商品。<br>" +
-            "3、对产品（或部分）不满意<br>若您对某件或某几件商品的质量不满意，您在拒收这些商品的同时，可正常接收其它商品，对于其它不满意的商品可根据您的意愿联系“淘壶人”的客服为您换货或退款。<br></p>"
-        }
+            "3、对产品（或部分）不满意<br>若您对某件或某几件商品的质量不满意，您在拒收这些商品的同时，可正常接收其它商品，对于其它不满意的商品可根据您的意愿联系“淘壶人”的客服为您换货或退款。<br></p>";
     </script>
 
     <script type="text/x-template" id="overview">

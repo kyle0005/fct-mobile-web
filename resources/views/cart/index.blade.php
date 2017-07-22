@@ -38,7 +38,7 @@
                 <div class="title">猜你喜欢</div>
                 <ul class="guess clearfix">
                     <li v-for="(item, index) in like_list">
-                        <a href="javascript:;" class="guess-link">
+                        <a :href="'{{ url('products') }}/' + item.id" class="guess-link">
                             <img :src="item.defaultImage">
                         </a>
                         <div class="v-title">@{{ item.name }}</div>
@@ -76,11 +76,9 @@
 @endsection
 @section('javascript')
     <script>
-        var config = {
-            "carts": {!! $carts !!},
-            "like_list": {!! $likes !!},
-            "buy_url": "{{ url('orders/create') }}"
-        };
+        config.cars = {!! $carts !!};
+        config.like_list = {!! $likes !!};
+        config.buy_url = "{{ url('orders/create') }}";
     </script>
     <script src="/js/cart.js"></script>
 @endsection
