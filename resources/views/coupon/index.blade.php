@@ -1,140 +1,24 @@
 @extends("layout")
 @section("title", $title)
 @section('content')
-    <div class="coupon-container" id="coupon">
+    <div class="coupon-container" id="coupon" v-cloak>
         <div class="tabs">
-            <div class="item chosen">
-                <a href="javascript:;" class="link">未使用(999)</a>
-            </div>
-            <div class="item ">
-                <a href="javascript:;" class="link">使用记录(999)</a>
-            </div>
-            <div class="item">
-                <a href="javascript:;" class="link">已过期(999)</a>
+            <div class="item" v-for="(item, index) in tabs" :class="{chosen: index===tab_num}" @click="category(index)">
+                <a href="javascript:;" class="link">@{{ item }}</a>
             </div>
         </div>
-        <section class="content">
+        <section class="content" v-if="couponcount > 0">
             <div class="tips">
-                <a href="coupon_get.html" class="link">
-          <span class="img-container item">
-            <img src="/images/coupon.png">
-          </span>
-                    <span class="item t">您有<span class="num">2</span>张待领取的优惠券哦</span>
+                <a href="{{ url('coupons/new') }}" class="link">
+                  <span class="img-container item">
+                    <img src="/images/coupon.png">
+                  </span>
+                    <span class="item t">您有<span class="num">@{{ couponcount }}</span>张待领取的优惠券哦</span>
                     <span class="wei-arrow-right"></span>
                 </a>
             </div>
-            <div class="list-item">
-                <div class="coupon-item">
-                    <div class="inner">
-                        <div class="left">
-                            <span class="price">￥<span class="p">30</span></span>
-                            <span class="condition">满100元可用</span>
-                        </div>
-                        <div class="right">
-                            <div class="item">限购登堂入室级别紫砂壶</div>
-                            <div class="item">全场通用</div>
-                            <div class="line">
-                                <span class="date">2017.03.03-2022.01.01</span>
-                                <span class="btn">
-              <a href="javascript:;" class="use-btn">立即使用</a>
-            </span>
-                            </div>
-                            <div class="info clearfix">
-                                <span class="text">详细信息</span>
-                                <a href="javascript:;" class="pin" :class="{open:show_detail}" @click="showdetail()">
-                                    <img src="/images/pin.png">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="slide" :class="{open:show_detail}">
-                    <ul class="pros clearfix">
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="list-item">
-                <div class="coupon-item">
-                    <div class="inner">
-                        <div class="left used">
-                            <span class="price">￥<span class="p">30</span></span>
-                            <span class="condition">满100元可用</span>
-                        </div>
-                        <div class="right">
-                            <div class="item">限购登堂入室级别紫砂壶</div>
-                            <div class="item">全场通用</div>
-                            <div class="line">
-                                <span class="date">2017.03.03-2022.01.01</span>
-                                <!--<span class="btn">-->
-                                <!--<a href="javascript:;" class="use-btn">立即使用</a>-->
-                                <!--</span>-->
-                            </div>
-                            <div class="info clearfix">
-                                <span class="text">详细信息</span>
-                                <a href="javascript:;" class="pin" :class="{open:show_detail}" @click="showdetail()">
-                                    <img src="/images/pin.png">
-                                </a>
-                            </div>
-                        </div>
-                        <div class="used-bg">
-                            <img src="/images/used.png">
-                        </div>
-                    </div>
-                </div>
-                <div class="slide" :class="{open:show_detail}">
-                    <ul class="pros clearfix">
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                        <li>
-                            <a href="javascript:" class="link">
-                                <img src="/images/resource/pro01.png">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+            <div class="list-item" v-for="(item, index) in couponlist">
+                <coupons :couponitem="item"></coupons>
             </div>
         </section>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
@@ -146,7 +30,59 @@
             </section>
         </div>
     </template>
+    <script type="text/x-template" id="coupon_item">
+        <div>
+            <div class="coupon-item">
+                <div class="inner">
+                    <div class="left" :class="{used: couponitem.auditStatus == 2 || couponitem.auditStatus == 3}">
+                        <span class="price">￥<span class="p">@{{ couponitem.amount }}</span></span>
+                        <span class="condition">满@{{ couponitem.usingType }}元可用</span>
+                    </div>
+                    <div class="right">
+                        <div class="item">@{{ couponitem.name }}</div>
+                        <div class="item">@{{ couponitem.typeId == 0 ? "全场通用" : "部分商品" }}</div>
+                        <div class="line">
+                            <span class="date">@{{ couponitem.startTime }}-@{{ couponitem.endTime }}</span>
+                            <span class="btn" v-if="couponitem.auditStatus == 0">
+              <a href="javascript:;" class="use-btn" @click="sub(couponitem.id)">立即使用</a>
+            </span>
+                        </div>
+                        <div class="info clearfix">
+                            <span class="text">详细信息</span>
+                            <a href="javascript:;" class="pin" :class="{open:show_detail}" @click="showdetail()">
+                                <img src="/images/pin.png">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="used-bg" v-if="couponitem.auditStatus == 2">
+                        <img src="/images/used.png">
+                    </div>
+                    <div class="used-bg" v-if="couponitem.auditStatus == 3">
+                        <img src="/images/overdue.png">
+                    </div>
+                </div>
+            </div>
+            <div class="slide" :class="{open:show_detail}">
+                <ul class="pros clearfix">
+                    <li v-for="(o, i) in couponitem.goods">
+                        <a href="javascript:" class="link">
+                            <img :src="o.defaultImage">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </script>
 @endsection
 @section('javascript')
+    <script>
+        var config = {
+            "couponlistUrl": "{{ url('settings/coupons') }}",
+            "useUrl": "{{ url('settings/coupons') }}",
+            "couponlist": {!! json_encode($coupons, JSON_UNESCAPED_UNICODE) !!},
+            "couponcount": {{ $canReceiveCount }}
 
+        }
+    </script>
+    <script src="/js/coupon.js"></script>
 @endsection

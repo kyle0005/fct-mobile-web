@@ -14,18 +14,22 @@ class RechargeController extends BaseController
 {
     public function index(Request $request)
     {
+        $page = $request->get('page', 1);
         try
         {
-            $result = Recharge::getRecharges();
+            $result = Recharge::getRecharges($page);
         }
         catch (BusinessException $e)
         {
             return $this->autoReturn($e->getMessage());
         }
 
+        if ($request->ajax())
+            return $this->returnAjaxSuccess("成功", null, $result);
+
         return view('recharge.index', [
             'title' => '充值记录',
-            'recharge' => $result,
+            'recharges' => $result,
         ]);
     }
 
@@ -62,12 +66,17 @@ class RechargeController extends BaseController
 
     public function store(Request $request)
     {
-        $payAmount = $request->get('pay_amount', 0);
-        $giftAmount = $request->get('gift_amount', 0);
+        $payAmount = $request->get('charge_num', 0);
 
         try
         {
-            $result = Recharge::saveRecharge($payAmount, $giftAmount);
+            $result = Recharge::saveRecharge($payAmount);
+            if ($result < 1) {
+                return $this->autoReturn('充值异常');
+            }
+
+            return $this->returnAjaxSuccess("订单创建成功",
+                sprintf('%s?tradetype=buy&tradeid=%s', env('PAY_URL'), $result));
         }
         catch (BusinessException $e)
         {

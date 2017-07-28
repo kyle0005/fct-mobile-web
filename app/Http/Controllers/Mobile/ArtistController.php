@@ -29,6 +29,9 @@ class ArtistController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
+        if ($request->ajax())
+            return $this->returnAjaxSuccess("成功", null, $result);
+
         return view('artist.index', $result);
     }
 

@@ -28,10 +28,12 @@ class MemberAccountController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
+        if ($request->ajax())
+            return $this->returnAjaxSuccess("成功", null, $result);
+
         return view('account.index', [
             'title' => '帐户明细',
-            'entries' => $result->entries,
-            'pager' => $result->pager,
+            'logs' => $result,
         ]);
     }
 

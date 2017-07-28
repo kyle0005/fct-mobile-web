@@ -13,7 +13,7 @@
             <input type="file" class="upload" @change="fileChange">
         </section>
         <form id="userForm">
-            <input type="hidden" name="flie" :value="uploadImg.url">
+            <input type="hidden" name="avatar" :value="uploadImg.url">
             <section class="list-container">
                 <div class="line">
                     <div class="left">用户ID</div>
@@ -30,7 +30,7 @@
                 <div class="line">
                     <div class="left">昵称</div>
                     <div class="right">
-                        <input name="username" type="text" class="right-inp" :value="userinfo.userName">
+                        <input name="username" type="text" class="right-inp" v-model="userinfo.userName">
                     </div>
                 </div>
                 <div class="line">
@@ -56,7 +56,7 @@
                 <div class="line">
                     <div class="left">微信</div>
                     <div class="right">
-                        <input name="weixin" type="text" class="right-inp" :value="userinfo.weixin">
+                        <input name="weixin" type="text" class="right-inp" v-model="userinfo.weixin">
                     </div>
                 </div>
             </section>

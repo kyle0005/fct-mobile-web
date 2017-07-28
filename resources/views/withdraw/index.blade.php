@@ -2,38 +2,19 @@
 @section("title", $title)
 @section('content')
     <div class="walletaccount-container" id="withdrawalsrecord" v-cloak>
-        <ul class="list">
-            <li>
+        <ul class="list" v-load-more="nextPage">
+            <li v-for="(item, index) in withdrawalRecordList">
                 <div class="inner">
                     <div class="up clearfix">
-                        <span>招商银行</span><span class="pri">-1000.00</span>
+                        <span>@{{ item.bankName }}（@{{ item.bankAccount }}）</span><span class="pri">￥@{{ item.amount }}</span>
                     </div>
                     <div class="down clearfix">
-                        <span>状态：等待财务处理</span><span class="pri">13.00</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="inner">
-                    <div class="up clearfix">
-                        <span>支付宝(xxxxx@xx.com)</span><span class="pri">-1.00</span>
-                    </div>
-                    <div class="down clearfix">
-                        <span>状态：提现成功</span><span class="pri">12.00</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="inner">
-                    <div class="up clearfix">
-                        <span>支付宝(xxxxx@xx.com)</span><span class="pri">+2000.00</span>
-                    </div>
-                    <div class="down clearfix">
-                        <span>状态：提现成功</span><span class="pri">2012.00</span>
+                        <span>状态：@{{ item.statusName }}</span><span class="pri">@{{ item.createTime }}</span>
                     </div>
                 </div>
             </li>
         </ul>
+        <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
     <template id="pop">
@@ -45,5 +26,10 @@
     </template>
 @endsection
 @section('javascript')
-
+    <script>
+        config.withdrawalRecordUrl = "{{ url('settings/account/withdraw') }}";
+        config.withdrawalRecordList = {!! json_encode($withdraws, JSON_UNESCAPED_UNICODE) !!};
+    </script>
+    <script src="/js/common/tools.js"></script>
+    <script src="/js/withdrawalsrecord.js"></script>
 @endsection

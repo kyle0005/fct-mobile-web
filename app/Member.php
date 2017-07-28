@@ -76,6 +76,10 @@ class Member
         {
             throw new BusinessException($result->msg);
         }
+        //更新缓存
+        if ($result)
+            self::cleanAuth(false);
+
         return $result;
     }
 
@@ -199,6 +203,26 @@ class Member
         return $result->data;
     }
 
+    /**获取银行列表
+     * @return mixed
+     * @throws BusinessException
+     */
+    public static function getBanks()
+    {
+        $result = Base::http(
+            env('API_URL') . '/member/get-banks',
+            [],
+            [],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+        return $result->data;
+    }
+
     public static function getToken()
     {
         $result = Cookie::has(env('MEMBER_COOKIE_NAME')) ? Cookie::get(env('MEMBER_COOKIE_NAME')) : "";
@@ -217,7 +241,7 @@ class Member
     {
         //缓存用户数据
         $expire = $expireDay * 1440;
-        Cache::put($member->token, $member, $expire);
+        Cache::put($member->token, $member, 1440);
 
         $aes = new FctCryptAES();
         $aes->set_key(env('MEMBER_COOKIE_MCRYPT_KEY'));
@@ -239,13 +263,23 @@ class Member
                 $member = self::getMemberByToken($token);
                 if ($member)
                 {
-                    $expire = intval((intval($member->expireTime / 1000) - time()) / 60);
+                    $expire = 1440;//intval((intval($member->expireTime / 1000) - time()) / 60);
                     Cache::put($token, $member, $expire);
                 }
             }
         }
 
         return $member;
+    }
+
+    public static function cleanAuth($hasAll = true)
+    {
+        $token = self::getToken();
+        if ($token)
+            Cache::forget($token);
+        //清空所有
+        if ($hasAll)
+            Cookie::forget(env('MEMBER_COOKIE_NAME'));
     }
 
     /**退出

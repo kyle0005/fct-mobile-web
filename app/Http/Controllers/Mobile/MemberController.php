@@ -174,7 +174,7 @@ class MemberController extends BaseController
                 $gender = FctCommon::trimAll($request->get('sex'));
                 $birthday = FctCommon::trimAll($request->get('birthday'));
                 $weixin = FctCommon::trimAll($request->get('weixin'));
-var_dump($_POST);die;
+
                 //csrf验证
 
                 //用户登录操作
@@ -292,10 +292,10 @@ var_dump($_POST);die;
             try
             {
                 $name = FctCommon::trimAll($request->get('name'));
-                $idCardNo = FctCommon::trimAll($request->get('idcard_no'));
+                $idCardNo = FctCommon::trimAll($request->get('IDcard'));
                 $idCardImageUrl = FctCommon::trimAll($request->get('idcard_image_url'));
-                $bankName = FctCommon::trimAll($request->get('bank_name'));
-                $bankAccount = FctCommon::trimAll($request->get('bank_account'));
+                $bankName = FctCommon::trimAll($request->get('bank'));
+                $bankAccount = FctCommon::trimAll($request->get('bankAccount'));
 
                 FctValidator::hasRealName($name);
                 FctValidator::hasIDCardNO($idCardNo);
@@ -316,9 +316,18 @@ var_dump($_POST);die;
             }
         }
 
+        try
+        {
+            $result = Member::getBanks();
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
         $result = [
             'title' => '实名认证',
-            'member' => $member,
+            'banks' => $result,
         ];
 
         return view('member.real-auth', $result);

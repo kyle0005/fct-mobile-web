@@ -15,7 +15,7 @@ class Settlement
 {
     public static $resourceUrl = '/finance/settlements';
 
-    public static function getSettlements($page = 1)
+    public static function getSettlements($status, $page = 1)
     {
         $pageIndex = $page < 1 ? 1 : $page;
         $pageSize = 20;
@@ -23,6 +23,7 @@ class Settlement
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
+                'status' => $status ? 2 : 0,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
             ],

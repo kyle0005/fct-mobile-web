@@ -22,10 +22,7 @@ class MemberAddress
             throw new BusinessException($result->msg);
         }
 
-        return [
-            'title' => '收货地址管理',
-            'addressList' => $result->data,
-        ];
+        return $result->data;
     }
 
     public static function getAddress($id)

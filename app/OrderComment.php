@@ -45,6 +45,7 @@ class OrderComment
             [
                 'order_id' => $orderId,
                 'express_score' => $expressScore,
+                'has_anonymous' => $hasAnonymous ? 1 : 0,
                 'sale_score' => $saleScore,
                 'product_info' => $productInfo,
                 //评论字段
@@ -57,7 +58,7 @@ class OrderComment
             throw new BusinessException($result->msg);
         }
 
-        return $result;
+        return true;
     }
 
 

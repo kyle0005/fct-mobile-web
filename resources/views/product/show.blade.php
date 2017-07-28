@@ -101,7 +101,7 @@
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.product = {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!};
-        config.fav_url = "{!! url('favorites?from_type=0&from_id=' . $product->id) !!}";
+        config.fav_url = "{!! url('settings/favorites?from_type=0&from_id=' . $product->id) !!}";
         config.discuss_url = "{{ url('products/'.$product->id .'/comments') }}";
         config.artist_url = "{{ url('products/'.$product->id .'/artists') }}";
         config.pug_url = "{{ url('products/'.$product->id .'/materials?material_ids=' . urlencode($product->materialId)) }}";
@@ -219,9 +219,7 @@
         </div>
     </script>
     <script type="text/x-template" id="service">
-        <section class="service">
-            @{{ tab_service }}
-        </section>
+        <section class="service" v-html="tab_service"></section>
     </script>
     <script type="text/x-template" id="discuss">
         <section class="discuss">

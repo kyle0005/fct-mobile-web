@@ -51,13 +51,12 @@ class Withdraw
         return $result->data;
     }
 
-    public static function saveWithdraw($amount, $remark)
+    public static function saveWithdraw($amount)
     {
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
                 'amount' => $amount,
-                'remark' => $remark,
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );

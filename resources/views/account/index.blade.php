@@ -1,39 +1,20 @@
 @extends("layout")
 @section("title", $title)
 @section('content')
-    <div class="walletaccount-container" id="walletaccount">
-        <ul class="list">
-            <li>
+    <div class="walletaccount-container" id="walletaccount" v-cloak>
+        <ul class="list" v-load-more="nextPage">
+            <li v-for="(item, index) in walletaccountList">
                 <div class="inner">
                     <div class="up clearfix">
-                        <span>购买xxx商品</span><span class="pri">-1000.00</span>
+                        <span>@{{ item.remark }}</span><span class="pri">￥@{{ item.amount }}</span>
                     </div>
                     <div class="down clearfix">
-                        <span>2017-01-01 12:00</span><span class="pri">13.00</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="inner">
-                    <div class="up clearfix">
-                        <span>提现金额</span><span class="pri">-1.00</span>
-                    </div>
-                    <div class="down clearfix">
-                        <span>2017-01-01 12:00</span><span class="pri">12.00</span>
-                    </div>
-                </div>
-            </li>
-            <li>
-                <div class="inner">
-                    <div class="up clearfix">
-                        <span>充值</span><span class="pri">+2000.00</span>
-                    </div>
-                    <div class="down clearfix">
-                        <span>2017-01-01 12:00</span><span class="pri">2012.00</span>
+                        <span>@{{ item.createTime }}</span><span class="pri">￥@{{ item.balanceAmount }}</span>
                     </div>
                 </div>
             </li>
         </ul>
+        <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
     <template id="pop">
@@ -45,5 +26,10 @@
     </template>
 @endsection
 @section('javascript')
-
+    <script>
+        config.walletaccountUrl = "{{ url('settings/account/logs') }}";
+        config.walletaccountList = {!! json_encode($logs, JSON_UNESCAPED_UNICODE) !!};
+    </script>
+    <script src="/js/common/tools.js"></script>
+    <script src="/js/walletaccount.js"></script>
 @endsection

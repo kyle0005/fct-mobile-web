@@ -90,6 +90,7 @@ Route::group(['domain' => 'test.fangcuntang.com'], function ()
         //购物车中删除
         Route::post('carts/{id}/delete', 'Mobile\ShoppingCartController@setDelete')
             ->where('id', '[0-9]+');
+        Route::get('address/choose', 'Mobile\MemberAddressController@choose');
         //订单
         Route::resource('orders', 'Mobile\OrderController', ['create', 'store']);
 
@@ -104,6 +105,8 @@ Route::group(['domain' => 'test.fangcuntang.com'], function ()
             Route::post('settings/orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
                 ->where('order_id', '[0-9]+');
             //评论
+            Route::get('settings/orders/{order_id}/comments/create', 'Mobile\OrderCommentController@create')
+                ->where('order_id', '[0-9]+');
             Route::post('settings/orders/{order_id}/comments', 'Mobile\OrderCommentController@store')
                 ->where('order_id', '[0-9]+');
             //退货
@@ -130,13 +133,21 @@ Route::group(['domain' => 'test.fangcuntang.com'], function ()
         Route::resource('settings/coupons', 'Mobile\CouponController', ['index', 'store', 'show']);
         //收藏
         Route::resource('settings/favorites', 'Mobile\FavoriteController', ['index', 'store']);
+
         //地址管理
-        Route::resource('settings/address', 'Mobile\MemberAddressController',
-            ['index', 'create', 'edit', 'store', 'show']);
+        Route::get('settings/address', 'Mobile\MemberAddressController@index');
+            Route::post('settings/address', 'Mobile\MemberAddressController@store');
+            //创建
+            Route::get('settings/address/create', 'Mobile\MemberAddressController@create');
+            //修改
+            Route::get('settings/address/edit', 'Mobile\MemberAddressController@edit');
+            Route::get('settings/address/{id}/edit', 'Mobile\MemberAddressController@edit');
             //设置默认
-            Route::match(['get', 'post'], 'settings/address/{id}/default', 'Mobile\MemberAddressController@setDefault')
+            Route::post('settings/address/default', 'Mobile\MemberAddressController@setDefault');
+            Route::post('settings/address/{id}/default', 'Mobile\MemberAddressController@setDefault')
                 ->where('id', '[0-9]+');
             //删除
+            Route::post('settings/address/delete', 'Mobile\MemberAddressController@setDelete');
             Route::post('settings/address/{id}/delete', 'Mobile\MemberAddressController@setDelete')
                 ->where('id', '[0-9]+');
         //分享

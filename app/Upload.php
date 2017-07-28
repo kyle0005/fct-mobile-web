@@ -47,7 +47,7 @@ class Upload
             throw new BusinessException($result->msg);
         }
 
-        return $result;
+        return $result->data;
     }
 
     public static function uploadAction($action)

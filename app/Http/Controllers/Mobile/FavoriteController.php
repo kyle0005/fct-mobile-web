@@ -10,9 +10,24 @@ class FavoriteController extends BaseController
 {
     public function index(Request $request)
     {
+        $fromType = intval($request->get('from_type', 0));
 
+        try
+        {
+            $result = Favorite::getFavorites($fromType);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
 
-        return view('favorite.index');
+        if ($request->ajax())
+            return $this->returnAjaxSuccess('', null, $result);
+
+        return view('favorite.index', [
+            'title' => '收藏列表',
+            'entries' => $result,
+        ]);
     }
 
     public function store(Request $request)

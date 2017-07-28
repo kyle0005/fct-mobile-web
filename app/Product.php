@@ -100,7 +100,7 @@ class Product
             env('API_URL') . sprintf('%s/share', self::$resourceUrl),
             [
                 'name' => $name,
-                'category_code' => $categoryCode,
+                'code' => $categoryCode,
                 'sort_index' => $sortIndex,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,

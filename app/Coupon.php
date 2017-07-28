@@ -24,10 +24,7 @@ class Coupon
             throw new BusinessException($result->msg);
         }
 
-        return [
-            'title' => '优惠券列表 - 方寸堂',
-            'coupons' => json_encode($result->data, JSON_UNESCAPED_UNICODE),
-        ];
+        return $result->data;
     }
 
     public static function getMemberCoupons($status)

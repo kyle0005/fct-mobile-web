@@ -2,64 +2,66 @@
 @section("title", $title)
 @section('content')
     <div class="buy-container" id="buy_address" v-cloak>
-        <div class="opt-container">
-            <div class="line">
-                <div class="left">收货人</div>
-                <div class="right">
-                    <input name="name" type="text" class="right-inp" :value="address.name">
-                </div>
-            </div>
-            <div class="line">
-                <div class="left">联系电话</div>
-                <div class="right">
-                    <input name="cellphone" type="tel" class="right-inp"  :value="address.cellPhone">
-                </div>
-            </div>
-            <div class="line">
-                <div class="left">省份</div>
-                <div class="right clearfix">
-                    <select name="province" v-model="province">
-                        <option v-for="(item,key) in provincesName" :value="key">@{{item}}</option>
-                    </select>
-                    <span class="wei-arrow-right"></span>
-                </div>
-            </div>
-            <div class="line">
-                <div class="left">城市</div>
-                <div class="right clearfix">
-                    <select name="city_id" v-model="city">
-                        <option v-for="(item,key) in citysName" :value="key">@{{item}}</option>
-                    </select>
-                    <span class="wei-arrow-right"></span>
-                </div>
-            </div>
-            <div class="line">
-                <div class="left">区域</div>
-                <div class="right clearfix">
-                    <select name="town_id" v-model="county">
-                        <option v-for="(item,key) in countysName" :value="key">@{{item}}</option>
-                    </select>
-                    <span class="wei-arrow-right"></span>
-                </div>
-            </div>
-            <div class="line">
-                <textarea class="textarea" placeholder="请填写详细地址，不少于5个字"></textarea>
-            </div>
-        </div>
-        <div class="opt-container">
-            <div class="default-line">
-                <div class="left">设置默认</div>
-                <div class="right clearfix">
-                    <div class="switch-container">
-                        <input class="switch" name="" id="" type="checkbox" unchecked>
+        <form id="addr">
+            <input type="hidden" v-model="id" name="addrId">
+            <div class="opt-container">
+                <div class="line">
+                    <div class="left">收货人</div>
+                    <div class="right">
+                        <input type="text" class="right-inp" name="name" v-model="name">
                     </div>
                 </div>
-
+                <div class="line">
+                    <div class="left">联系电话</div>
+                    <div class="right">
+                        <input type="tel" class="right-inp" name="cellPhone" v-model="cellPhone">
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="left">省份</div>
+                    <div class="right clearfix">
+                        <select v-model="province" name="province">
+                            <option v-for="(item,key) in provincesName" :value="key">@{{item}}</option>
+                        </select>
+                        <span class="wei-arrow-right"></span>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="left">城市</div>
+                    <div class="right clearfix">
+                        <select v-model="city" name="city">
+                            <option v-for="(item,key) in citysName" :value="key">@{{item}}</option>
+                        </select>
+                        <span class="wei-arrow-right"></span>
+                    </div>
+                </div>
+                <div class="line">
+                    <div class="left">区域</div>
+                    <div class="right clearfix">
+                        <select v-model="county" name="county">
+                            <option v-for="(item,key) in countysName" :value="key">@{{item}}</option>
+                        </select>
+                        <span class="wei-arrow-right"></span>
+                    </div>
+                </div>
+                <div class="line">
+                    <textarea class="textarea" placeholder="请填写详细地址，不少于5个字" name="address" v-model="address"></textarea>
+                </div>
             </div>
-        </div>
-        <div class="address-btn">
-            <a href="javascript:;">保存</a>
-        </div>
+            <div class="opt-container">
+                <div class="default-line">
+                    <div class="left">设置默认</div>
+                    <div class="right clearfix">
+                        <div class="switch-container">
+                            <input class="switch" name="" id="" type="checkbox" unchecked v-model="isDefault">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="address-btn">
+                <a href="javascript:;" @click="sub">确认保存</a>
+            </div>
+        </form>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
     <template id="pop">
@@ -73,8 +75,9 @@
 @endsection
 @section('javascript')
     <script>
-        config.address = {!! json_encode($address, JSON_UNESCAPED_UNICODE) !!}
+        config.address = {!! json_encode($address, JSON_UNESCAPED_UNICODE) !!};
+        config.saveAddressddUrl = "{{ url('settings/address') }}";
     </script>
-    <script src="/js/common/cities.js"></script>
+    <script src="/js/common/city.min.js"></script>
     <script src="/js/buy_address_opt.js"></script>
 @endsection

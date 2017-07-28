@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mobile;
 
 use App\Exceptions\BusinessException;
 use App\Product;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 
 class ShareController extends BaseController
@@ -12,7 +13,7 @@ class ShareController extends BaseController
     {
         $code = $request->get('code', '');
         $name = $request->get('name', '');
-        $sortIndex = intval($request->get('sortIndex', 0));
+        $sortIndex = intval($request->get('sort', 0));
         $page = intval($request->get('page', 1));
 
         try
@@ -25,10 +26,13 @@ class ShareController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
+        if ($request->ajax())
+            return $this->returnAjaxSuccess('获取成功', null, $result);
+
         return view('share.index', [
             'title' => '分享',
-            'entries' => $result->entries,
-            'pager' => $result->pager,
+            'categories' => ProductCategory::getCategories(),
+            'entries' => $result,
         ]);
     }
 }

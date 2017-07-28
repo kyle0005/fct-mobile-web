@@ -33,7 +33,7 @@
                         </div>
                         <div class="pro-item price-container">
                             <div class="price">￥@{{ good.price }}</div>
-                            <div class="num">*@{{ good.buyCount }}</div>
+                            <div class="num">&times; @{{ good.buyCount }}</div>
                         </div>
                     </li>
                 </ul>
@@ -42,20 +42,16 @@
                 </div>
                 <div class="btn clearfix" v-if="item.status == 0">
                     <div class="btn-container">
-                        <a href="javascript:;" class="black">我要付款</a>
+                        <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + item.orderId" class="black">我要付款</a>
                     </div>
-                    <div class="btn-container">
+{{--                    <div class="btn-container">
                         <a href="javascript:;" class="grey">关闭订单</a>
-                    </div>
+                    </div>--}}
                 </div>
-                <div class="btn clearfix" v-if="item.status == 2">
-                    <div class="btn-container">
-                        <a href="javascript:;" class="black">查看物流</a>
-                    </div>
-                </div>
+
                 <div class="btn clearfix" v-if="item.status == 3">
                     <div class="btn-container">
-                        <a href="javascript:;" class="black">评价</a>
+                        <a :href="'{{ url('settings/orders') }}/' + item.orderId + '/comments/create'" class="black">评价</a>
                     </div>
                 </div>
             </div>
@@ -76,7 +72,7 @@
         config.orderlist = {!! json_encode($orderlist, JSON_UNESCAPED_UNICODE) !!};
         config.orderlist_url = "{{ url('settings/orders') }}";
         config.search_url = "{{ url('settings/orders') }}";
-        config.detail_url = "{{ url('settings/orders') }}/";
+        config.detail_url = "{{ url('settings/orders') }}";
     </script>
     <script src="/js/common/tools.js"></script>
     <script src="/js/orderlist.js"></script>

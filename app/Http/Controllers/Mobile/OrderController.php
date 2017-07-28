@@ -18,14 +18,18 @@ class OrderController  extends BaseController
         $orderId = $request->get('order_id', '');
         $status = $request->get('status', -1);
         $commentStatus = $request->get('status', -1);
+        $page = $request->get('page', 1);
         try
         {
-            $result = ProductOrder::getOrders("", -1, $commentStatus, 1);
+            $result = ProductOrder::getOrders($orderId, $status, $commentStatus, $page);
         }
         catch (BusinessException $e)
         {
             return $this->autoReturn($e->getMessage());
         }
+
+        if ($request->ajax())
+            return $this->returnAjaxSuccess("获取成功", null, $result);
 
         return view('order.index', [
             'title' => '我的订单',
@@ -44,7 +48,10 @@ class OrderController  extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('order.show');
+        return view('order.show', [
+            'title' => '订单详情',
+            'entity' => $result,
+        ]);
     }
 
     public function create(Request $request)
@@ -137,6 +144,9 @@ class OrderController  extends BaseController
         {
             $result = ProductOrder::saveOrder($points, $accountAmount, $couponCode,
                 $remark, $addressId, $orderGoodsInfo);
+
+            if (!$result)
+                return $this->autoReturn('生成订单异常');
 
             return $this->returnAjaxSuccess("订单创建成功",
                 sprintf('%s?tradetype=buy&tradeid=%s', env('PAY_URL'), $result));

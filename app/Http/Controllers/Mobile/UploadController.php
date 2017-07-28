@@ -34,7 +34,7 @@ class UploadController extends BaseController
             {
 
                 $result = Upload::uploadImage($action, $file);
-                return $result;
+                return $this->returnAjaxSuccess('上传成功', null, $result);
             }
             catch (BusinessException $e)
             {

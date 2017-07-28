@@ -10,19 +10,24 @@ class SettlementController extends BaseController
 {
     public function index(Request $request)
     {
+        $status = intval($request->get('status', 0)) ? 2 : 0;
+        $page = $request->get('page', 1);
         try
         {
-            $result = Settlement::getSettlements();
+            $result = Settlement::getSettlements($status, $page);
         }
         catch (BusinessException $e)
         {
             return $this->autoReturn($e->getMessage());
         }
 
+        if ($request->ajax())
+            return $this->returnAjaxSuccess("成功", null, $result);
+
         return view('settlement.index', [
             'title' => '佣金结算',
-            'entries' => $result->entries,
-            'pager' => $result->pager,
+            'status' => $status,
+            'settlements' => $result,
         ]);
     }
 }

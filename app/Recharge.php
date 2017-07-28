@@ -29,7 +29,9 @@ class Recharge
             throw new BusinessException($result->msg);
         }
 
-        return $result->data;
+        $pagination = Base::pagination($result->data, $pageSize);
+
+        return $pagination;
     }
 
     public static function getRecharge($id)
@@ -49,13 +51,12 @@ class Recharge
         return $result->data;
     }
 
-    public static function saveRecharge($payAmount, $giftAmount)
+    public static function saveRecharge($payAmount)
     {
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
                 'pay_amount' => $payAmount,
-                'gift_amount' => $giftAmount,
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );

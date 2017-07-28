@@ -15,7 +15,7 @@
     @yield('header')
     @yield('content')
     <script src="/js/vue.js"></script>
-    <script src="/js/api/index.js"></script>
+    <script src="/js/api/index.js?_rd=2017072418"></script>
     <script type="text/x-template" id="head_top">
         <header class="head-container">
             <ul class="nav">

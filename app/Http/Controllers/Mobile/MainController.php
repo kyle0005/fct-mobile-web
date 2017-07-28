@@ -93,7 +93,16 @@ class MainController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('coupon.new', $result);
+        return view('coupon.new', [
+            'title' => '优惠券列表 - 方寸堂',
+            'coupons' => $result,
+        ]);
+    }
+
+    public function findExpress(Request $request, $express_number)
+    {
+
+        return view('express');
     }
 
     public function downloadApp(Request $request)

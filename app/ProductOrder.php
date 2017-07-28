@@ -72,7 +72,11 @@ class ProductOrder
             'GET'
         );
 
-        return $result;
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+        return $result->data;
     }
 
     /**保存订单

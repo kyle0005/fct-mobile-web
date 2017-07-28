@@ -23,21 +23,25 @@ class MemberAddressController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('address.index', $result);
+        return view('address.index', [
+            'title' => '地址管理',
+            'addressList' => $result
+        ]);
     }
 
     public function create(Request $request)
     {
         $result = [
             'title' => '新建收货地址',
-            'address' => "{}",
+            'address' => json_encode((object)[]),
         ];
 
         return view('address.form', $result);
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Request $request)
     {
+        $id = $request->get('id', 0);
         try
         {
             $result = MemberAddress::getAddress($id);
@@ -52,14 +56,14 @@ class MemberAddressController extends BaseController
 
     public function store(Request $request)
     {
-        $id = $request->get('id', 0);
+        $id = intval($request->get('id', 0));
         $name = $request->get('name');
-        $phone = $request->get('phone');
+        $phone = $request->get('cellPhone');
         $province = $request->get('province');
         $city = $request->get('city');
-        $region = $request->get('region');
+        $region = $request->get('county');
         $address = $request->get('address');
-        $isDefault = $request->get('is_default', 0);
+        $isDefault = $request->get('isDefault', 0) ? 1 : 0;
 
         try
         {
@@ -73,8 +77,10 @@ class MemberAddressController extends BaseController
 
     }
 
-    public function setDefault(Request $request, $id)
+    public function setDefault(Request $request)
     {
+        $id = intval($request->get('id', 0));
+
         try
         {
             MemberAddress::setDefault($id);
@@ -86,8 +92,9 @@ class MemberAddressController extends BaseController
         }
     }
 
-    public function setDelete(Request $request, $id)
+    public function setDelete(Request $request)
     {
+        $id = intval($request->get('id', 0));
         try
         {
             MemberAddress::setDelete($id);
@@ -99,4 +106,20 @@ class MemberAddressController extends BaseController
         }
     }
 
+    public function choose(Request $request)
+    {
+        try
+        {
+            $result = MemberAddress::getAddresses();
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
+        return view('address.choose', [
+            'title' => '选择收货地址',
+            'addressList' => $result,
+        ]);
+    }
 }
