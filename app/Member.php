@@ -232,10 +232,9 @@ class Member
         $result = Cookie::has(env('MEMBER_COOKIE_NAME')) ? Cookie::get(env('MEMBER_COOKIE_NAME')) : "";
         if ($result)
         {
-            $aes = new FctCryptAES();
-            $aes->set_key(env('MEMBER_COOKIE_MCRYPT_KEY'));
-            $aes->require_pkcs5();
-            $result = $aes->decrypt($result);
+            $result = openssl_decrypt($result, 'aes-128-ecb',
+                env('MEMBER_COOKIE_MCRYPT_KEY'), false,
+                '');
         }
 
         return $result;
@@ -247,10 +246,9 @@ class Member
         $expire = $expireDay * 1440;
         Cache::put($member->token, $member, 1440);
 
-        $aes = new FctCryptAES();
-        $aes->set_key(env('MEMBER_COOKIE_MCRYPT_KEY'));
-        $aes->require_pkcs5();
-        $encText = $aes->encrypt($member->token);
+        $encText = openssl_encrypt($member->token, 'aes-128-ecb',
+            env('MEMBER_COOKIE_MCRYPT_KEY'), false,
+            '');
 
         Cookie::queue(env('MEMBER_COOKIE_NAME'), $encText, $expire);
     }
