@@ -142,7 +142,7 @@ class OrderController  extends BaseController
 
         try
         {
-            $result = ProductOrder::saveOrder($points, $accountAmount, $couponCode,
+            $result = ProductOrder::saveOrder($this->getShopId(), $points, $accountAmount, $couponCode,
                 $remark, $addressId, $orderGoodsInfo);
 
             if (!$result)

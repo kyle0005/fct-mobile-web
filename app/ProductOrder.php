@@ -89,7 +89,7 @@ class ProductOrder
      * @return mixed|object|\Psr\Http\Message\ResponseInterface
      * @throws BusinessException
      */
-    public static function saveOrder($points, $accountAmount, $couponCode, $remark, $addressId, $orderGoodsInfo)
+    public static function saveOrder($shopId, $points, $accountAmount, $couponCode, $remark, $addressId, $orderGoodsInfo)
     {
         if (!$orderGoodsInfo)
         {
@@ -99,6 +99,7 @@ class ProductOrder
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
+                'shopId' => $shopId,
                 'points' => $points,
                 'accountAmount' => $accountAmount,
                 'couponCode' => $couponCode,
