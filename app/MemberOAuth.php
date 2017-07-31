@@ -22,7 +22,7 @@ class MemberOAuth
         $result = Base::http(
             env('API_URL') . sprintf('%s', self::$resourceUrl),
             [
-                'callback_url' => $callback,
+                'callback_url' => urlencode($callback),
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
