@@ -158,6 +158,10 @@ class Member
         {
             throw new BusinessException($result->msg);
         }
+        //更新缓存
+        if ($result)
+            self::cleanAuth(false);
+
         return $result;
     }
 

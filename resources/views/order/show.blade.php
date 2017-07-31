@@ -58,7 +58,7 @@
                 <div class="pro-item price-container">
                     <div class="price">￥@{{ item.price }}</div>
                     <div class="num">&times; @{{ item.buyCount }}</div>
-                    <a :href="'{{ url('settings/refunds/create') }}?og_id=' + item.id"
+                    <a :href="'{{ url('my/refunds/create') }}?og_id=' + item.id"
                        class="after-sale" v-if="item.status == -1">申请售后</a>
                     <a href="javascript:;" class="after-sale" v-if="item.statusName">@{{ item.statusName }}</a>      <!-- href的url带参数status -->
                 </div>
@@ -78,7 +78,7 @@
         </section>
         <footer class="footer">
             <div class="inner">
-                <a href="javascript:;" class="chat"><img src="/images/order_chat.png"></a>
+                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助" class="chat"><img src="/images/order_chat.png"></a>
 {{--                <div class="del">
                     <a href="javascript:;">删除订单</a>
                 </div>--}}
@@ -86,7 +86,7 @@
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
                 </div>
                 <div class="comment" v-if="order_detail.status == 3">
-                    <a :href="'{{ url('settings/orders') }}/' + order_detail.orderId + '/comments/create'">我要评价</a>
+                    <a :href="'{{ url('my/orders') }}/' + order_detail.orderId + '/comments/create'">我要评价</a>
                 </div>
             </div>
         </footer>

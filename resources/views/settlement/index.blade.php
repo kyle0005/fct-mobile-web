@@ -46,7 +46,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.commissionUrl = "{{ url('settings/account/settlement') }}";
+        config.commissionUrl = "{{ url('my/account/settlement') }}";
         config.status = {{ $status }};
         config.commissionlist = {!! json_encode($settlements, JSON_UNESCAPED_UNICODE) !!};
     </script>

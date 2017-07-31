@@ -65,7 +65,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.getCouponUrl = "{{ url('settings/coupons') }}";
+        config.getCouponUrl = "{{ url('my/coupons') }}";
         config.couponlist = {!! json_encode($coupons, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/coupon.js"></script>

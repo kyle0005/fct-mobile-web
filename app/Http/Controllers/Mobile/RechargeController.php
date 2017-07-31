@@ -76,7 +76,7 @@ class RechargeController extends BaseController
             }
 
             return $this->returnAjaxSuccess("订单创建成功",
-                sprintf('%s?tradetype=buy&tradeid=%s', env('PAY_URL'), $result));
+                sprintf('%s?tradetype=recharge&tradeid=%s', env('PAY_URL'), $result));
         }
         catch (BusinessException $e)
         {

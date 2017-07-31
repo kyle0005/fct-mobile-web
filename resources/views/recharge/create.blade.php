@@ -43,7 +43,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.rechargeUrl="{{ url('settings/account/recharge') }}";
+        config.rechargeUrl="{{ url('my/account/recharge') }}";
         config.charge = {
             min:100,
             max:3000,

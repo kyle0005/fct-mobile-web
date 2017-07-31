@@ -36,7 +36,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.chargeRecordUrl = "{{ url('settings/account/recharge') }}";
+        config.chargeRecordUrl = "{{ url('my/account/recharge') }}";
         config.chargeRecordList = {!! json_encode($recharges, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/common/tools.js"></script>

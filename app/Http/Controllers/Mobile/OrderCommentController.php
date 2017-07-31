@@ -73,7 +73,7 @@ class OrderCommentController extends BaseController
 
             $result = OrderComment::saveComment($order_id, $expressScore, $hasAnonymous, $saleScore, $productInfo);
 
-            return $this->returnAjaxSuccess("评论成功", url('settings/orders'));
+            return $this->returnAjaxSuccess("评论成功", url('my/orders'));
 
         }
         catch (BusinessException $e)

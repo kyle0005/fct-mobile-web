@@ -27,7 +27,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.walletaccountUrl = "{{ url('settings/account/logs') }}";
+        config.walletaccountUrl = "{{ url('my/account/logs') }}";
         config.walletaccountList = {!! json_encode($logs, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/common/tools.js"></script>

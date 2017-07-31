@@ -58,10 +58,11 @@ class MemberOAuth
             throw new BusinessException($result->msg);
         }
 
-        if ($result->data)
-        {
+        if (Member::getToken())
+            Member::cleanAuth();
+
+        elseif ($result->data)
             Member::setAuth($result->data);
-        }
 
         return $result->data;
     }

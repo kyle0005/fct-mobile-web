@@ -77,8 +77,8 @@
 @section('javascript')
     <script>
         var config = {
-            "couponlistUrl": "{{ url('settings/coupons') }}",
-            "useUrl": "{{ url('settings/coupons') }}",
+            "couponlistUrl": "{{ url('my/coupons') }}",
+            "useUrl": "{{ url('my/coupons') }}",
             "couponlist": {!! json_encode($coupons, JSON_UNESCAPED_UNICODE) !!},
             "couponcount": {{ $canReceiveCount }}
 

@@ -58,7 +58,7 @@
 
     <script>
         config.uploadFileUrl = "{{ url('upload/image') }}";
-        config.commentUrl = "{{ url('settings/orders/' . $entity->orderId . '/comments') }}";
+        config.commentUrl = "{{ url('my/orders/' . $entity->orderId . '/comments') }}";
         config.order_detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script type="text/x-template" id="m_star">

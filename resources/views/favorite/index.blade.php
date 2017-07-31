@@ -32,8 +32,8 @@
 @endsection
 @section('javascript')
     <script>
-        config.collectionUrl = "{{ url('settings/favorites') }}";
-        config.collectionDel = "{{ url('settings/favorites') }}";
+        config.collectionUrl = "{{ url('my/favorites') }}";
+        config.collectionDel = "{{ url('my/favorites') }}";
         config.collection = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/collection.js"></script>

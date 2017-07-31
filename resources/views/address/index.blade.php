@@ -24,7 +24,7 @@
             </li>
         </ul>
         <div class="address-btn">
-            <a href="{{ url('settings/address/create') }}">添加新地址</a>
+            <a href="{{ url('my/address/create') }}">添加新地址</a>
         </div>
     <!--radio选中的是:@{{ picked }}-->
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
@@ -41,9 +41,9 @@
 @section('javascript')
     <script>
         config.address = {!! json_encode($addressList, JSON_UNESCAPED_UNICODE) !!};
-        config.defaultAddrUrl = "{{ url('settings/address/default') }}";
-        config.delAddrUrl = "{{ url('settings/address/delete') }}";
-        config.editUrl = "{{ url('settings/address/edit') }}";
+        config.defaultAddrUrl = "{{ url('my/address/default') }}";
+        config.delAddrUrl = "{{ url('my/address/delete') }}";
+        config.editUrl = "{{ url('my/address/edit') }}";
     </script>
     <script src="/js/buy_address.js"></script>
 @endsection

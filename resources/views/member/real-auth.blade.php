@@ -71,7 +71,7 @@
 @section('javascript')
     <script>
         config.uploadFileUrl = "{{ url('upload/image') }}";
-        config.authenticationUrl = "{{ url("") }}";
+        config.authenticationUrl = "{{ url('my/account/real-auth') }}";
         config.bankList = {!! json_encode($banks, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/authentication.js"></script>

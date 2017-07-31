@@ -30,6 +30,8 @@ class Authenticate
             ], JSON_UNESCAPED_UNICODE);
         }
 
+        FctCommon::cacheRedirectURI($request->url(), true);
+
         return redirect(FctCommon::hasWeChat() ? 'oauth' : 'login');
     }
 }

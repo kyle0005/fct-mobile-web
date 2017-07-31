@@ -15,39 +15,39 @@
             @if ($member->authStatus)
                 <a href="javascript:;" class="btn">已认证</a>
             @else
-                <a href="{{ url('settings/account/real-auth') }}" class="btn">申请认证</a>
+                <a href="{{ url('my/account/real-auth') }}" class="btn">申请认证</a>
             @endif
             </div>
         </section>
         <section class="items">
             <ul class="list">
                 <li>
-                    <a href="{{ url('settings/account/recharge/create') }}" class="link">
+                    <a href="{{ url('my/account/recharge/create') }}" class="link">
                         <img src="/images/wallet_recharge.png"><br>充值
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('settings/account/withdraw/create') }}" class="link">
+                    <a href="{{ url('my/account/withdraw/create') }}" class="link">
                         <img src="/images/wallet_withdrawals.png"><br>申请提现
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('settings/account/settlement') }}" class="link">
+                    <a href="{{ url('my/account/settlement') }}" class="link">
                         <img src="/images/wallet_commission.png"><br>佣金结算
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('settings/account/recharge') }}" class="link">
+                    <a href="{{ url('my/account/recharge') }}" class="link">
                         <img src="/images/wallet_record_c.png"><br>充值记录
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('settings/account/withdraw') }}" class="link">
+                    <a href="{{ url('my/account/withdraw') }}" class="link">
                         <img src="/images/wallet_record_w.png"><br>提现记录
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('settings/account/logs') }}" class="link">
+                    <a href="{{ url('my/account/logs') }}" class="link">
                         <img src="/images/wallet_account.png"><br>账户明细
                     </a>
                 </li>

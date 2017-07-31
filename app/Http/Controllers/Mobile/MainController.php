@@ -8,6 +8,7 @@ use App\Exceptions\BusinessException;
 use App\FctCommon;
 use App\FctValidator;
 use App\Main;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 
 /**默认入口页面
@@ -38,11 +39,25 @@ class MainController extends BaseController
 
         if ($request->ajax())
         {
-            return $this->returnAjaxSuccess($request->message, "", $result['products'] ? $result['products'] : []);
+            return $this->returnAjaxSuccess($request->message, "", $result->pagination->entries);
         }
         else
         {
-            return view('index', $result);
+
+            $shareUrl = url('/');
+            $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
+            if ($shopId > 0) {
+                $this->setShopId();
+                $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
+            }
+
+            return view('index', [
+                'title' => '方寸堂',
+                'categories' => ProductCategory::getCategories(),
+                'levels' =>  $result->goodsGradeList,
+                'products' => $result->pagination->entries,
+                'pager' => $result->pagination->pager,
+                ]);
         }
     }
 
@@ -69,12 +84,7 @@ class MainController extends BaseController
             $sessionId = FctCommon::createMobileSessionId();
             $result = Base::sendCaptcha($cellphone, $sessionId, $request->ip(), $action);
 
-            if ($result->code == 200)
-            {
-                $this->returnAjaxSuccess($result->message);
-            }
-
-            return $this->returnAjaxError($result->message);
+            $this->returnAjaxSuccess($result->msg);
 
         } catch (BusinessException $e)
         {
@@ -105,14 +115,36 @@ class MainController extends BaseController
         return view('express');
     }
 
+    public function weChatShare(Request $request)
+    {
+        $shareUrl = $request->get('share_url', '');
+        if (!$shareUrl)
+        {
+            return '';
+        }
+        try
+        {
+            $result = Main::weChatShare($shareUrl);
+            return $result;
+        }
+        catch (BusinessException $e)
+        {
+            return "";
+        }
+    }
+
     public function downloadApp(Request $request)
     {
         return view('download-app');
     }
 
-    public function success()
+    public function error(Request $request)
     {
-        return view('success');
+        $message = $request->get('message', '');
+
+        $redirectUrl = $request->get(env('REDIRECT_KEY'), '');
+
+        return $this->errorPage($message, $redirectUrl);
     }
 
 }

@@ -69,7 +69,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.shareUrl = "{{ url('settings/share') }}";
+        config.shareUrl = "{{ url('my/share') }}";
         config.sort = ['综合排序', '人气最高', '利润最高'];
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.share = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};

@@ -51,7 +51,7 @@
 
                 <div class="btn clearfix" v-if="item.status == 3">
                     <div class="btn-container">
-                        <a :href="'{{ url('settings/orders') }}/' + item.orderId + '/comments/create'" class="black">评价</a>
+                        <a :href="'{{ url('my/orders') }}/' + item.orderId + '/comments/create'" class="black">评价</a>
                     </div>
                 </div>
             </div>
@@ -70,9 +70,9 @@
 @section('javascript')
     <script>
         config.orderlist = {!! json_encode($orderlist, JSON_UNESCAPED_UNICODE) !!};
-        config.orderlist_url = "{{ url('settings/orders') }}";
-        config.search_url = "{{ url('settings/orders') }}";
-        config.detail_url = "{{ url('settings/orders') }}";
+        config.orderlist_url = "{{ url('my/orders') }}";
+        config.search_url = "{{ url('my/orders') }}";
+        config.detail_url = "{{ url('my/orders') }}";
     </script>
     <script src="/js/common/tools.js"></script>
     <script src="/js/orderlist.js"></script>

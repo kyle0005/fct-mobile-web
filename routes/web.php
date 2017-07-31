@@ -31,7 +31,7 @@ Route::group(['domain' => 'test.fangcuntang.com'], function ()
     //折扣
     Route::resource('discounts', 'Mobile\DiscountController', ['index', 'show']);
     //操作成功跳转页面
-    Route::get('success', 'Mobile\MainController@success');
+    Route::get('error', 'Mobile\MainController@error');
     //用户
     Route::match(['get', 'post'], 'login', 'Mobile\MemberController@login');
 
@@ -75,6 +75,10 @@ Route::group(['domain' => 'test.fangcuntang.com'], function ()
     Route::get('wiki', 'Mobile\WikiController@index');
         Route::get('wiki/item', 'Mobile\WikiController@show');
 
+    //share interface
+    Route::get('share/wechat', 'Mobile\MainController@weChatShare');
+
+
     /** 用户需要登录后操作 */
     Route::group(['middleware' => 'auth'], function ()
     {
@@ -95,63 +99,63 @@ Route::group(['domain' => 'test.fangcuntang.com'], function ()
         Route::resource('orders', 'Mobile\OrderController', ['create', 'store']);
 
         //用户中心
-        Route::get('profile', 'Mobile\MemberController@index');
+        Route::get('my', 'Mobile\MemberController@index');
 
         //用户中心订单
-        Route::get('settings/orders', 'Mobile\OrderController@index');
-            Route::get('settings/orders/{order_id}', 'Mobile\OrderController@show')
+        Route::get('my/orders', 'Mobile\OrderController@index');
+            Route::get('my/orders/{order_id}', 'Mobile\OrderController@show')
                 ->where('order_id', '[0-9]+');
             //取消
-            Route::post('settings/orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
+            Route::post('my/orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
                 ->where('order_id', '[0-9]+');
             //评论
-            Route::get('settings/orders/{order_id}/comments/create', 'Mobile\OrderCommentController@create')
+            Route::get('my/orders/{order_id}/comments/create', 'Mobile\OrderCommentController@create')
                 ->where('order_id', '[0-9]+');
-            Route::post('settings/orders/{order_id}/comments', 'Mobile\OrderCommentController@store')
+            Route::post('my/orders/{order_id}/comments', 'Mobile\OrderCommentController@store')
                 ->where('order_id', '[0-9]+');
             //退货
-            Route::resource('settings/refunds', 'Mobile\RefundController', ['index', 'create', 'store', 'show']);
+            Route::resource('my/refunds', 'Mobile\RefundController', ['index', 'create', 'store', 'show']);
 
         //我的钱包
-        Route::get('settings/account', 'Mobile\MemberAccountController@wallet');
+        Route::get('my/account', 'Mobile\MemberAccountController@wallet');
             //实名认证并绑定银行卡
-            Route::match(['get', 'post'], 'settings/account/real-auth', 'Mobile\MemberController@realAuth');
+            Route::match(['get', 'post'], 'my/account/real-auth', 'Mobile\MemberController@realAuth');
             //充值
-            Route::resource('settings/account/recharge', 'Mobile\RechargeController', ['index', 'create', 'store', 'show']);
+            Route::resource('my/account/recharge', 'Mobile\RechargeController', ['index', 'create', 'store', 'show']);
             //提现
-            Route::resource('settings/account/withdraw', 'Mobile\WithdrawController', ['index', 'create', 'store', 'show']);
+            Route::resource('my/account/withdraw', 'Mobile\WithdrawController', ['index', 'create', 'store', 'show']);
             //结算
-            Route::resource('settings/account/settlement', 'Mobile\SettlementController', ['index', 'show']);
+            Route::resource('my/account/settlement', 'Mobile\SettlementController', ['index', 'show']);
             //帐户明细
-            Route::resource('settings/account/logs', 'Mobile\MemberAccountController', ['index']);
+            Route::resource('my/account/logs', 'Mobile\MemberAccountController', ['index']);
 
         //更新资料
-        Route::match(['get', 'post'], 'settings/profile', 'Mobile\MemberController@updateInfo');
+        Route::match(['get', 'post'], 'my/profile', 'Mobile\MemberController@updateInfo');
         //修改密码
-        Route::match(['get', 'post'], 'settings/change-password', 'Mobile\MemberController@changePassword');
+        Route::match(['get', 'post'], 'my/change-password', 'Mobile\MemberController@changePassword');
         //优惠券
-        Route::resource('settings/coupons', 'Mobile\CouponController', ['index', 'store', 'show']);
+        Route::resource('my/coupons', 'Mobile\CouponController', ['index', 'store', 'show']);
         //收藏
-        Route::resource('settings/favorites', 'Mobile\FavoriteController', ['index', 'store']);
+        Route::resource('my/favorites', 'Mobile\FavoriteController', ['index', 'store']);
 
         //地址管理
-        Route::get('settings/address', 'Mobile\MemberAddressController@index');
-            Route::post('settings/address', 'Mobile\MemberAddressController@store');
+        Route::get('my/address', 'Mobile\MemberAddressController@index');
+            Route::post('my/address', 'Mobile\MemberAddressController@store');
             //创建
-            Route::get('settings/address/create', 'Mobile\MemberAddressController@create');
+            Route::get('my/address/create', 'Mobile\MemberAddressController@create');
             //修改
-            Route::get('settings/address/edit', 'Mobile\MemberAddressController@edit');
-            Route::get('settings/address/{id}/edit', 'Mobile\MemberAddressController@edit');
+            Route::get('my/address/edit', 'Mobile\MemberAddressController@edit');
+            Route::get('my/address/{id}/edit', 'Mobile\MemberAddressController@edit');
             //设置默认
-            Route::post('settings/address/default', 'Mobile\MemberAddressController@setDefault');
-            Route::post('settings/address/{id}/default', 'Mobile\MemberAddressController@setDefault')
+            Route::post('my/address/default', 'Mobile\MemberAddressController@setDefault');
+            Route::post('my/address/{id}/default', 'Mobile\MemberAddressController@setDefault')
                 ->where('id', '[0-9]+');
             //删除
-            Route::post('settings/address/delete', 'Mobile\MemberAddressController@setDelete');
-            Route::post('settings/address/{id}/delete', 'Mobile\MemberAddressController@setDelete')
+            Route::post('my/address/delete', 'Mobile\MemberAddressController@setDelete');
+            Route::post('my/address/{id}/delete', 'Mobile\MemberAddressController@setDelete')
                 ->where('id', '[0-9]+');
         //分享
-        Route::resource('settings/share', 'Mobile\ShareController', ['index']);
+        Route::resource('my/share', 'Mobile\ShareController', ['index']);
     });
 });
 

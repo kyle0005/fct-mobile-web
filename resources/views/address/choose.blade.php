@@ -14,7 +14,7 @@
             </li>
         </ul>
         <div class="address-btn">
-            <a href="{{ url('settings/address') }}">管理</a>
+            <a href="{{ url('my/address') }}">管理</a>
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
@@ -29,7 +29,7 @@
 @section('javascript')
     <script>
         config.address = {!! json_encode($addressList, JSON_UNESCAPED_UNICODE) !!};
-        config.chooseAddrUrl = "{{ url('settings/address/default') }}";
+        config.chooseAddrUrl = "{{ url('my/address/default') }}";
     </script>
     <script src="/js/buy_address_choose.js"></script>
 @endsection

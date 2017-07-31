@@ -36,6 +36,8 @@ class MemberAddressController extends BaseController
             'address' => json_encode((object)[]),
         ];
 
+        $this->cacheRedirectSourceUrl('', true);
+
         return view('address.form', $result);
     }
 
@@ -68,7 +70,13 @@ class MemberAddressController extends BaseController
         try
         {
             MemberAddress::saveAddress($id, $name, $phone, $province, $city, $region, $address, $isDefault);
-            return $this->returnAjaxSuccess(($id ? '修改' : '添加') . '成功');
+
+            $redirectUrl = $this->getRedirectSourceUrl(true, false);
+            if (!$redirectUrl) {
+                $redirectUrl = url('my/address');
+            }
+
+            return $this->returnAjaxSuccess(($id ? '修改' : '添加') . '成功', $redirectUrl);
         }
         catch (BusinessException $e)
         {
@@ -84,7 +92,13 @@ class MemberAddressController extends BaseController
         try
         {
             MemberAddress::setDefault($id);
-            return $this->returnAjaxSuccess('设置默认成功');
+
+            $redirectUrl = $this->getRedirectSourceUrl(true, false);
+            if (!$redirectUrl) {
+                $redirectUrl = url('my/address');
+            }
+
+            return $this->returnAjaxSuccess('设置默认成功', $redirectUrl);
         }
         catch (BusinessException $e)
         {
@@ -111,6 +125,7 @@ class MemberAddressController extends BaseController
         try
         {
             $result = MemberAddress::getAddresses();
+            $this->cacheRedirectSourceUrl('', true);
         }
         catch (BusinessException $e)
         {

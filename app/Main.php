@@ -33,15 +33,12 @@ class Main
             throw new BusinessException($result->msg);
         }
 
-        $pagination = Base::pagination($result->data->goodsList, $pageSize);
+        $result = $result->data;
 
-        return [
-            'title' => '方寸堂',
-            'categories' => ProductCategory::getCategories(),
-            'levels' =>  $result->data->goodsGradeList,
-            'products' => $pagination->entries,
-            'pager' => $pagination->pager,
-        ];
+        $pagination = Base::pagination($result->goodsList, $pageSize);
+
+        $result->pagination = $pagination;
+        return $result;
     }
 
     public static function welcome()
@@ -85,5 +82,22 @@ class Main
             'products' => $result->data ? $result->data->productList : "",
             'artists' => $result->data ? $result->data->artistList : "",
         ];
+    }
+
+    public static function weChatShare($shareUrl)
+    {
+        $result = Base::http(
+            env('API_URL') . '/mall/share/wechat',
+            [
+                'share_url' => $shareUrl,
+            ],
+            [],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
     }
 }

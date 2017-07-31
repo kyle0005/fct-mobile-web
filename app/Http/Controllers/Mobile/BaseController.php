@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mobile;
 
+use App\FctCommon;
 use App\Http\Controllers\Controller;
 use App\Member;
 use Illuminate\Http\Request;
@@ -12,7 +13,6 @@ class BaseController extends Controller
 
     public function __construct(Request $request)
     {
-        $this->setShopId();
         $member = $this->memberLogged(false);
         if ($member) {
             view()->share('member', $member);
@@ -24,11 +24,11 @@ class BaseController extends Controller
      */
     protected function setShopId()
     {
-        $shopId= request()->get(env('SHARE_SHOP_ID_KEY'), 0);
+        $shopId= intval(request()->get(env('SHARE_SHOP_ID_KEY'), 0));
         //设置微店长分享的ID
         if ($shopId > 0 && $shopId <> $this->getShopId())
         {
-            Cookie::queue(env('REDIRECT_KEY'), $shopId, 10080);
+            Cookie::queue(env('SHARE_SHOP_ID_KEY'), $shopId, 10080);
         }
     }
 
@@ -37,7 +37,8 @@ class BaseController extends Controller
      */
     protected function getShopId()
     {
-        return Cookie::get(env('SHARE_SHOP_ID_KEY'), 0);
+        return Cookie::has(env('SHARE_SHOP_ID_KEY'))
+            ? Cookie::get(env('SHARE_SHOP_ID_KEY')) : 0;
     }
 
     /**缓存用户跳转地址
@@ -46,38 +47,14 @@ class BaseController extends Controller
      */
     protected function cacheRedirectSourceUrl($url = '', $hasCacheCookie = false)
     {
-        $url = $url ? $url : $this->getRedirectSourceUrl();
-        if ($hasCacheCookie)
-        {
-            Cookie::queue(env('REDIRECT_KEY'), $url, 10);
-        }
-        else
-        {
-            request()->merge([env('REDIRECT_KEY') => $url]);
-        }
+        return FctCommon::cacheRedirectURI($url, $hasCacheCookie);
     }
     /**获取用户自定义返回原地址
      * @return \Illuminate\Contracts\Routing\UrlGenerator|mixed|string
      */
-    protected function getRedirectSourceUrl()
+    protected function getRedirectSourceUrl($hasCleanCache = true, $hasDefault = true)
     {
-        //主动传递跳转url
-        $redirectUrl = request()->get(env('REDIRECT_KEY'));
-        if ($redirectUrl)
-        {
-            return $redirectUrl;
-        }
-
-        //系统与第三方系统交互，临时存入cookie中
-        if (Cookie::has(env('REDIRECT_KEY')) && Cookie::get(env('REDIRECT_KEY')))
-        {
-            $redirectUrl = Cookie::get(env('REDIRECT_KEY'));
-            Cookie::forget(env('REDIRECT_KEY'));
-            return $redirectUrl;
-        }
-
-        //返回默认指定页面
-        return url('/');
+        return FctCommon::getRedirectURI($hasDefault);
     }
 
     protected function cleanRedirectSourceUrl()
@@ -148,8 +125,12 @@ class BaseController extends Controller
 
     protected function errorPage($message, $url = '')
     {
-        return $message;
-        //return view('error');
+
+        return view('errors.404', [
+            'title' => 'Error',
+            'message' => $message,
+            'url' => $url,
+        ]);
     }
 
     /**用户没登录跳转到登录页面

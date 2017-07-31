@@ -84,12 +84,12 @@
                 <li class="collection" :class="{red:collected}"  @click="collection()">
                     <i class="fa fa-heart"></i>
                 </li>
-                <li class="add" :class="{ disabled: !product.discount.canBuy }">
-                    <a href="javascript:;" @click="choose(0)" v-if="product.discount.canBuy">加入购物车</a>
+                <li class="add" :class="{ disabled: product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy) }">
+                    <a href="javascript:;" @click="choose(0)" v-if="!(product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy))">加入购物车</a>
                     <a href="javascript:;" v-else>加入购物车</a>
                 </li>
-                <li class="buy" :class="{ disabled: !product.discount.canBuy }">
-                    <a href="javascript:;" @click="choose(1)" v-if="product.discount.canBuy">立即购买</a>
+                <li class="buy" :class="{ disabled: product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy) }">
+                    <a href="javascript:;" @click="choose(1)" v-if="!(product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy))">立即购买</a>
                     <a href="javascript:;" v-else>立即购买</a>
                 </li>
             </ul>
@@ -101,7 +101,7 @@
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.product = {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!};
-        config.fav_url = "{!! url('settings/favorites?from_type=0&from_id=' . $product->id) !!}";
+        config.fav_url = "{!! url('my/favorites?from_type=0&from_id=' . $product->id) !!}";
         config.discuss_url = "{{ url('products/'.$product->id .'/comments') }}";
         config.artist_url = "{{ url('products/'.$product->id .'/artists') }}";
         config.pug_url = "{{ url('products/'.$product->id .'/materials?material_ids=' . urlencode($product->materialId)) }}";

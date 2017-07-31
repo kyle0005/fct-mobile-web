@@ -36,7 +36,7 @@ class WithdrawController extends BaseController
         try
         {
             Withdraw::saveWithdraw($amount);
-            return $this->returnAjaxSuccess('提交成功', url('settings/account/withdraw'));
+            return $this->returnAjaxSuccess('提交成功', url('my/account/withdraw'));
         }
         catch (BusinessException $e)
         {

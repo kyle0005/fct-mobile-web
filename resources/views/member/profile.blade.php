@@ -79,7 +79,7 @@
     <script>
         config.userinfo = {!! json_encode($member, JSON_UNESCAPED_UNICODE) !!};
         config.uploadFileUrl = "{{ url('upload/image') }}";
-        config.userinfoUrl = "{{ url('settings/profile') }}";
+        config.userinfoUrl = "{{ url('my/profile') }}";
     </script>
     <script src="/js/userinfo.js"></script>
 @endsection

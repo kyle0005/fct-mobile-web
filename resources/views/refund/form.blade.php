@@ -72,7 +72,7 @@
 @section('javascript')
     <script>
         config.product = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
-        config.returnUrl = "{{ url('settings/refunds') }}";
+        config.returnUrl = "{{ url('my/refunds') }}";
         config.uploadFileUrl = "{{ url('upload/image') }}";
     </script>
     <script src="/js/orderreturn.js"></script>

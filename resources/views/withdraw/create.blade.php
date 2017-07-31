@@ -46,7 +46,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.withdrawalsUrl = "{{ url('settings/account/withdraw') }}";
+        config.withdrawalsUrl = "{{ url('my/account/withdraw') }}";
         config.withdrawals = {!! json_encode($entry, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/withdrawals.js"></script>

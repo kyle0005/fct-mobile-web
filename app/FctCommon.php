@@ -99,4 +99,53 @@ class FctCommon
         return true;
     }
 
+
+    /**缓存用户跳转地址
+     * @param string $url
+     * @param bool $hasCacheCookie
+     */
+    public static function cacheRedirectURI($url = '', $hasCacheCookie = false)
+    {
+        $url = $url ? $url : self::getRedirectURI();
+        if ($hasCacheCookie)
+        {
+            Cookie::queue(env('REDIRECT_KEY'), $url, 10);
+        }
+        else
+        {
+            request()->merge([env('REDIRECT_KEY') => $url]);
+        }
+    }
+    /**获取用户自定义返回原地址
+     * @return \Illuminate\Contracts\Routing\UrlGenerator|mixed|string
+     */
+    public static function getRedirectURI($hasCleanCache = true, $hasDefault = true)
+    {
+        //主动传递跳转url
+        $redirectUrl = request()->get(env('REDIRECT_KEY'));
+        if ($redirectUrl)
+        {
+            if ($hasCleanCache && Cookie::has(env('REDIRECT_KEY')))
+                Cookie::forget(env('REDIRECT_KEY'));
+
+            return $redirectUrl;
+        }
+
+        //系统与第三方系统交互，临时存入cookie中
+        if (Cookie::has(env('REDIRECT_KEY')) && Cookie::get(env('REDIRECT_KEY')))
+        {
+            $redirectUrl = Cookie::get(env('REDIRECT_KEY'));
+            if ($hasCleanCache)
+                Cookie::forget(env('REDIRECT_KEY'));
+
+            return $redirectUrl;
+        }
+
+        if ($hasDefault)
+            //返回默认指定页面
+            return url('/');
+
+        return '';
+    }
+
 }

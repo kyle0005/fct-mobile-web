@@ -5,10 +5,11 @@
     <div class="buy-container" id="buy" v-cloak>
         <form id="buyOrder">
             <section class="address no" v-if="!hasAddress">
-                <a href="{{ url('settings/address') . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}" class="link">亲，请新建或选择默认收货地址以确保宝贝顺利到达<span class="wei-arrow-right"></span></a>
+                <a href="{{ url('my/address/create') . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}"
+                   class="link">亲，请新建或选择默认收货地址以确保宝贝顺利到达<span class="wei-arrow-right"></span></a>
             </section>
             <section class="address" v-else>
-                <a href="{{ url('settings/address') . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}" class="link">
+                <a href="{{ url('address/choose') . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}" class="link">
         <span class="left item">
           <span class="overText">@{{ address.name }}</span>
           <span class="def">默认</span>

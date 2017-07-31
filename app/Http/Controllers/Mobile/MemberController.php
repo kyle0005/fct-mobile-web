@@ -21,8 +21,6 @@ class MemberController extends BaseController
         try
         {
             $result = MemberOAuth::getURL();
-            $this->cacheRedirectSourceUrl($request->server('HTTP_REFERER'), true);
-
             redirect($result);
         }
         catch (BusinessException $e)
@@ -41,10 +39,15 @@ class MemberController extends BaseController
 
         try
         {
-            MemberOAuth::saveOAuth($code);
-        }
-        catch (BusinessException $e)
-        {
+            $result = MemberOAuth::saveOAuth($code);
+            if (!$result)
+                $redirectUrl = url('oauth/bind');
+            else
+                $redirectUrl = $this->getRedirectSourceUrl();
+
+            return $this->returnAjaxSuccess(($result ? '授权成功' : '授权完成,去绑定手机'), $redirectUrl);
+        } catch (BusinessException $e) {
+
             return $this->autoReturn($e->getMessage());
         }
     }
@@ -65,7 +68,7 @@ class MemberController extends BaseController
                 FctValidator::hasMobileCaptcha($captcha);
 
                 MemberOAuth::bindOAuth($openid, $cellphone, $captcha, $sessionId, $request->ip());
-                return $this->returnAjaxSuccess('授权成功');
+                return $this->returnAjaxSuccess('授权成功', $this->getRedirectSourceUrl());
             }
             catch (BusinessException $e)
             {
@@ -121,7 +124,7 @@ class MemberController extends BaseController
             }
         }
 
-        $this->cacheRedirectSourceUrl($request->server('HTTP_REFERER'), true);
+        $this->cacheRedirectSourceUrl('', true);
 
         return view('login', ['title' => "用户登录"]);
     }
@@ -181,7 +184,7 @@ class MemberController extends BaseController
                 Member::updateInfo($username, $avatar, $gender, $birthday, $weixin);
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('修改成功');
+                return $this->returnAjaxSuccess('修改成功', url('my'));
             }
             catch (BusinessException $e)
             {
@@ -229,7 +232,7 @@ class MemberController extends BaseController
                 Member::changePassowrd($oldPassword, $newPassword);
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('密码修改成功');
+                return $this->returnAjaxSuccess('密码修改成功', url('my'));
             }
             catch (BusinessException $e)
             {
@@ -270,7 +273,7 @@ class MemberController extends BaseController
                 $member = [];
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('密码找回成功');
+                return $this->returnAjaxSuccess('密码找回成功', url('login'));
             }
             catch (BusinessException $e)
             {
@@ -293,7 +296,7 @@ class MemberController extends BaseController
             {
                 $name = FctCommon::trimAll($request->get('name'));
                 $idCardNo = FctCommon::trimAll($request->get('IDcard'));
-                $idCardImageUrl = FctCommon::trimAll($request->get('idcard_image_url'));
+                $idCardImageUrl = FctCommon::trimAll($request->get('avatar'));
                 $bankName = FctCommon::trimAll($request->get('bank'));
                 $bankAccount = FctCommon::trimAll($request->get('bankAccount'));
 
@@ -308,7 +311,7 @@ class MemberController extends BaseController
                 Member::realAuth($name, $idCardNo, $idCardImageUrl, $bankName, $bankAccount);
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('提交认证信息成功');
+                return $this->returnAjaxSuccess('提交认证信息成功', url('my/account'));
             }
             catch (BusinessException $e)
             {

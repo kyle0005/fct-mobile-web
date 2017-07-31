@@ -29,10 +29,10 @@ class FctValidator
     {
         self::hasRequire($bankName, '银行名称');
         self::hasRequire($bankCardNo, '银行卡号');
-        if (mb_strpos($bankName, "银行") === false)
+/*        if (mb_strpos($bankName, "银行") === false)
         {
             throw new BusinessException('请输入正确的银行名称，如中国银行');
-        }
+        }*/
 
     }
 

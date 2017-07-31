@@ -77,7 +77,7 @@
     <script>
         var config = {
             "index": "{{ url('/') }}",
-            "login": "{{ url('profile') }}",
+            "login": "{{ url('my') }}",
             "product_url": "{{ url('/') }}"
         }
     </script>
