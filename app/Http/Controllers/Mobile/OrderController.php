@@ -72,7 +72,7 @@ class OrderController  extends BaseController
             ];
             if ($productId < 1 || $buyNumber <= 0)
             {
-                throw new BusinessException("产品不存在或数量小于1");
+                return $this->autoReturn("产品不存在或数量小于1");
             }
         }
 
@@ -86,7 +86,7 @@ class OrderController  extends BaseController
                 $buyNumber = intval($cartProduct['buyCount']);
                 if ($productId < 1 || $buyNumber <= 0)
                 {
-                    throw new BusinessException("购物车中的产品不存在或数量小于1");
+                    return $this->autoReturn("购物车中的产品不存在或数量小于1");
                 }
 
                 $productInfo[] = [
@@ -99,7 +99,7 @@ class OrderController  extends BaseController
         //非法操作
         else
         {
-            return $this->returnAjaxError('非法操作');
+            return $this->autoReturn('非法操作');
         }
 
         try
@@ -108,7 +108,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->returnAjaxSuccess($e->getMessage());
+            return $this->autoReturn($e->getMessage());
         }
 
         $result[env('REDIRECT_KEY')] = urlencode($request->getUri());
@@ -120,7 +120,7 @@ class OrderController  extends BaseController
         $hasTerms = $request->get('has_terms');
         if (!$hasTerms)
         {
-            return $this->returnAjaxError("请先同意协议才能购买");
+            return $this->autoReturn("请先同意协议才能购买");
         }
 
         $points = intval($request->get('points'));

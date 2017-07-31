@@ -33,6 +33,13 @@ class ProductController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
+        $shareUrl = url('/');
+        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
+        if ($shopId > 0) {
+            $this->setShopId();
+            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
+        }
+
         return view('product.show', $result);
     }
 
