@@ -21,7 +21,7 @@ class MemberController extends BaseController
         try
         {
             $result = MemberOAuth::getURL();
-            redirect($result);
+            return redirect($result);
         }
         catch (BusinessException $e)
         {
