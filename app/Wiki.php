@@ -29,7 +29,7 @@ class Wiki
         }
 
         return [
-            'title' => '紫砂百科 - 方寸堂',
+            'title' => '紫砂百科 - 方寸网',
             'categories' => ProductCategory::getCategories(),
             'wikiCategories' => $result->data->categoryList,
             'materials' => $result->data->materialList,
@@ -64,7 +64,7 @@ class Wiki
         }
 
         return [
-            'title' => '紫砂百科 - 方寸堂',
+            'title' => '紫砂百科 - 方寸网',
             'categories' => ProductCategory::getCategories(),
             'entry' => $result->data,
         ];

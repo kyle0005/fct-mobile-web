@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>方寸堂</title>
+    <title>方寸网</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
@@ -20,11 +20,11 @@
 <div id="ywBarX" class="yw-bar">
     <div class="yw-constr">
         <div class="yw-hd-bar">
-            <a href="/" class="yw-logo"><h1>方寸堂</h1></a>
+            <a href="/" class="yw-logo"><h1>方寸网</h1></a>
         </div>
         <div id="ywHdBar" class="yw-hd-bar">
             <a href="/" class="yw-logo">
-                <h1>方寸堂</h1></a><a href="javascript:" id="ywMnavBtn" class="yw-hd-curnav"><span
+                <h1>方寸网</h1></a><a href="javascript:" id="ywMnavBtn" class="yw-hd-curnav"><span
                         id="ywMnavName">紫砂细作</span>
             </a>
             <div id="ywMnav" class="yw-nav"><a href="#copyright" class="yw-nav-a active">紫砂细作</a> <a href="#mobile"
@@ -73,7 +73,7 @@
                     <dd class="yw-data-dd">完善的实力派孵化和培养体系，打造紫砂艺人、消费收藏者、平台互生共荣的文化生态体系。</dd>
                 </dl>
             </div>
-            <p class="yw-data-desc">宜兴市方寸堂文化传播有限公司，是一家由十多年从事紫砂艺术收藏的资深藏家组成的实力团队，公司设有紫砂研发中心、创作团队及新人培养基地，设立此平台的目的在于给天下壶友和紫砂艺人间搭建一个透明、便捷、真实的紫砂创作、交流平台。</p></div>
+            <p class="yw-data-desc">宜兴市方寸网文化传播有限公司，是一家由十多年从事紫砂艺术收藏的资深藏家组成的实力团队，公司设有紫砂研发中心、创作团队及新人培养基地，设立此平台的目的在于给天下壶友和紫砂艺人间搭建一个透明、便捷、真实的紫砂创作、交流平台。</p></div>
     </div>
     <div id="copyright" class="yw-copyright"><h3 class="yw-home-h3">紫砂细作</h3>
         <div id="ywCopyX" class="yw-copy-x">
@@ -114,27 +114,27 @@
     </div>
     <div id="mobile" class="yw-home-app">
         <div class="yw-constr"><h3 class="yw-home-h3">移动产品</h3>
-            <div id="tabApp" class="yw-tab-tab"><a href="javascript:" class="yw-tab-a active" data-rel="tabPanel1">方寸堂APP</a> <a
+            <div id="tabApp" class="yw-tab-tab"><a href="javascript:" class="yw-tab-a active" data-rel="tabPanel1">方寸网APP</a> <a
                         href="javascript:" class="yw-tab-a" data-rel="tabPanel2">移动web版</a> <a href="javascript:" class="yw-tab-a"
                                                                                                data-rel="tabPanel3">微信小程序</a> <i
                         class="yw-tab-bot-line"></i> <i id="tabLine" class="yw-tab-hline"></i></div>
             <ul class="yw-tab-panel">
                 <li id="tabPanel1" class="yw-tab-panel-li active">
-                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
+                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸网<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
                         <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
                     <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"
                                                    class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel2" class="yw-tab-panel-li ">
-                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
+                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸网<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
                         <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
                     <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"
                                                    class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel3" class="yw-tab-panel-li ">
-                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
+                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸网<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
                         <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
                     <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"

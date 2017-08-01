@@ -24,7 +24,7 @@
       <a href="javascript:;" class="link">其他金额@{{ item[Object.keys(item)[0]] }}</a>
     </div>-->
         </section>
-        <div class="tips">点我要充值，即表示您已同意方寸堂<strong>《充返活动协议》</strong></div>
+        <div class="tips">点我要充值，即表示您已同意方寸网<strong>《充返活动协议》</strong></div>
         <footer class="foot">
             <div class="pri">应付:￥@{{ charge_num }}</div>
             <div class="sub">

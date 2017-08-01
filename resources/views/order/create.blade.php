@@ -86,7 +86,7 @@
             <section class="agreement">
                 <input type="checkbox" id="agree" name="agree" v-model="has_terms" class="ck">
                 <label for="agree" class="agree-container">
-                    我已同意《方寸堂服务协议》
+                    我已同意《方寸网服务协议》
                 </label>
             </section>
             <footer class="foot">
