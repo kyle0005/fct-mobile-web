@@ -40,10 +40,10 @@ class MemberController extends BaseController
         try
         {
             $result = MemberOAuth::saveOAuth($code);
-            if (!$result)
-                $redirectUrl = url('oauth/bind');
-            else
+            if ($result && $result->memberId > 0)
                 $redirectUrl = $this->getRedirectSourceUrl();
+            else
+                $redirectUrl = url('oauth/bind')."?openid=$result->openId";
 
             return redirect($redirectUrl);
             //return $this->returnAjaxSuccess(($result ? '授权成功' : '授权完成,去绑定手机'), $redirectUrl);
@@ -77,7 +77,10 @@ class MemberController extends BaseController
             }
         }
 
-        return view("bind");
+        return view("bind", [
+            'title' => '微信绑定',
+            'openid' => $openid,
+        ]);
     }
 
 

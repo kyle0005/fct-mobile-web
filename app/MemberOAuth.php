@@ -58,13 +58,15 @@ class MemberOAuth
             throw new BusinessException($result->msg);
         }
 
+        $member = $result->data;
+
         if (Member::getToken())
             Member::cleanAuth();
 
-        elseif ($result->data)
-            Member::setAuth($result->data);
+        elseif ($member && $member->memberId > 0)
+            Member::setAuth($member);
 
-        return $result->data;
+        return $member;
     }
 
     public static function bindOAuth($openid, $cellphone, $captcha, $sessionId, $ip)

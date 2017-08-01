@@ -55,6 +55,5 @@
         mobileCodeResource:"{{ url('send-captcha') }}"
     };
     </script>
-    <script src="js/api/index.js"></script>
     <script src="js/findpwd.js"></script>
 @endsection

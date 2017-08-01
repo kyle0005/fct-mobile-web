@@ -77,10 +77,9 @@
 @section('javascript')
     <script>
     var apis = {
-        userResource:"{{ url('login')  }}?{{ env('') }}",
+        userResource:"{{ url('login')  }}",
         mobileCodeResource:"{{ url('send-captcha') }}"
     };
     </script>
-    <script src="js/api/index.js"></script>
     <script src="js/login.js"></script>
 @endsection
