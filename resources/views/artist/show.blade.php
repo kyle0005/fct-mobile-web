@@ -48,7 +48,7 @@
                     </ul>
                 </div>
             </section>
-            <ul class="news" v-load-more="nextPage" type="1" v-if="liveList.length > 0">
+            <ul class="news" v-load-more="nextPage" type="1" v-if="liveList && liveList.length > 0">
                 <li class="item" v-for="(item, index) in liveList">
                     <div class="text">@{{ item.content }}</div>
                     <div class="media">
@@ -75,7 +75,7 @@
     {{--艺术家作品--}}
     <script type="text/x-template" id="works">
         <div class="tabs">
-            <ul class="pro-list" v-if="workslist.length > 0">
+            <ul class="pro-list" v-if="workslist && workslist.length > 0">
                 <li v-for="(item, index) in workslist">
                     <div class="inner">
                         <div class="left">
@@ -104,7 +104,7 @@
     {{--艺术家评论--}}
     <script type="text/x-template" id="chat">
         <div class="tabs">
-            <ul class="chat-list" v-load-more="nextPage" type="1" v-if="chatlist.length > 0">
+            <ul class="chat-list" v-load-more="nextPage" type="1" v-if="chatlist && chatlist.length > 0">
                 <li v-for="(item, index) in chatlist">
                     <div class="inner">
                         <div class="info">

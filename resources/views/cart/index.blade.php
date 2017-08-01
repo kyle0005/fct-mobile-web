@@ -4,7 +4,7 @@
 @section('content')
     <div class="cart-container" id="cart">
         <form id="cart-form">
-            <ul class="cart-list" v-if="pro_list.length > 0">
+            <ul class="cart-list" v-if="pro_list && pro_list.length > 0">
                 <li class="cart-item" v-for="(item, index) in pro_list">
                     <label class="chk col">
                         <input type="checkbox" name="chk-items" class="chk-items" :value="item" v-model="ischeck" @change="selectedProduct(item)">

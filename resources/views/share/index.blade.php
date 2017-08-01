@@ -39,7 +39,7 @@
                 </a>
             </li>
         </ul>
-        <ul class="list" v-load-more="nextPage" type="1" v-if="shareList.length > 0">
+        <ul class="list" v-load-more="nextPage" type="1" v-if="shareList && shareList.length > 0">
             <li v-for="(item, index) in shareList">
                 <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="link">
                     <span class="left">

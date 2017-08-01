@@ -2,7 +2,7 @@
 @section("title", $title)
 @section('content')
     <div class="buy-container" id="buy_address" v-cloak>
-        <ul class="address-list" v-if="address.length > 0">
+        <ul class="address-list" v-if="address && address.length > 0">
             <li v-for="(item, index) in address">
                 <div class="item-container">
                     <div class="info">

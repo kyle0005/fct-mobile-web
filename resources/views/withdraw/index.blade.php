@@ -2,7 +2,7 @@
 @section("title", $title)
 @section('content')
     <div class="walletaccount-container" id="withdrawalsrecord" v-cloak>
-        <ul class="list" v-load-more="nextPage" v-if="withdrawalRecordList.length > 0">
+        <ul class="list" v-load-more="nextPage" v-if="withdrawalRecordList && withdrawalRecordList.length > 0">
             <li v-for="(item, index) in withdrawalRecordList">
                 <div class="inner">
                     <div class="up clearfix">

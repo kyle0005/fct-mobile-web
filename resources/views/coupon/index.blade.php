@@ -7,7 +7,7 @@
                 <a href="javascript:;" class="link">@{{ item }}</a>
             </div>
         </div>
-        <section class="content" v-if="couponlist.length > 0">
+        <section class="content" v-if="couponlist && couponlist.length > 0">
             <div class="tips" v-if="couponcount > 0">
                 <a href="{{ url('coupons/new') }}" class="link">
                   <span class="img-container item">

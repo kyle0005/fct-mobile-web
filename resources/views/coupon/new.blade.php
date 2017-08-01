@@ -2,7 +2,7 @@
 @section("title", $title)
 @section('content')
     <div class="coupon-container" id="coupon" v-cloak>
-        <section class="content" v-if="couponlist.length > 0">
+        <section class="content" v-if="couponlist && couponlist.length > 0">
             <div class="list-item" v-for="(item, index) in couponlist">
                 <coupons :couponitem="item" @pop="pop"></coupons>
             </div>
