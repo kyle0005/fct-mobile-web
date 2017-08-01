@@ -125,7 +125,7 @@ class MainController extends BaseController
         try
         {
             $result = Main::weChatShare($shareUrl);
-            return $result;
+            return json_encode($result, JSON_UNESCAPED_UNICODE);
         }
         catch (BusinessException $e)
         {
