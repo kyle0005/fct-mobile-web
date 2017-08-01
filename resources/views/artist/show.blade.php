@@ -40,7 +40,7 @@
             <section class="ptop">
                 <div class="text">@{{ top.content }}</div>
                 <div class="media" >
-                    <video id="video_top" class="video-js vjs-big-play-centered" controls v-if="top.videoId !== ''"></video>
+                    <video id="video_top" class="video-js vjs-big-play-centered" controls v-if="top.videoUrl != ''"></video>
                     <ul class="img-list" v-if="topImg">
                         <li v-for="imgs in top.images">
                             <img :src="imgs">
@@ -52,7 +52,7 @@
                 <li class="item" v-for="(item, index) in liveList">
                     <div class="text">@{{ item.content }}</div>
                     <div class="media">
-                        <video :id="'video_' + index" class="video-js vjs-big-play-centered" controls v-if="item.videoId !== ''"></video>
+                        <video :id="'video_' + index" class="video-js vjs-big-play-centered" controls v-if="item.videoUrl != ''"></video>
                         <ul class="img-list" v-if="item.images.length > 0">
                             <li v-for="(img, i) in item.images">
                                 <img :src="img">
