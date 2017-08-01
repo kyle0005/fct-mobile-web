@@ -7,7 +7,7 @@
                 <a href="javascript:;" class="link">@{{ item }}</a>
             </div>
         </div>
-        <div class="collection-list">
+        <div class="collection-list" v-if="collection && collection.length > 0">
             <div class="item" v-for="(item, index) in collection">
                 <div class="img-container">
                     <img :src="item.image">
@@ -20,6 +20,14 @@
                 </div>
             </div>
         </div>
+
+        <ul class="prolist" v-else>
+            <li class="noData">
+                <img src="/images/no_data.png">
+                <span class="no">当前没有相关数据哟~</span>
+            </li>
+        </ul>
+
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
     <template id="pop">

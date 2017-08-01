@@ -2,7 +2,7 @@
 @section("title", $title)
 @section('content')
     <div class="buy-container" id="buy_address" v-cloak>
-        <ul class="address-list">
+        <ul class="address-list" v-if="address.length > 0">
             <li v-for="(item, index) in address">
                 <div class="item-container">
                     <div class="info">
@@ -23,6 +23,14 @@
                 </div>
             </li>
         </ul>
+
+        <ul class="prolist" v-else>
+            <li class="noData">
+                <img src="/images/no_data.png">
+                <span class="no">当前没有相关数据哟~</span>
+            </li>
+        </ul>
+
         <div class="address-btn">
             <a href="{{ url('my/address/create') }}">添加新地址</a>
         </div>

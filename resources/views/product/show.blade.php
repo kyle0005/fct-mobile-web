@@ -65,7 +65,29 @@
                             </div>
                             <a href="javascript:;" class="fork" @click="choose()">&nbsp;</a>
                         </div>
-                        <a href="javascript:;" class="sub" @click="buy()">确定</a>
+                        {{--<a href="javascript:;" class="sub" @click="buy()">确定</a>--}}
+                        <ul class="nav">
+                            <li class="message" @click="">
+                                <a href="javascript:;" class="foot-link">
+                                    <img src="/images/msg.png">
+                                </a>
+                            </li>
+                            <li class="cart">
+                                <a href="cart.html" class="foot-link">
+                                    <img src="/images/cart.png">
+                                    <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
+                                </a>
+                            </li>
+                            <li class="collection" :class="{red:collected}"  @click="collection()">
+                                <i class="fa fa-heart"></i>
+                            </li>
+                            <li class="add">
+                                <a href="javascript:;" @click="buy()">加入购物车</a>
+                            </li>
+                            <li class="buy">
+                                <a href="javascript:;" @click="buy()">立即购买</a>
+                            </li>
+                        </ul>
                     </form>
                 </div>
             </div>
@@ -223,7 +245,7 @@
     </script>
     <script type="text/x-template" id="discuss">
         <section class="discuss">
-            <ul class="list">
+            <ul class="list" v-if="commentlist && commentlist.length > 0">
                 <li class="item" v-for="(item, index) in commentlist">
                     <div class="user-info clearfix">
                         <div class="left clearfix">
@@ -242,9 +264,16 @@
                     <div class="comments">
                         <span class="text">@{{ item.text }}</span>
                         <span class="imgs">
-            <img :src="img_item" v-for="(img_item, index) in item.imgs">
-          </span>
+                        <img :src="img_item" v-for="(img_item, index) in item.imgs">
+                      </span>
                     </div>
+                </li>
+            </ul>
+
+            <ul class="prolist" v-else>
+                <li class="noData">
+                    <img src="/images/no_data.png">
+                    <span class="no">当前没有相关数据哟~</span>
                 </li>
             </ul>
         </section>

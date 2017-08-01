@@ -4,22 +4,22 @@
 @section('content')
     <div class="cart-container" id="cart">
         <form id="cart-form">
-            <ul class="cart-list">
+            <ul class="cart-list" v-if="pro_list.length > 0">
                 <li class="cart-item" v-for="(item, index) in pro_list">
                     <label class="chk col">
                         <input type="checkbox" name="chk-items" class="chk-items" :value="item" v-model="ischeck" @change="selectedProduct(item)">
                     </label>
                     <a href="javascript:;" class="product col">
-          <span class="pro-item pro-img">
-            <img :src="item.img">
-          </span>
-                        <span class="pro-item pro-t">
-            <span class="t">
-              <span class="title overText">@{{ item.name }}</span>
-              <span class="spec">规格: @{{ item.specName }}</span>
-              <span class="price">￥@{{ item.promotionPrice }}<del>￥@{{ item.price }}</del></span>
-            </span>
-          </span>
+                      <span class="pro-item pro-img">
+                        <img :src="item.img">
+                      </span>
+                                    <span class="pro-item pro-t">
+                        <span class="t">
+                          <span class="title overText">@{{ item.name }}</span>
+                          <span class="spec">规格: @{{ item.specName }}</span>
+                          <span class="price">￥@{{ item.promotionPrice }}<del>￥@{{ item.price }}</del></span>
+                        </span>
+                      </span>
                     </a>
                     <div class="num-container col">
                         <div class="num">
@@ -34,6 +34,14 @@
                     </div>
                 </li>
             </ul>
+
+            <ul class="prolist" v-else>
+                <li class="noData">
+                    <img src="/images/no_data.png">
+                    <span class="no">当前没有相关数据哟~</span>
+                </li>
+            </ul>
+
             <section class="guess-container">
                 <div class="title">猜你喜欢</div>
                 <ul class="guess clearfix">

@@ -2,7 +2,7 @@
 @section("title", $title)
 @section('content')
     <div class="buy-container" id="buy_address" v-cloak>
-        <ul class="address-choose-list">
+        <ul class="address-choose-list" v-if="address && address.length > 0">
             <li v-for="(item, index) in address" @click="choose(item)">
                 <div class="item-container">
                     <div class="info">
@@ -11,6 +11,13 @@
                     </div>
                     <div class="addr"><span class="default-addr" v-if="item.isDefault == 1">[默认地址]</span>@{{ addressStr(item) }}</div>
                 </div>
+            </li>
+        </ul>
+
+        <ul class="prolist" v-else>
+            <li class="noData">
+                <img src="/images/no_data.png">
+                <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>
         <div class="address-btn">

@@ -32,9 +32,11 @@
                         </a>
                     </li>
                 </ul>
+
                 <ul class="prolist" v-else>
                     <li class="noData">
-                        没有数据......
+                        <img src="/images/no_data.png">
+                        <span class="no">当前没有相关数据哟~</span>
                     </li>
                 </ul>
             </div>

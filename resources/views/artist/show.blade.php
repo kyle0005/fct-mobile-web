@@ -48,7 +48,7 @@
                     </ul>
                 </div>
             </section>
-            <ul class="news" v-load-more="nextPage" type="1">
+            <ul class="news" v-load-more="nextPage" type="1" v-if="liveList.length > 0">
                 <li class="item" v-for="(item, index) in liveList">
                     <div class="text">@{{ item.content }}</div>
                     <div class="media">
@@ -61,13 +61,21 @@
                     </div>
                 </li>
             </ul>
+
+            <ul class="prolist" v-else>
+                <li class="noData">
+                    <img src="/images/no_data.png">
+                    <span class="no">当前没有相关数据哟~</span>
+                </li>
+            </ul>
+
             <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         </div>
     </script>
     {{--艺术家作品--}}
     <script type="text/x-template" id="works">
         <div class="tabs">
-            <ul class="pro-list">
+            <ul class="pro-list" v-if="workslist.length > 0">
                 <li v-for="(item, index) in workslist">
                     <div class="inner">
                         <div class="left">
@@ -84,12 +92,19 @@
                     </div>
                 </li>
             </ul>
+
+            <ul class="prolist" v-else>
+                <li class="noData">
+                    <img src="/images/no_data.png">
+                    <span class="no">当前没有相关数据哟~</span>
+                </li>
+            </ul>
         </div>
     </script>
     {{--艺术家评论--}}
     <script type="text/x-template" id="chat">
         <div class="tabs">
-            <ul class="chat-list" v-load-more="nextPage" type="1">
+            <ul class="chat-list" v-load-more="nextPage" type="1" v-if="chatlist.length > 0">
                 <li v-for="(item, index) in chatlist">
                     <div class="inner">
                         <div class="info">
@@ -107,6 +122,14 @@
                     </div>
                 </li>
             </ul>
+
+            <ul class="prolist" v-else>
+                <li class="noData">
+                    <img src="/images/no_data.png">
+                    <span class="no">当前没有相关数据哟~</span>
+                </li>
+            </ul>
+
             <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
             <section class="sub-chat">
                 <a href="javascript:;" class="sub" @click="pop()">

@@ -32,14 +32,14 @@
                       <img src="/images/resource/pro01.png">
                     </span>
                     <span class="center">
-                      <span class="title">表标题壶</span>
+                      <span class="title">方寸网</span>
                       <span class="t2">紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶</span>
                     </span>
                     <span class="right"><img src="/images/share.png"></span>
                 </a>
             </li>
         </ul>
-        <ul class="list" v-load-more="nextPage" type="1">
+        <ul class="list" v-load-more="nextPage" type="1" v-if="shareList.length > 0">
             <li v-for="(item, index) in shareList">
                 <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="link">
                     <span class="left">
@@ -56,6 +56,14 @@
                 </a>
             </li>
         </ul>
+
+        <ul class="prolist" v-else>
+            <li class="noData">
+                <img src="/images/no_data.png">
+                <span class="no">当前没有相关数据哟~</span>
+            </li>
+        </ul>
+
         <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>

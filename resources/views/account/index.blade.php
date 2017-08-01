@@ -2,7 +2,7 @@
 @section("title", $title)
 @section('content')
     <div class="walletaccount-container" id="walletaccount" v-cloak>
-        <ul class="list" v-load-more="nextPage">
+        <ul class="list" v-load-more="nextPage" v-if="walletaccountList && walletaccountList.length > 0">
             <li v-for="(item, index) in walletaccountList">
                 <div class="inner">
                     <div class="up clearfix">
@@ -12,6 +12,13 @@
                         <span>@{{ item.createTime }}</span><span class="pri">￥@{{ item.balanceAmount }}</span>
                     </div>
                 </div>
+            </li>
+        </ul>
+
+        <ul class="prolist" v-else>
+            <li class="noData">
+                <img src="/images/no_data.png">
+                <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>
         <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>

@@ -44,9 +44,9 @@ class Main
     public static function welcome()
     {
         $slides = [
-            ["image" => "images/resource/01.png", "url" => "javascript:;"],
-            ["image" => "images/resource/02.png", "url" => "javascript:;"],
-            ["image" => "images/resource/03.png", "url" => "javascript:;"],
+            ["image" => "/images/resource/01.png", "url" => "javascript:;"],
+            ["image" => "/images/resource/02.png", "url" => "javascript:;"],
+            ["image" => "/images/resource/03.png", "url" => "javascript:;"],
             //["image" => "images/resource/04.png", "url" => "javascript:;"],
         ];
 
@@ -84,12 +84,12 @@ class Main
         ];
     }
 
-    public static function weChatShare($shareUrl)
+    public static function weChatShare($title, $link, $imgUrl, $jsApiList = [])
     {
         $result = Base::http(
             env('API_URL') . '/mall/share/wechat',
             [
-                'share_url' => $shareUrl,
+                'share_url' => $link,
             ],
             [],
             'GET'
@@ -100,6 +100,10 @@ class Main
             throw new BusinessException($result->msg);
         }
 
+        $response = '';
+        if ($result->data) {
+            $response = 'wx.config('.json_encode($result->data, JSON_UNESCAPED_UNICODE).')';
+        }
         return $result;
     }
 }

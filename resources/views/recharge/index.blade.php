@@ -2,7 +2,7 @@
 @section("title", $title)
 @section('content')
     <div class="record-recharge-container" id="recordrecharge" v-cloak>
-        <ul class="list" v-load-more="nextPage">
+        <ul class="list" v-load-more="nextPage" v-if="chargeRecordList && chargeRecordList.length > 0">
             <li class="clearfix" v-for="(item, index) in chargeRecordList">
                 <div class="info">
                     <div class="up">
@@ -23,6 +23,14 @@
                 </div>
             </li>
         </ul>
+
+        <ul class="prolist" v-else>
+            <li class="noData">
+                <img src="/images/no_data.png">
+                <span class="no">当前没有相关数据哟~</span>
+            </li>
+        </ul>
+
         <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>

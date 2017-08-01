@@ -2,11 +2,18 @@
 @section("title", $title)
 @section('content')
     <div class="coupon-container" id="coupon" v-cloak>
-        <section class="content">
+        <section class="content" v-if="couponlist.length > 0">
             <div class="list-item" v-for="(item, index) in couponlist">
                 <coupons :couponitem="item" @pop="pop"></coupons>
             </div>
         </section>
+
+        <ul class="prolist" v-else>
+            <li class="noData">
+                <img src="/images/no_data.png">
+                <span class="no">当前没有相关数据哟~</span>
+            </li>
+        </ul>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
     <template id="pop">

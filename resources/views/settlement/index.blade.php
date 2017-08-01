@@ -7,7 +7,7 @@
                 <a href="javascript:;" class="link">@{{ item }}</a>
             </div>
         </div>
-        <div class="orders-list" v-load-more="nextPage" type="1">
+        <div class="orders-list" v-load-more="nextPage" type="1" v-if="commissionlist && commissionlist.length > 0">
             <div class="items" v-for="(item, index) in commissionlist">
                 <div class="info">
                     <div class="left">订单号：@{{ item.tradeId }}</div>
@@ -33,6 +33,14 @@
                 </div>
             </div>
         </div>
+
+        <ul class="prolist" v-else>
+            <li class="noData">
+                <img src="/images/no_data.png">
+                <span class="no">当前没有相关数据哟~</span>
+            </li>
+        </ul>
+
         <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
