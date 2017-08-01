@@ -5,22 +5,24 @@
     <div class="login-container" id="login" v-cloak>
         <div class="logo"></div>
         <form id="quickLogin">
-            <input type="hidden" name="open" :value="openid">
+            <input type="hidden" name="openid" :value="openid">
             <ul class="form-data">
                 <li class="items clearfix">
                     <div class="left"><i class="fa fa-mobile"></i></div>
                     <div class="right">
-                        <input type="text" class="q" placeholder="请输入手机号码" v-model.number="phoneNumber"/>
+                        <input name="cellphone" type="text" class="q" placeholder="请输入绑定手机号码" v-model.number="phoneNumber"/>
                         <div class="code-container">
-                            <a name="" @click.prevent="getVerifyCode" class="get-code" :class="{right_phone_number:rightPhoneNumber}" v-show="!computedTime">获取验证码</a>
-                            <a class="get-code" @click.prevent v-show="computedTime">已发送({{computedTime}}s)</a>
+                            <a @click.prevent="getVerifyCode"
+                               class="get-code" :class="{right_phone_number:rightPhoneNumber}"
+                               v-show="!computedTime">获取验证码</a>
+                            <a class="get-code" @click.prevent v-show="computedTime">已发送(@{{computedTime}}s)</a>
                         </div>
                     </div>
                 </li>
                 <li class="items clearfix">
-                    <div class="left"><img src="public/images/valicode.png"></div>
+                    <div class="left"><img src="/images/valicode.png"></div>
                     <div class="right">
-                        <input type="text" class="val-code" placeholder="请输入验证码" name="mobileCode"
+                        <input name="captcha" type="text" class="val-code" placeholder="请输入验证码"
                                maxlength="6" v-model="mobileCode">
                     </div>
                 </li>
@@ -34,7 +36,7 @@
     <template id="pop">
         <div class="alet_container">
             <section class="tip_text_container">
-                <div class="tip_text">{{ msg }}</div>
+                <div class="tip_text">@{{ msg }}</div>
                 <!--<div class="confrim" @click="close">确认</div>-->
             </section>
         </div>
@@ -42,10 +44,10 @@
 @endsection
 @section('javascript')
     <script>
-        var config = {
-            "openid": "{{ $openid }}",
-            "bindUrl": "{{ url('') }}",
-            "smsUrl": ""
+        config.openid = "{{ $openid }}";
+        var apis = {
+            "bindUrl": "{{ url('oauth/bind') }}",
+            "smsUrl": "{{ url('send-captcha') }}"
         };
     </script>
     <script src="/js/bind.js"></script>

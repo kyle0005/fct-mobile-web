@@ -40,14 +40,17 @@ class MemberOAuth
         return $result->data;
     }
 
-    public static function saveOAuth($code)
+    public static function saveOAuth($code, $ip)
     {
+        $expireDay = 3;
 
         $result = Base::http(
             env('API_URL') . sprintf('%s/callback', self::$resourceUrl),
             [
                 'code' => $code,
                 'platform' => env('WEIXIN_PLATFORM'),
+                'ip' => $ip,
+                'expire_day' => $expireDay,
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'

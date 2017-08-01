@@ -39,7 +39,7 @@ class MemberController extends BaseController
 
         try
         {
-            $result = MemberOAuth::saveOAuth($code);
+            $result = MemberOAuth::saveOAuth($code, $request->ip());
             if ($result && $result->memberId > 0)
                 $redirectUrl = $this->getRedirectSourceUrl();
             else
