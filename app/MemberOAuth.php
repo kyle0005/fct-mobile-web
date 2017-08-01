@@ -17,12 +17,12 @@ class MemberOAuth
 
     public static function getURL()
     {
-        $callback = url('callback');
+        $callback = url('oauth/callback');
 
         $result = Base::http(
             env('API_URL') . sprintf('%s', self::$resourceUrl),
             [
-                'callback_url' => urlencode($callback),
+                'callback_url' => $callback,
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
