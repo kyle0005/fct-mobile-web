@@ -9,6 +9,7 @@
 namespace App;
 
 
+use App\Exceptions\BusinessException;
 use Illuminate\Support\Facades\Cookie;
 use Ramsey\Uuid\Uuid;
 
@@ -146,6 +147,26 @@ class FctCommon
             return url('/');
 
         return '';
+    }
+
+    public static function weChatShare($title, $shareUrl, $desc, $imgUrl)
+    {
+        if (!$title) return '';
+        if (!$imgUrl) return '';
+        if (!$shareUrl) return '';
+        try
+        {
+            $result = Main::weChatShare($title, $shareUrl, $desc, $imgUrl);
+            if ($result)
+            {
+                return '<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script><script>'.$result.'</script>';
+            }
+            return '';
+        }
+        catch (BusinessException $e)
+        {
+            return "";
+        }
     }
 
 }

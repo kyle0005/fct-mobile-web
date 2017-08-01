@@ -20,6 +20,7 @@ class Authenticate
         if (Member::getAuth())
             return $next($request);
 
+        Member::cleanAuth();
         if ($request->ajax())
         {
             return json_encode([

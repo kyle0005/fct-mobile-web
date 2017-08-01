@@ -84,7 +84,7 @@ class Main
         ];
     }
 
-    public static function weChatShare($title, $link, $imgUrl, $jsApiList = [])
+    public static function weChatShare($title, $link, $desc, $imgUrl, $jsApiList = [])
     {
         $result = Base::http(
             env('API_URL') . '/mall/share/wechat',
@@ -100,10 +100,47 @@ class Main
             throw new BusinessException($result->msg);
         }
 
-        $response = '';
-        if ($result->data) {
-            $response = 'wx.config('.json_encode($result->data, JSON_UNESCAPED_UNICODE).')';
+        $jsShares = [
+            'onMenuShareTimeline',
+            'onMenuShareAppMessage',
+            'onMenuShareQQ',
+            'onMenuShareWeibo',
+            'onMenuShareQZone',
+        ];
+        if (!$jsApiList)
+        {
+            $jsApiList = $jsShares;
         }
-        return $result;
+
+        $shareStr = '';
+        foreach ($jsShares as $value)
+        {
+            if (in_array($value, $jsApiList))
+            {
+                $desc = $value == 'onMenuShareTimeline' ? null : $desc;
+                $shareStr .= 'wx.'.$value.'('
+                    .self::getWeChatShareObject($title, $link, $desc, $imgUrl).');';
+            }
+        }
+        $response = '';
+        if ($shareStr && $result->data) {
+            $response .= 'wx.config(' . json_encode($result->data, JSON_UNESCAPED_UNICODE) . ')';
+            $response .= 'wx.error(function(res){console.log(res);});';
+            $response .= 'wx.checkJsApi(jsApiList:' . json_encode($jsApiList, JSON_UNESCAPED_UNICODE) . ', success:function(res){console.log(res);})';
+            $response .= 'wx.ready(function(){'.$shareStr.'});';
+        }
+
+        return $response;
+    }
+
+    public static function getWeChatShareObject($title, $link, $desc, $imgUrl)
+    {
+        $result = 'title:"'.$title.'",link:"'.$link.'",imgUrl:"'.$imgUrl.'"';
+        if (!is_null($desc)) {
+            $result .= ',desc:"'.$desc.'"';
+        }
+        $result .= 'success:function(){},cancel:function(){}';
+
+        return '{'.$result.'}';
     }
 }

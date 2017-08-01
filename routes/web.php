@@ -75,10 +75,6 @@ Route::group(['domain' => 'test.fangcuntang.com'], function ()
     Route::get('wiki', 'Mobile\WikiController@index');
         Route::get('wiki/item', 'Mobile\WikiController@show');
 
-    //share interface
-    Route::get('share/wechat', 'Mobile\MainController@weChatShare');
-
-
     /** 用户需要登录后操作 */
     Route::group(['middleware' => 'auth'], function ()
     {

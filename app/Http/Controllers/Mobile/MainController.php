@@ -53,6 +53,7 @@ class MainController extends BaseController
 
             return view('index', [
                 'title' => '方寸网',
+                'shareUrl' => $shareUrl,
                 'categories' => ProductCategory::getCategories(),
                 'levels' =>  $result->goodsGradeList,
                 'products' => $result->pagination->entries,
@@ -113,24 +114,6 @@ class MainController extends BaseController
     {
 
         return view('express');
-    }
-
-    public function weChatShare(Request $request)
-    {
-        $shareUrl = $request->get('share_url', '');
-        if (!$shareUrl)
-        {
-            return '';
-        }
-        try
-        {
-            $result = Main::weChatShare($shareUrl);
-            return json_encode($result, JSON_UNESCAPED_UNICODE);
-        }
-        catch (BusinessException $e)
-        {
-            return "";
-        }
     }
 
     public function downloadApp(Request $request)
