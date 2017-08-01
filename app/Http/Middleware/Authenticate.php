@@ -25,7 +25,7 @@ class Authenticate
         {
             return json_encode([
                 'code' => 404,
-                'message' => '未登录，请登录后再执行操作',
+                'message' => '登录授权已过期，请重新登录',
                 'url' => url('login'),
                 'data' => [],
             ], JSON_UNESCAPED_UNICODE);

@@ -102,6 +102,11 @@ class BaseController extends Controller
      */
     protected function autoReturn($message, $url = null, $code = 404, $extras = null)
     {
+        if ($message == 'loginExpire') {
+
+            $message = '登录授权已过期，请重新登录';
+            Member::cleanAuth();
+        }
         if (request()->ajax()) {
             return json_encode([
                 'code' => $code,
