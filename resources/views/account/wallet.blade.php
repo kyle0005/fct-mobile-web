@@ -12,8 +12,10 @@
         <section class="nav clearfix">
             <div class="text">实名认证</div>
             <div class="btn-container">
-            @if ($member->authStatus)
+            @if ($member->authStatus == 2)
                 <a href="javascript:;" class="btn">已认证</a>
+            @elseif ($member->authStatus == 1)
+                    <a href="javascript:;" class="btn">审核中</a>
             @else
                 <a href="{{ url('my/account/real-auth') }}" class="btn">申请认证</a>
             @endif
