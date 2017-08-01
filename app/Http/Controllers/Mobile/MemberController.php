@@ -45,7 +45,8 @@ class MemberController extends BaseController
             else
                 $redirectUrl = $this->getRedirectSourceUrl();
 
-            return $this->returnAjaxSuccess(($result ? '授权成功' : '授权完成,去绑定手机'), $redirectUrl);
+            return redirect($redirectUrl);
+            //return $this->returnAjaxSuccess(($result ? '授权成功' : '授权完成,去绑定手机'), $redirectUrl);
         } catch (BusinessException $e) {
 
             return $this->autoReturn($e->getMessage());
