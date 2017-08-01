@@ -262,7 +262,14 @@ class Member
             $member = Cache::has($token) && Cache::get($token) ? Cache::get($token) : false;
             if (!$member)
             {
-                $member = self::getMemberByToken($token);
+                try
+                {
+                    $member = self::getMemberByToken($token);
+                }
+                catch (BusinessException $e)
+                {
+                    return false;
+                }
                 if ($member)
                 {
                     $expire = 1440;//intval((intval($member->expireTime / 1000) - time()) / 60);
