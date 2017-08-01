@@ -99,5 +99,7 @@ class Main
         {
             throw new BusinessException($result->msg);
         }
+
+        return $result;
     }
 }
