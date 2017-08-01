@@ -51,7 +51,7 @@ class Product
             "comment" => $product->name . '--' . url('product/' . $product->id) . '"}',
         ];
         return [
-            'title' => (isset($product->name) && $product->name ? $product->name : '产品详情') . '方寸网',
+            'title' => (isset($product->name) && $product->name ? $product->name : '产品详情'),
             'categories' => ProductCategory::getCategories(),
             'product' => $product,
             'chat_url' => 'https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid='

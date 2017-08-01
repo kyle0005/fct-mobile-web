@@ -27,7 +27,7 @@ class ShoppingCart
         }
 
         return [
-            'title' => '购物车 - 方寸网',
+            'title' => '购物车',
             'carts' => json_encode($result->data->cartList, JSON_UNESCAPED_UNICODE),
             'likes' => json_encode($result->data->likeList, JSON_UNESCAPED_UNICODE),
         ];

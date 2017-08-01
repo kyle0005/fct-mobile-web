@@ -105,7 +105,7 @@ class MainController extends BaseController
         }
 
         return view('coupon.new', [
-            'title' => '优惠券列表 - 方寸网',
+            'title' => '优惠券列表',
             'coupons' => $result,
         ]);
     }

@@ -35,7 +35,7 @@ class Artist
         $pagination = Base::pagination($result->data, $pageSize);
 
         return [
-            'title' => '签约艺人 - 方寸网',
+            'title' => '签约艺人',
             'entries' => $pagination->entries,
             //'pager' => $pagination->pager,
         ];
@@ -60,7 +60,7 @@ class Artist
         $artist->dynamicList = Base::pagination($artist->dynamicList, $pageSize);
 
         return [
-            'title' => (isset($artist->name) && $artist->name ? $artist->name : '签约艺人详情') . ' - 方寸网',
+            'title' => (isset($artist->name) && $artist->name ? $artist->name : '签约艺人详情'),
             'artist' => $artist,
             'categories' => ProductCategory::getCategories(),
         ];
