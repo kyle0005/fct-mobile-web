@@ -139,7 +139,7 @@ class Main
         if (!is_null($desc)) {
             $result .= ',desc:"'.$desc.'"';
         }
-        $result .= 'success:function(){},cancel:function(){}';
+        $result .= ',success:function(){},cancel:function(){}';
 
         return '{'.$result.'}';
     }
