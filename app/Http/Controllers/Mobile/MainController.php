@@ -49,6 +49,8 @@ class MainController extends BaseController
             if ($shopId > 0) {
                 $this->setShopId();
                 $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
+            } else {
+                $shareUrl .= '/';
             }
 
             return view('index', [
