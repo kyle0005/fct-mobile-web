@@ -86,10 +86,16 @@ class Main
 
     public static function weChatShare($title, $link, $desc, $imgUrl, $jsApiList = [])
     {
+        $locationUrl = request()->url();
+        if (!request()->path())
+        {
+            $locationUrl .= '/';
+        }
+
         $result = Base::http(
             env('API_URL') . '/mall/share/wechat',
             [
-                'share_url' => request()->url(),
+                'share_url' => $locationUrl,
             ],
             [],
             'GET'
