@@ -90,7 +90,7 @@
                 </label>
             </section>
             <footer class="foot">
-                <div class="pri">应付:￥@{{ totalPrice }}</div>
+                <div class="pri">应付：￥@{{ totalPrice }}</div>
                 <div class="sub">
                     <a href="javascript:;" class="sub" @click="pay()">我要付款</a>
                 </div>
