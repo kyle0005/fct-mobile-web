@@ -119,6 +119,7 @@
     </div>
 @endsection
 @section('javascript')
+    {!! \App\FctCommon::weChatShare($title, $shareUrl, '', '/images/logo.png') !!}
     <script src="/js/video.js"></script>
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
