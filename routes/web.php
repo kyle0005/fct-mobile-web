@@ -14,11 +14,11 @@
 use Illuminate\Support\Facades\Route;
 
 /** 不用登录页面 */
-Route::group(['domain' => 'www.fangcun.com'], function () {
+Route::group(['domain' => env('PC_DOMAIN', 'www.fangcun.com')], function () {
     Route::get('/', 'PC\MainController@index');
 });
 
-Route::group(['domain' => 'test.fangcuntang.com'], function ()
+Route::group(['domain' => env('MOBILE_DOMAIN', 'test.fangcuntang.com')], function ()
 {
     //首页
     Route::get('/', 'Mobile\MainController@index');
