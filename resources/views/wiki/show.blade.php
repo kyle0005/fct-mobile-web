@@ -7,18 +7,20 @@
 
         <div class="tabs">
             <section class="pug-container">
-                {{ $entry->description }}
+                {!! $entry->description !!}
             </section>
             <section class="spec">
                 <ul class="others">
+                @if ($entry->productList)
                 @foreach($entry->productList as $product)
                     <li>
-                        <a href="javascript:;" class="item">
+                        <a href="{{ url('products/'. $product->id) }}" class="item">
                             <img src="{{ $product->defaultImage }}">
                             <span class="p-title">{{ $product->name }}</span>
                         </a>
                     </li>
                 @endforeach
+                @endif
                 </ul>
             </section>
         </div>

@@ -36,11 +36,11 @@
                 </div>
                 <div class="address">收货地址：@{{ order_detail.orderReceiver.province + "&nbsp;" + order_detail.orderReceiver.city + "&nbsp;" +  order_detail.orderReceiver.region + "&nbsp;" + order_detail.orderReceiver.address }}</div>
             </div>
-            <div class="express invoice">
+            <div class="express invoice" v-if="order_detail.status == 3">
                 <a href="javascript:;" class="link">
-        <span class="img-container item">
-            <img src="/images/order_invoice.png">
-          </span>
+                    <span class="img-container item">
+                        <img src="/images/order_invoice.png">
+                      </span>
                     <span class="item t">申请发票</span>
                     <span class="wei-arrow-right"></span>
                 </a>
@@ -70,7 +70,7 @@
         <section class="order-detail">
             <span v-if="order_detail.orderId">订单编号：@{{ order_detail.orderId }}<br></span>
             <span v-if="order_detail.payOrderId">支付单号：@{{ order_detail.payOrderId }}<br></span>
-            <span v-if="order_detail.payName">支付方式：@{{ order_detail.payName }}<br></span>
+            <span v-if="order_detail.payName">支付方式：@{{ order_detail.payName }}（@{{ order_detail.status == 0 || order_detail.status == 4 ? '未付款' : '已付款' }}）<br></span>
             <span v-if="order_detail.createTime">创建时间：@{{ order_detail.createTime }}<br></span>
             <span v-if="order_detail.payTime">付款时间：@{{ order_detail.payTime }}<br></span>
             <span v-if="order_detail.expiresTime">发货时间：@{{ order_detail.expiresTime }}<br></span>
