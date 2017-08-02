@@ -99,8 +99,8 @@ class Main
         {
             throw new BusinessException($result->msg);
         }
-
-        $jsShares = [
+return 'wx.config(' . json_encode($result->data, JSON_UNESCAPED_UNICODE) . ');';
+/*        $jsShares = [
             'onMenuShareTimeline',
             'onMenuShareAppMessage',
             'onMenuShareQQ',
@@ -124,13 +124,13 @@ class Main
         }
         $response = '';
         if ($shareStr && $result->data) {
-            $response .= 'wx.config(' . json_encode($result->data, JSON_UNESCAPED_UNICODE) . ')';
+            $response .= 'wx.config(' . json_encode($result->data, JSON_UNESCAPED_UNICODE) . ');';
             $response .= 'wx.error(function(res){console.log(res);});';
             $response .= 'wx.checkJsApi(jsApiList:' . json_encode($jsApiList, JSON_UNESCAPED_UNICODE) . ', success:function(res){console.log(res);})';
             $response .= 'wx.ready(function(){'.$shareStr.'});';
         }
 
-        return $response;
+        return $response;*/
     }
 
     public static function getWeChatShareObject($title, $link, $desc, $imgUrl)

@@ -159,7 +159,7 @@ class FctCommon
             $result = Main::weChatShare($title, $shareUrl, $desc, $imgUrl);
             if ($result)
             {
-                return '<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script><script>'.$result.'</script>';
+                return $result;//'<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script><script>'.$result.'</script>';
             }
             return '';
         }
