@@ -100,6 +100,10 @@ class Main
             throw new BusinessException($result->msg);
         }
 
+        $weChatConfig = $result->data;
+        if (!$weChatConfig)
+            return '';
+
         $jsShares = [
             'onMenuShareTimeline',
             'onMenuShareAppMessage',
@@ -111,6 +115,7 @@ class Main
         {
             $jsApiList = $jsShares;
         }
+        $weChatConfig->jsApiList = $jsApiList;
 
         $shareStr = '';
         foreach ($jsShares as $value)
