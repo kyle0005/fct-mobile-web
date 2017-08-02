@@ -89,7 +89,7 @@ class Main
         $result = Base::http(
             env('API_URL') . '/mall/share/wechat',
             [
-                'share_url' => $link,
+                'share_url' => request()->url(),
             ],
             [],
             'GET'
