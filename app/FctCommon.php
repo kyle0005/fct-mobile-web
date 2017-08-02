@@ -158,6 +158,6 @@ class FctCommon
         $img = $share['img'];
         $desc = $share['desc'];
         return '<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>'
-            . '<script src="'.url('share/wechat')."?title=$title&link=$link&img=$img&desc=$desc&_rd=".rand(100000, 999999)."\" async></script>";
+            . '<script>' . Main::weChatShare($title, $link, $img, $desc) . '</script>';
     }
 }
