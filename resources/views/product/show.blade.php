@@ -190,26 +190,25 @@
             <ul class="artist-list clearfix" v-if="titleshow">
                 <li v-for="(item, index) in artist">
                     <a href="javascript:;" :class="{red:index===art_num}" @click="loadsingle(index)">
-        <span class="img-container">
-          <img :src="item.artist_photo">
-        </span>
-                        <span class="name-container">@{{ item.artist_name }}</span>
+                        <span class="img-container">
+                          <img :src="item.headPortrait">
+                        </span>
+                        <span class="name-container">@{{ item.name }}</span>
                     </a>
                 </li>
             </ul>
-            <div class='text-container'>
-                @{{ artistsingle.text }}
+            <div class='text-container' v-html="artistsingle.description">
             </div>
             <section class="comment">
                 <ul class="others">
-                    <li v-for="img_item in artistsingle.img">
-                        <a href="javascript:;" class="item">
-                            <img :src="img_item.url">
-                            <span class="p-title">@{{ img_item.name }}</span>
+                    <li v-for="p in artistsingle.products">
+                        <a :href="'{{ url('products') }}' + p.id" class="item">
+                            <img :src="p.defaultImage">
+                            <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
                 </ul>
-                <a :href="artistsingle.link" class="for-more">点击了解更多》</a>
+                <a href="{{ url('/') }}" class="for-more">点击了解更多》</a>
             </section>
         </div>
     </script>
@@ -218,22 +217,21 @@
             <ul class="pugs-list clearfix" v-if="titleshow">
                 <li v-for="(item, index) in pugs">
                     <a href="javascript:;" :class="{red:index===pug_num}" @click="loadsingle(index)">
-        <span class="img-container">
-          <img :src="item.pug_photo">
-        </span>
-                        <span class="name-container">@{{ item.pug_name }}</span>
+                        <span class="img-container">
+                          <img :src="item.image">
+                        </span>
+                        <span class="name-container">@{{ item.name }}</span>
                     </a>
                 </li>
             </ul>
-            <section class="pug-container" v-html="pugsingle.spec_content">
-                @{{ pugsingle.spec_content }}
+            <section class="pug-container" v-html="pugsingle.description">
             </section>
             <section class="spec">
                 <ul class="others">
-                    <li v-for="img_item in pugsingle.img">
-                        <a href="javascript:;" class="item">
-                            <img :src="img_item.url">
-                            <span class="p-title">@{{ img_item.name }}</span>
+                    <li v-for="p in pugsingle.products">
+                        <a :href="'{{ url('products') }}' + p.id" class="item">
+                            <img :src="p.defaultImage">
+                            <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
                 </ul>
