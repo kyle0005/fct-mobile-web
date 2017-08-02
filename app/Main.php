@@ -126,7 +126,7 @@ class Main
         if ($shareStr && $result->data) {
             $response .= 'wx.config(' . json_encode($result->data, JSON_UNESCAPED_UNICODE) . ');';
             $response .= 'wx.error(function(res){alert(res);});';
-            $response .= 'wx.checkJsApi({jsApiList:' . json_encode($jsApiList, JSON_UNESCAPED_UNICODE) . ', success:function(res){alert(res);});';
+            $response .= 'wx.checkJsApi({jsApiList:' . json_encode($jsApiList, JSON_UNESCAPED_UNICODE) . ', success:function(res){alert(res);}});';
             $response .= 'wx.ready(function(){'.$shareStr.'});';
         }
 
