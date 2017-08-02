@@ -56,7 +56,7 @@
                     <div class="spec">规格:@{{ item.specName }}</div>
                 </div>
                 <div class="pro-item price-container">
-                    <div class="price">￥@{{ item.price }}</div>
+                    <div class="price"><small class="pri-mark">￥</small>@{{ item.price }}</div>
                     <div class="num">&times; @{{ item.buyCount }}</div>
                     <a :href="'{{ url('my/refunds/create') }}?og_id=' + item.id"
                        class="after-sale" v-if="item.status == -1">申请售后</a>
@@ -65,7 +65,7 @@
             </div>
         </section>
         <section class="total">
-            <div class="inner">共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计：<span class="pri-color">￥@{{ order_detail.payAmount }}</span>（含运费）</div>
+            <div class="inner">共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计：<span class="pri-color"><small class="pri-mark">￥</small>@{{ order_detail.payAmount }}</span>（含运费）</div>
         </section>
         <section class="order-detail">
             <span v-if="order_detail.orderId">订单编号：@{{ order_detail.orderId }}<br></span>

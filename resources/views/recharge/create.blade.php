@@ -18,7 +18,7 @@
         <section class="choose">
             <div class="item" :class="{chose: index===tab_num}" v-for="(item, index) in charge_nums" @click="choose(item[Object.keys(item)[0]], Object.keys(item)[0], index)">
                 <a href="javascript:;" class="link" v-if="showText(item)">其他金额</a>
-                <a href="javascript:;" class="link" v-else>￥@{{ Object.keys(item)[0] }}</a>
+                <a href="javascript:;" class="link" v-else><small class="pri-mark">￥</small>@{{ Object.keys(item)[0] }}</a>
             </div>
         <!--    <div class="item" :class="{chose: index===tab_num}" @click="choose(charge.defaultGift, 0, tab_num)">
       <a href="javascript:;" class="link">其他金额@{{ item[Object.keys(item)[0]] }}</a>
@@ -26,7 +26,7 @@
         </section>
         <div class="tips">点我要充值，即表示您已同意方寸网<strong>《充返活动协议》</strong></div>
         <footer class="foot">
-            <div class="pri">应付:￥@{{ charge_num }}</div>
+            <div class="pri">应付:<small class="pri-mark">￥</small>@{{ charge_num }}</div>
             <div class="sub">
                 <a href="javascript:;" class="sub" @click="sub">我要充值</a>
             </div>

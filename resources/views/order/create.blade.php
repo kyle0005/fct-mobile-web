@@ -30,7 +30,7 @@
         <span class="container overText">
           <span class="name">@{{ item.name }}</span>
           <span class="spec">@{{ item.specName }}</span>
-          <span class="price">￥@{{ item.promotionPrice }}<del class="gray">￥@{{ item.price }}</del></span>
+          <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del class="gray"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
         </span>
       </span>
                     <span class="num">
@@ -47,7 +47,7 @@
                     </div>
                     <div class="right clearfix">
                         <div class="switch-container" v-if="!hasCoupon">
-                            <input class="switch" id="used_merit" name="used_merit" v-model="coupPri" @change="showCoup()" type="checkbox" unchecked>
+                            <input class="switch" id="used_merit" name="used_merit" v-model="coupPri" @change="showCoup()" type="checkbox" >
                         </div>
                     </div>
                 </div>
@@ -63,21 +63,21 @@
                 </div>
                 <div class="line">
                     <div class="left">
-                        订单积分<span class="coupon" v-if="!usePoint">(可用@{{ points }}积分)</span><span class="coupon" v-else>(已用@{{ usedPoint }}积分)</span>
+                        <span v-if="!usePoint">可用<span class="coupon">@{{ points }}</span>积分</span><span v-else>已用<span class="coupon">@{{ usedPoint }}</span>积分</span>
                     </div>
                     <div class="right clearfix">
                         <div class="switch-container">
-                            <input class="switch" id="used_points" name="used_points" @change="calculateAmount(1)" type="checkbox" unchecked>
+                            <input class="switch" id="used_points" name="used_points" @change="calculateAmount(1)" type="checkbox" >
                         </div>
                     </div>
                 </div>
                 <div class="line">
                     <div class="left">
-                        订单余额<span class="coupon" v-if="!useAccountAmount">(可用@{{ accountAmount }}余额)</span><span class="coupon" v-else>(已用@{{ usedAccountAmount }}余额)</span>
+                        <span v-if="!useAccountAmount">可用<span class="coupon">@{{ accountAmount }}</span>余额</span><span v-else>已用<span class="coupon">@{{ usedAccountAmount }}</span>余额</span>
                     </div>
                     <div class="right clearfix">
                         <div class="switch-container">
-                            <input class="switch" id="used_accountAmount" name="used_accountAmount" @change="calculateAmount(2)" type="checkbox" unchecked>
+                            <input class="switch" id="used_accountAmount" name="used_accountAmount" @change="calculateAmount(2)" type="checkbox" >
                         </div>
                     </div>
                 </div>
@@ -90,7 +90,7 @@
                 </label>
             </section>
             <footer class="foot">
-                <div class="pri">应付：￥@{{ totalPrice }}</div>
+                <div class="pri">应付：<small class="pri-mark">￥</small>@{{ totalPrice }}</div>
                 <div class="sub">
                     <a href="javascript:;" class="sub" @click="pay()">我要付款</a>
                 </div>

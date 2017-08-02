@@ -11,9 +11,9 @@
                 <div class="spec">规格: &nbsp;@{{ product.specName }}</div>
             </div>
             <div class="pro-item price-container">
-                <div class="price">￥@{{ product.price }}</div>
+                <div class="price"><small class="pri-mark">￥</small>@{{ product.price }}</div>
                 <div class="num">&times; @{{ product.buyCount }}</div>
-                <div class="total"><span class="inner">合计:<span class="pri">￥@{{ product.payAmount }}</span></span></div>
+                <div class="total"><span class="inner">合计:<span class="pri"><small class="pri-mark">￥</small>@{{ product.payAmount }}</span></span></div>
             </div>
         </section>
         <section class="options">

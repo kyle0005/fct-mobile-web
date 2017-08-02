@@ -17,12 +17,12 @@
                         <div class="spec">规格:@{{ item.specName }}</div>
                     </div>
                     <div class="pro-item price-container">
-                        <div class="price">￥@{{ item.price }}</div>
+                        <div class="price"><small class="pri-mark">￥</small>@{{ item.price }}</div>
                         <div class="num">&times; @{{ item.buyCount }}</div>
                     </div>
                 </div>
                 <div class="btn clearfix">
-                    <div class="txt">退款金额：￥@{{ item.payAmount }}</div>
+                    <div class="txt">退款金额：<small class="pri-mark">￥</small>@{{ item.payAmount }}</div>
                     <div class="btn-container">
                         <a :href="'{{ url('my/refunds') }}/' + item.id" class="black">查看详情</a>
                     </div>

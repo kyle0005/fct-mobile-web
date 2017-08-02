@@ -29,7 +29,7 @@
             <div class="coupon-item">
                 <div class="inner">
                     <div class="left">
-                        <span class="price">￥<span class="p">@{{ couponitem.amount }}</span></span>
+                        <span class="price"><small class="pri-mark">￥</small><span class="p">@{{ couponitem.amount }}</span></span>
                         <span class="condition" v-if="couponitem.fullAmount > 0">满@{{ couponitem.fullAmount }}元可用</span>
                         <span class="condition" v-else>无条件使用</span>
                     </div>

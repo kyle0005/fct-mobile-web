@@ -6,10 +6,10 @@
             <li v-for="(item, index) in walletaccountList">
                 <div class="inner">
                     <div class="up clearfix">
-                        <span>@{{ item.remark }}</span><span class="pri">￥@{{ item.amount }}</span>
+                        <span>@{{ item.remark }}</span><span class="pri"><small class="pri-mark">￥</small>@{{ item.amount }}</span>
                     </div>
                     <div class="down clearfix">
-                        <span>@{{ item.createTime }}</span><span class="pri">￥@{{ item.balanceAmount }}</span>
+                        <span>@{{ item.createTime }}</span><span class="pri"><small class="pri-mark">￥</small>@{{ item.balanceAmount }}</span>
                     </div>
                 </div>
             </li>

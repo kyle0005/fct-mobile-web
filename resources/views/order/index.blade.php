@@ -32,13 +32,13 @@
                             <div class="spec">规格:@{{ good.specName }}</div>
                         </div>
                         <div class="pro-item price-container">
-                            <div class="price">￥@{{ good.price }}</div>
+                            <div class="price"><small class="pri-mark">￥</small>@{{ good.price }}</div>
                             <div class="num">&times; @{{ good.buyCount }}</div>
                         </div>
                     </li>
                 </ul>
                 <div class="total">
-                    <div class="inner">共@{{ item.buyTotalCount }}件商品&nbsp;合计：￥@{{ item.payAmount }}（含运费）</div>
+                    <div class="inner">共@{{ item.buyTotalCount }}件商品&nbsp;合计：<small class="pri-mark">￥</small>@{{ item.payAmount }}（含运费）</div>
                 </div>
                 <div class="btn clearfix" v-if="item.status == 0">
                     <div class="btn-container">

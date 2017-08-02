@@ -35,7 +35,7 @@
                                 </div>
                                 <div class="info">
                                     <span class="title">@{{ product.name }}</span>
-                                    <span class="price">￥@{{ showprice }}</span>
+                                    <span class="price"><small class="pri-mark">￥</small>@{{ showprice }}</span>
                                     <span class="stock">库存:@{{ calstock }}</span>
                                 </div>
                             </div>
@@ -151,7 +151,7 @@
             <section class="product-context" v-if="!(product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy))">
                 <div class="title">@{{ product.name }}</div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
-                <div class="price">￥@{{ product.salePrice }}</div>
+                <div class="price"><small class="pri-mark">￥</small>@{{ product.salePrice }}</div>
             </section>
             <section class="product-context dis" v-else>
                 <div class="title">
@@ -160,7 +160,7 @@
                 </div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
                 <div class="price">
-                    ￥@{{ product.salePrice }}
+                    <small class="pri-mark">￥</small>@{{ product.salePrice }}
                     <del class="del-price">@{{ product.price }}</del>
                 </div>
             </section>

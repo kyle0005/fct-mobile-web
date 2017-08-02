@@ -17,7 +17,7 @@
                         <span class="t">
                           <span class="title overText">@{{ item.name }}</span>
                           <span class="spec" v-if="item.specName && item.specName != null">规格: @{{ item.specName }}</span>
-                          <span class="price">￥@{{ item.promotionPrice }}<del v-if="item.promotionPrice != item.price">￥@{{ item.price }}</del></span>
+                          <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del v-if="item.promotionPrice != item.price"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
                         </span>
                       </span>
                     </a>
@@ -50,7 +50,7 @@
                             <img :src="item.defaultImage">
                         </a>
                         <div class="v-title">@{{ item.name }}</div>
-                        <div class="v-price">￥@{{ item.price }}</div>
+                        <div class="v-price"><small class="pri-mark">￥</small>@{{ item.price }}</div>
                     </li>
                 </ul>
             </section>
@@ -64,7 +64,7 @@
                             </label>
                         </div>
                     </li>
-                    <li class="price">￥@{{ total_pri }}</li>
+                    <li class="price"><small class="pri-mark">￥</small>@{{ total_pri }}</li>
                     <li class="buy">
                         <a href="javascript:;" @click="buy()">立即购买</a>
                     </li>

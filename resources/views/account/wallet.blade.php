@@ -5,8 +5,8 @@
         <section class="top">
             <div class="inner">
                 <div>{{ $account->points }}<br>我的积分</div>
-                <div>￥ {{ $account->availableAmount }}<br>我的余额</div>
-                <div>￥ {{ $account->withdrawAmount }}<br>可提现额</div>
+                <div><small class="pri-mark">￥</small> {{ $account->availableAmount }}<br>我的余额</div>
+                <div><small class="pri-mark">￥</small> {{ $account->withdrawAmount }}<br>可提现额</div>
             </div>
         </section>
         <section class="nav clearfix">
