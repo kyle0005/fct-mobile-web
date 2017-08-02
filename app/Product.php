@@ -44,6 +44,10 @@ class Product
         {
             $product->discount->discountTime = FctCommon::secondToString($product->discount->discountTime);
         }
+        if ($product->hasCoupon)
+        {
+            $product->coupon_url = url('coupons/new?product_id=' . $product->id);
+        }
         $member = Member::getAuth();
         $chatDatas = [
             "name" => $member ? $member->userName : "",

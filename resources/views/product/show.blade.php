@@ -63,7 +63,9 @@
 
                                 </div>
                             </div>
-                            <a href="javascript:;" class="fork" @click="choose()">&nbsp;</a>
+                            <div class="fork-container" @click="choose()">
+                                <a href="javascript:;" class="fork" >&nbsp;</a>
+                            </div>
                         </div>
                         {{--<a href="javascript:;" class="sub" @click="buy()">确定</a>--}}
                         <ul class="nav">
