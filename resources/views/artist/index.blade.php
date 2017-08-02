@@ -20,6 +20,7 @@
     </div>
 @endsection
 @section('javascript')
+    {!! \App\FctCommon::weChatJs($share) !!}
     <script src="/js/swiper.js"></script>
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container" :class="swipeid">

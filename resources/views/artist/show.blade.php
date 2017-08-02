@@ -156,6 +156,8 @@
             <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
         </div>
     </script>
+
+    {!! \App\FctCommon::weChatJs($share) !!}
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.artist = {!! json_encode($artist, JSON_UNESCAPED_UNICODE) !!};

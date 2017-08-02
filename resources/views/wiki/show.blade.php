@@ -27,6 +27,7 @@
     </div>
 @endsection
 @section('javascript')
+    {!! \App\FctCommon::weChatJs($share) !!}
     <script>
         var config = {
             "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!}

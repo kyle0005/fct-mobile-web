@@ -8,8 +8,6 @@
 
 namespace App;
 
-
-use App\Exceptions\BusinessException;
 use Illuminate\Support\Facades\Cookie;
 use Ramsey\Uuid\Uuid;
 
@@ -149,24 +147,17 @@ class FctCommon
         return '';
     }
 
-    public static function weChatShare($title, $shareUrl, $desc, $imgUrl)
+    public static function weChatJs($share)
     {
-        if (!$title) return '';
-        if (!$imgUrl) return '';
-        if (!$shareUrl) return '';
-        try
-        {
-            $result = Main::weChatShare($title, $shareUrl, $desc, $imgUrl);
-            if ($result)
-            {
-                return $result;//'<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script><script>'.$result.'</script>';
-            }
-            return '';
-        }
-        catch (BusinessException $e)
-        {
-            return "";
-        }
+        if ((!isset($share['title'])) || !$share) return '';
+        if ((!isset($share['link'])) || !$share) return '';
+        if ((!isset($share['img'])) || !$share) return '';
+        if ((!isset($share['desc'])) || !$share) return '';
+        $title = $share['title'];
+        $link = $share['link'];
+        $img = $share['img'];
+        $desc = $share['desc'];
+        return '<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>'
+            . '<script src="'.url('share/wechat')."?title=$title&link=$link&img=$img&desc=$desc&_rd=".rand(100000, 999999)."\" async></script>";
     }
-
 }

@@ -27,6 +27,19 @@ class WikiController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
+        $shareUrl = url('wiki');
+        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
+        if ($shopId > 0) {
+            $this->setShopId();
+            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
+        }
+
+        $result['share'] = [
+            'title' => $result['title'],
+            'link' => $shareUrl,
+            'img' => 'http://test.fangcuntang.com/images/logo.png',
+            'desc' => '紫砂',
+        ];
         return view('wiki.index', $result);
     }
 
@@ -44,6 +57,20 @@ class WikiController extends BaseController
         {
             return $this->autoReturn($e->getMessage());
         }
+
+        $shareUrl = url('wiki');
+        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
+        if ($shopId > 0) {
+            $this->setShopId();
+            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
+        }
+
+        $result['share'] = [
+            'title' => $result['title'],
+            'link' => $shareUrl,
+            'img' => 'http://test.fangcuntang.com/images/logo.png',
+            'desc' => '紫砂',
+        ];
 
         return view('wiki.show', $result);
     }

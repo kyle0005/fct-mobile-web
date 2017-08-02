@@ -51,7 +51,7 @@
     </div>
 @endsection
 @section('javascript')
-    {!! \App\FctCommon::weChatShare($title, $shareUrl, '', '/images/logo.png') !!}
+    {!! \App\FctCommon::weChatJs($share) !!}
     <script>
         config.isindex = true;
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};

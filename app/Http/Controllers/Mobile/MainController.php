@@ -53,11 +53,16 @@ class MainController extends BaseController
 
             return view('index', [
                 'title' => '方寸网',
-                'shareUrl' => $shareUrl,
                 'categories' => ProductCategory::getCategories(),
                 'levels' =>  $result->goodsGradeList,
                 'products' => $result->pagination->entries,
                 'pager' => $result->pagination->pager,
+                'share' => [
+                    'title' => '方寸网',
+                    'link' => $shareUrl,
+                    'img' => 'http://test.fangcuntang.com/images/logo.png',
+                    'desc' => '方寸天地间',
+                ],
                 ]);
         }
     }
@@ -128,6 +133,31 @@ class MainController extends BaseController
         $redirectUrl = $request->get(env('REDIRECT_KEY'), '');
 
         return $this->errorPage($message, $redirectUrl);
+    }
+
+    public function weChatShare(Request $request)
+    {
+        $title = $request->get('title', '');
+        $link = $request->get('link', '');
+        $desc = $request->get('desc', '');
+        $img = $request->get('img', '');
+
+        if (!FctCommon::hasWeChat())
+            return '';
+
+        if (!$title) return '';
+        if (!$link) return '';
+        if (!$img) return '';
+
+        try
+        {
+            $result = Main::weChatShare($title, $link, $desc, $img);
+            return $result;
+        }
+        catch (BusinessException $e)
+        {
+            return "";
+        }
     }
 
 }

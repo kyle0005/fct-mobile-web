@@ -76,6 +76,7 @@
     </div>
 @endsection
 @section('javascript')
+    {!! \App\FctCommon::weChatJs($share) !!}
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.wikiCategories = {!! json_encode($wikiCategories, JSON_UNESCAPED_UNICODE) !!};

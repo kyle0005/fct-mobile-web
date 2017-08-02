@@ -33,13 +33,19 @@ class ProductController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        $shareUrl = url('/');
+        $shareUrl = url('products/'. $id);
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
             $this->setShopId();
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
-        $result['shareUrl'] = $shareUrl;
+
+        $result['share'] = [
+            'title' => $result['title'],
+            'link' => $shareUrl,
+            'img' => 'http://test.fangcuntang.com/images/logo.png',
+            'desc' => '方寸天地间',
+        ];
 
         return view('product.show', $result);
     }
@@ -91,5 +97,4 @@ class ProductController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
     }
-
 }
