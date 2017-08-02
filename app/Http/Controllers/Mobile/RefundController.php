@@ -28,7 +28,7 @@ class RefundController extends BaseController
             return $this->returnAjaxSuccess("成功", null, $result);
 
         return view('refund.index', [
-            'title' => '退款记录',
+            'title' => '售后记录',
             'refunds' => $result,
         ]);
     }
@@ -51,14 +51,27 @@ class RefundController extends BaseController
         }
 
         return view('refund.form', [
-            'title' => '申请退款',
+            'title' => '申请售后',
             'entity' => $result,
         ]);
     }
 
     public function show(Request $request, $id)
     {
-        return view('refund.show');
+
+        try
+        {
+            $result = Refund::getRefund($id);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
+        return view('refund.show', [
+            'title' => '售后详情',
+            'entity' => $result,
+        ]);
     }
 
     public function store(Request $request)

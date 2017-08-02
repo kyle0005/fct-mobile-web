@@ -66,35 +66,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.product = "";
-        var config = {
-            "product": {
-                "serviceType": "做工问题",
-                "refundReason": "仅退款",
-                "statusName": "处理中",
-                "orderGoods": {
-                    "name": "goods",
-                    "specName": "aaa",
-                    "img": "\/upload\/2017-06-08\/5f2a876426944448866798b34f08c43f.png",
-                    "buyCount": 1,
-                    "price": 8888,
-                    "payAmount": 7554.8,
-                },
-                "orderRefundMessage": [
-                    {
-                        "description": "asdfasdasdasda",
-                        "images": ['\/upload\/2017-06-08\/5f2a876426944448866798b34f08c43f.png'],
-                        "createTime": "2017-01-01"
-                    },
-                    {
-                        "description": "asdfasdasdasda",
-                        "images": ['asdad', 'asd'],
-                        "createTime": "2017-01-01"
-                    },
-
-                ]
-            }
-        }
+        config.product = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/aftersale_detail.js"></script>
 @endsection
