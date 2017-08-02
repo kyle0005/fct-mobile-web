@@ -16,8 +16,8 @@
                                     <span class="pro-item pro-t">
                         <span class="t">
                           <span class="title overText">@{{ item.name }}</span>
-                          <span class="spec">规格: @{{ item.specName }}</span>
-                          <span class="price">￥@{{ item.promotionPrice }}<del>￥@{{ item.price }}</del></span>
+                          <span class="spec" v-if="item.specName && item.specName != null">规格: @{{ item.specName }}</span>
+                          <span class="price">￥@{{ item.promotionPrice }}<del v-if="item.promotionPrice != item.price">￥@{{ item.price }}</del></span>
                         </span>
                       </span>
                     </a>
@@ -84,7 +84,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.cars = {!! $carts !!};
+        config.carts = {!! $carts !!};
         config.like_list = {!! $likes !!};
         config.buy_url = "{{ url('orders/create') }}";
     </script>
