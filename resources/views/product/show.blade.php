@@ -160,8 +160,8 @@
                 <div class="title">
                     @{{ product.name }}
                     <div class="discount-container">
-                        <span v-if="product.discount.canBuy">促销</span>
-                        <span v-else>秒杀</span>
+                        <span v-if="product.discount.canBuy">火热促销</span>
+                        <span v-else>疯狂秒杀</span>
                     </div>
                 </div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
@@ -174,14 +174,14 @@
             <section class="info">
                 <div class="item" v-if="product.hasDiscount">
                     <span class="left">优惠</span>
-                    <span class="right">@{{ product.discount.name }}
+                    <span class="right">
                         享受<span class="discount-color">@{{ product.discount.discountRate * 10 }}折</span>
                         (还剩<span class="discount-color">@{{ product.discount.discountTime }}</span>@{{ product.discount.hasBegin ? '结束' : '开始' }})</span>
                 </div>
 
                 <div class="item">
                     <span class="left">服务</span>
-                    <span class="right">&bull;&nbsp;顺丰包邮&emsp;&bull;&nbsp;30天无忧退货&emsp;&bull;&nbsp;48小时快速退货</span>
+                    <span class="right">&bull;&nbsp;顺丰包邮&emsp;&bull;&nbsp;30天无忧退货&emsp;&bull;&nbsp;保真保值</span>
                 </div>
                 <div class="item">
                     <span class="left">库存</span>
