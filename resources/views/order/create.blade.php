@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="line">
+                <div class="line" v-if="points > 0">
                     <div class="left">
                         <span v-if="!usePoint">可用<span class="coupon">@{{ points }}</span>积分</span><span v-else>已用<span class="coupon">@{{ usedPoint }}</span>积分</span>
                     </div>
@@ -71,7 +71,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="line">
+                <div class="line" v-if="accountAmount > 0">
                     <div class="left">
                         <span v-if="!useAccountAmount">可用<span class="coupon">@{{ accountAmount }}</span>余额</span><span v-else>已用<span class="coupon">@{{ usedAccountAmount }}</span>余额</span>
                     </div>
@@ -115,7 +115,7 @@
             "accountAmount": {{ $availableAmount }},    /* 余额,单位元 */
             "validateCoupon": '{!! $submitCouponProducts !!}',   /* 验证优惠券 */
             "has_terms": true,
-            "coupon_url": '{{ url('coupons') }}',
+            "coupon_url": '{{ url('my/coupons/use') }}',
             "pay_url": "{{ url('orders') }}"
         }
     </script>

@@ -64,6 +64,28 @@ class Coupon
         return true;
     }
 
+    /**使用优惠券
+     * @param $code
+     */
+    public static function useCoupon($code, $productInfo)
+    {
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/use', self::$resourceUrl),
+            [
+                'code' => $code,
+                'product_info' => $productInfo,
+            ],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()]
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return $result->data;
+    }
+
     /**是否可用优惠券
      * @param $productId
      * @return mixed

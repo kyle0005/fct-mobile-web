@@ -172,7 +172,7 @@ class ProductOrder
             'title' => '订单确认',
             'address' => json_encode($result->data->address ,JSON_UNESCAPED_UNICODE),
             'products' => json_encode($result->data->goodsList ,JSON_UNESCAPED_UNICODE),
-            'submitCouponProducts' => Crypt::encrypt(json_encode($result->data->couponGoodsList ,JSON_UNESCAPED_UNICODE)),
+            'submitCouponProducts' => Crypt::encryptString(json_encode($result->data->couponGoodsList ,JSON_UNESCAPED_UNICODE)),
             'coupon' => json_encode($result->data->coupon ,JSON_UNESCAPED_UNICODE),
             'points' => $result->data->points,
             'availableAmount' => $result->data->availableAmount,

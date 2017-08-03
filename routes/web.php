@@ -133,6 +133,7 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'test.fangcuntang.com')], functio
         Route::match(['get', 'post'], 'my/change-password', 'Mobile\MemberController@changePassword');
         //优惠券
         Route::resource('my/coupons', 'Mobile\CouponController', ['index', 'store', 'show']);
+        Route::post('my/coupons/use', 'Mobile\CouponController@useCoupon');
         //收藏
         Route::resource('my/favorites', 'Mobile\FavoriteController', ['index', 'store']);
 
