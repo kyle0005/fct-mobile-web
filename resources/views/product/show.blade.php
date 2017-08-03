@@ -151,7 +151,7 @@
             </section>
 
             {{--没有促销或有促销且不是秒杀，还未开始--}}
-            <section class="product-context" v-if="!(product.hasDiscount && product.discount.hasBegin && product.discount.canBuy)">
+            <section class="product-context" v-if="!(product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy))">
                 <div class="title">@{{ product.name }}</div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
                 <div class="price"><small class="pri-mark">￥</small>@{{ product.salePrice }}</div>
