@@ -58,7 +58,7 @@ class OrderController  extends BaseController
     {
         $productId = intval($request->get('product_id', 0));
         $buyNumber = intval($request->get('buy_number', 0));
-        $cartProducts = json_decode($request->get('product', ''), true);
+        $cartProducts = json_decode(FctCommon::fctBase64Decode($request->get('product', '')), true);
         $productInfo = [];
 
         //直接购买
