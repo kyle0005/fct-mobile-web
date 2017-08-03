@@ -51,7 +51,6 @@
     </div>
 @endsection
 @section('javascript')
-    {!! \App\FctCommon::weChatJs($share) !!}
     <script>
         config.isindex = true;
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
@@ -61,4 +60,17 @@
     <script src="/js/common/tools.js"></script>
     <script src="/js/head.js"></script>
     <script src="/js/main.js"></script>
+
+    {!! \App\FctCommon::weChatJs($share) !!}
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500500357");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 @endsection

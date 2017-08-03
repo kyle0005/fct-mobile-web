@@ -121,7 +121,6 @@
     </div>
 @endsection
 @section('javascript')
-    {!! \App\FctCommon::weChatJs($share) !!}
     <script src="/js/video.js"></script>
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
@@ -171,7 +170,7 @@
                     <span class="left">优惠</span>
                     <span class="right">@{{ product.discount.name }}、
                         享受<span class="discount-color">@{{ product.discount.discountRate * 10 }}折</span>
-                        (还剩<span class="discount-color">@{{ product.discount.discountTime }}天</span>@{{ product.discount.hasBegin ? '结束' : '开始' }})</span>
+                        (还剩<span class="discount-color">@{{ product.discount.discountTime }}</span>@{{ product.discount.hasBegin ? '结束' : '开始' }})</span>
                 </div>
                 <div class="item">
                     <span class="left">服务</span>
@@ -289,4 +288,17 @@
     <script src="/js/head.js"></script>
     <script src="/js/common/tools.js"></script>
     <script src="/js/detail.js"></script>
+
+    {!! \App\FctCommon::weChatJs($share) !!}
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500500357");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 @endsection

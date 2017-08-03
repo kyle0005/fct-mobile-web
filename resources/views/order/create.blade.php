@@ -81,13 +81,11 @@
                         </div>
                     </div>
                 </div>
-                <textarea name="remark" maxlength="150" v-model="remark" placeholder="告诉卖家您的要求吧...（限150个字）" class="msg"></textarea>
+                <textarea name="remark" maxlength="150" v-model="remark" placeholder="可以写上您的要求…（限150字内）" class="msg"></textarea>
             </section>
             <section class="agreement">
                 <input type="checkbox" id="agree" name="agree" v-model="has_terms" class="ck">
-                <label for="agree" class="agree-container">
-                    我已同意《方寸网服务协议》
-                </label>
+                <label for="agree" class="agree-container">我已认真阅读并同意方寸堂《服务协议》</label>
             </section>
             <footer class="foot">
                 <div class="pri">应付：<small class="pri-mark">￥</small>@{{ totalPrice }}</div>

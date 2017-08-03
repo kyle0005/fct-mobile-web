@@ -20,7 +20,6 @@
     </div>
 @endsection
 @section('javascript')
-    {!! \App\FctCommon::weChatJs($share) !!}
     <script src="/js/swiper.js"></script>
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container" :class="swipeid">
@@ -33,4 +32,17 @@
         config.artist = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/artist_list.js"></script>
+
+    {!! \App\FctCommon::weChatJs($share) !!}
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500500357");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 @endsection

@@ -157,7 +157,6 @@
         </div>
     </script>
 
-    {!! \App\FctCommon::weChatJs($share) !!}
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.artist = {!! json_encode($artist, JSON_UNESCAPED_UNICODE) !!};
@@ -170,4 +169,17 @@
     <script src="/js/head.js"></script>
     <script src="/js/video.js"></script>
     <script src="/js/artist.js"></script>
+
+    {!! \App\FctCommon::weChatJs($share) !!}
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500500357");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 @endsection
