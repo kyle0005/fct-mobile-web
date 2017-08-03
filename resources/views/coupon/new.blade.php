@@ -19,7 +19,7 @@
     <template id="pop">
         <div class="alet_container">
             <section class="tip_text_container">
-                <div class="tip_text">@@{{ msg }}</div>
+                <div class="tip_text">@{{ msg }}</div>
             </section>
         </div>
     </template>
@@ -54,7 +54,7 @@
             <div class="slide" :class="{open:show_detail}">
                 <ul class="pros clearfix">
                     <li v-for="(o, i) in couponitem.goods">
-                        <a :href="'{{ url('products') }}' + o.id" class="link">
+                        <a :href="'{{ url('products') }}/' + o.id" class="link">
                             <img :src="o.defaultImage">
                         </a>
                     </li>
