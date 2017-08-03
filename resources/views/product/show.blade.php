@@ -84,10 +84,10 @@
                                 <i class="fa fa-heart"></i>
                             </li>
                             <li class="add">
-                                <a href="javascript:;" @click="buy()">加入购物车</a>
+                                <a href="javascript:;" @click="buy(0)">加入购物车</a>
                             </li>
                             <li class="buy">
-                                <a href="javascript:;" @click="buy()">立即购买</a>
+                                <a href="javascript:;" @click="buy(1)">立即购买</a>
                             </li>
                         </ul>
                     </form>
@@ -109,11 +109,11 @@
                     <i class="fa fa-heart"></i>
                 </li>
                 <li class="add" :class="{ disabled: product.stockCount <= 0  || !(product.stockCount > 0 || product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy))}">
-                    <a href="javascript:;" @click="choose(0)" v-if="(product.stockCount > 0 || (product.stockCount > 0 && product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">加入购物车</a>
+                    <a href="javascript:;" @click="choose()" v-if="(product.stockCount > 0 || (product.stockCount > 0 && product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">加入购物车</a>
                     <a href="javascript:;" v-else>加入购物车</a>
                 </li>
                 <li class="buy" :class="{ disabled: product.stockCount <= 0  || !(product.stockCount > 0 || product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy))}">
-                    <a href="javascript:;" @click="choose(1)" v-if="(product.stockCount > 0 || (product.stockCount > 0 && product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">立即购买</a>
+                    <a href="javascript:;" @click="choose()" v-if="(product.stockCount > 0 || (product.stockCount > 0 && product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">立即购买</a>
                     <a href="javascript:;" v-else>立即购买</a>
                 </li>
             </ul>

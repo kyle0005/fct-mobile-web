@@ -1,6 +1,6 @@
 @extends("layout")
 @section('content')
-    <div class="no-container">
+    <div class="no-container" id="notfound" v-cloak>
         <head-top></head-top>
         <img src="/images/404.png" class="icon">
         <section class="info">
@@ -18,4 +18,5 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="/js/head.js"></script>
+    <script src="/js/notfound.js"></script>
 @endsection
