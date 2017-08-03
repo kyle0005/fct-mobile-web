@@ -108,12 +108,12 @@
                 <li class="collection" :class="{red:collected}"  @click="collection()">
                     <i class="fa fa-heart"></i>
                 </li>
-                <li class="add" :class="{ disabled: product.stockCount < 1 || (product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy)) }">
-                    <a href="javascript:;" @click="choose(0)" v-if="!(product.stockCount < 1 || (product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy)))">加入购物车</a>
+                <li class="add" :class="{ disabled: !(product.stockCount > 0 || (product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy))) }">
+                    <a href="javascript:;" @click="choose(0)" v-if="(product.stockCount > 0 || (product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">加入购物车</a>
                     <a href="javascript:;" v-else>加入购物车</a>
                 </li>
-                <li class="buy" :class="{ disabled: product.stockCount < 1 || (product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy)) }">
-                    <a href="javascript:;" @click="choose(1)" v-if="!(product.stockCount < 1 || (product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy)))">立即购买</a>
+                <li class="buy" :class="{ disabled: !(product.stockCount > 0 || (product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy))) }">
+                    <a href="javascript:;" @click="choose(1)" v-if="(product.stockCount > 0 || (product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">立即购买</a>
                     <a href="javascript:;" v-else>立即购买</a>
                 </li>
             </ul>
@@ -149,7 +149,9 @@
             <section class="video-container">
                 <video id="my-player" class="video-js vjs-big-play-centered" controls></video>
             </section>
-            <section class="product-context" v-if="!(product.hasDiscount && (product.discount.hasBegin || !product.discount.canBuy))">
+
+            {{--没有促销或有促销且不是秒杀，还未开始--}}
+            <section class="product-context" v-if="!(product.hasDiscount && product.discount.hasBegin && product.discount.canBuy)">
                 <div class="title">@{{ product.name }}</div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
                 <div class="price"><small class="pri-mark">￥</small>@{{ product.salePrice }}</div>
@@ -157,14 +159,18 @@
             <section class="product-context dis" v-else>
                 <div class="title">
                     @{{ product.name }}
-                    <div class="discount-container"><span v-if="product.discount && product.discount.canBuy">秒杀</span><span v-else>促销</span></div>
+                    <div class="discount-container">
+                        <span v-if="product.discount.canBuy">促销</span>
+                        <span v-else>秒杀</span>
+                    </div>
                 </div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
                 <div class="price">
-                    <small class="pri-mark">￥</small>@{{ product.salePrice }}
-                    <del class="del-price">@{{ product.price }}</del>
+                    <small class="pri-mark">￥</small>@{{ product.promotionPrice }}
+                    <del class="del-price">@{{ product.salePrice }}</del>
                 </div>
             </section>
+
             <section class="info">
                 <div class="item" v-if="product.hasDiscount">
                     <span class="left">优惠</span>
@@ -172,6 +178,7 @@
                         享受<span class="discount-color">@{{ product.discount.discountRate * 10 }}折</span>
                         (还剩<span class="discount-color">@{{ product.discount.discountTime }}</span>@{{ product.discount.hasBegin ? '结束' : '开始' }})</span>
                 </div>
+
                 <div class="item">
                     <span class="left">服务</span>
                     <span class="right">&bull;&nbsp;顺丰包邮&emsp;&bull;&nbsp;30天无忧退货&emsp;&bull;&nbsp;48小时快速退货</span>
@@ -180,6 +187,7 @@
                     <span class="left">库存</span>
                     <span class="right">@{{ calstock }}</span>
                 </div>
+
                 <div class="coupon" v-if="product.hasCoupon">
                     <a :href="product.coupon_url" class="get-coupon">领取优惠券</a>
                 </div>
