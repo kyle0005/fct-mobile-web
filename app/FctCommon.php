@@ -34,7 +34,17 @@ class FctCommon
             if ($time >= $key) {
                 $count = intval($time / $key);
                 $time = $time % $key;
-                $dateArr[] = $count . $value;
+                switch ($key)
+                {
+                    case 3600:
+                    case 86400:
+                        if ($count > 0)
+                            return $count . $value;
+                        break;
+                    default:
+                        $dateArr[] = $count . $value;
+                        break;
+                }
                 if (count($dateArr) == $i || !$time) {
 
                     break;
