@@ -72,7 +72,7 @@
             <div class="slide" :class="{open:show_detail}">
                 <ul class="pros clearfix">
                     <li v-for="(o, i) in couponitem.goods">
-                        <a href="javascript:" class="link">
+                        <a :href="'{{ url('products') }}' + o.id" class="link">
                             <img :src="o.defaultImage">
                         </a>
                     </li>
