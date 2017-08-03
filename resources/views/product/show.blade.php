@@ -158,7 +158,7 @@
             <section class="product-context dis" v-else>
                 <div class="title">
                     @{{ product.name }}
-                    <div class="discount-container"><span v-if="canBuy">秒杀</span><span v-else>促销</span></div>
+                    <div class="discount-container"><span v-if="product.discount && product.discount.canBuy">秒杀</span><span v-else>促销</span></div>
                 </div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
                 <div class="price">
