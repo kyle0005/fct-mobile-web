@@ -1,5 +1,5 @@
 @extends("layout")
-@section("title", $title)
+
 @section('content')
     <div class="record-recharge-container" id="recordrecharge" v-cloak>
         <ul class="list" v-load-more="nextPage" v-if="chargeRecordList && chargeRecordList.length > 0">

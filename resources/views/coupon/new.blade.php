@@ -1,7 +1,8 @@
 @extends("layout")
-@section("title", $title)
+
 @section('content')
     <div class="coupon-container" id="coupon" v-cloak>
+        <head-top></head-top>
         <section class="content" v-if="couponlist && couponlist.length > 0">
             <div class="list-item" v-for="(item, index) in couponlist">
                 <coupons :couponitem="item" @pop="pop"></coupons>
@@ -73,7 +74,9 @@
 @section('javascript')
     <script>
         config.getCouponUrl = "{{ url('my/coupons') }}";
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.couponlist = {!! json_encode($coupons, JSON_UNESCAPED_UNICODE) !!};
     </script>
+    <script src="/js/head.js"></script>
     <script src="/js/coupon.js"></script>
 @endsection

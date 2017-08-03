@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mobile;
 use App\FctCommon;
 use App\Http\Controllers\Controller;
 use App\Member;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
@@ -14,9 +15,14 @@ class BaseController extends Controller
     public function __construct(Request $request)
     {
         $member = $this->memberLogged(false);
+        //默认头像
+        $shareAvatar = env('STATIC_URL') . '/img/head.jpg';
         if ($member) {
+
+            $shareAvatar = $member->headPortrait;
             view()->share('member', $member);
         }
+        view()->share('shareAvatar', $shareAvatar);
     }
 
     /**设置分享id
@@ -135,6 +141,7 @@ class BaseController extends Controller
             'title' => 'Error',
             'message' => $message,
             'url' => $url,
+            'categories' => ProductCategory::getCategories(),
         ]);
     }
 

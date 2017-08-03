@@ -1,6 +1,6 @@
 @extends("layout")
 
-@section("title", $title)
+
 @section('content')
     <div class="index-container" id="welcome">
         <div class="btns">

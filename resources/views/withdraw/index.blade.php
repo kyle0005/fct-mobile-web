@@ -1,5 +1,5 @@
 @extends("layout")
-@section("title", $title)
+
 @section('content')
     <div class="walletaccount-container" id="withdrawalsrecord" v-cloak>
         <ul class="list" v-load-more="nextPage" v-if="withdrawalRecordList && withdrawalRecordList.length > 0">

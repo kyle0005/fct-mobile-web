@@ -1,6 +1,6 @@
 @extends("layout")
 
-@section("title", $title)
+
 @section('content')
     <div class="detail-container" id="detail" v-cloak>
         <head-top></head-top>

@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\ProductCategory;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
@@ -44,6 +45,11 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+
+        $shareAvatar = env('STATIC_URL') . '/img/head.jpg';
+        view()->share('shareAvatar', $shareAvatar);
+        view()->share('categories', ProductCategory::getCategories());
+
         return parent::render($request, $exception);
     }
 
@@ -60,6 +66,6 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect()->guest(route('login'));
+        return redirect(url('login'));
     }
 }

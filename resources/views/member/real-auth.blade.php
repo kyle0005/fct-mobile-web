@@ -1,5 +1,5 @@
 @extends("layout")
-@section("title", $title)
+
 @section('content')
     <div class="authentication-container" id="authentication" v-cloak>
         <section class="list">

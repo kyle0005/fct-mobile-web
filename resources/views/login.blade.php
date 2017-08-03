@@ -1,6 +1,6 @@
 @extends("layout")
 
-@section("title", $title)
+
 @section('content')
     <div class="login-container" id="login">
         <div class="logo"></div>

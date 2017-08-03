@@ -1,6 +1,6 @@
 @extends("layout")
 
-@section("title", $title)
+
 @section('content')
     <div class="cart-container" id="cart">
         <form id="cart-form">

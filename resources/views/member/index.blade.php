@@ -1,5 +1,4 @@
 @extends("layout")
-@section("title", $title)
 @section('content')
     <div class="user-container" id="user" v-cloak>
         <head-top></head-top>

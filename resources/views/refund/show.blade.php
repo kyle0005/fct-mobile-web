@@ -1,5 +1,5 @@
 @extends("layout")
-@section("title", $title)
+
 @section('content')
     <div class="aftersaledetail-container" id="aftersaledetail" v-cloak>
         <section class="product">

@@ -1,5 +1,5 @@
 @extends("layout")
-@section("title", $title)
+
 @section('content')
     <div class="orderreturn-container" id="orderreturn" v-cloak>
         <section class="product">

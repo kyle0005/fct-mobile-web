@@ -113,6 +113,7 @@ class MainController extends BaseController
 
         return view('coupon.new', [
             'title' => '优惠券列表',
+            'categories' => ProductCategory::getCategories(),
             'coupons' => $result,
         ]);
     }

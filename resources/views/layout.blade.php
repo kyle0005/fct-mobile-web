@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta charset="utf-8">
-    <title>{{ $title }}</title>
+    <title>{{ $title or "404" }}</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <!-- build:css styles/main.css -->
@@ -26,7 +26,9 @@
                     <img src="/images/logo.png">
                 </li>
                 <li class="user" @click="toLogin()">
-                    <i class="fa fa-user-circle-o"></i>
+                    <span class="img-container">
+                      <img src="{{ $shareAvatar }}">
+                    </span>
                 </li>
             </ul>
             <div class="aside" :class="{open:open,docked:docked}" @click="toggle()">
@@ -37,12 +39,11 @@
                             <i class="fa fa-angle-right"></i>
                         </li>
                     </ul>
-
                     <ul class="lines clearfix">
                         <li class="item">
                             <a href="{{ url('artists') }}">
                                 <img src="/images/menu1.png">
-                                <span>合作艺师</span>
+                                <span>守艺师</span>
                             </a>
                         </li>
                         <li class="item">
@@ -53,18 +54,6 @@
                         </li>
                         <li class="item">
                             <a href="javascript:;">
-                                <img src="/images/menu3.png">
-                                <span>个性定制</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="{{ url('download/app') }}">
-                                <img src="/images/menu4.png">
-                                <span>APP下载</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="{{ url('about') }}">
                                 <img src="/images/menu5.png">
                                 <span>品牌理念</span>
                             </a>
