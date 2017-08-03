@@ -168,7 +168,7 @@
             <section class="info">
                 <div class="item" v-if="product.hasDiscount">
                     <span class="left">优惠</span>
-                    <span class="right">@{{ product.discount.name }}、
+                    <span class="right">@{{ product.discount.name }}
                         享受<span class="discount-color">@{{ product.discount.discountRate * 10 }}折</span>
                         (还剩<span class="discount-color">@{{ product.discount.discountTime }}</span>@{{ product.discount.hasBegin ? '结束' : '开始' }})</span>
                 </div>
