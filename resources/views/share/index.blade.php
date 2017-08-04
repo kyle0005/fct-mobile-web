@@ -29,13 +29,13 @@
             <li>
                 <a href="{{ url('/') .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}" class="link">
                     <span class="left">
-                      <img src="/images/resource/pro01.png">
+                      <img src="{{ fct_cdn('/images/resource/pro01.png') }}">
                     </span>
                     <span class="center">
                       <span class="title">方寸网</span>
                       <span class="t2">紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶</span>
                     </span>
-                    <span class="right"><img src="/images/share.png"></span>
+                    <span class="right"><img src="{{ fct_cdn('/images/share.png') }}"></span>
                 </a>
             </li>
         </ul>
@@ -52,14 +52,14 @@
                       <span class="t2" v-if="item.commission instanceof Array">利润：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
                       <span class="t2" v-else>利润：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission }}</strong></span>
                     </span>
-                    <span class="right"><img src="/images/share.png"></span>
+                    <span class="right"><img src="{{ fct_cdn('/images/share.png') }}"></span>
                 </a>
             </li>
         </ul>
 
         <ul class="prolist" v-else>
             <li class="noData">
-                <img src="/images/no_data.png">
+                <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>

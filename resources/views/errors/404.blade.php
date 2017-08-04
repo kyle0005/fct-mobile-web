@@ -2,7 +2,7 @@
 @section('content')
     <div class="no-container" id="notfound" v-cloak>
         <head-top></head-top>
-        <img src="/images/404.png" class="icon">
+        <img src="{{ fct_cdn('/images/404.png') }}" class="icon">
         <section class="info">
             @if (isset($message) && $message)
                 <div class="title">{{ $message }}</div>

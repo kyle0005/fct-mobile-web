@@ -21,7 +21,7 @@
             </keep-alive>
         </div>
         <a href="javascript:;" class="top" @click="top()">
-            <img src="/images/top.png">
+            <img src="{{ fct_cdn('/images/top.png') }}">
         </a>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
         <footer class="foot-container">
@@ -32,7 +32,7 @@
                             <div class="choose" @click.stop="">
                                 <div class="clearfix">
                                     <div class="pro-img">
-                                        <img src="/images/resource/pro01.png">
+                                        <img src="{{ fct_cdn('/images/resource/pro01.png') }}">
                                     </div>
                                     <div class="info">
                                         <span class="title">@{{ product.name }}</span>
@@ -72,12 +72,12 @@
                             <ul class="nav">
                                 <li class="message" @click="">
                                     <a href="javascript:;" class="foot-link">
-                                        <img src="/images/msg.png">
+                                        <img src="{{ fct_cdn('/images/msg.png') }}">
                                     </a>
                                 </li>
                                 <li class="cart">
                                     <a href="cart.html" class="foot-link">
-                                        <img src="/images/cart.png">
+                                        <img src="{{ fct_cdn('/images/cart.png') }}">
                                         <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
                                     </a>
                                 </li>
@@ -97,12 +97,12 @@
                 <ul class="nav">
                     <li class="message" @click="">
                         <a href="{!! $chat_url !!}" class="foot-link">
-                            <img src="/images/msg.png">
+                            <img src="{{ fct_cdn('/images/msg.png') }}">
                         </a>
                     </li>
                     <li class="cart">
                         <a href="{{ url('carts') }}" class="foot-link">
-                            <img src="/images/cart.png">
+                            <img src="{{ fct_cdn('/images/cart.png') }}">
                             <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
                         </a>
                     </li>
@@ -282,7 +282,7 @@
 
             <ul class="prolist" v-else>
                 <li class="noData">
-                    <img src="/images/no_data.png">
+                    <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
                 </li>
             </ul>

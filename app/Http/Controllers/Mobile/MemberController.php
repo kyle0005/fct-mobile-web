@@ -358,6 +358,7 @@ class MemberController extends BaseController
             'memberBanner' => (object) [
                 'userName' =>$member->userName,
                 'headPortrait' => $member->headPortrait,
+                'shopId' => $member->shopId,
             ],
             'categories' => ProductCategory::getCategories(),
         ]);

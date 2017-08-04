@@ -48,7 +48,7 @@
                     </div>
                     <div class="item" v-if="uploadItem.length < maxNum">
                         <div class="inner">
-                            <img src="/images/upload.png">
+                            <img src="{{ fct_cdn('/images/upload.png') }}">
                             <input type="file" name="file" class="upload" @change="fileChange">
                         </div>
                     </div>

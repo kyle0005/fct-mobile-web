@@ -16,7 +16,7 @@
         }(document, window)</script>
 </head>
 <body>
-<img src="/img/fct/yw-share-cover.png" style="position:absolute;left:-99em">
+<img src="{{ fct_cdn('/img/fct/yw-share-cover.png') }}" style="position:absolute;left:-99em">
 <div id="ywBarX" class="yw-bar">
     <div class="yw-constr">
         <div class="yw-hd-bar">
@@ -123,21 +123,21 @@
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸网<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
                         <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
-                    <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"
+                    <div class="yw-app-img-x"><img src="{{ fct_cdn('/img/fct/fct-app.png') }}"
                                                    class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel2" class="yw-tab-panel-li ">
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸网<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
                         <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
-                    <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"
+                    <div class="yw-app-img-x"><img src="{{ fct_cdn('/img/fct/fct-app.png') }}"
                                                    class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel3" class="yw-tab-panel-li ">
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸网<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
                         <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
-                    <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"
+                    <div class="yw-app-img-x"><img src="{{ fct_cdn('/img/fct/fct-app.png') }}"
                                                    class="yw-app-img"></div>
                 </li>
             </ul>
@@ -151,7 +151,7 @@
                 <li class="yw-brand-desc-li in">
                     <p class="yw-brand-p">{{ $artist->intro }}</p>
                     <div class="brands-qrcode">
-                        <img src="/img/pc_qrcode.png">
+                        <img src="{{ fct_cdn('/img/pc_qrcode.png') }}">
                         <br><span>扫一扫，了解更多</span>
                     </div>
 
@@ -229,7 +229,7 @@
                 <p class="yw-footer-copyrightmore">增值电信业务经营许可证:沪B2-20080046-23</p>
                 <p class="yw-footer-copyrightmore">举报电话：13785633681 | 010-59357051</p></div>
             <div class="yw-footer-share">
-                <a href="/img/fct/yw-qrcode.png"
+                <a href="/img/fct/yw-qrcode.png') }}"
                    class="icon-share icon-share-weixin" title="阅文集团官方微信公众号" target="_blank">阅文集团官方微信公众号</a>
                 <a href="javascript:;" class="icon-share icon-share-weibo" title="阅文集团官方微博" target="_blank">阅文集团官方微博</a>
             </div>

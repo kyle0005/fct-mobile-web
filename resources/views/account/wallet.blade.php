@@ -25,32 +25,32 @@
             <ul class="list">
                 <li>
                     <a href="{{ url('my/account/recharge/create') }}" class="link">
-                        <img src="/images/wallet_recharge.png"><br>充值
+                        <img src="{{ fct_cdn('/images/wallet_recharge.png') }}"><br>充值
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('my/account/withdraw/create') }}" class="link">
-                        <img src="/images/wallet_withdrawals.png"><br>申请提现
+                        <img src="{{ fct_cdn('/images/wallet_withdrawals.png') }}"><br>申请提现
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('my/account/settlement') }}" class="link">
-                        <img src="/images/wallet_commission.png"><br>佣金结算
+                        <img src="{{ fct_cdn('/images/wallet_commission.png') }}"><br>佣金结算
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('my/account/recharge') }}" class="link">
-                        <img src="/images/wallet_record_c.png"><br>充值记录
+                        <img src="{{ fct_cdn('/images/wallet_record_c.png') }}"><br>充值记录
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('my/account/withdraw') }}" class="link">
-                        <img src="/images/wallet_record_w.png"><br>提现记录
+                        <img src="{{ fct_cdn('/images/wallet_record_w.png') }}"><br>提现记录
                     </a>
                 </li>
                 <li>
                     <a href="{{ url('my/account/logs') }}" class="link">
-                        <img src="/images/wallet_account.png"><br>账户明细
+                        <img src="{{ fct_cdn('/images/wallet_account.png') }}"><br>账户明细
                     </a>
                 </li>
             </ul>

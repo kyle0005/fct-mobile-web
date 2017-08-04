@@ -17,7 +17,7 @@
 
         <ul class="prolist" v-else>
             <li class="noData">
-                <img src="/images/no_data.png">
+                <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>

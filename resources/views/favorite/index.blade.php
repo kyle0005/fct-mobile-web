@@ -15,7 +15,7 @@
                 <div class="content">
                     <span class="title">@{{ item.name }}&emsp;<span v-if="title">@{{ item.title }}</span></span>
                     <a href="javascript:;" class="close" @click="del(item, index)">
-                        <img src="/images/close.png">
+                        <img src="{{ fct_cdn('/images/close.png') }}">
                     </a>
                 </div>
             </div>
@@ -23,7 +23,7 @@
 
         <ul class="prolist" v-else>
             <li class="noData">
-                <img src="/images/no_data.png">
+                <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>

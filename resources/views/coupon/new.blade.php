@@ -11,7 +11,7 @@
 
         <ul class="prolist" v-else>
             <li class="noData">
-                <img src="/images/no_data.png">
+                <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>
@@ -40,13 +40,13 @@
                         <div class="line">
                             <span class="date">@{{ couponitem.startTime }}-@{{ couponitem.endTime }}</span>
                             <span class="btn">
-              <a href="javascript:;" class="use-btn" @click="receive(couponitem.id)">点击领取</a>
-            </span>
+                              <a href="javascript:;" class="use-btn" @click="receive(couponitem.id)">点击领取</a>
+                            </span>
                         </div>
                         <div class="info clearfix">
                             <span class="text">详细信息</span>
                             <a href="javascript:;" class="pin" :class="{open:show_detail}" @click="showdetail()">
-                                <img src="/images/pin.png">
+                                <img src="{{ fct_cdn('/images/pin.png') }}">
                             </a>
                         </div>
                     </div>

@@ -30,7 +30,7 @@
         </section>
         <section class="shop-comment">
             <div class="top">
-                <img src="/images/logo2.png"><span>店铺评分</span>
+                <img src="{{ fct_cdn('/images/logo2.png') }}"><span>店铺评分</span>
             </div>
             <div class="context clearfix">
                 <div class="des">物流服务</div>
@@ -87,7 +87,7 @@
             </div>
             <div class="item" v-if="uploadItem.length < maxNum">
                 <div class="inner">
-                    <img src="/images/upload.png">
+                    <img src="{{ fct_cdn('/images/upload.png') }}">
                     <input type="file" name="file" class="upload" @change="fileChange">
                 </div>
             </div>

@@ -26,8 +26,8 @@
                                 </span>
                             </span>
                             <span class="ops">
-                              <img src="/images/clickAmount.png"><span>@{{ item.viewCount }}</span>
-                              <img src="/images/saleAmount.png"><span>@{{ item.commentCount }}</span>
+                              <img src="{{ fct_cdn('/images/clickAmount.png') }}"><span>@{{ item.viewCount }}</span>
+                              <img src="{{ fct_cdn('/images/saleAmount.png') }}"><span>@{{ item.commentCount }}</span>
                             </span>
                         </a>
                     </li>
@@ -35,7 +35,7 @@
 
                 <ul class="prolist" v-else>
                     <li class="noData">
-                        <img src="/images/no_data.png">
+                        <img src="{{ fct_cdn('/images/no_data.png') }}">
                         <span class="no">当前没有相关数据哟~</span>
                     </li>
                 </ul>

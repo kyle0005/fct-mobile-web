@@ -16,8 +16,8 @@
                             <span class="">默认地址</span>
                         </label>
                         <div class="options-container">
-                            <a href="javascript:;" @click="edit(item)"><img src="/images/edit.png">编辑</a>
-                            <a href="javascript:;" @click="del(item, index)"><img src="/images/del.png">删除</a>
+                            <a href="javascript:;" @click="edit(item)"><img src="{{ fct_cdn('/images/edit.png') }}">编辑</a>
+                            <a href="javascript:;" @click="del(item, index)"><img src="{{ fct_cdn('/images/del.png') }}">删除</a>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
 
         <ul class="prolist" v-else>
             <li class="noData">
-                <img src="/images/no_data.png">
+                <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>

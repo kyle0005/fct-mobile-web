@@ -5,14 +5,14 @@
         <section class="info">
             <div class="text">
       <span v-if="order_detail.status == 0">
-        <img src="/images/fork_w.png">待付款
+        <img src="{{ fct_cdn('/images/fork_w.png') }}">待付款
       </span>
                 <span v-if="order_detail.status !== 0 && order_detail.status !== 4">
-        <img src="/images/check_w.png">付款成功
+        <img src="{{ fct_cdn('/images/check_w.png') }}">付款成功
         <span class="status">@{{ order_detail.statusName }}</span>
       </span>
                 <span v-if="order_detail.status == 4">
-        <img src="/images/fork_w.png">订单关闭
+        <img src="{{ fct_cdn('/images/fork_w.png') }}">订单关闭
       </span>
             </div>
         </section>
@@ -20,7 +20,7 @@
             <div class="express" v-if="order_detail.orderReceiver.expressNO">
                 <a href="javascript:;" class="link">
         <span class="img-container item">
-            <img src="/images/order_transport.png">
+            <img src="{{ fct_cdn('/images/order_transport.png') }}">
           </span>
                     <span class="item t">@{{ order_detail.orderReceiver.expressPlatform }}(@{{ order_detail.orderReceiver.expressNO }})<br><span class="time">@{{ order_detail.orderReceiver.deliveryTime }}</span></span>
                     <span class="wei-arrow-right"></span>
@@ -28,7 +28,7 @@
             </div>
             <div class="addr">
                 <div class="img-container">
-                    <img src="/images/order_addr.png">
+                    <img src="{{ fct_cdn('/images/order_addr.png') }}">
                 </div>
                 <div class="addr-info">
                     <div class="item">收货人：@{{ order_detail.orderReceiver.name }}</div>
@@ -39,7 +39,7 @@
             <div class="express invoice" v-if="order_detail.status == 3">
                 <a href="javascript:;" class="link">
                     <span class="img-container item">
-                        <img src="/images/order_invoice.png">
+                        <img src="{{ fct_cdn('/images/order_invoice.png') }}">
                       </span>
                     <span class="item t">申请发票</span>
                     <span class="wei-arrow-right"></span>
@@ -78,7 +78,7 @@
         </section>
         <footer class="footer">
             <div class="inner">
-                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助" class="chat"><img src="/images/order_chat.png"></a>
+                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助" class="chat"><img src="{{ fct_cdn('/images/order_chat.png') }}"></a>
 {{--                <div class="del">
                     <a href="javascript:;">删除订单</a>
                 </div>--}}

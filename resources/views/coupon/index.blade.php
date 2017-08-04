@@ -11,7 +11,7 @@
             <div class="tips" v-if="couponcount > 0">
                 <a href="{{ url('coupons/new') }}" class="link">
                   <span class="img-container item">
-                    <img src="/images/coupon.png">
+                    <img src="{{ fct_cdn('/images/coupon.png') }}">
                   </span>
                     <span class="item t">您有<span class="num">@{{ couponcount }}</span>张待领取的优惠券哦</span>
                     <span class="wei-arrow-right"></span>
@@ -24,7 +24,7 @@
 
         <ul class="prolist" v-else>
             <li class="noData">
-                <img src="/images/no_data.png">
+                <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>
@@ -43,7 +43,8 @@
                 <div class="inner">
                     <div class="left" :class="{used: couponitem.auditStatus == 2 || couponitem.auditStatus == 3}">
                         <span class="price"><small class="pri-mark">￥</small><span class="p">@{{ couponitem.amount }}</span></span>
-                        <span class="condition">满@{{ couponitem.usingType }}元可用</span>
+                        <span class="condition" v-if="couponitem.fullAmount > 0">满@{{ couponitem.fullAmount }}元可用</span>
+                        <span class="condition" v-else>无条件使用</span>
                     </div>
                     <div class="right">
                         <div class="item">@{{ couponitem.name }}</div>
@@ -51,21 +52,21 @@
                         <div class="line">
                             <span class="date">@{{ couponitem.startTime }}-@{{ couponitem.endTime }}</span>
                             <span class="btn" v-if="couponitem.auditStatus == 0">
-              <a href="javascript:;" class="use-btn" @click="sub(couponitem.id)">立即使用</a>
-            </span>
+                              <a href="javascript:;" class="use-btn" @click="sub(couponitem.id)">立即使用</a>
+                            </span>
                         </div>
                         <div class="info clearfix">
                             <span class="text">详细信息</span>
                             <a href="javascript:;" class="pin" :class="{open:show_detail}" @click="showdetail()">
-                                <img src="/images/pin.png">
+                                <img src="{{ fct_cdn('/images/pin.png') }}">
                             </a>
                         </div>
                     </div>
                     <div class="used-bg" v-if="couponitem.auditStatus == 2">
-                        <img src="/images/used.png">
+                        <img src="{{ fct_cdn('/images/used.png') }}">
                     </div>
                     <div class="used-bg" v-if="couponitem.auditStatus == 3">
-                        <img src="/images/overdue.png">
+                        <img src="{{ fct_cdn('/images/overdue.png') }}">
                     </div>
                 </div>
             </div>

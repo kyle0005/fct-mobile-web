@@ -64,7 +64,7 @@
 
             <ul class="prolist" v-else>
                 <li class="noData">
-                    <img src="/images/no_data.png">
+                    <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
                 </li>
             </ul>
@@ -95,7 +95,7 @@
 
             <ul class="prolist" v-else>
                 <li class="noData">
-                    <img src="/images/no_data.png">
+                    <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
                 </li>
             </ul>
@@ -116,7 +116,7 @@
                         </div>
                         <div class="context">@{{ item.content }}</div>
                         <div class="reply-container" v-if="item.replyContent.length > 0">
-                            <div class="icon"><img src="/images/reply.png"></div>
+                            <div class="icon"><img src="{{ fct_cdn('/images/reply.png') }}"></div>
                             <div class="reply" v-for="(reply, index) in item.replyContent">@{{ reply.content }}</div>
                         </div>
                     </div>
@@ -125,7 +125,7 @@
 
             <ul class="prolist" v-else>
                 <li class="noData">
-                    <img src="/images/no_data.png">
+                    <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
                 </li>
             </ul>
@@ -134,7 +134,7 @@
             <section class="sub-chat">
                 <a href="javascript:;" class="sub" @click="pop()">
                     <span class="img">
-                      <img src="/images/reply_chat.png">
+                      <img src="{{ fct_cdn('/images/reply_chat.png') }}">
                     </span>
                     <span class="txt">请输入要表达的信息</span>
                 </a>
