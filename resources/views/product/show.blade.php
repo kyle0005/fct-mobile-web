@@ -160,7 +160,7 @@
             </section>
             <section class="product-context dis" v-else>
                 <div class="title">
-                    <div class="main">@{{ product.name }}</div>
+                    @{{ product.name }}
                     <div class="discount-container">
                         <span v-if="product.discount.canBuy">火热促销</span>
                         <span v-else>疯狂秒杀</span>
