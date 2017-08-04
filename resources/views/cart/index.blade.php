@@ -55,20 +55,22 @@
                 </ul>
             </section>
             <footer class="foot-container">
-                <ul class="nav">
-                    <li class="choose">
-                        <div class="chk-container">
-                            <label for="chooseall" class="text-container">
-                                <input type="checkbox" id="chooseall" name="chooseall"
-                                       class="chooseall" v-model="checkAll" @click="chooseall()"><span class="chosen">已选(@{{ choose_num }})</span>
-                            </label>
-                        </div>
-                    </li>
-                    <li class="price"><small class="pri-mark">￥</small>@{{ total_pri }}</li>
-                    <li class="buy">
-                        <a href="javascript:;" @click="buy()">立即购买</a>
-                    </li>
-                </ul>
+                <div class="inner">
+                    <ul class="nav">
+                        <li class="choose">
+                            <div class="chk-container">
+                                <label for="chooseall" class="text-container">
+                                    <input type="checkbox" id="chooseall" name="chooseall"
+                                           class="chooseall" v-model="checkAll" @click="chooseall()"><span class="chosen">已选(@{{ choose_num }})</span>
+                                </label>
+                            </div>
+                        </li>
+                        <li class="price"><small class="pri-mark">￥</small>@{{ total_pri }}</li>
+                        <li class="buy">
+                            <a href="javascript:;" @click="buy()">立即购买</a>
+                        </li>
+                    </ul>
+                </div>
             </footer>
         </form>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
