@@ -29,7 +29,7 @@
             </a>
             <div id="ywMnav" class="yw-nav"><a href="#copyright" class="yw-nav-a active">紫砂细作</a> <a href="#mobile"
                                                                                                      class="yw-nav-a">移动产品</a>
-                <a href="#brand" class="yw-nav-a">签约艺人</a> <a href="#news" class="yw-nav-a">新闻中心</a> <a href="#contact"
+                <a href="#brand" class="yw-nav-a">守艺人</a> <a href="#news" class="yw-nav-a">新闻中心</a> <a href="#contact"
                                                                                                         class="yw-nav-a">联系我们</a>
             </div>
         </div>
@@ -144,7 +144,7 @@
         </div>
     </div>
     <div id="brand" class="yw-brand">
-        <div class="yw-constr"><h3 class="yw-home-h3">签约艺人</h3>
+        <div class="yw-constr"><h3 class="yw-home-h3">守艺人</h3>
             <ul id="brandDescX" class="yw-brand-desc">
             @foreach($artists as $key => $artist)
             @if($key == 0)

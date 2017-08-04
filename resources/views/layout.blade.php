@@ -43,7 +43,7 @@
                         <li class="item">
                             <a href="{{ url('artists') }}">
                                 <img src="{{ fct_cdn('/images/menu1.png') }}">
-                                <span>守艺师</span>
+                                <span>守艺人</span>
                             </a>
                         </li>
                         <li class="item">
