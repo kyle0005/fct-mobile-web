@@ -214,7 +214,7 @@
             <section class="comment">
                 <ul class="others">
                     <li v-for="p in artistsingle.products">
-                        <a :href="'{{ url('products') }}' + p.id" class="item">
+                        <a :href="'{{ url('products') }}/' + p.id" class="item">
                             <img :src="p.defaultImage">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
@@ -241,7 +241,7 @@
             <section class="spec">
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
-                        <a :href="'{{ url('products') }}' + p.id" class="item">
+                        <a :href="'{{ url('products') }}/' + p.id" class="item">
                             <img :src="p.defaultImage">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
