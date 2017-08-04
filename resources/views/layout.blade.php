@@ -8,7 +8,7 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/app.css?_rd=2017">
     <!-- endbuild -->
 </head>
 <body>
