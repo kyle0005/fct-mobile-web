@@ -162,8 +162,8 @@
                 <div class="title">
                     @{{ product.name }}
                     <div class="discount-container">
-                        <span v-if="product.discount.canBuy">火热促销</span>
-                        <span v-else>疯狂秒杀</span>
+                        <span v-if="product.discount.canBuy">促销</span>
+                        <span v-else>秒杀</span>
                     </div>
                 </div>
                 <div class="vice-title">@{{ product.subTitle }}</div>
