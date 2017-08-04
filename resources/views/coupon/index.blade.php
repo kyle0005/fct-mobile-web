@@ -91,5 +91,5 @@
 
         }
     </script>
-    <script src="/js/coupon.js"></script>
+    <script src="{{ fct_cdn('/js/coupon.js') }}"></script>
 @endsection

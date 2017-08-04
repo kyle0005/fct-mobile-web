@@ -50,5 +50,5 @@
             "smsUrl": "{{ url('send-captcha') }}"
         };
     </script>
-    <script src="/js/bind.js"></script>
+    <script src="{{ fct_cdn('/js/bind.js') }}"></script>
 @endsection

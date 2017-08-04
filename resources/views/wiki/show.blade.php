@@ -32,9 +32,9 @@
             "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!}
         }
     </script>
-    <script src="/js/head.js"></script>
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
 
-    {!! \App\FctCommon::weChatJs($share) !!}
+    {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
         (function() {

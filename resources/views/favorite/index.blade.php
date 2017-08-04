@@ -28,6 +28,7 @@
             </li>
         </ul>
 
+        <p v-if="pager.next == 0" class="empty_data">没有更多了</p>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
     <template id="pop">
@@ -44,5 +45,5 @@
         config.collectionDel = "{{ url('my/favorites') }}";
         config.collection = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/collection.js"></script>
+    <script src="{{ fct_cdn('/js/collection.js') }}"></script>
 @endsection

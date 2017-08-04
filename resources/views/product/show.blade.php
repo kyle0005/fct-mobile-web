@@ -25,103 +25,105 @@
         </a>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
         <footer class="foot-container">
-            <div class="aside" :class="{open:open,docked:docked}" @click.prevent="choose()">
-                <div class="container">
-                    <form id="addcart">
-                        <div class="choose" @click.stop="">
-                            <div class="clearfix">
-                                <div class="pro-img">
-                                    <img src="/images/resource/pro01.png">
+            <div class="inner">
+                <div class="aside" :class="{open:open,docked:docked}" @click.prevent="choose()">
+                    <div class="container">
+                        <form id="addcart">
+                            <div class="choose" @click.stop="">
+                                <div class="clearfix">
+                                    <div class="pro-img">
+                                        <img src="/images/resource/pro01.png">
+                                    </div>
+                                    <div class="info">
+                                        <span class="title">@{{ product.name }}</span>
+                                        <span class="price"><small class="pri-mark">￥</small>@{{ showprice }}</span>
+                                        <span class="stock">库存:@{{ calstock }}</span>
+                                    </div>
                                 </div>
-                                <div class="info">
-                                    <span class="title">@{{ product.name }}</span>
-                                    <span class="price"><small class="pri-mark">￥</small>@{{ showprice }}</span>
-                                    <span class="stock">库存:@{{ calstock }}</span>
+                                <input id="pro_id" name="product_id" type="hidden" :value="product.id">
+                                <div v-if="product.specification.length > 0">
+                                    <input id="spec_id" name="spec_id" type="hidden" :value="specs_single.id">
+                                </div>
+                                <ul class="spec" v-if="product.specification.length > 0">
+                                    <li class="item" v-for="(item, index) in product.specification" :class="{active: index===specs_num}" @click="footLinkTo(index)">
+                                        @{{ item.name }}
+                                    </li>
+                                </ul>
+                                <div class="num">
+                                    <div class="item"><span class="name">数量</span></div>
+                                    <div class="item">
+                                        <div class="num-container">
+                                            <a href="javascript:;" :class="{dis:min}" @click="minus()">
+                                                <i class="fa fa-minus"></i>
+                                            </a>
+                                            <input type="text" name="buy_number" class="numbers" v-model="input_val">
+                                            <a href="javascript:;" @click="add()" :class="{dis:max}">
+                                                <i class="fa fa-plus"></i>
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="fork-container" @click="choose()">
+                                    <a href="javascript:;" class="fork" >&nbsp;</a>
                                 </div>
                             </div>
-                            <input id="pro_id" name="product_id" type="hidden" :value="product.id">
-                            <div v-if="product.specification.length > 0">
-                                <input id="spec_id" name="spec_id" type="hidden" :value="specs_single.id">
-                            </div>
-                            <ul class="spec" v-if="product.specification.length > 0">
-                                <li class="item" v-for="(item, index) in product.specification" :class="{active: index===specs_num}" @click="footLinkTo(index)">
-                                    @{{ item.name }}
+                            {{--<a href="javascript:;" class="sub" @click="buy()">确定</a>--}}
+                            <ul class="nav">
+                                <li class="message" @click="">
+                                    <a href="javascript:;" class="foot-link">
+                                        <img src="/images/msg.png">
+                                    </a>
+                                </li>
+                                <li class="cart">
+                                    <a href="cart.html" class="foot-link">
+                                        <img src="/images/cart.png">
+                                        <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
+                                    </a>
+                                </li>
+                                <li class="collection" :class="{red:collected}"  @click="collection()">
+                                    <i class="fa fa-heart"></i>
+                                </li>
+                                <li class="add">
+                                    <a href="javascript:;" @click="buy(0)">加入购物车</a>
+                                </li>
+                                <li class="buy">
+                                    <a href="javascript:;" @click="buy(1)">立即购买</a>
                                 </li>
                             </ul>
-                            <div class="num">
-                                <div class="item"><span class="name">数量</span></div>
-                                <div class="item">
-                                    <div class="num-container">
-                                        <a href="javascript:;" :class="{dis:min}" @click="minus()">
-                                            <i class="fa fa-minus"></i>
-                                        </a>
-                                        <input type="text" name="buy_number" class="numbers" v-model="input_val">
-                                        <a href="javascript:;" @click="add()" :class="{dis:max}">
-                                            <i class="fa fa-plus"></i>
-                                        </a>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="fork-container" @click="choose()">
-                                <a href="javascript:;" class="fork" >&nbsp;</a>
-                            </div>
-                        </div>
-                        {{--<a href="javascript:;" class="sub" @click="buy()">确定</a>--}}
-                        <ul class="nav">
-                            <li class="message" @click="">
-                                <a href="javascript:;" class="foot-link">
-                                    <img src="/images/msg.png">
-                                </a>
-                            </li>
-                            <li class="cart">
-                                <a href="cart.html" class="foot-link">
-                                    <img src="/images/cart.png">
-                                    <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
-                                </a>
-                            </li>
-                            <li class="collection" :class="{red:collected}"  @click="collection()">
-                                <i class="fa fa-heart"></i>
-                            </li>
-                            <li class="add">
-                                <a href="javascript:;" @click="buy(0)">加入购物车</a>
-                            </li>
-                            <li class="buy">
-                                <a href="javascript:;" @click="buy(1)">立即购买</a>
-                            </li>
-                        </ul>
-                    </form>
+                        </form>
+                    </div>
                 </div>
+                <ul class="nav">
+                    <li class="message" @click="">
+                        <a href="{!! $chat_url !!}" class="foot-link">
+                            <img src="/images/msg.png">
+                        </a>
+                    </li>
+                    <li class="cart">
+                        <a href="{{ url('carts') }}" class="foot-link">
+                            <img src="/images/cart.png">
+                            <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
+                        </a>
+                    </li>
+                    <li class="collection" :class="{red:collected}"  @click="collection()">
+                        <i class="fa fa-heart"></i>
+                    </li>
+                    <li class="add" :class="{ disabled: product.stockCount <= 0  || !(product.stockCount > 0 || product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy))}">
+                        <a href="javascript:;" @click="choose()" v-if="(product.stockCount > 0 || (product.stockCount > 0 && product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">加入购物车</a>
+                        <a href="javascript:;" v-else>加入购物车</a>
+                    </li>
+                    <li class="buy" :class="{ disabled: product.stockCount <= 0  || !(product.stockCount > 0 || product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy))}">
+                        <a href="javascript:;" @click="choose()" v-if="(product.stockCount > 0 || (product.stockCount > 0 && product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">立即购买</a>
+                        <a href="javascript:;" v-else>立即购买</a>
+                    </li>
+                </ul>
             </div>
-            <ul class="nav">
-                <li class="message" @click="">
-                    <a href="{!! $chat_url !!}" class="foot-link">
-                        <img src="/images/msg.png">
-                    </a>
-                </li>
-                <li class="cart">
-                    <a href="{{ url('carts') }}" class="foot-link">
-                        <img src="/images/cart.png">
-                        <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
-                    </a>
-                </li>
-                <li class="collection" :class="{red:collected}"  @click="collection()">
-                    <i class="fa fa-heart"></i>
-                </li>
-                <li class="add" :class="{ disabled: product.stockCount <= 0  || !(product.stockCount > 0 || product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy))}">
-                    <a href="javascript:;" @click="choose()" v-if="(product.stockCount > 0 || (product.stockCount > 0 && product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">加入购物车</a>
-                    <a href="javascript:;" v-else>加入购物车</a>
-                </li>
-                <li class="buy" :class="{ disabled: product.stockCount <= 0  || !(product.stockCount > 0 || product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy))}">
-                    <a href="javascript:;" @click="choose()" v-if="(product.stockCount > 0 || (product.stockCount > 0 && product.hasDiscount && (product.discount.hasBegin || product.discount.canBuy)))">立即购买</a>
-                    <a href="javascript:;" v-else>立即购买</a>
-                </li>
-            </ul>
         </footer>
     </div>
 @endsection
 @section('javascript')
-    <script src="/js/video.js"></script>
+    <script src="{{ fct_cdn('/js/video.js') }}"></script>
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.product = {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!};
@@ -158,7 +160,7 @@
             </section>
             <section class="product-context dis" v-else>
                 <div class="title">
-                    @{{ product.name }}
+                    <div class="main">@{{ product.name }}</div>
                     <div class="discount-container">
                         <span v-if="product.discount.canBuy">火热促销</span>
                         <span v-else>疯狂秒杀</span>
@@ -293,11 +295,11 @@
             </section>
         </div>
     </template>
-    <script src="/js/head.js"></script>
-    <script src="/js/common/tools.js"></script>
-    <script src="/js/detail.js"></script>
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
+    <script src="{{ fct_cdn('/js/detail.js') }}"></script>
 
-    {!! \App\FctCommon::weChatJs($share) !!}
+    {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
         (function() {

@@ -1,4 +1,6 @@
 @extends("layout")
+
+
 @section('content')
     <div id="main">
         <div class="main-container">
@@ -55,11 +57,11 @@
         config.productsRank = {!! json_encode($levels, JSON_UNESCAPED_UNICODE) !!};
         config.products = {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/common/tools.js"></script>
-    <script src="/js/head.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/main.js') }}"></script>
 
-    {!! \App\FctCommon::weChatJs($share) !!}
+    {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
         (function() {

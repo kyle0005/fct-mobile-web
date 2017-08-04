@@ -139,6 +139,6 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.user = {!! json_encode($memberBanner, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/head.js"></script>
-    <script src="/js/usercenter.js"></script>
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/usercenter.js') }}"></script>
 @endsection

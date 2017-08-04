@@ -17,6 +17,6 @@
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/head.js"></script>
-    <script src="/js/notfound.js"></script>
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/notfound.js') }}"></script>
 @endsection

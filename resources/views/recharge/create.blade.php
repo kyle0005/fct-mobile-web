@@ -56,5 +56,5 @@
             }
         };
     </script>
-    <script src="/js/recharge.js"></script>
+    <script src="{{ fct_cdn('/js/recharge.js') }}"></script>
 @endsection

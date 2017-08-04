@@ -36,6 +36,6 @@
     <script>
         config.slides = {!! $slides !!};
     </script>
-    <script src="js/swiper.js"></script>
-    <script src="js/welcome.js"></script>
+    <script src="{{ fct_cdn('js/swiper.js') }}"></script>
+    <script src="{{ fct_cdn('js/welcome.js') }}"></script>
 @endsection

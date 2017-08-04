@@ -165,12 +165,12 @@
         config.artistChat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
         config.chat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
     </script>
-    <script src="/js/common/tools.js"></script>
-    <script src="/js/head.js"></script>
-    <script src="/js/video.js"></script>
-    <script src="/js/artist.js"></script>
+    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/video.js') }}"></script>
+    <script src="{{ fct_cdn('/js/artist.js') }}"></script>
 
-    {!! \App\FctCommon::weChatJs($share) !!}
+    {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
         (function() {

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="/css/pc.app.css">
+    <link rel="stylesheet" href="{{ fct_cdn('/css/pc.app.css') }}">
     <!-- endbuild -->
     <script>!function (e, n) {
             var a = 0, o = 'M', t = e.documentElement
@@ -242,11 +242,11 @@
 <div id="ywNewslay" class="yw-overlay">
     <div class="yw-mid-con"></div>
     <i class="yw-mid-i"></i></div>
-<script src="/js/fastclick.js"></script>
-<script src="/js/pc.index.js"></script>
+<script src="{{ fct_cdn('/js/fastclick.js') }}"></script>
+<script src="{{ fct_cdn('/js/pc.index.js') }}"></script>
 <script>
-    var URLLIB = '/js/zepto.min.js';
-    history.pushState || (URLLIB = '/js/jquery-3.0.0.js'),
+    var URLLIB = "{{ fct_cdn('/js/zepto.min.js') }}";
+    history.pushState || (URLLIB = "{{ fct_cdn('/js/jquery-3.0.0.js') }}"),
         function (t) {'addEventListener' in t && t.addEventListener('DOMContentLoaded', function () {FastClick.attach(t.body)}, !1), YUEWEN.urlNewsList = '/ajax/news/list/', YUEWEN.load(URLLIB, function () {this.init(), this.slide('#hdDotX a')})}(document)
 </script>
 </body>

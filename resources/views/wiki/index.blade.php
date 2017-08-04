@@ -81,8 +81,8 @@
         config.wikiCategories = {!! json_encode($wikiCategories, JSON_UNESCAPED_UNICODE) !!};
         config.materials = {!! json_encode($materials, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/head.js"></script>
-    <script src="/js/swiper.js"></script>
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/swiper.js') }}"></script>
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container tab-container" :class="swipeid">
             <div class="swiper-wrapper">
@@ -102,9 +102,9 @@
             </section>
         </div>
     </template>
-    <script src="/js/encyclopedias.js"></script>
+    <script src="{{ fct_cdn('/js/encyclopedias.js') }}"></script>
 
-    {!! \App\FctCommon::weChatJs($share) !!}
+    {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
         (function() {

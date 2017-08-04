@@ -68,5 +68,5 @@
     <script>
         config.product = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/aftersale_detail.js"></script>
+    <script src="{{ fct_cdn('/js/aftersale_detail.js') }}"></script>
 @endsection

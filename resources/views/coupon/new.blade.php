@@ -77,6 +77,6 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.couponlist = {!! json_encode($coupons, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/head.js"></script>
-    <script src="/js/coupon.js"></script>
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/coupon.js') }}"></script>
 @endsection

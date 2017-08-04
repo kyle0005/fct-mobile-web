@@ -105,5 +105,5 @@
     <script>
         config.order_detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/order.js"></script>
+    <script src="{{ fct_cdn('/js/order.js') }}"></script>
 @endsection

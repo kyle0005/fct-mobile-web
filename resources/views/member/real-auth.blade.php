@@ -74,5 +74,5 @@
         config.authenticationUrl = "{{ url('my/account/real-auth') }}";
         config.bankList = {!! json_encode($banks, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/authentication.js"></script>
+    <script src="{{ fct_cdn('/js/authentication.js') }}"></script>
 @endsection

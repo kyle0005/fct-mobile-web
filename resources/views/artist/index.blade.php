@@ -20,7 +20,7 @@
     </div>
 @endsection
 @section('javascript')
-    <script src="/js/swiper.js"></script>
+    <script src="{{ fct_cdn('/js/swiper.js') }}"></script>
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container" :class="swipeid">
             <div class="swiper-wrapper">
@@ -31,9 +31,8 @@
     <script>
         config.artist = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/artist_list.js"></script>
-
-    {!! \App\FctCommon::weChatJs($share) !!}
+    <script src="{{ fct_cdn('/js/artist_list.js') }}"></script>
+    {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
         (function() {

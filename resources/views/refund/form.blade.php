@@ -75,5 +75,5 @@
         config.returnUrl = "{{ url('my/refunds') }}";
         config.uploadFileUrl = "{{ url('upload/image') }}";
     </script>
-    <script src="/js/orderreturn.js"></script>
+    <script src="{{ fct_cdn('/js/orderreturn.js') }}"></script>
 @endsection

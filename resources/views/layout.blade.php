@@ -8,14 +8,14 @@
     <meta name="keywords" content="">
     <meta name="description" content="">
     <!-- build:css styles/main.css -->
-    <link rel="stylesheet" href="/css/app.css?_rd=2017">
+    <link rel="stylesheet" href="{{ fct_cdn('/css/app.css?_rd=2017') }}">
     <!-- endbuild -->
 </head>
 <body>
     @yield('header')
     @yield('content')
-    <script src="/js/vue.js"></script>
-    <script src="/js/api/index.js?_rd=2017072418"></script>
+    <script src="{{ fct_cdn('/js/vue.js') }}"></script>
+    <script src="{{ fct_cdn('/js/api/index.js?_rd=2017072418') }}"></script>
     <script type="text/x-template" id="head_top">
         <header class="head-container">
             <ul class="nav">

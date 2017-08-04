@@ -88,5 +88,5 @@
         config.like_list = {!! $likes !!};
         config.buy_url = "{{ url('orders/create') }}";
     </script>
-    <script src="/js/cart.js"></script>
+    <script src="{{ fct_cdn('/js/cart.js') }}"></script>
 @endsection

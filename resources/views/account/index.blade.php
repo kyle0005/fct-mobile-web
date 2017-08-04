@@ -21,6 +21,8 @@
                 <span class="no">当前没有相关数据哟~</span>
             </li>
         </ul>
+
+        <p v-if="pager.next == 0" class="empty_data">没有更多了</p>
         <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
@@ -37,6 +39,6 @@
         config.walletaccountUrl = "{{ url('my/account/logs') }}";
         config.walletaccountList = {!! json_encode($logs, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="/js/common/tools.js"></script>
-    <script src="/js/walletaccount.js"></script>
+    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
+    <script src="{{ fct_cdn('/js/walletaccount.js') }}"></script>
 @endsection

@@ -78,6 +78,6 @@
         config.address = {!! json_encode($address, JSON_UNESCAPED_UNICODE) !!};
         config.saveAddressddUrl = "{{ url('my/address') }}";
     </script>
-    <script src="/js/common/city.min.js"></script>
-    <script src="/js/buy_address_opt.js"></script>
+    <script src="{{ fct_cdn('/js/common/city.min.js') }}"></script>
+    <script src="{{ fct_cdn('/js/buy_address_opt.js') }}"></script>
 @endsection
