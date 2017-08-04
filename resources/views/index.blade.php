@@ -1,13 +1,11 @@
 @extends("layout")
-
-
 @section('content')
     <div id="main">
         <div class="main-container">
             <head-top @changelist="getprolist" :isindex="isindex"></head-top>
             <section class="cat-container">
                 <ul class="category clearfix">
-                    <li class="item" v-for="(ranks, index) in ranks_list" @click="getprolist('', ranks.id)">
+                    <li class="item" v-for="(ranks, index) in ranks_list" :class="{chosen: index===tab_num}" @click="getprolist('', ranks.level_id, index)">
                         <img :src= "ranks.img">
                         <span>@{{ ranks.name }}</span>
                     </li>
