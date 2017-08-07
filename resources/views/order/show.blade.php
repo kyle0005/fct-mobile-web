@@ -49,7 +49,7 @@
         <section class="">
             <div class="product" v-for="(item, index) in order_detail.orderGoods">
                 <div class="pro-item img-container">
-                    <img :src="item.img">
+                    <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                 </div>
                 <div class="pro-item title-container">
                     <div class="title">@{{ item.name }}</div>
@@ -87,7 +87,7 @@
                 <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助"
                    class="chat"><img src="{{ fct_cdn('/images/order_chat.png') }}"></a>
                 <div class="del" v-if="order_detail.status == 0">
-                    <a href="javascript:;" @click="cancel(order_detail.orderId)">取消订单</a>
+                    <a href="javascript:;" @click="confirm(order_detail.orderId, cancel)">取消订单</a>
                 </div>
                 <div class="comment" v-if="order_detail.status == 0">
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
@@ -97,20 +97,13 @@
                 </div>
 
                 <div class="comment" v-if="order_detail.status == 2">
-                    <a href="javascript:;" @click="finish(order_detail.orderId)">确认收货</a>
+                    <a href="javascript:;" @click="confirm(order_detail.orderId, finish)">确认收货</a>
                 </div>
             </div>
         </footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="orderId" :msg="msg"></confirm>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-                <!--<div class="confrim" @click="close">确认</div>-->
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>

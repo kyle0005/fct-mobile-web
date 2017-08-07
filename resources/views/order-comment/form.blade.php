@@ -6,7 +6,7 @@
             <div class="item" v-for="(item, index) in order_detail.orderGoods">
                 <div class="top">
                     <div class="pro-img">
-                        <img :src="item.img">
+                        <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                     </div>
                     <div class="context clearfix">
                         <div class="des">描述相符</div>
@@ -46,13 +46,6 @@
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
 
@@ -81,7 +74,7 @@
         <div class="upload-container">
             <div class="item" v-for="(item, index) in uploadItem">
                 <div class="inner">
-                    <img :src="item">
+                    <img v-view="item" src="{{ fct_cdn('/images/img_loader.gif') }}">
                 </div>
                 <a href="javascript:;" class="fork" @click="delImg(index)"><i class="fa fa-times"></i></a>
             </div>

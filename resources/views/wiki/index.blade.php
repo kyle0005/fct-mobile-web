@@ -28,7 +28,7 @@
                     <div v-for="(item, index) in list" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
                             <a :href="'{{ url('wiki/item') }}?from_type=category&from_id=' + i_item.id" class="link">
-                                <img :src="i_item.image">
+                                <img v-view="i_item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                                 <span>@{{ i_item.name }}</span>
                             </a>
                         </div>
@@ -95,7 +95,7 @@
     <template id="info">
         <div class="alet_container">
             <section class="ency-container">
-                <img :src="msg.img" class="photo">
+                <img v-view="msg.img" class="photo" src="{{ fct_cdn('/images/img_loader.gif') }}">
                 <p class="title">@{{ msg.name }}</p>
                 <p class="text">@{{ msg.text }}</p>
                 <a href="javascript:;" class="close" @click="close()"></a>

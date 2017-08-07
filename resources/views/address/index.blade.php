@@ -24,12 +24,12 @@
             </li>
         </ul>
 
-        <ul class="prolist" v-else>
-            <li class="noData">
+        <div class="noData" v-else>
+            <div class="inner">
                 <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
-            </li>
-        </ul>
+            </div>
+        </div>
 
         <div class="address-btn">
             <a href="{{ url('my/address/create') }}">添加新地址</a>
@@ -37,14 +37,6 @@
     <!--radio选中的是:@{{ picked }}-->
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-                <!--<div class="confrim" @click="close">确认</div>-->
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>

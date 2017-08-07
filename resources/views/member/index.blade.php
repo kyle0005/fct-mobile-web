@@ -125,14 +125,6 @@
         </section>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-                <!--<div class="confrim" @click="close">确认</div>-->
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>

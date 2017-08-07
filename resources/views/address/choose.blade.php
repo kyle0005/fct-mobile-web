@@ -14,24 +14,18 @@
             </li>
         </ul>
 
-        <ul class="prolist" v-else>
-            <li class="noData">
+        <div class="noData" v-else>
+            <div class="inner">
                 <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
-            </li>
-        </ul>
+            </div>
+        </div>
+
         <div class="address-btn">
             <a href="{{ url('my/address') }}">管理</a>
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>

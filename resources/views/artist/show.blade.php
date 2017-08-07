@@ -23,14 +23,6 @@
             </component>
         </keep-alive>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-                <!--<div class="confrim" @click="close">确认</div>-->
-            </section>
-        </div>
-    </template>
 @endsection
 
 @section('javascript')
@@ -43,7 +35,7 @@
                     <video id="video_top" class="video-js vjs-big-play-centered" controls v-if="top.videoUrl != ''"></video>
                     <ul class="img-list" v-if="topImg">
                         <li v-for="imgs in top.images">
-                            <img :src="imgs">
+                            <img v-view="imgs" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </li>
                     </ul>
                 </div>
@@ -55,19 +47,19 @@
                         <video :id="'video_' + index" class="video-js vjs-big-play-centered" controls v-if="item.videoUrl != ''"></video>
                         <ul class="img-list" v-if="item.images.length > 0">
                             <li v-for="(img, i) in item.images">
-                                <img :src="img">
+                                <img v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </li>
                         </ul>
                     </div>
                 </li>
             </ul>
 
-            <ul class="prolist" v-else>
-                <li class="noData">
+            <div class="noData" v-else>
+                <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
-                </li>
-            </ul>
+                </div>
+            </div>
 
             <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         </div>
@@ -79,7 +71,7 @@
                 <li v-for="(item, index) in workslist">
                     <div class="inner">
                         <div class="left">
-                            <img :src="item.defaultImage">
+                           <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </div>
                         <div class="right">
                             <div class="title overText">@{{ item.name }}</div>
@@ -93,12 +85,13 @@
                 </li>
             </ul>
 
-            <ul class="prolist" v-else>
-                <li class="noData">
+            <div class="noData" v-else>
+                <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
-                </li>
-            </ul>
+                </div>
+            </div>
+
         </div>
     </script>
     {{--艺术家评论--}}
@@ -109,7 +102,7 @@
                     <div class="inner">
                         <div class="info">
                             <div class="img-container">
-                                <img :src="item.headPortrait">
+                                <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </div>
                             <div class="user">@{{ item.userName }}</div>
                             <div class="time">@{{ item.createTime }}</div>
@@ -123,12 +116,12 @@
                 </li>
             </ul>
 
-            <ul class="prolist" v-else>
-                <li class="noData">
+            <div class="noData" v-else>
+                <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
-                </li>
-            </ul>
+                </div>
+            </div>
 
             <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
             <section class="sub-chat">
@@ -165,7 +158,6 @@
         config.artistChat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
         config.chat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
     </script>
-    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
     <script src="{{ fct_cdn('/js/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/video.js') }}"></script>
     <script src="{{ fct_cdn('/js/artist.js') }}"></script>

@@ -16,6 +16,7 @@
     @yield('content')
     <script src="{{ fct_cdn('/js/vue.js') }}"></script>
     <script src="{{ fct_cdn('/js/api/index.js?_rd=2017072418') }}"></script>
+    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
     <script type="text/x-template" id="head_top">
         <header class="head-container">
             <ul class="nav">

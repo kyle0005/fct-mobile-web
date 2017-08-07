@@ -11,9 +11,9 @@
                     </label>
                     <a href="javascript:;" class="product col">
                       <span class="pro-item pro-img">
-                        <img :src="item.img">
+                        <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                       </span>
-                                    <span class="pro-item pro-t">
+                      <span class="pro-item pro-t">
                         <span class="t">
                           <span class="title overText">@{{ item.name }}</span>
                           <span class="spec" v-if="item.specName && item.specName != null">规格: @{{ item.specName }}</span>
@@ -35,19 +35,19 @@
                 </li>
             </ul>
 
-            <ul class="prolist" v-else>
-                <li class="noData">
+            <div class="noData" v-else>
+                <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
-                </li>
-            </ul>
+                </div>
+            </div>
 
             <section class="guess-container">
                 <div class="title">猜你喜欢</div>
                 <ul class="guess clearfix">
                     <li v-for="(item, index) in like_list">
                         <a :href="'{{ url('products') }}/' + item.id" class="guess-link">
-                            <img :src="item.defaultImage">
+                            <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </a>
                         <div class="v-title">@{{ item.name }}</div>
                         <div class="v-price"><small class="pri-mark">￥</small>@{{ item.price }}</div>
@@ -76,14 +76,6 @@
         </form>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
-    
 @endsection
 @section('javascript')
     <script>

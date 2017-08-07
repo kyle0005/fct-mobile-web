@@ -10,7 +10,7 @@
         <div class="collection-list" v-if="collection && collection.length > 0">
             <div class="item" v-for="(item, index) in collection">
                 <div class="img-container">
-                    <img :src="item.image">
+                    <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                 </div>
                 <div class="content">
                     <span class="title">@{{ item.name }}&emsp;<span v-if="title">@{{ item.title }}</span></span>
@@ -21,22 +21,15 @@
             </div>
         </div>
 
-        <ul class="prolist" v-else>
-            <li class="noData">
+        <div class="noData" v-else>
+            <div class="inner">
                 <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
-            </li>
-        </ul>
+            </div>
+        </div>
 
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>

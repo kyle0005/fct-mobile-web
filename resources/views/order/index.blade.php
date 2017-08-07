@@ -25,7 +25,7 @@
                 <ul class="list">
                     <li class="product" v-for="(good, index) in item.orderGoods" @click="todetail(item)">
                         <div class="pro-item img-container">
-                            <img :src="good.img">
+                            <img v-view="good.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </div>
                         <div class="pro-item title-container">
                             <div class="title">@{{ good.name }}</div>
@@ -45,7 +45,7 @@
                         <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + item.orderId" class="black">我要付款</a>
                     </div>
                     <div class="btn-container">
-                        <a href="javascript:;" class="grey" @click="cancel(item.orderId)">取消订单</a>
+                        <a href="javascript:;" class="grey" @click="confirm(item.orderId, cancel)">取消订单</a>
                     </div>
                 </div>
 
@@ -57,24 +57,18 @@
             </div>
         </div>
 
-        <ul class="prolist" v-else>
-            <li class="noData">
+        <div class="noData" v-else>
+            <div class="inner">
                 <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
-            </li>
-        </ul>
+            </div>
+        </div>
 
         <p v-if="pager.next == 0" class="empty_data">没有更多了</p>
         <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="orderId" :msg="msg"></confirm>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>
@@ -84,7 +78,6 @@
         config.detail_url = "{{ url('my/orders') }}"; // /my/orders/12345678912345678
         config.cancel_url = "{{ url('my/orders') }}"; // /my/orders/12345678912345678/cancel
     </script>
-    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
     <script src="{{ fct_cdn('/js/orderlist.js') }}"></script>
 
 @endsection

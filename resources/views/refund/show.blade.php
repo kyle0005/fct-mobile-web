@@ -4,7 +4,7 @@
     <div class="aftersaledetail-container" id="aftersaledetail" v-cloak>
         <section class="product">
             <div class="pro-item img-container">
-                <img :src="product.orderGoods.img">
+                <img v-view="product.orderGoods.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
             </div>
             <div class="pro-item title-container">
                 <div class="title">@{{ product.orderGoods.name }}</div>
@@ -47,7 +47,9 @@
                     </div>
                 </div>
                 <div class="line">
-                    <div class="img" v-for="(img, i) in item.images"><img :src="img"></div>
+                    <div class="img" v-for="(img, i) in item.images">
+                        <img v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                    </div>
                 </div>
             </div>
         </section>
@@ -56,13 +58,6 @@
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>

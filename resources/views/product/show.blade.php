@@ -203,7 +203,7 @@
                 <li v-for="(item, index) in artist">
                     <a href="javascript:;" :class="{red:index===art_num}" @click="loadsingle(index)">
                         <span class="img-container">
-                          <img :src="item.headPortrait">
+                            <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </span>
                         <span class="name-container">@{{ item.name }}</span>
                     </a>
@@ -215,7 +215,7 @@
                 <ul class="others">
                     <li v-for="p in artistsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
-                            <img :src="p.defaultImage">
+                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
@@ -230,7 +230,7 @@
                 <li v-for="(item, index) in pugs">
                     <a href="javascript:;" :class="{red:index===pug_num}" @click="loadsingle(index)">
                         <span class="img-container">
-                          <img :src="item.image">
+                            <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </span>
                         <span class="name-container">@{{ item.name }}</span>
                     </a>
@@ -242,7 +242,7 @@
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
-                            <img :src="p.defaultImage">
+                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
@@ -260,7 +260,7 @@
                     <div class="user-info clearfix">
                         <div class="left clearfix">
                             <div class="user-photo">
-                                <img :src="item.photo">
+                                <img v-view="item.photo" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </div>
                             <div class="user-opt">
                                 <div>@{{ item.username }}</div>
@@ -274,29 +274,22 @@
                     <div class="comments">
                         <span class="text">@{{ item.text }}</span>
                         <span class="imgs">
-                        <img :src="img_item" v-for="(img_item, index) in item.imgs">
+                        <img v-view="img_item" src="{{ fct_cdn('/images/img_loader.gif') }}" v-for="(img_item, index) in item.imgs">
                       </span>
                     </div>
                 </li>
             </ul>
 
-            <ul class="prolist" v-else>
-                <li class="noData">
+            <div class="noData" v-else>
+                <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
-                </li>
-            </ul>
+                </div>
+            </div>
+
         </section>
     </script>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
     <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
     <script src="{{ fct_cdn('/js/detail.js') }}"></script>
 
     {!! wechat_share($share) !!}

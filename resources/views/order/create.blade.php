@@ -23,16 +23,16 @@
             </section>
             <section class="product">
                 <a href="javascript:;" class="link" v-for="(item, index) in carts">
-      <span class="item intro">
-        <img :src="item.img">
-      </span>
+                  <span class="item intro">
+                    <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                  </span>
                     <span class="item info">
-        <span class="container overText">
-          <span class="name">@{{ item.name }}</span>
-          <span class="spec">@{{ item.specName }}</span>
-          <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del class="gray"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
-        </span>
-      </span>
+                    <span class="container overText">
+                      <span class="name">@{{ item.name }}</span>
+                      <span class="spec">@{{ item.specName }}</span>
+                      <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del class="gray"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
+                    </span>
+                  </span>
                     <span class="num">
         <span class="container overText">
           x@{{ item.buyCount }}
@@ -98,14 +98,6 @@
         </form>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-                <!--<div class="confrim" @click="close">确认</div>-->
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>

@@ -9,21 +9,15 @@
             </div>
         </section>
 
-        <ul class="prolist" v-else>
-            <li class="noData">
+        <div class="noData" v-else>
+            <div class="inner">
                 <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
-            </li>
-        </ul>
+            </div>
+        </div>
+
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
 
     <script type="text/x-template" id="coupon_item">
         <div>
@@ -56,20 +50,13 @@
                 <ul class="pros clearfix">
                     <li v-for="(o, i) in couponitem.goods">
                         <a :href="'{{ url('products') }}/' + o.id" class="link">
-                            <img :src="o.defaultImage">
+                            <img v-view="o.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </a>
                     </li>
                 </ul>
             </div>
         </div>
     </script>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>

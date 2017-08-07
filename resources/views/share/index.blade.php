@@ -43,7 +43,7 @@
             <li v-for="(item, index) in shareList">
                 <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="link">
                     <span class="left">
-                      <img :src="item.defaultImage">
+                        <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                     </span>
                     <span class="center">
                       <span class="title">@{{ item.name }}</span>
@@ -57,23 +57,17 @@
             </li>
         </ul>
 
-        <ul class="prolist" v-else>
-            <li class="noData">
+        <div class="noData" v-else>
+            <div class="inner">
                 <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>
-            </li>
-        </ul>
+            </div>
+        </div>
+
         <p v-if="pager.next == 0" class="empty_data">没有更多了</p>
         <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
-    <template id="pop">
-        <div class="alet_container">
-            <section class="tip_text_container">
-                <div class="tip_text">@{{ msg }}</div>
-            </section>
-        </div>
-    </template>
 @endsection
 @section('javascript')
     <script>
@@ -82,6 +76,5 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.share = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
     <script src="{{ fct_cdn('/js/share.js') }}"></script>
 @endsection
