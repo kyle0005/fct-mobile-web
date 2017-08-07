@@ -28,7 +28,6 @@
             </li>
         </ul>
 
-        <p v-if="pager.next == 0" class="empty_data">没有更多了</p>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
     <template id="pop">
