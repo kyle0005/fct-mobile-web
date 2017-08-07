@@ -84,7 +84,7 @@ class RefundController extends BaseController
         $images = $request->get('images');
         if ($images)
         {
-            $images = json_decode(FctCommon::fctBase64Decode($images), true);
+            $images = json_decode($images, true);
             if (!$images)
             {
                 return $this->autoReturn("图片上传有误");
