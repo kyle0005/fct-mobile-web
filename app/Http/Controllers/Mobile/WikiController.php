@@ -53,12 +53,9 @@ class WikiController extends BaseController
         $typeId = intval($request->get('from_id', 0));
         $type = $request->get('from_type', '');
 
-        try
-        {
+        try {
             $result = Wiki::getItem($typeId, $type);
-        }
-        catch (BusinessException $e)
-        {
+        } catch (BusinessException $e) {
             return $this->autoReturn($e->getMessage());
         }
 
@@ -66,7 +63,7 @@ class WikiController extends BaseController
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
             $this->setShopId();
-            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
+            $shareUrl = $shareUrl . '?' . env('SHARE_SHOP_ID_KEY') . '=' . $shopId;
         }
 
         return view('wiki.show', [
@@ -79,7 +76,7 @@ class WikiController extends BaseController
                 'img' => 'http://test.fangcuntang.com/images/logo.png',
                 'desc' => '紫砂',
             ]
-            ]);
+        ]);
     }
 
 }

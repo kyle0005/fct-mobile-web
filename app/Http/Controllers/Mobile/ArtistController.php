@@ -75,12 +75,14 @@ class ArtistController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
+        $title = (isset($result->name) && $result->name ? $result->name : '守艺人详情');
+
         return view('artist.show', [
-            'title' => (isset($result->name) && $result->name ? $result->name : '守艺人详情'),
+            'title' => $title,
             'artist' => $result,
             'categories' => ProductCategory::getCategories(),
             'share' => [
-                'title' => $result['title'],
+                'title' => $title,
                 'link' => $shareUrl,
                 'img' => 'http://test.fangcuntang.com/images/logo.png',
                 'desc' => '艺术家',
