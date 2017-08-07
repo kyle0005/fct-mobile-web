@@ -22,7 +22,7 @@ class ProductOrder
      * @param int $pageIndex
      * @return array|bool|object
      */
-    public static function getOrders($orderId, $status, $commentStatus, $pageIndex = 1)
+    public static function getOrders($keyword, $status, $commentStatus, $pageIndex = 1)
     {
         $commentStatuses = [0, 1];
         $statuses = [0,1,2,3,4];
@@ -39,7 +39,7 @@ class ProductOrder
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
-                'order_id' => $orderId,
+                'order_id' => $keyword,
                 'status' => $status,
                 'comment_status' => $commentStatus,
                 'page_index' => $pageIndex,
@@ -127,9 +127,7 @@ class ProductOrder
     {
         $result = Base::http(
             env('API_URL') . sprintf('%s/%s/cancel', self::$resourceUrl, $orderId),
-            [
-                'order_id' => $orderId,
-            ],
+            [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );
 
@@ -138,8 +136,30 @@ class ProductOrder
             throw new BusinessException($result->msg);
         }
 
-        return $result;
+        return true;
     }
+
+    /**确认收货
+     * @param $orderId
+     * @return mixed|object|\Psr\Http\Message\ResponseInterface
+     * @throws BusinessException
+     */
+    public static function finishOrder($orderId)
+    {
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/%s/finish', self::$resourceUrl, $orderId),
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()]
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return true;
+    }
+
 
     /**订单订单价格
      * @param $productInfo

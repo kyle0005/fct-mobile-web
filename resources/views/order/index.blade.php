@@ -44,9 +44,9 @@
                     <div class="btn-container">
                         <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + item.orderId" class="black">我要付款</a>
                     </div>
-{{--                    <div class="btn-container">
-                        <a href="javascript:;" class="grey">关闭订单</a>
-                    </div>--}}
+                    <div class="btn-container">
+                        <a href="javascript:;" class="grey" @click="cancel(item.orderId)">取消订单</a>
+                    </div>
                 </div>
 
                 <div class="btn clearfix" v-if="item.status == 3">
@@ -79,9 +79,10 @@
 @section('javascript')
     <script>
         config.orderlist = {!! json_encode($orderlist, JSON_UNESCAPED_UNICODE) !!};
-        config.orderlist_url = "{{ url('my/orders') }}";
-        config.search_url = "{{ url('my/orders') }}";
-        config.detail_url = "{{ url('my/orders') }}";
+        config.orderlist_url = "{{ url('my/orders') }}"; // /my/orders
+        config.search_url = "{{ url('my/orders') }}"; // /my/orders
+        config.detail_url = "{{ url('my/orders') }}"; // /my/orders/12345678912345678
+        config.cancel_url = "{{ url('my/orders') }}"; // /my/orders/12345678912345678/cancel
     </script>
     <script src="{{ fct_cdn('/js/common/tools.js') }}"></script>
     <script src="{{ fct_cdn('/js/orderlist.js') }}"></script>

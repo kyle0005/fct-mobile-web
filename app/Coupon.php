@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Cache;
 
 class Coupon
 {
@@ -10,40 +11,70 @@ class Coupon
 
     public static function getCoupons($productId)
     {
-        $result = Base::http(
-            env('API_URL') . self::$resourceUrl,
-            [
-                'product_id' => $productId
-            ],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_coupons_product_' . $productId;
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        if ($result->code != 200)
+        if (Cache::has($cacheKey))
         {
-            throw new BusinessException($result->msg);
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        return $result->data;
+        if (!$cacheResult) {
+
+            $result = Base::http(
+                env('API_URL') . self::$resourceUrl,
+                [
+                    'product_id' => $productId
+                ],
+                [],
+                'GET'
+            );
+
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $cacheResult = $result->data;
+
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 
     public static function getMemberCoupons($status)
     {
-        $result = Base::http(
-            env('API_URL') . sprintf('%s/by-member', self::$resourceUrl),
-            [
-                'status' => $status
-            ],
-            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
-            'GET'
-        );
+        $cacheKey = 'php_coupons_status_' . $status;
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        if ($result->code != 200)
+        if (Cache::has($cacheKey))
         {
-            throw new BusinessException($result->msg);
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        return $result->data;
+        if (!$cacheResult) {
+            $result = Base::http(
+                env('API_URL') . sprintf('%s/by-member', self::$resourceUrl),
+                [
+                    'status' => $status
+                ],
+                [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+                'GET'
+            );
+
+            if ($result->code != 200)
+            {
+                throw new BusinessException($result->msg);
+            }
+
+            $cacheResult = $result->data;
+
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 
     public static function saveCoupon($couponId)

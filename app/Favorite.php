@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Cache;
 
 /**收藏夹
  * Class Favorite
@@ -13,31 +14,44 @@ class Favorite
     public static function getFavorites($fromType)
     {
         $pageIndex = 1;
-        $pageSize = 50;
+        $cacheKey = 'php_favorites_'.$fromType.'_' . $pageIndex;
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        $result = Base::http(
-            env('API_URL') . '/member/favorites',
-            [
-                'from_type' => $fromType,
-                'page_index' => $pageIndex,
-                'page_size' => $pageSize,
-            ],
-            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
-            'GET'
-        );
-
-        if ($result->code != 200)
+        if (Cache::has($cacheKey))
         {
-            throw new BusinessException($result->msg);
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        if ($result->data)
-        {
-            $result->data = $result->data->elements;
+        if (!$cacheResult) {
+
+            $pageSize = 50;
+            $result = Base::http(
+                env('API_URL') . '/member/favorites',
+                [
+                    'from_type' => $fromType,
+                    'page_index' => $pageIndex,
+                    'page_size' => $pageSize,
+                ],
+                [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+                'GET'
+            );
+
+            if ($result->code != 200)
+            {
+                throw new BusinessException($result->msg);
+            }
+
+            if ($result->data)
+            {
+                $result->data = $result->data->elements;
+            }
+            $cacheResult = $result->data;
+
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
 
-        return $result->data;
-
+        return $cacheResult;
     }
 
     public static function saveFavorite($fromType, $fromId)

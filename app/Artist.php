@@ -10,78 +10,111 @@ namespace App;
 
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Cache;
 
 class Artist
 {
 
     public static function getArtists($pageIndex)
     {
-        $pageSize = 20;
-        $result = Base::http(
-            env('API_URL') . '/artists',
-            [
-                'page_index' => $pageIndex,
-                'page_size' => $pageSize,
-            ],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_artists_' . $pageIndex;
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        if ($result->code != 200)
+        if (Cache::has($cacheKey))
         {
-            throw new BusinessException($result->msg);
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        $pagination = Base::pagination($result->data, $pageSize);
+        if (!$cacheResult) {
 
-        return [
-            'title' => '守艺人',
-            'entries' => $pagination->entries,
-            //'pager' => $pagination->pager,
-        ];
+            $pageSize = 20;
+            $result = Base::http(
+                env('API_URL') . '/artists',
+                [
+                    'page_index' => $pageIndex,
+                    'page_size' => $pageSize,
+                ],
+                [],
+                'GET'
+            );
+
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $pagination = Base::pagination($result->data, $pageSize);
+
+            $cacheResult = $pagination;
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 
     public static function getArtist($id)
     {
-        $pageSize = 20;
-        $result = Base::http(
-            env('API_URL') . sprintf('/artists/%d', $id),
-            [],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_artist_' . $id;
+        $cacheTime = 3;
+        $cacheResult = false;
 
-        if ($result->code != 200)
+        if (Cache::has($cacheKey))
         {
-            throw new BusinessException($result->msg);
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        $artist = $result->data;
-        $artist->dynamicList = Base::pagination($artist->dynamicList, $pageSize);
+        if (!$cacheResult) {
+            $pageSize = 20;
+            $result = Base::http(
+                env('API_URL') . sprintf('/artists/%d', $id),
+                [],
+                [],
+                'GET'
+            );
 
-        return [
-            'title' => (isset($artist->name) && $artist->name ? $artist->name : '守艺人详情'),
-            'artist' => $artist,
-            'categories' => ProductCategory::getCategories(),
-        ];
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $artist = $result->data;
+            $artist->dynamicList = Base::pagination($artist->dynamicList, $pageSize);
+            $cacheResult = $artist;
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 
     public static function getArtistsByProductId($productId)
     {
-        $result = Base::http(
-            env('API_URL') . '/artists/by-product',
-            [
-                'product_id' => $productId,
-            ],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_artists_by_product_' . $productId;
+        $cacheTime = 10;
+        $cacheResult = false;
 
-        if ($result->code != 200)
+        if (Cache::has($cacheKey))
         {
-            throw new BusinessException($result->msg);
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        return $result->data;
+        if (!$cacheResult) {
+            $result = Base::http(
+                env('API_URL') . '/artists/by-product',
+                [
+                    'product_id' => $productId,
+                ],
+                [],
+                'GET'
+            );
+
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $cacheResult = $result->data;
+
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 }

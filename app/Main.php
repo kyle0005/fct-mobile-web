@@ -10,35 +10,50 @@ namespace App;
 
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Cache;
 
 class Main
 {
-    public static function getHome($categoryId = 1, $levelId = 1, $pageIndex = 1)
+    public static function getHome($categoryId = "", $levelId = -1, $pageIndex = 1)
     {
-        $pageSize = 10;
-        $result = Base::http(
-            env('API_URL') . '/mall/home',
-            [
-                'category_id' => $categoryId,
-                'level_id' => $levelId,
-                'page_index' => $pageIndex,
-                'page_size' => $pageSize,
-            ],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_main_' . strval($categoryId) . '_' . strval($levelId) . '_' . $pageIndex;
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        if ($result->code != 200)
-        {
-            throw new BusinessException($result->msg);
+        if (Cache::has($cacheKey)) {
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        $result = $result->data;
+        if (!$cacheResult) {
+            $pageSize = 10;
+            $result = Base::http(
+                env('API_URL') . '/mall/home',
+                [
+                    'category_id' => $categoryId,
+                    'level_id' => $levelId,
+                    'page_index' => $pageIndex,
+                    'page_size' => $pageSize,
+                ],
+                [],
+                'GET'
+            );
 
-        $pagination = Base::pagination($result->goodsList, $pageSize);
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
 
-        $result->pagination = $pagination;
-        return $result;
+            $result = $result->data;
+
+            $pagination = Base::pagination($result->goodsList, $pageSize);
+
+            $result->pagination = $pagination;
+            unset($result->goodsList);
+            $cacheResult = $result;
+
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 
     public static function welcome()
@@ -59,29 +74,41 @@ class Main
 
     public static function getPcHome()
     {
-        $result = Base::http(
-            env('API_URL') . '/mall/pc-home',
-            [
-                'article_code' => "",
-                'article_count' => 4,
-                'product_count' => 10,
-                'artist_count' => 7,
-            ],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_pc_main';
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        if ($result->code != 200)
-        {
-            throw new BusinessException($result->msg);
+        if (Cache::has($cacheKey)) {
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        return [
-            'title' => '方寸堂',
-            'articles' =>  $result->data ? $result->data->articleList : "",
-            'products' => $result->data ? $result->data->productList : "",
-            'artists' => $result->data ? $result->data->artistList : "",
-        ];
+        if (!$cacheResult) {
+            $result = Base::http(
+                env('API_URL') . '/mall/pc-home',
+                [
+                    'article_code' => "",
+                    'article_count' => 4,
+                    'product_count' => 10,
+                    'artist_count' => 7,
+                ],
+                [],
+                'GET'
+            );
+
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $cacheResult = [
+                'articles' => $result->data ? $result->data->articleList : "",
+                'products' => $result->data ? $result->data->productList : "",
+                'artists' => $result->data ? $result->data->artistList : "",
+            ];
+
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 
     public static function weChatShare($title, $link, $desc, $imgUrl, $jsApiList = [])

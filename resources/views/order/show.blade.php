@@ -65,7 +65,13 @@
             </div>
         </section>
         <section class="total">
-            <div class="inner">共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计：<span class="pri-color"><small class="pri-mark">￥</small>@{{ order_detail.payAmount }}</span>（含运费）</div>
+            <div class="inner">
+                共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计：
+                <span class="pri-color">
+                    <small class="pri-mark">￥</small>
+                    @{{ order_detail.payAmount }}
+                </span>（含运费）
+            </div>
         </section>
         <section class="order-detail">
             <span v-if="order_detail.orderId">订单编号：@{{ order_detail.orderId }}<br></span>
@@ -78,15 +84,20 @@
         </section>
         <footer class="footer">
             <div class="inner">
-                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助" class="chat"><img src="{{ fct_cdn('/images/order_chat.png') }}"></a>
-{{--                <div class="del">
-                    <a href="javascript:;">删除订单</a>
-                </div>--}}
+                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助"
+                   class="chat"><img src="{{ fct_cdn('/images/order_chat.png') }}"></a>
+                <div class="del" v-if="order_detail.status == 0">
+                    <a href="javascript:;" @click="cancel(order_detail.orderId)">取消订单</a>
+                </div>
                 <div class="comment" v-if="order_detail.status == 0">
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
                 </div>
                 <div class="comment" v-if="order_detail.status == 3">
                     <a :href="'{{ url('my/orders') }}/' + order_detail.orderId + '/comments/create'">我要评价</a>
+                </div>
+
+                <div class="comment" v-if="order_detail.status == 2">
+                    <a href="javascript:;" @click="finish(order_detail.orderId)">确认收货</a>
                 </div>
             </div>
         </footer>
@@ -104,6 +115,8 @@
 @section('javascript')
     <script>
         config.order_detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
+        config.cancel_url = "{{ url('my/orders') }}";
+        config.finish_url = "{{ url('my/orders') }}";
     </script>
     <script src="{{ fct_cdn('/js/order.js') }}"></script>
 @endsection

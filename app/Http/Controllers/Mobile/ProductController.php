@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Mobile;
 
 use App\Artist;
 use App\Exceptions\BusinessException;
+use App\Member;
 use App\Product;
 use App\OrderComment;
+use App\ProductCategory;
 use App\ProductMaterial;
 use Illuminate\Http\Request;
 
@@ -40,14 +42,29 @@ class ProductController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
-        $result['share'] = [
-            'title' => $result['title'],
-            'link' => $shareUrl,
-            'img' => 'http://test.fangcuntang.com/images/logo.png',
-            'desc' => '方寸天地间',
+        $member = Member::getAuth();
+        $chatDatas = [
+            "name" => $member ? $member->userName : "",
+            "tel" => $member ? $member->cellPhone : "",
+            "comment" => $result->name . '--' . url('product/' . $result->id) . '"}',
         ];
 
-        return view('product.show', $result);
+        $title = (isset($result->name) && $result->name ? $result->name : '产品详情');
+
+        return view('product.show', [
+            'title' => $title,
+            'categories' => ProductCategory::getCategories(),
+            'product' => $result,
+            'chat_url' => 'https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid='
+                . ($member ? $member->memberId : "")
+                . '&metadata=' .urlencode(json_encode($chatDatas, JSON_UNESCAPED_UNICODE)),
+            'share' => [
+                'title' => $title,
+                'link' => $shareUrl,
+                'img' => 'http://test.fangcuntang.com/images/logo.png',
+                'desc' => '方寸天地间',
+            ]
+        ]);
     }
 
     public function getProductComments(Request $request, $product_id)

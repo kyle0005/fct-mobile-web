@@ -10,6 +10,7 @@ namespace App;
 
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Cache;
 
 class Product
 {
@@ -23,45 +24,43 @@ class Product
     public static function getProduct($id)
     {
         $id = intval($id);
-        if (!$id)
-        {
+        if (!$id) {
             throw new BusinessException("无此产品");
         }
-        $result = Base::http(
-            env('API_URL') . sprintf('%s/%d', self::$resourceUrl, $id),
-            [],
-            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
-            'GET'
-        );
 
-        if ($result->code != 200)
-        {
-            throw new BusinessException($result->msg);
+
+        $cacheKey = 'php_product_' . $id;
+        $cacheTime = 5 / 60;
+        $cacheResult = false;
+
+        if (Cache::has($cacheKey)) {
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        $product = $result->data;
-        if ($product && $product->discount && isset($product->discount->discountTime))
-        {
-            $product->discount->discountTime = FctCommon::secondToString($product->discount->discountTime);
+        if (!$cacheResult) {
+            $result = Base::http(
+                env('API_URL') . sprintf('%s/%d', self::$resourceUrl, $id),
+                [],
+                [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+                'GET'
+            );
+
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $product = $result->data;
+            if ($product && $product->discount && isset($product->discount->discountTime)) {
+                $product->discount->discountTime = FctCommon::secondToString($product->discount->discountTime);
+            }
+            if ($product->hasCoupon) {
+                $product->coupon_url = url('coupons/new?product_id=' . $product->id);
+            }
+            $cacheResult = $product;
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
-        if ($product->hasCoupon)
-        {
-            $product->coupon_url = url('coupons/new?product_id=' . $product->id);
-        }
-        $member = Member::getAuth();
-        $chatDatas = [
-            "name" => $member ? $member->userName : "",
-            "tel" => $member ? $member->cellPhone : "",
-            "comment" => $product->name . '--' . url('product/' . $product->id) . '"}',
-        ];
-        return [
-            'title' => (isset($product->name) && $product->name ? $product->name : '产品详情'),
-            'categories' => ProductCategory::getCategories(),
-            'product' => $product,
-            'chat_url' => 'https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid='
-                . ($member ?$member->memberId : "")
-                . '&metadata=' .urlencode(json_encode($chatDatas, JSON_UNESCAPED_UNICODE)),
-        ];
+
+        return $cacheResult;
     }
 
     /**艺术家作品列表

@@ -10,6 +10,7 @@ namespace App;
 
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Cache;
 
 class ProductCategory
 {
@@ -18,21 +19,33 @@ class ProductCategory
 
     public static function getCategories()
     {
-        $result = Base::http(
-            env('API_URL') . sprintf('%s/categories', self::$resourceUrl),
-            [],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_product_categories';
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        if ($result->code != 200)
-        {
-            throw new BusinessException($result->msg);
+        if (Cache::has($cacheKey)) {
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        $categories = [
-            (object)['name' => '全部', 'code' => ""],
-        ];
-        return $result->data ? array_merge($categories, $result->data) : $categories;
+        if (!$cacheResult) {
+            $result = Base::http(
+                env('API_URL') . sprintf('%s/categories', self::$resourceUrl),
+                [],
+                [],
+                'GET'
+            );
+
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $categories = [
+                (object)['name' => '全部', 'code' => ""],
+            ];
+            $cacheResult = $result->data ? array_merge($categories, $result->data) : $categories;
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 }

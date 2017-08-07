@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mobile;
 use App\Artist;
 use App\Exceptions\BusinessException;
 use App\Product;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 
 /**大师
@@ -39,14 +40,16 @@ class ArtistController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
-        $result['share'] = [
-            'title' => $result['title'],
-            'link' => $shareUrl,
-            'img' => 'http://test.fangcuntang.com/images/logo.png',
-            'desc' => '艺术家',
-        ];
-
-        return view('artist.index', $result);
+        return view('artist.index', [
+            'title' => '守艺人',
+            'entries' => $result->entries,
+            'share' => [
+                'title' => '守艺人',
+                'link' => $shareUrl,
+                'img' => 'http://test.fangcuntang.com/images/logo.png',
+                'desc' => '艺术家',
+            ]
+        ]);
     }
 
     /**大师详情
@@ -72,14 +75,17 @@ class ArtistController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
-        $result['share'] = [
-            'title' => $result['title'],
-            'link' => $shareUrl,
-            'img' => 'http://test.fangcuntang.com/images/logo.png',
-            'desc' => '艺术家',
-        ];
-
-        return view('artist.show', $result);
+        return view('artist.show', [
+            'title' => (isset($result->name) && $result->name ? $result->name : '守艺人详情'),
+            'artist' => $result,
+            'categories' => ProductCategory::getCategories(),
+            'share' => [
+                'title' => $result['title'],
+                'link' => $shareUrl,
+                'img' => 'http://test.fangcuntang.com/images/logo.png',
+                'desc' => '艺术家',
+            ]
+        ]);
     }
 
     public function products(Request $request, $artist_id)

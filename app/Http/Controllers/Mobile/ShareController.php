@@ -12,7 +12,7 @@ class ShareController extends BaseController
     public function index(Request $request)
     {
         $code = $request->get('code', '');
-        $name = $request->get('name', '');
+        $name = $request->get('keyword', '');
         $sortIndex = intval($request->get('sort', 0));
         $page = intval($request->get('page', 1));
 

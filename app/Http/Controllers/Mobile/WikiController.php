@@ -10,6 +10,7 @@ namespace App\Http\Controllers\Mobile;
 
 
 use App\Exceptions\BusinessException;
+use App\ProductCategory;
 use App\Wiki;
 use Illuminate\Http\Request;
 
@@ -34,12 +35,15 @@ class WikiController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
+        $result['title'] = '紫砂百科';
+        $result['categories'] = ProductCategory::getCategories();
         $result['share'] = [
-            'title' => $result['title'],
+            'title' => '紫砂百科',
             'link' => $shareUrl,
             'img' => 'http://test.fangcuntang.com/images/logo.png',
             'desc' => '紫砂',
         ];
+
         return view('wiki.index', $result);
     }
 
@@ -65,14 +69,17 @@ class WikiController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
-        $result['share'] = [
-            'title' => $result['title'],
-            'link' => $shareUrl,
-            'img' => 'http://test.fangcuntang.com/images/logo.png',
-            'desc' => '紫砂',
-        ];
-
-        return view('wiki.show', $result);
+        return view('wiki.show', [
+            'title' => '紫砂百科',
+            'categories' => ProductCategory::getCategories(),
+            'entry' => $result,
+            'share' => [
+                'title' => '紫砂百科',
+                'link' => $shareUrl,
+                'img' => 'http://test.fangcuntang.com/images/logo.png',
+                'desc' => '紫砂',
+            ]
+            ]);
     }
 
 }

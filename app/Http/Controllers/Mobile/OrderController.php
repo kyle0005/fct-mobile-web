@@ -15,13 +15,13 @@ class OrderController  extends BaseController
 {
     public function index(Request $request)
     {
-        $orderId = $request->get('order_id', '');
+        $keyword = $request->get('keyword', '');
         $status = $request->get('status', -1);
         $commentStatus = $request->get('status', -1);
         $page = $request->get('page', 1);
         try
         {
-            $result = ProductOrder::getOrders($orderId, $status, $commentStatus, $page);
+            $result = ProductOrder::getOrders($keyword, $status, $commentStatus, $page);
         }
         catch (BusinessException $e)
         {
@@ -156,4 +156,52 @@ class OrderController  extends BaseController
             return $this->autoReturn($e->getMessage());
         }
     }
+
+    /**取消订单
+     * @param Request $request
+     * @param $order_id
+     * @return string
+     */
+    public function setCancel(Request $request, $order_id)
+    {
+        try
+        {
+            ProductOrder::cancelOrder($order_id);
+
+            $url = url('my/orders');
+            if (strpos($request->server('HTTP_REFERER'), '/orders/') !== false) {
+                $url .= '/'. $order_id;
+            }
+            return $this->returnAjaxSuccess('订单取消成功', $url);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+    }
+
+    /**确认收货
+     * @param Request $request
+     * @param $order_id
+     * @return string
+     */
+    public function setFinish(Request $request, $order_id)
+    {
+        try
+        {
+            ProductOrder::finishOrder($order_id);
+
+            $url = url('my/orders');
+            if (strpos($request->server('HTTP_REFERER'), '/orders/') !== false) {
+                $url .= '/'. $order_id;
+            }
+
+            return $this->returnAjaxSuccess('确认收货成功', $url);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+    }
+
 }

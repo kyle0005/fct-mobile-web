@@ -10,6 +10,7 @@ namespace App;
 
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Cache;
 
 class ProductMaterial
 {
@@ -17,21 +18,33 @@ class ProductMaterial
 
     public static function getMaterialsByIds($materialIds, $productId)
     {
-        $result = Base::http(
-            env('API_URL') . sprintf('%s/by-product', self::$resourceUrl),
-            [
-                'product_id' => $productId,
-                'ids' => $materialIds,
-            ],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_materials_product_' . $productId;
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        if ($result->code != 200)
-        {
-            throw new BusinessException($result->msg);
+        if (Cache::has($cacheKey)) {
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        return $result->data;
+        if (!$cacheResult) {
+            $result = Base::http(
+                env('API_URL') . sprintf('%s/by-product', self::$resourceUrl),
+                [
+                    'product_id' => $productId,
+                    'ids' => $materialIds,
+                ],
+                [],
+                'GET'
+            );
+
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $cacheResult = $result->data;
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 }

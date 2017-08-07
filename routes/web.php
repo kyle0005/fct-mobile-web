@@ -106,6 +106,9 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'test.fangcuntang.com')], functio
             //取消
             Route::post('my/orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
                 ->where('order_id', '[0-9]+');
+            //确认收货
+            Route::post('my/orders/{order_id}/finish', 'Mobile\OrderController@setFinish')
+                ->where('order_id', '[0-9]+');
             //评论
             Route::get('my/orders/{order_id}/comments/create', 'Mobile\OrderCommentController@create')
                 ->where('order_id', '[0-9]+');

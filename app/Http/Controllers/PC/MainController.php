@@ -26,6 +26,8 @@ class MainController extends BaseController
         {
         }
 
+        $result['title'] = '方寸堂';
+
         return view('pc.index', $result);
     }
 

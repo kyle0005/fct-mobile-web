@@ -3,6 +3,7 @@
 namespace App;
 
 use App\Exceptions\BusinessException;
+use Illuminate\Support\Facades\Cache;
 
 /**用户购买评价
  * Class ProductComment
@@ -14,26 +15,38 @@ class OrderComment
 
     public static function getComments($productId, $pageIndex = 1)
     {
-        $pageSize = 20;
-        $result = Base::http(
-            env('API_URL') . self::$resourceUrl,
-            [
-                'product_id' => $productId,
-                'page_index' => $pageIndex,
-                'page_size' => $pageSize,
-            ],
-            [],
-            'GET'
-        );
+        $cacheKey = 'php_product_'.$productId.'_comments_' . $pageIndex;
+        $cacheTime = 30;
+        $cacheResult = false;
 
-        if ($result->code != 200)
-        {
-            throw new BusinessException($result->msg);
+        if (Cache::has($cacheKey)) {
+            $cacheResult = Cache::get($cacheKey);
         }
 
-        $pagination = Base::pagination($result->data, $pageSize);
+        if (!$cacheResult) {
+            $pageSize = 20;
+            $result = Base::http(
+                env('API_URL') . self::$resourceUrl,
+                [
+                    'product_id' => $productId,
+                    'page_index' => $pageIndex,
+                    'page_size' => $pageSize,
+                ],
+                [],
+                'GET'
+            );
 
-        return $pagination;
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg);
+            }
+
+            $pagination = Base::pagination($result->data, $pageSize);
+
+            $cacheResult = $pagination;
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
     }
 
     //(String order_id, Integer express_score, Integer has_anonymous, Integer sale_score, String productInfo
