@@ -54,13 +54,13 @@ class MainController extends BaseController
             }
 
             return view('index', [
-                'title' => '方寸网',
+                'title' => '方寸堂',
                 'categories' => ProductCategory::getCategories(),
                 'levels' =>  $result->goodsGradeList,
                 'products' => $result->pagination->entries,
                 'pager' => $result->pagination->pager,
                 'share' => [
-                    'title' => '方寸网',
+                    'title' => '方寸堂',
                     'link' => $shareUrl,
                     'img' => 'http://test.fangcuntang.com/images/logo.png',
                     'desc' => '方寸天地间',

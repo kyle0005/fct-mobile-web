@@ -51,7 +51,7 @@ class Main
         ];
 
         return [
-            'title' => '欢迎使用方寸网',
+            'title' => '欢迎使用方寸堂',
             'slides' => json_encode($slides, JSON_UNESCAPED_UNICODE),
         ];
 
@@ -77,7 +77,7 @@ class Main
         }
 
         return [
-            'title' => '方寸网',
+            'title' => '方寸堂',
             'articles' =>  $result->data ? $result->data->articleList : "",
             'products' => $result->data ? $result->data->productList : "",
             'artists' => $result->data ? $result->data->artistList : "",

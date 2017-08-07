@@ -32,7 +32,7 @@
                       <img src="{{ fct_cdn('/images/resource/pro01.png') }}">
                     </span>
                     <span class="center">
-                      <span class="title">方寸网</span>
+                      <span class="title">方寸堂</span>
                       <span class="t2">紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶</span>
                     </span>
                     <span class="right"><img src="{{ fct_cdn('/images/share.png') }}"></span>

@@ -31,7 +31,7 @@ class Authenticate
             ], JSON_UNESCAPED_UNICODE);
         }
 
-        FctCommon::cacheRedirectURI($request->url(), true);
+        FctCommon::cacheRedirectURI($request->getUri(), true);
 
         return redirect(FctCommon::hasWeChat() ? 'oauth' : 'login');
     }
