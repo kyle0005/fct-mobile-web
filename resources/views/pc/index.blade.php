@@ -229,7 +229,7 @@
                 <p class="yw-footer-copyrightmore">增值电信业务经营许可证:沪B2-20080046-23</p>
                 <p class="yw-footer-copyrightmore">举报电话：13785633681 | 010-59357051</p></div>
             <div class="yw-footer-share">
-                <a href="/img/fct/yw-qrcode.png') }}"
+                <a href="{{ fct_cdn('/img/fct/yw-qrcode.png') }}"
                    class="icon-share icon-share-weixin" title="阅文集团官方微信公众号" target="_blank">阅文集团官方微信公众号</a>
                 <a href="javascript:;" class="icon-share icon-share-weibo" title="阅文集团官方微博" target="_blank">阅文集团官方微博</a>
             </div>

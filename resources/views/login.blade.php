@@ -40,7 +40,7 @@
                     </div>
                 </li>
                 <li class="items clearfix">
-                    <div class="left"><img src="images/valicode.png') }}"></div>
+                    <div class="left"><img src="{{ fct_cdn('/images/valicode.png') }}"></div>
                     <div class="right">
                         <input type="text" class="val-code" placeholder="请输入验证码" name="captcha"
                                maxlength="6" v-model="mobileCode">
@@ -57,10 +57,10 @@
         </form>
         <div class="others">
             <a href="javascript:;">
-                <img src="images/qq.png') }}">
+                <img src="{{ fct_cdn('/images/qq.png') }}">
             </a>
             <a href="javascript:;">
-                <img src="images/weibo.png') }}">
+                <img src="{{ fct_cdn('/images/weibo.png') }}">
             </a>
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
