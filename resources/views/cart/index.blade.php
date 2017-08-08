@@ -61,11 +61,11 @@
                             <div class="chk-container">
                                 <label for="chooseall" class="text-container">
                                     <input type="checkbox" id="chooseall" name="chooseall" class="chooseall"
-                                           v-model="all"><span class="chosen">已选(&nbsp;{{ choose_num }}&nbsp;)</span>
+                                           v-model="all"><span class="chosen">已选(&nbsp;@{{ choose_num }}&nbsp;)</span>
                                 </label>
                             </div>
                         </li>
-                        <li class="price"><small class="pri-mark">￥</small>{{ toFloat(total_pri) }}</li>
+                        <li class="price"><small class="pri-mark">￥</small>@{{ toFloat(total_pri) }}</li>
                         <li class="buy" :class="{disabled: ischeck.length <= 0}">
                             <a href="javascript:;" @click="buy()" v-if="ischeck.length > 0">立即购买</a>
                             <a href="javascript:;" v-else>立即购买</a>
