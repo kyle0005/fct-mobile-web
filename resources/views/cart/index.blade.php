@@ -2,12 +2,12 @@
 
 
 @section('content')
-    <div class="cart-container" id="cart">
+    <div class="cart-container" id="cart" v-cloak>
         <form id="cart-form">
             <ul class="cart-list" v-if="pro_list && pro_list.length > 0">
                 <li class="cart-item" v-for="(item, index) in pro_list">
                     <label class="chk col">
-                        <input type="checkbox" name="chk-items" class="chk-items" :value="item" v-model="ischeck" @change="selectedProduct(item)">
+                        <input type="checkbox" name="chk-items" class="chk-items" :value="item" v-model="ischeck" @change="caltotalpri()">
                     </label>
                     <a href="javascript:;" class="product col">
                       <span class="pro-item pro-img">
@@ -22,8 +22,8 @@
                       </span>
                     </a>
                     <div class="num-container col">
-                        <div class="num">
-                            <a href="javascript:;" :class="{dis:min}" @click="minus(item)">
+                        <div class="num clearfix">
+                            <a href="javascript:;" :class="{dis:min}" @click="minus(item, index)">
                                 <i class="fa fa-minus"></i>
                             </a>
                             <input type="text" class="numbers" :value="item.buyCount">
@@ -60,12 +60,12 @@
                         <li class="choose">
                             <div class="chk-container">
                                 <label for="chooseall" class="text-container">
-                                    <input type="checkbox" id="chooseall" name="chooseall"
-                                           class="chooseall" v-model="checkall" @click="chooseall()"><span class="chosen">已选(@{{ choose_num }})</span>
+                                    <input type="checkbox" id="chooseall" name="chooseall" class="chooseall"
+                                           v-model="all"><span class="chosen">已选(&nbsp;{{ choose_num }}&nbsp;)</span>
                                 </label>
                             </div>
                         </li>
-                        <li class="price"><small class="pri-mark">￥</small>@{{ toFloat(total_pri) }}</li>
+                        <li class="price"><small class="pri-mark">￥</small>{{ toFloat(total_pri) }}</li>
                         <li class="buy" :class="{disabled: ischeck.length <= 0}">
                             <a href="javascript:;" @click="buy()" v-if="ischeck.length > 0">立即购买</a>
                             <a href="javascript:;" v-else>立即购买</a>
@@ -75,6 +75,7 @@
             </footer>
         </form>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="cartItem" :msg="msg"></confirm>
     </div>
 @endsection
 @section('javascript')
@@ -82,6 +83,7 @@
         config.carts = {!! $carts !!};
         config.like_list = {!! $likes !!};
         config.buy_url = "{{ url('orders/create') }}";
+        config.delete_url = "{{ url('carts') }}";
     </script>
     <script src="{{ fct_cdn('/js/cart.js') }}"></script>
 @endsection
