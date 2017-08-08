@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="format-detection" content="telephone=no">
+    <link rel="shortcut icon" href="//cdn.fangcun.com/static/img/favicon.png" type="image/png" />
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="{{ fct_cdn('/css/pc.app.css') }}">
     <!-- endbuild -->

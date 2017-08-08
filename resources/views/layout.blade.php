@@ -7,6 +7,7 @@
     <title>{{ $title or "404" }}</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <link rel="shortcut icon" href="//cdn.fangcun.com/static/img/favicon.png" type="image/png" />
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="{{ fct_cdn('/css/app.css?_rd=2017') }}">
     <!-- endbuild -->
