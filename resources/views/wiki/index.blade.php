@@ -72,7 +72,6 @@
                 <span class="bottom">沪ICP备12022967号-1&nbsp;沪公网安备11010502025474</span>
             </div>
         </div>
-        <info v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></info>
     </div>
 @endsection
 @section('javascript')
