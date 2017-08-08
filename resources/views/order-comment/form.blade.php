@@ -6,7 +6,7 @@
             <div class="item" v-for="(item, index) in order_detail.orderGoods">
                 <div class="top">
                     <div class="pro-img">
-                        <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                        <img :src="item.img">
                     </div>
                     <div class="context clearfix">
                         <div class="des">描述相符</div>
@@ -74,7 +74,7 @@
         <div class="upload-container">
             <div class="item" v-for="(item, index) in uploadItem">
                 <div class="inner">
-                    <img v-view="item" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                    <img :src="item">
                 </div>
                 <a href="javascript:;" class="fork" @click="delImg(index)"><i class="fa fa-times"></i></a>
             </div>
