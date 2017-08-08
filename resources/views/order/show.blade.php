@@ -66,7 +66,7 @@
         </section>
         <section class="total">
             <div class="inner">
-                共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计：
+                共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计:
                 <span class="pri-color">
                     <small class="pri-mark">￥</small>
                     @{{ order_detail.payAmount }}
