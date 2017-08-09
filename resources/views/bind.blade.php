@@ -29,6 +29,10 @@
             </ul>
             <div class="log-btn">
                 <div class="sub" @click="mobileMsgLogin()">绑定</div>
+{{--
+                <div class="sub" @click="mobileMsgLogin()" v-if="!postProcess">绑定</div>
+                <div class="sub" v-else>绑定中...</div>
+--}}
             </div>
         </form>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>

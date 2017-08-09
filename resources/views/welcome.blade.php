@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="index-container" id="welcome">
+    <div class="index-container" id="welcome" v-cloak>
         <div class="btns">
             <div class="enter">
                 <a href="{{ url('/') }}">

@@ -66,9 +66,7 @@
         </section>
         <section class="total">
             <div class="inner">
-                共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计:<span class="pri-color">
-                    <small class="pri-mark">￥</small>@{{ order_detail.payAmount }}
-                </span>（含运费）
+                共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计:<span class="pri-color"><small class="pri-mark">￥</small>@{{ order_detail.payAmount }}</span>（含运费）
             </div>
         </section>
         <section class="order-detail">
@@ -86,7 +84,9 @@
                    class="chat"><img src="{{ fct_cdn('/images/order_chat.png') }}"></a>
                 <div class="del" v-if="order_detail.status == 0">
                     <a href="javascript:;" @click="confirm(order_detail.orderId, cancel)">取消订单</a>
-                </div>
+ {{--                   <a href="javascript:;" @click="confirm(order_detail.orderId, cancel)" v-if="!postProcess">取消订单</a>
+                    <a href="javascript:;" v-else>取消订单中...</a>
+ --}}               </div>
                 <div class="comment" v-if="order_detail.status == 0">
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
                 </div>
@@ -96,6 +96,10 @@
 
                 <div class="comment" v-if="order_detail.status == 2">
                     <a href="javascript:;" @click="confirm(order_detail.orderId, finish)">确认收货</a>
+{{--
+                    <a href="javascript:;" @click="confirm(order_detail.orderId, finish)" v-if="!postProcess">确认收货</a>
+                    <a href="javascript:;" v-else>确认收货中...</a>
+--}}
                 </div>
             </div>
         </footer>

@@ -17,7 +17,12 @@
                         </label>
                         <div class="options-container">
                             <a href="javascript:;" @click="edit(item)"><img src="{{ fct_cdn('/images/edit.png') }}">编辑</a>
+
                             <a href="javascript:;" @click="del(item, index)"><img src="{{ fct_cdn('/images/del.png') }}">删除</a>
+{{--
+                            <a href="javascript:;" @click="del(item, index)" v-if="!postProcess"><img src="{{ fct_cdn('/images/del.png') }}">删除</a>
+                            <a href="javascript:;" v-else><img src="{{ fct_cdn('/images/del.png') }}">删除中...</a>
+--}}
                         </div>
                     </div>
                 </div>

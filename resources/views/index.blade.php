@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="main-container" id="main">
+    <div class="main-container" id="main" v-cloak>
         <head-top @changelist="getprolist" :isindex="isindex"></head-top>
         <section class="cat-container">
             <ul class="category clearfix">

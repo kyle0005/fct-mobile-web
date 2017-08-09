@@ -32,7 +32,7 @@
                         <span class="left">退款原因</span>
                         <select class="select" v-model="reason">
                             <option value="">选择退款原因</option>
-                            <option :value="item" v-for="(item, i) in product.reasons">@{{ item }}</option>
+                            <option :value="reason" v-for="(reason, i) in product.reasons">@{{ reason }}</option>
                         </select>
                     </div>
                 </li>
@@ -40,9 +40,9 @@
             <div class="comment">
                 <textarea class="textarea" placeholder="请你在此描述详情问题。" v-model="description"></textarea>
                 <div class="upload-container">
-                    <div class="item" v-for="(item, index) in uploadItem">
+                    <div class="item" v-for="(image, index) in uploadItem">
                         <div class="inner">
-                            <img :src="item">
+                            <img :src="image">
                         </div>
                         <a href="javascript:;" class="fork" @click="delImg(index)"><i class="fa fa-times"></i></a>
                     </div>
@@ -58,6 +58,10 @@
         </section>
         <div class="sub-btn">
             <a href="javascript:;" @click="sub()">提交申请</a>
+{{--
+            <a href="javascript:;" @click="sub()" v-if="!postProcess">提交申请</a>
+            <a href="javascript:;" v-else>提交申请中...</a>
+--}}
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>

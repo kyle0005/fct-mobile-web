@@ -47,7 +47,11 @@
                         <div class="line">
                             <span class="date">@{{ couponitem.startTime }}-@{{ couponitem.endTime }}</span>
                             <span class="btn" v-if="couponitem.auditStatus == 0">
-                              <a href="javascript:;" class="use-btn" @click="sub(couponitem.id)">立即使用</a>
+                                <a href="javascript:;" class="use-btn" @click="sub(couponitem.id)">立即使用</a>
+{{--
+                              <a href="javascript:;" class="use-btn" @click="sub(couponitem.id)" v-if="!postProcess">立即使用</a>
+                                <a href="javascript:;" class="use-btn" v-else>立即使用中...</a>
+--}}
                             </span>
                         </div>
                         <div class="info clearfix">

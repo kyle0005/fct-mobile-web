@@ -46,6 +46,10 @@
                     </div>
                     <div class="btn-container">
                         <a href="javascript:;" class="grey" @click="confirm(item.orderId, cancel)">取消订单</a>
+{{--
+                        <a href="javascript:;" class="grey" @click="confirm(item.orderId, cancel)" v-if="!postProcess">取消订单</a>
+                        <a href="javascript:;" class="grey" v-else>取消订单中...</a>
+--}}
                     </div>
                 </div>
 
@@ -72,6 +76,7 @@
 @endsection
 @section('javascript')
     <script>
+        config.status = {{ $status }};
         config.orderlist = {!! json_encode($orderlist, JSON_UNESCAPED_UNICODE) !!};
         config.orderlist_url = "{{ url('my/orders') }}"; // /my/orders
         config.search_url = "{{ url('my/orders') }}"; // /my/orders

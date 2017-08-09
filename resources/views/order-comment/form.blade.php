@@ -43,6 +43,10 @@
         </section>
         <div class="sub-btn">
             <a href="javascript:;" @click="sub">提交评论</a>
+{{--
+            <a href="javascript:;" @click="sub" v-if="!postProcess">提交评论</a>
+            <a href="javascript:;" v-else>提交评论</a>
+--}}
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>

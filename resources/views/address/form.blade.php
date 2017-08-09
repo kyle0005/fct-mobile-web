@@ -60,6 +60,10 @@
             </div>
             <div class="address-btn">
                 <a href="javascript:;" @click="sub">确认保存</a>
+{{--
+                <a href="javascript:;" @click="sub" v-if="!postProcess">确认保存</a>
+                <a href="javascript:;" v-else>确认保存中...</a>
+--}}
             </div>
         </form>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
