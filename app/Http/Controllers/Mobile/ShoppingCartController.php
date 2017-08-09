@@ -32,10 +32,10 @@ class ShoppingCartController extends BaseController
         $extendId = intval($request->get('spec_id', 0));
 
         if ($productId < 1) {
-            return $this->returnAjaxError('添加的产品不存在');
+            return $this->autoReturn('添加的产品不存在');
         }
         if ($buyNumber < 1) {
-            return $this->returnAjaxError('产品数量不能小于1');
+            return $this->autoReturn('产品数量不能小于1');
         }
 
         try {
