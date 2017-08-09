@@ -15,7 +15,7 @@
             </a>
         </section>
         <section class="user-sec">
-            <a href="{{ url("my/orders") }}" class="order">
+            <a href="{{ url("my/orders") }}?status=-1" class="order">
                 <span>我的订单</span>
                 <span class="wei-arrow-right"></span>
             </a>
