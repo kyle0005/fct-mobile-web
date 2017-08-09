@@ -102,7 +102,7 @@ class RefundController extends BaseController
 
             Refund::saveRefund($orderId, $orderProductId, $serviceType, $reason, $description, $images);
 
-            return $this->returnAjaxSuccess("申请成功", url('my/orders/' . $orderId));
+            return $this->returnAjaxSuccess("申请成功", url('my/refunds'));
         }
         catch (BusinessException $e)
         {
