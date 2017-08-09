@@ -53,7 +53,13 @@ class WithdrawController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            $url = null;
+            if ($e->getCode() == 401)
+                $url = url('my/account');
+            elseif ($e->getCode() == 402)
+                $url = url('my/account/real-auth');
+
+            return $this->autoReturn($e->getMessage(), $url);
         }
 
 
