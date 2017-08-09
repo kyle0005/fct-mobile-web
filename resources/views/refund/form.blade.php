@@ -8,7 +8,7 @@
             </div>
             <div class="pro-item title-container">
                 <div class="title">@{{ product.name }}</div>
-                <div class="spec" v-if="item.specName && item.specName != null">规格: &nbsp;@{{ product.specName }}</div>
+                <div class="spec" v-if="product.specName && product.specName != null">规格: &nbsp;@{{ product.specName }}</div>
             </div>
             <div class="pro-item price-container">
                 <div class="price"><small class="pri-mark">￥</small>@{{ product.price }}</div>
@@ -58,10 +58,8 @@
         </section>
         <div class="sub-btn">
             <a href="javascript:;" @click="sub()">提交申请</a>
-{{--
             <a href="javascript:;" @click="sub()" v-if="!postProcess">提交申请</a>
             <a href="javascript:;" v-else>提交申请中...</a>
---}}
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
