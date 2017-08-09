@@ -33,6 +33,7 @@ class OrderController  extends BaseController
 
         return view('order.index', [
             'title' => '我的订单',
+            'status' => $status,
             'orderlist' => $result
         ]);
     }
