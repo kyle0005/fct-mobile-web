@@ -346,6 +346,7 @@ class MemberController extends BaseController
     public function logout(Request $request)
     {
         Member::logout();
+        return redirect(url('/'));
     }
 
 
