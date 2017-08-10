@@ -95,11 +95,9 @@
                 </div>
 
                 <div class="comment" v-if="order_detail.status == 2">
-                    <a href="javascript:;" @click="confirm(order_detail.orderId, finish)">确认收货</a>
-{{--
-                    <a href="javascript:;" @click="confirm(order_detail.orderId, finish)" v-if="!postProcess">确认收货</a>
-                    <a href="javascript:;" v-else>确认收货中...</a>
---}}
+                    <a href="javascript:;">
+                        <subpost :txt="delText" ref="subpost" @callback="confirm(order_detail.orderId, finish)" @succhandle="succhandle"></subpost>
+                    </a>
                 </div>
             </div>
         </footer>

@@ -57,11 +57,9 @@
                     </div>
                     <div class="right clearfix">
                         <div class="sub-container">
-                            <a href="javascript:;" @click="getCoupon()" class="sub">使用</a>
-{{--
-                            <a href="javascript:;" @click="getCoupon()" class="sub" v-if="!postProcess">使用</a>
-                            <a href="javascript:;" class="sub" v-else>使用中...</a>
---}}
+                            <a href="javascript:;" class="sub">
+                                <subpost :txt="coupText" ref="usecoup" @callback="getCoupon" @succhandle="succhandle"></subpost>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -95,11 +93,9 @@
                 <div class="inner">
                     <div class="pri">应付：<small class="pri-mark">￥</small><span class="pri">@{{ totalPrice }}</span></div>
                     <div class="sub">
-                        <a href="javascript:;" class="sub" @click="pay()">我要付款</a>
-{{--
-                        <a href="javascript:;" class="sub" @click="pay()" v-if="!postProcess">我要付款</a>
-                        <a href="javascript:;" class="sub" v-else>我要付款中...</a>
---}}
+                        <a href="javascript:;" class="sub">
+                            <subpost :txt="payText" ref="paypost" @callback="pay" @succhandle="payhandle"></subpost>
+                        </a>
                     </div>
                 </div>
             </footer>

@@ -35,11 +35,9 @@
                 </li>
             </ul>
             <div class="log-btn">
-                <div class="sub" @click="update()">确认</div>
-{{--
-                <div class="sub" @click="update()" v-if="!postProcess">确认</div>
-                <div class="sub" v-else>确认中...</div>
---}}
+                <div class="sub">
+                    <subpost :txt="subText" ref="subpost" @callback="update" @succhandle="succhandle"></subpost>
+                </div>
             </div>
         </form>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>

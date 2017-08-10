@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-        $shareAvatar = env('STATIC_URL') . '/img/head.jpg';
+        $shareAvatar = env('STATIC_URL') . '/img/nologin-head.png';
         view()->share('shareAvatar', $shareAvatar);
         view()->share('categories', ProductCategory::getCategories());
 

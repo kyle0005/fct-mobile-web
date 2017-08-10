@@ -28,11 +28,9 @@
         <footer class="foot">
             <div class="pri">应付:<small class="pri-mark">￥</small>@{{ charge_num }}</div>
             <div class="sub">
-                <a href="javascript:;" class="sub" @click="sub">我要充值</a>
-{{--
-                <a href="javascript:;" class="sub" @click="sub" v-if="!postProcess">我要充值</a>
-                <a href="javascript:;" class="sub" v-else>我要充值中...</a>
---}}
+                <a href="javascript:;" class="sub">
+                    <subpost :txt="subText" ref="subpost" @callback="sub" @succhandle="succhandle"></subpost>
+                </a>
             </div>
         </footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>

@@ -57,11 +57,9 @@
             </div>
         </section>
         <div class="sub-btn">
-            <a href="javascript:;" @click="sub()">提交申请</a>
-{{--
-            <a href="javascript:;" @click="sub()" v-if="!postProcess">提交申请</a>
-            <a href="javascript:;" v-else>提交申请中...</a>
---}}
+            <a href="javascript:;">
+                <subpost :txt="subText" ref="subpost" @callback="sub" @succhandle="succhandle"></subpost>
+            </a>
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>

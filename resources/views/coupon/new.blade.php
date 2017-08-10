@@ -34,11 +34,9 @@
                         <div class="line">
                             <span class="date">@{{ couponitem.startTime }}-@{{ couponitem.endTime }}</span>
                             <span class="btn">
-                                <a href="javascript:;" class="use-btn" @click="receive(couponitem.id)">点击领取</a>
-{{--
-                              <a href="javascript:;" class="use-btn" @click="receive(couponitem.id)" v-if="!postProcess">点击领取</a>
-                                <a href="javascript:;" class="use-btn" v-else>点击领取中...</a>
---}}
+                                <a href="javascript:;" class="use-btn">
+                                    <subpost :txt="getText" :ref="'subpost' + couponitem.id" @callback="receive(couponitem.id)" @succhandle="succhandle"></subpost>
+                                </a>
                             </span>
                         </div>
                         <div class="info clearfix">

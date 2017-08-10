@@ -48,11 +48,9 @@
                 </li>
             </ul>
             <div class="log-btn">
-                <div class="sub" @click="mobileMsgLogin()">登录</div>
-{{--
-                <div class="sub" @click="mobileMsgLogin()" v-if="!postProcess">登录</div>
-                <div class="sub" v-else>登录</div>
---}}
+                <div class="sub">
+                    <subpost :txt="subText" ref="subpost" @callback="mobileMsgLogin" @succhandle="succhandle"></subpost>
+                </div>
             </div>
             <div class="options">
                 <a href="{{ url('forget-password') }}">忘记密码？</a>

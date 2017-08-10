@@ -131,18 +131,16 @@
                     </span>
                     <span class="txt">请输入要表达的信息</span>
                 </a>
-                <div class="aside" :class="{open:open,docked:docked}" @click.prevent="pop()">
+                <div class="aside" :class="{open:open,docked:docked}" @click.prevent="popchat()">
                     <div class="container" @click.stop="">
                         <form id="chat_form">
                             <div class="inner">
                                 <div class="top">
-                                    <a href="javascript:;" class="cancel" @click.prevent="pop()">取消</a>
+                                    <a href="javascript:;" class="cancel" @click.prevent="popchat()">取消</a>
                                     <span class="title">我来聊两句</span>
-                                    <a href="javascript:;" class="send" @click.prevent="send()">发送</a>
-{{--
-                                    <a href="javascript:;" class="send" @click.prevent="send()" v-if="!postProcess">发送</a>
-                                    <a href="javascript:;" class="send" v-else>发送中...</a>
---}}
+                                    <a href="javascript:;" class="send">
+                                        <subpost :txt="subText" ref="subpost" @callback="send" @succhandle="succhandle"></subpost>
+                                    </a>
                                 </div>
                                 <textarea class="textarea" v-model="message"></textarea>
                             </div>
