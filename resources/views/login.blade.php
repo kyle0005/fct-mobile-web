@@ -20,7 +20,9 @@
                 </li>
             </ul>
             <div class="log-btn">
-                <div class="sub" @click="mobileLogin">登录</div>
+                <div class="sub">
+                    <subpost :txt="subText" ref="subpost" @callback="mobileLogin" @succhandle="succhandle"></subpost>
+                </div>
             </div>
             <div class="options">
                 <a href="{{ url('forget-password') }}">忘记密码？</a>
