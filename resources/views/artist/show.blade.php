@@ -173,7 +173,6 @@
         config.chat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
     </script>
     <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/video.js') }}"></script>
     <script src="{{ fct_cdn('/js/artist.js') }}"></script>
 
     {!! wechat_share($share) !!}
