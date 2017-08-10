@@ -44,8 +44,8 @@
             <section class="ptop">
                 <div class="text">@{{ top.content }}</div>
                 <div class="media" >
-                    <mVideo v-if="top.videoId !== ''" :item="top"></mVideo>
-                    <!--<video id="video_top" class="video-js vjs-big-play-centered" controls v-if="top.videoId !== ''"></video>-->
+                    <mVideo v-if="top.videoUrl !== ''" :item="top"></mVideo>
+                    <!--<video id="video_top" class="video-js vjs-big-play-centered" controls v-if="top.videoUrl !== ''"></video>-->
                     <ul class="img-list" v-if="topImg">
                         <li v-for="imgs in top.images">
                             <img v-view="imgs" src="{{ fct_cdn('/images/img_loader.gif') }}">
@@ -57,7 +57,7 @@
                 <li class="item" v-for="(item, index) in liveList">
                     <div class="text">@{{ item.content }}</div>
                     <div class="media">
-                        <mVideo v-if="item.videoId !== ''" :item="item"></mVideo>
+                        <mVideo v-if="item.videoUrl !== ''" :item="item"></mVideo>
                         <ul class="img-list" v-if="item.images.length > 0">
                             <li v-for="(img, i) in item.images">
                                 <img v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
