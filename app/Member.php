@@ -292,10 +292,23 @@ class Member
     }
 
     /**退出
-     * @param $memberId
+     * @return mixed
+     * @throws BusinessException
      */
-    public static function logout($memberId)
+    public static function logout()
     {
+        $token = self::getToken();
+        $result = Base::http(
+            env('API_URL') . '/member/logout',
+            [],
+            [env('MEMBER_TOKEN_NAME') => $token]
+        );
 
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        self::cleanAuth();
     }
 }
