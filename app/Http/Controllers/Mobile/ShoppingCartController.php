@@ -34,9 +34,9 @@ class ShoppingCartController extends BaseController
         if ($productId < 1) {
             return $this->autoReturn('添加的产品不存在');
         }
-        if ($buyNumber < 1) {
+/*        if ($buyNumber < 1) {
             return $this->autoReturn('产品数量不能小于1');
-        }
+        }*/
 
         try {
 
