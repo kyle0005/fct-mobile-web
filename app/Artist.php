@@ -58,10 +58,10 @@ class Artist
         $cacheTime = 3;
         $cacheResult = false;
 
-        if (Cache::has($cacheKey))
+/*        if (Cache::has($cacheKey))
         {
             $cacheResult = Cache::get($cacheKey);
-        }
+        }*/
 
         if (!$cacheResult) {
             $pageSize = 20;
