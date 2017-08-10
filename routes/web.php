@@ -116,6 +116,8 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'test.fangcuntang.com')], functio
                 ->where('order_id', '[0-9]+');
             //退货
             Route::resource('my/refunds', 'Mobile\RefundController', ['index', 'create', 'store', 'show']);
+                //关闭申请
+                Route::post('my/refunds/{id}/cancel', 'Mobile\RefundController@setCancel');
 
         //我的钱包
         Route::get('my/account', 'Mobile\MemberAccountController@wallet');

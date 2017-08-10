@@ -54,14 +54,16 @@
             </div>
         </section>
         <div class="sub-btn">
-            <a href="javascript:;">关闭申请</a>
+            <a href="javascript:;" @click="confirm(closeApp)">关闭申请</a>
         </div>
+        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :msg="msg"></confirm>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
 @endsection
 @section('javascript')
     <script>
         config.product = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
+        config.cancel_url = "{{ url('my/refunds/' . $entity->id . '/cancel') }}";
     </script>
     <script src="{{ fct_cdn('/js/aftersale_detail.js') }}"></script>
 @endsection

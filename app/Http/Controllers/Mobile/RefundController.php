@@ -109,4 +109,21 @@ class RefundController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
     }
+
+    public function setCancel(Request $request, $id)
+    {
+        if ($id < 1)
+        {
+            return $this->autoReturn('记录不存在');
+        }
+        try
+        {
+            Refund::cancel($id);
+            return $this->returnAjaxSuccess('取消成功', url('my/refunds/' . $id));
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+    }
 }

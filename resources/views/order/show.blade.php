@@ -83,20 +83,18 @@
                 <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助"
                    class="chat"><img src="{{ fct_cdn('/images/order_chat.png') }}"></a>
                 <div class="del" v-if="order_detail.status == 0">
-                    <a href="javascript:;" @click="confirm(order_detail.orderId, cancel)">取消订单</a>
- {{--                   <a href="javascript:;" @click="confirm(order_detail.orderId, cancel)" v-if="!postProcess">取消订单</a>
-                    <a href="javascript:;" v-else>取消订单中...</a>
- --}}               </div>
+                    <a href="javascript:;" @click="confirm(order_detail.orderId, cancel)">关闭订单</a>
+               </div>
                 <div class="comment" v-if="order_detail.status == 0">
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
                 </div>
-                <div class="comment" v-if="order_detail.status == 3">
+                <div class="comment" v-if="order_detail.status == 3 && order_detail.commentStatus == 1">
                     <a :href="'{{ url('my/orders') }}/' + order_detail.orderId + '/comments/create'">我要评价</a>
                 </div>
 
                 <div class="comment" v-if="order_detail.status == 2">
                     <a href="javascript:;">
-                        <subpost :txt="delText" ref="subpost" @callback="confirm(order_detail.orderId, finish)" @succhandle="succhandle"></subpost>
+                        <a href="javascript:;" @click="confirm(order_detail.orderId, finish)">确认收货</a>
                     </a>
                 </div>
             </div>

@@ -45,15 +45,11 @@
                         <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + item.orderId" class="black">我要付款</a>
                     </div>
                     <div class="btn-container">
-                        <a href="javascript:;" class="grey" @click="confirm(item.orderId, cancel)">取消订单</a>
-{{--
-                        <a href="javascript:;" class="grey" @click="confirm(item.orderId, cancel)" v-if="!postProcess">取消订单</a>
-                        <a href="javascript:;" class="grey" v-else>取消订单中...</a>
---}}
+                        <a href="javascript:;" class="grey" @click="confirm(item.orderId, cancel)">关闭订单</a>
                     </div>
                 </div>
 
-                <div class="btn clearfix" v-if="item.status == 3">
+                <div class="btn clearfix" v-if="item.status == 3 && item.commentStatus == 1">
                     <div class="btn-container">
                         <a :href="'{{ url('my/orders') }}/' + item.orderId + '/comments/create'" class="black">评价</a>
                     </div>
