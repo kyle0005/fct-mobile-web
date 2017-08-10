@@ -163,7 +163,17 @@
             <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
         </div>
     </script>
-
+    <template id="m_video">
+        <div class="m-video-container">
+            <div class="video-inner">
+                <div v-if="!isVideoLoad" class="play-container" @click="loadVideo(item.id)">
+                    <img :src="item.videoImage" class="poster-img">
+                    <img src="{{ fct_cdn('/images/video_play.png') }}" class="poster-play">
+                </div>
+                <video class="m-video" :src="item.videoUrl" :id="'video' + item.id" :poster="item.videoImage" preload="metadata" controls v-else></video>
+            </div>
+        </div>
+    </template>
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.artist = {!! json_encode($artist, JSON_UNESCAPED_UNICODE) !!};
