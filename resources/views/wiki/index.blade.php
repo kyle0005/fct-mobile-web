@@ -52,14 +52,14 @@
                 </a>
             </div>
         </section>
+
         <section class="list">
-            <div class="tab-list">
+            <div class="tab-list down">
                 <m-swipe swipeid="swipet" ref="swipert" :autoplay="0" effect="slide">
                     <div v-for="(item, index) in list_t" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
-                            <a :href="'{{ url('wiki/item') }}?from_type=material&from_id=' + i_item.id" class="link">
-                                <span>@{{ i_item.name }}</span>
-                            </a>
+                            <a :href="'{{ url('wiki/item') }}?from_type=material&from_id=' + i_item.id"
+                               class="link overText">@{{ i_item.name }}</a>
                         </div>
                     </div>
                 </m-swipe>
