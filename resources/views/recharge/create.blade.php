@@ -18,7 +18,7 @@
         <section class="choose">
             <div class="item" :class="{chose: index===tab_num}" v-for="(item, index) in charge_nums" @click="choose(item.giftPercent, item.price, index)">
                 <a href="javascript:;" class="link" v-if="showText(item)">其他金额</a>
-                <a href="javascript:;" class="link" v-else>@{{ item.price }}</a>
+                <a href="javascript:;" class="link" v-else><span class="pri-mark">￥</span> @{{ item.price }}</a>
             </div>
         </section>
         <div class="tips">点我要充值，即表示您已同意方寸堂<strong>《充返活动协议》</strong></div>
