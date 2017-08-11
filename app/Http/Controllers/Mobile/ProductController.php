@@ -52,7 +52,7 @@ class ProductController extends BaseController
         $title = (isset($result->name) && $result->name ? $result->name : '产品详情');
 
         return view('product.show', [
-            'title' => $title,
+            'title' => fct_title($title),
             'categories' => ProductCategory::getCategories(),
             'product' => $result,
             'chat_url' => 'https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid='

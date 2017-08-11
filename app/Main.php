@@ -66,7 +66,7 @@ class Main
         ];
 
         return [
-            'title' => '欢迎使用方寸堂',
+            'title' => fct_title(),
             'slides' => json_encode($slides, JSON_UNESCAPED_UNICODE),
         ];
 

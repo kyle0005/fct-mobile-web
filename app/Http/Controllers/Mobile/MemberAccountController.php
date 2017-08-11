@@ -32,7 +32,7 @@ class MemberAccountController extends BaseController
             return $this->returnAjaxSuccess("成功", null, $result);
 
         return view('account.index', [
-            'title' => '帐户明细',
+            'title' => fct_title('帐户明细'),
             'logs' => $result,
         ]);
     }
@@ -49,7 +49,7 @@ class MemberAccountController extends BaseController
         }
 
         return view('account.wallet', [
-            'title' => '我的钱包',
+            'title' => fct_title('我的钱包'),
             'account' => $result,
         ]);
     }

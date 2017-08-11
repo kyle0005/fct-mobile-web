@@ -24,7 +24,7 @@ class MemberAddressController extends BaseController
         }
 
         return view('address.index', [
-            'title' => '地址管理',
+            'title' => fct_title('地址管理'),
             'addressList' => $result
         ]);
     }
@@ -32,7 +32,7 @@ class MemberAddressController extends BaseController
     public function create(Request $request)
     {
         $result = [
-            'title' => '新建收货地址',
+            'title' => fct_title('新建收货地址'),
             'address' => json_encode((object)[]),
         ];
 
@@ -133,7 +133,7 @@ class MemberAddressController extends BaseController
         }
 
         return view('address.choose', [
-            'title' => '选择收货地址',
+            'title' => fct_title('选择收货地址'),
             'addressList' => $result,
         ]);
     }

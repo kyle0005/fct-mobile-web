@@ -28,7 +28,7 @@ class RechargeController extends BaseController
             return $this->returnAjaxSuccess("成功", null, $result);
 
         return view('recharge.index', [
-            'title' => '充值记录',
+            'title' => fct_title('充值记录'),
             'recharges' => $result,
         ]);
     }
@@ -45,7 +45,7 @@ class RechargeController extends BaseController
         }
 
         return view('recharge.create', [
-            'title' => '充值',
+            'title' => fct_title('充值'),
             'recharge' => $result,
         ]);
     }

@@ -37,3 +37,11 @@ if (!function_exists('wechat_share'))
             . '<script>' . \App\Main::weChatShare($title, $link, $img, $desc) . '</script>';
     }
 }
+
+if (!function_exists('fct_title'))
+{
+    function fct_title($title = '')
+    {
+        return ($title ? $title . ' - ' : '') . '方寸堂';
+    }
+}

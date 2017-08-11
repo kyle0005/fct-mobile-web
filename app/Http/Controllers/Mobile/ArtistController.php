@@ -41,7 +41,7 @@ class ArtistController extends BaseController
         }
 
         return view('artist.index', [
-            'title' => '守艺人',
+            'title' => fct_title('守艺人'),
             'entries' => $result->entries,
             'share' => [
                 'title' => '守艺人',

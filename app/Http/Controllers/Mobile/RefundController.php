@@ -28,7 +28,7 @@ class RefundController extends BaseController
             return $this->returnAjaxSuccess("成功", null, $result);
 
         return view('refund.index', [
-            'title' => '售后记录',
+            'title' => fct_title('售后记录'),
             'refunds' => $result,
         ]);
     }
@@ -51,7 +51,7 @@ class RefundController extends BaseController
         }
 
         return view('refund.form', [
-            'title' => '申请售后',
+            'title' => fct_title('申请售后'),
             'entity' => $result,
         ]);
     }
@@ -69,7 +69,7 @@ class RefundController extends BaseController
         }
 
         return view('refund.show', [
-            'title' => '售后详情',
+            'title' => fct_title('售后详情'),
             'entity' => $result,
         ]);
     }

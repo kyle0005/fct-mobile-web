@@ -123,7 +123,6 @@
     </div>
 @endsection
 @section('javascript')
-    <script src="{{ fct_cdn('/js/video.js') }}"></script>
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.product = {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!};
@@ -149,7 +148,7 @@
     <script type="text/x-template" id="overview">
         <div>
             <section class="video-container">
-                <video id="my-player" class="video-js vjs-big-play-centered" controls></video>
+                <mVideo :poster="product.video.poster" :url="product.video.url" id="videotop"></mVideo>
             </section>
 
             {{--没有促销或有促销且不是秒杀，还未开始--}}
@@ -308,9 +307,21 @@
                     <span class="no">当前没有相关数据哟~</span>
                 </div>
             </div>
-
         </section>
     </script>
+
+    <template id="m_video">
+        <div class="m-video-container">
+            <div class="video-inner">
+                <div v-if="!isVideoLoad" class="play-container" @click="loadVideo()">
+                    <img :src="poster" class="poster-img" />
+                    <img src="{{ fct_cdn('/images/video_play.png') }}" class="poster-play" />
+                </div>
+                <video class="m-video" :src="url" :id="id" preload="metadata" controls v-else></video>
+            </div>
+        </div>
+    </template>
+
     <script src="{{ fct_cdn('/js/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/detail.js') }}"></script>
 

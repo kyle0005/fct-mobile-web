@@ -24,7 +24,7 @@ class WithdrawController extends BaseController
             return $this->returnAjaxSuccess("成功", null, $result);
 
         return view('withdraw.index', [
-            'title' => '提现记录',
+            'title' => fct_title('提现记录'),
             'withdraws' => $result,
         ]);
     }
@@ -64,7 +64,7 @@ class WithdrawController extends BaseController
 
 
         return view('withdraw.create', [
-            'title' => '申请提现',
+            'title' => fct_title('申请提现'),
             'entry' => $result,
         ]);
     }

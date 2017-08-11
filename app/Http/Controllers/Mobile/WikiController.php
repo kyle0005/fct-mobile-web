@@ -35,7 +35,7 @@ class WikiController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
-        $result['title'] = '紫砂百科';
+        $result['title'] = fct_title('紫砂百科');
         $result['categories'] = ProductCategory::getCategories();
         $result['share'] = [
             'title' => '紫砂百科',
@@ -67,7 +67,7 @@ class WikiController extends BaseController
         }
 
         return view('wiki.show', [
-            'title' => '紫砂百科',
+            'title' => fct_title('紫砂百科'),
             'categories' => ProductCategory::getCategories(),
             'entry' => $result,
             'share' => [

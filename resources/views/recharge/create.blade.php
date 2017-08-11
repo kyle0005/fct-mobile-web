@@ -11,7 +11,7 @@
             </div>
             <div class="inner" v-else>
                 <div class="f">充<span class="pri">@{{ charge_num }}</span>元</div>
-                <div class="s">送@{{ gift }}元，可得@{{ balance }}余额。</div>
+                <div class="s">送@{{ gift }}元，可得@{{ balance }}元余额。</div>
                 <div class="t"><img src="{{ fct_cdn('/images/category1.png') }}" alt=""></div>
             </div>
         </section>
@@ -23,7 +23,7 @@
         </section>
         <div class="tips">点我要充值，即表示您已同意方寸堂<strong>《充返活动协议》</strong></div>
         <footer class="foot">
-            <div class="pri">应付:<small class="pri-mark">￥</small>@{{ charge_num }}</div>
+            <div class="pri">应付:<small class="pri-mark">￥</small>@{{ toFloat(charge_num) }}</div>
             <div class="sub">
                 <a href="javascript:;" class="sub">
                     <subpost :txt="subText" ref="subpost" @callback="sub" @succhandle="succhandle"></subpost>

@@ -30,7 +30,7 @@ class ShareController extends BaseController
             return $this->returnAjaxSuccess('获取成功', null, $result);
 
         return view('share.index', [
-            'title' => '分享',
+            'title' => fct_title('分享'),
             'categories' => ProductCategory::getCategories(),
             'entries' => $result,
         ]);

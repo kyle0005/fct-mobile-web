@@ -54,7 +54,7 @@ class MainController extends BaseController
             }
 
             return view('index', [
-                'title' => '方寸堂',
+                'title' => fct_title(),
                 'categories' => ProductCategory::getCategories(),
                 'levels' =>  $result->goodsGradeList,
                 'products' => $result->pagination->entries,
@@ -112,7 +112,7 @@ class MainController extends BaseController
         }
 
         return view('coupon.new', [
-            'title' => '优惠券列表',
+            'title' => fct_title('优惠券列表'),
             'categories' => ProductCategory::getCategories(),
             'coupons' => $result,
         ]);

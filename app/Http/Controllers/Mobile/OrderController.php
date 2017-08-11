@@ -32,7 +32,7 @@ class OrderController  extends BaseController
             return $this->returnAjaxSuccess("获取成功", null, $result);
 
         return view('order.index', [
-            'title' => '我的订单',
+            'title' => fct_title('我的订单'),
             'status' => $status,
             'orderlist' => $result
         ]);
@@ -50,7 +50,7 @@ class OrderController  extends BaseController
         }
 
         return view('order.show', [
-            'title' => '订单详情',
+            'title' => fct_title('订单详情'),
             'entity' => $result,
         ]);
     }

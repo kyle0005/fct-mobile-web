@@ -29,7 +29,7 @@ class CouponController extends BaseController
             return $this->returnAjaxSuccess('获取成功', null, $result->couponList);
 
         return view('coupon.index', [
-            'title' => '我的优惠券',
+            'title' => fct_title('我的优惠券'),
             'coupons' => $result->couponList,
             'canReceiveCount' => $result->canReceiveCount,
         ]);

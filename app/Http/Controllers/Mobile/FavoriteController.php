@@ -25,7 +25,7 @@ class FavoriteController extends BaseController
             return $this->returnAjaxSuccess('', null, $result);
 
         return view('favorite.index', [
-            'title' => '收藏列表',
+            'title' => fct_title('收藏列表'),
             'entries' => $result,
         ]);
     }

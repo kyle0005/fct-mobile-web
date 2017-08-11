@@ -24,7 +24,7 @@ class OrderCommentController extends BaseController
         }
 
         return view('order-comment.form', [
-            'title' => '购买评价',
+            'title' => fct_title('购买评价'),
             'entity' => $result,
         ]);
     }

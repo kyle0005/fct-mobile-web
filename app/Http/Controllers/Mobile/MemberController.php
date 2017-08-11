@@ -78,7 +78,7 @@ class MemberController extends BaseController
         }
 
         return view("bind", [
-            'title' => '微信绑定',
+            'title' => fct_title('微信绑定'),
             'openid' => $openid,
         ]);
     }
@@ -206,7 +206,7 @@ class MemberController extends BaseController
         }
 
         $result = [
-            'title' => '更新信息',
+            'title' => fct_title('更新信息'),
             'member' => $result,
         ];
 
@@ -245,7 +245,7 @@ class MemberController extends BaseController
         }
 
         $result = [
-            'title' => '修改密码',
+            'title' => fct_title('修改密码'),
             'member' => $member,
         ];
 
@@ -284,7 +284,7 @@ class MemberController extends BaseController
                 return $this->autoReturn($e->getMessage());
             }
         }
-        return view('forget-password', ['title' => '找回密码']);
+        return view('forget-password', ['title' => fct_title('找回密码')]);
     }
 
     /**实名认证和绑定银行卡
@@ -333,7 +333,7 @@ class MemberController extends BaseController
         }
 
         $result = [
-            'title' => '实名认证',
+            'title' => fct_title('实名认证'),
             'banks' => $result,
         ];
 
@@ -355,7 +355,7 @@ class MemberController extends BaseController
         $member = Member::getAuth();
 
         return view("member.index", [
-            'title' => '用户中心',
+            'title' => fct_title('用户中心'),
             'memberBanner' => (object) [
                 'userName' =>$member->userName,
                 'headPortrait' => $member->headPortrait,

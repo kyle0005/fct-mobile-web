@@ -40,7 +40,7 @@ class MemberAddress
         }
 
         return [
-            'title' => '修改地址',
+            'title' => fct_title('修改地址'),
             'address' => $result->data,
         ];
     }

@@ -189,7 +189,7 @@ class ProductOrder
         }
 
         return [
-            'title' => '订单确认',
+            'title' => fct_title('订单确认'),
             'address' => json_encode($result->data->address ,JSON_UNESCAPED_UNICODE),
             'products' => json_encode($result->data->goodsList ,JSON_UNESCAPED_UNICODE),
             'submitCouponProducts' => Crypt::encryptString(json_encode($result->data->couponGoodsList ,JSON_UNESCAPED_UNICODE)),

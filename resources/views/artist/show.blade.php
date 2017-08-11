@@ -6,13 +6,6 @@
         <section class="live" id="live_container">
             <div class="container">
                 <div class="inner" v-if="haslive">
-                    <a href="javascript:;" class="play">
-                        <span class="fa-stack fa-lg">
-                          <i class="fa fa-circle-thin fa-stack-2x"></i>
-                          <i class="fa fa-play fa-stack-1x def"></i>
-                        </span>
-                        <span class="info live-now">正在直播</span>
-                    </a>
                     <img :src="artist.banner">
                     <div class="info join-num">@{{ artist.followCount }}人关注</div>
                 </div>
@@ -22,7 +15,6 @@
                 </div>
             </div>
         </section>
-
         <section class="nav-bar">
             <ul class="art-tab">
                 <li class="item" v-for="(item, index) in tabs" :class="{chosen: index===tab_num}" @click="linkTo(index)">
@@ -57,7 +49,7 @@
                 <li class="item" v-for="(item, index) in liveList">
                     <div class="text">@{{ item.content }}</div>
                     <div class="media">
-                        <mVideo v-if="item.videoUrl !== ''" :item="item"></mVideo>
+                        <mVideo v-if="item.videoUrl !== ''" :poster="item.videoImage" :url="item.videoUrl" id="'video' + item.id"></mVideo>
                         <ul class="img-list" v-if="item.images.length > 0">
                             <li v-for="(img, i) in item.images">
                                 <img v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
@@ -166,11 +158,11 @@
     <template id="m_video">
         <div class="m-video-container">
             <div class="video-inner">
-                <div v-if="!isVideoLoad" class="play-container" @click="loadVideo(item.id)">
-                    <img :src="item.videoImage" class="poster-img">
-                    <img src="{{ fct_cdn('/images/video_play.png') }}" class="poster-play">
+                <div v-if="!isVideoLoad" class="play-container" @click="loadVideo()">
+                    <img v-view="poster" class="poster-img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                    <img src="{{ fct_cdn('/images/video_play.png') }}" class="poster-play" />
                 </div>
-                <video class="m-video" :src="item.videoUrl" :id="'video' + item.id" :poster="item.videoImage" preload="metadata" controls v-else></video>
+                <video class="m-video" :src="url" :id="id" preload="metadata" controls v-else></video>
             </div>
         </div>
     </template>

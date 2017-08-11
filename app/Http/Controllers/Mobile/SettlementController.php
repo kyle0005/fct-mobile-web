@@ -25,7 +25,7 @@ class SettlementController extends BaseController
             return $this->returnAjaxSuccess("成功", null, $result);
 
         return view('settlement.index', [
-            'title' => '佣金结算',
+            'title' => fct_title('佣金结算'),
             'status' => $status,
             'settlements' => $result,
         ]);
