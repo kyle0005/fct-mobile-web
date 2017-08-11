@@ -204,7 +204,7 @@
                         <span class="img-container">
                           <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </span>
-                        <span class="name-container">@{{ item.name }}</span>
+                        <span class="name-container overText">@{{ item.name }}</span>
                     </a>
                 </li>
             </ul>
@@ -242,7 +242,7 @@
                         <span class="img-container">
                           <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </span>
-                        <span class="name-container">@{{ item.name }}</span>
+                        <span class="name-container overText">@{{ item.name }}</span>
                     </a>
                 </li>
             </ul>
