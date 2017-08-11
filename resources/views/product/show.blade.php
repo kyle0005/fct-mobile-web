@@ -203,17 +203,27 @@
                 <li v-for="(item, index) in artist">
                     <a href="javascript:;" :class="{red:index===art_num}" @click="loadsingle(index)">
                         <span class="img-container">
-                            <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                          <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </span>
                         <span class="name-container">@{{ item.name }}</span>
                     </a>
                 </li>
             </ul>
-            <div class='text-container' v-html="artistsingle.description">
-            </div>
+            <section class="artist">
+                <div class="intro">
+                  <span class="photo">
+                      <img :src="artistsingle.headPortrait"/>
+                  </span>
+                    <span class="artist-info">
+                      <span class="artist-name">@{{ artistsingle.name }}</span>&nbsp;-&nbsp;<span class="v-title">@{{ artistsingle.title }}</span><br>
+                      <span>@{{ artistsingle.intro }}</span>
+                    </span>
+                </div>
+            </section>
+            <div class="text-container" v-html="artistsingle.description"></div>
             <section class="comment">
                 <ul class="others">
-                    <li v-for="p in artistsingle.products">
+                    <li v-for="p in artistsingle.img">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
@@ -224,20 +234,31 @@
             </section>
         </div>
     </script>
+
     <script type="text/x-template" id="pug">
         <div>
             <ul class="pugs-list clearfix" v-if="titleshow">
                 <li v-for="(item, index) in pugs">
                     <a href="javascript:;" :class="{red:index===pug_num}" @click="loadsingle(index)">
                         <span class="img-container">
-                            <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                          <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </span>
                         <span class="name-container">@{{ item.name }}</span>
                     </a>
                 </li>
             </ul>
-            <section class="pug-container" v-html="pugsingle.description">
+            <section class="pug-container">
+                <div class="intro clearfix">
+                    <span class="photo">
+                        <img :src="pugsingle.image">
+                    </span>
+                    <span class="pug">
+            <span class="pug-name">@{{ pugsingle.name }}</span><br>
+            <span class="pug-detail">@{{ pugsingle.intro }}</span>
+          </span>
+                </div>
             </section>
+            <section class="pug-container" v-html="pugsingle.description"></section>
             <section class="spec">
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
@@ -250,6 +271,7 @@
             </section>
         </div>
     </script>
+
     <script type="text/x-template" id="service">
         <section class="service" v-html="tab_service"></section>
     </script>

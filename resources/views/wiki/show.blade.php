@@ -2,38 +2,39 @@
 
 
 @section('content')
-    <div class="detail-container">
+    <div class="encyclopedias-container" id="encyclopediasdetail" v-cloak>
         <head-top></head-top>
-
-        <div class="tabs">
-            <section class="pug-container">
-                {!! $entry->description !!}
-            </section>
-            <section class="spec">
+        <section class="artist">
+            <div class="intro">
+                <span class="photo">
+                  <img :src="detail.image">
+                </span>
+                <span class="artist-info">
+                    <span class="artist-name">@{{ detail.name }}</span><br>
+                    <span>@{{ detail.intro }}</span>
+                </span>
+            </div>
+            <div v-html="detail.description"></div>
+            <div class="comment">
                 <ul class="others">
-                @if ($entry->productList)
-                @foreach($entry->productList as $product)
-                    <li>
-                        <a href="{{ url('products/'. $product->id) }}" class="item">
-                            <img src="{{ $product->defaultImage }}">
-                            <span class="p-title">{{ $product->name }}</span>
+                    <li v-for="p in detail.productList">
+                        <a :href="'{{ url('products') }}/' + p.id" class="item">
+                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
-                @endforeach
-                @endif
                 </ul>
-            </section>
-        </div>
+            </div>
+        </section>
     </div>
 @endsection
 @section('javascript')
     <script>
-        var config = {
-            "productsType": {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!}
-        }
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
+        config.detail = {!! json_encode($entry, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="{{ fct_cdn('/js/head.js') }}"></script>
-
+    <script src="{{ fct_cdn('/js/encyclopedias_detail.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
