@@ -3,7 +3,7 @@
 @section('content')
     <div class="orderlist-container" id="orderlist" v-cloak>
         <div class="tabs">
-            <div class="item" v-for="(item, index) in tabs" :class="{chosen: index===tab_num}" @click="category(index)">
+            <div class="item" v-for="(item, index) in tabs" :class="{chosen: (index - 1)===tab_num}" @click="category(index - 1)">
                 <a href="javascript:;" class="link">@{{ item }}</a>
             </div>
             <div class="search-container" :class="{show:show_search}">
