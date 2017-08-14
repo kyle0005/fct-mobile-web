@@ -9,7 +9,7 @@ class Withdraw
 {
     public static $resourceUrl = '/finance/withdraws';
 
-    public static function getWithdraws($page = 1)
+    public static function getWithdraws($status, $page = 1)
     {
         $pageIndex = $page < 1 ? 1 : $page;
         $pageSize = 20;
@@ -17,6 +17,7 @@ class Withdraw
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
+                'status' => $status,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
             ],

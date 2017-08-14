@@ -11,9 +11,10 @@ class WithdrawController extends BaseController
     public function index(Request $request)
     {
         $page = $request->get('page', 1);
+        $status = intval($request->get('status', 0));
         try
         {
-            $result = Withdraw::getWithdraws($page);
+            $result = Withdraw::getWithdraws($status, $page);
         }
         catch (BusinessException $e)
         {

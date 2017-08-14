@@ -55,7 +55,7 @@
                             </a>
                         </li>
                         <li class="item">
-                            <a href="{{ url('wiki') }}">
+                            <a href="{{ url('welcome') }}">
                                 <img src="{{ fct_cdn('/images/menu5.png') }}">
                                 <span>品牌理念</span>
                             </a>
