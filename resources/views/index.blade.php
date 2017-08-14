@@ -21,7 +21,7 @@
                         <span class="description">@{{ item.intro }}</span>
                         <span class="pro-lists">
                             <span class="imgs" v-for="image in item.multiImages">
-                                <img v-view="image" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                                <img v-img="{ group: item.id }" v-view="image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </span>
                         </span>
                         <span class="ops">
