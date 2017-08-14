@@ -276,24 +276,25 @@
     </script>
     <script type="text/x-template" id="discuss">
         <section class="discuss">
-            <ul class="list" v-if="commentlist && commentlist.length > 0">
+            <ul class="list" v-load-more="nextPage" type="1" v-if="commentlist && commentlist.length > 0">
                 <li class="item" v-for="(item, index) in commentlist">
                     <div class="user-info clearfix">
                         <div class="left clearfix">
                             <div class="user-photo">
-                                <img v-view="item.photo" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                                <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </div>
                             <div class="user-opt">
-                                <div>@{{ item.username }}</div>
+                                <div>@{{ item.userName }}</div>
                                 <div class="stars">
-                                    <i class="fa fa-star" v-for="m in item.stars"></i><i class="fa fa-star-o" v-for="n in c_star(item.stars)"></i>
+                                    <i class="fa fa-star" v-for="m in item.descScore"></i>
+                                    <i class="fa fa-star-o" v-for="n in c_star(item.descScore)"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="right">@{{ item.date }}</div>
+                        <div class="right">@{{ item.createTime }}</div>
                     </div>
                     <div class="comments">
-                        <span class="text">@{{ item.text }}</span>
+                        <span class="text" v-html="item.content"></span>
                         <span class="imgs">
                         <img v-view="img_item" src="{{ fct_cdn('/images/img_loader.gif') }}" v-for="(img_item, index) in item.imgs">
                       </span>
@@ -307,6 +308,9 @@
                     <span class="no">当前没有相关数据哟~</span>
                 </div>
             </div>
+
+            <p v-if="pager.next == 0" class="empty_data">没有更多了</p>
+            <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
         </section>
     </script>
 
