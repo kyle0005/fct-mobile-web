@@ -18,7 +18,7 @@ class ProductMaterial
 
     public static function getMaterialsByIds($materialIds, $productId)
     {
-        $cacheKey = 'php_materials_product_' . $productId;
+        $cacheKey = 'materials_product_' . $productId;
         $cacheTime = 30;
         $cacheResult = false;
 

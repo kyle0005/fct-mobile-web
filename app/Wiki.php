@@ -18,7 +18,7 @@ class Wiki
     public static function getHome()
     {
 
-        $cacheKey = 'php_wiki';
+        $cacheKey = 'wiki';
         $cacheTime = 30;
         $cacheResult = false;
 
@@ -58,7 +58,7 @@ class Wiki
         if ($typeId < 1) {
             throw new BusinessException("请求的类型不存在");
         }
-        $cacheKey = 'php_wiki_' . $type . '_' . $typeId;
+        $cacheKey = 'wiki_' . $type . '_' . $typeId;
         $cacheTime = 30;
         $cacheResult = false;
 

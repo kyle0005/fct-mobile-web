@@ -15,7 +15,7 @@ class Favorite
     {
         $member = Member::getAuth();
         $pageIndex = 1;
-        $cacheKey = 'php_'.$member->memberId.'_favorites_'.$fromType.'_' . $pageIndex;
+        $cacheKey = 'member_'.$member->memberId.'_favorites_'.$fromType.'_' . $pageIndex;
         $cacheTime = 30;
         $cacheResult = false;
 

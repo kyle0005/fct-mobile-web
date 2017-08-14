@@ -19,7 +19,7 @@ class ProductCategory
 
     public static function getCategories()
     {
-        $cacheKey = 'php_product_categories';
+        $cacheKey = 'product_categories';
         $cacheTime = 30;
         $cacheResult = false;
 

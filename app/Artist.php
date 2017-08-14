@@ -17,7 +17,7 @@ class Artist
 
     public static function getArtists($pageIndex)
     {
-        $cacheKey = 'php_artists_' . $pageIndex;
+        $cacheKey = 'artists_' . $pageIndex;
         $cacheTime = 30;
         $cacheResult = false;
 
@@ -54,7 +54,7 @@ class Artist
 
     public static function getArtist($id)
     {
-        $cacheKey = 'php_artist_' . $id;
+        $cacheKey = 'artist_' . $id;
         $cacheTime = 3;
         $cacheResult = false;
 
@@ -87,7 +87,7 @@ class Artist
 
     public static function getArtistsByProductId($productId)
     {
-        $cacheKey = 'php_artists_by_product_' . $productId;
+        $cacheKey = 'artists_by_product_' . $productId;
         $cacheTime = 10;
         $cacheResult = false;
 

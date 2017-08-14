@@ -16,7 +16,7 @@ class ArtistDynamic
 {
     public static function getDynamics($artistId, $pageIndex = 1)
     {
-        $cacheKey = 'php_artist_'.$artistId.'_comments_' . $pageIndex;
+        $cacheKey = 'artist_'.$artistId.'_comments_' . $pageIndex;
         $cacheTime = 3;
         $cacheResult = false;
 

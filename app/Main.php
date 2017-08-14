@@ -16,7 +16,10 @@ class Main
 {
     public static function getHome($categoryId = "", $levelId = -1, $pageIndex = 1)
     {
-        $cacheKey = 'php_main_' . strval($categoryId) . '_' . strval($levelId) . '_' . $pageIndex;
+        $cacheKey = 'main_' . $pageIndex
+            . ($categoryId ? '_' . $categoryId : "")
+            . ($levelId ? "_" . $levelId : "");
+
         $cacheTime = 30;
         $cacheResult = false;
 
@@ -74,7 +77,7 @@ class Main
 
     public static function getPcHome()
     {
-        $cacheKey = 'php_pc_main';
+        $cacheKey = 'pc_main';
         $cacheTime = 30;
         $cacheResult = false;
 

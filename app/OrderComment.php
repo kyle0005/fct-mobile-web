@@ -15,7 +15,7 @@ class OrderComment
 
     public static function getComments($productId, $pageIndex = 1)
     {
-        $cacheKey = 'php_product_'.$productId.'_comments_' . $pageIndex;
+        $cacheKey = 'product_'.$productId.'_comments_' . $pageIndex;
         $cacheTime = 30;
         $cacheResult = false;
 

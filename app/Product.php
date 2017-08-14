@@ -29,7 +29,7 @@ class Product
         }
 
 
-        $cacheKey = 'php_product_' . $id;
+        $cacheKey = 'product_' . $id;
         $cacheTime = 5 / 60;
         $cacheResult = false;
 

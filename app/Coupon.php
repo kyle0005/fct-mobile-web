@@ -11,7 +11,7 @@ class Coupon
 
     public static function getCoupons($productId)
     {
-        $cacheKey = 'php_coupons_product_' . $productId;
+        $cacheKey = 'coupons_product_' . $productId;
         $cacheTime = 30;
         $cacheResult = false;
 
@@ -46,7 +46,7 @@ class Coupon
     public static function getMemberCoupons($status)
     {
         $member = Member::getAuth();
-        $cacheKey = 'php_' . $member->memberId . '_coupons_status_' . $status;
+        $cacheKey = 'member_' . $member->memberId . '_coupons_status_' . $status;
         $cacheTime = 30;
         $cacheResult = false;
 

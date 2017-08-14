@@ -16,7 +16,7 @@ class ArtistComment
 {
     public static function getComments($artistId, $pageIndex = 1)
     {
-        $cacheKey = 'php_artist_'.$artistId.'_comments_' . $pageIndex;
+        $cacheKey = 'artist_'.$artistId.'_comments_' . $pageIndex;
         $cacheTime = 10;
         $cacheResult = false;
 
