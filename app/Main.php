@@ -111,7 +111,7 @@ class Main
         return $cacheResult;
     }
 
-    public static function weChatShare($title, $link, $desc, $imgUrl, $jsApiList = [])
+    public static function weChatShare($title, $link, $imgUrl, $desc, $jsApiList = [])
     {
         $locationUrl = request()->getUri();
 
