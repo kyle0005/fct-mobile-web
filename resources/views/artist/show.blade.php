@@ -114,7 +114,7 @@
                         <div class="context">@{{ item.content }}</div>
                         <div class="reply-container" v-if="item.replyContent && item.replyContent.length > 0">
                             <div class="icon"><img src="{{ fct_cdn('/images/reply.png') }}"></div>
-                            <div class="reply" v-for="(reply, index) in item.replyContent">@{{ reply }}</div>
+                            <div class="reply" v-for="(reply, index) in item.replyContent">@{{ reply.content }}</div>
                         </div>
                     </div>
                 </li>
