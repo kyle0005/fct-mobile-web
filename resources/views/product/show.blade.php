@@ -222,7 +222,7 @@
             <div class="text-container" v-html="artistsingle.description"></div>
             <section class="comment">
                 <ul class="others">
-                    <li v-for="p in artistsingle.img">
+                    <li v-for="p in artistsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
