@@ -151,7 +151,7 @@ class Main
         {
             if (in_array($value, $jsApiList))
             {
-                $desc = $value == 'onMenuShareTimeline' ? null : $desc;
+                //$desc = $value == 'onMenuShareTimeline' ? null : $desc;
                 $shareStr .= 'wx.'.$value.'('
                     .self::getWeChatShareObject($title, $link, $desc, $imgUrl).');';
             }
