@@ -215,7 +215,7 @@
                   </span>
                     <span class="artist-info">
                       <span class="artist-name">@{{ artistsingle.name }}</span>&nbsp;-&nbsp;<span class="v-title">@{{ artistsingle.title }}</span><br>
-                      <span>@{{ artistsingle.intro }}</span>
+                      <span v-html="artistsingle.intro"></span>
                     </span>
                 </div>
             </section>
@@ -253,7 +253,7 @@
                     </span>
                     <span class="pug">
             <span class="pug-name">@{{ pugsingle.name }}</span><br>
-            <span class="pug-detail">@{{ pugsingle.intro }}</span>
+            <span class="pug-detail" v-html="pugsingle.intro"></span>
           </span>
                 </div>
             </section>

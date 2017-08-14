@@ -80,7 +80,7 @@
                         </div>
                         <div class="right">
                             <div class="title overText">@{{ item.name }}</div>
-                            <div class="text overTextH2">@{{ item.intro }}</div>
+                            <div class="text overTextH2" v-html="item.intro"></div>
                             <div class="price overText">￥@{{ item.price }}</div>
                             <div class="btn-container">
                                 <a :href="'{{ url('products') }}/' + item.id" class="btn">我要购买</a>

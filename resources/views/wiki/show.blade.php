@@ -11,7 +11,7 @@
                 </span>
                 <span class="artist-info">
                     <span class="artist-name">@{{ detail.name }}</span><br>
-                    <span>@{{ detail.intro }}</span>
+                    <span v-html="detail.intro"></span>
                 </span>
             </div>
             <div v-html="detail.description"></div>
