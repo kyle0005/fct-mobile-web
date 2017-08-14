@@ -45,7 +45,8 @@ class Coupon
 
     public static function getMemberCoupons($status)
     {
-        $cacheKey = 'php_coupons_status_' . $status;
+        $member = Member::getAuth();
+        $cacheKey = 'php_' . $member->memberId . '_coupons_status_' . $status;
         $cacheTime = 30;
         $cacheResult = false;
 
