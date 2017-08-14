@@ -63,7 +63,7 @@ class MainController extends BaseController
                     'title' => '方寸堂 - 只为不同',
                     'link' => $shareUrl,
                     'img' => 'http://cdn.fangcun.com/static/img/fc_logo.png',
-                    'desc' => '守一种精神 做一个“匠人”，汇聚东方美学匠心之作的紫砂交流平台。',
+                    'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
                 ],
                 ]);
         }
