@@ -60,10 +60,10 @@ class MainController extends BaseController
                 'products' => $result->pagination->entries,
                 'pager' => $result->pagination->pager,
                 'share' => [
-                    'title' => '方寸堂',
+                    'title' => '方寸堂 - 只为不同',
                     'link' => $shareUrl,
-                    'img' => 'http://test.fangcuntang.com/images/logo.png',
-                    'desc' => '方寸天地间',
+                    'img' => 'http://cdn.fangcun.com/static/img/fc_logo.png',
+                    'desc' => '守一种精神 做一个“匠人”，汇聚东方美学匠心之作的紫砂交流平台。',
                 ],
                 ]);
         }
