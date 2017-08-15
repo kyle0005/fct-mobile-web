@@ -103,6 +103,9 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'test.fangcuntang.com')], functio
         Route::get('my/orders', 'Mobile\OrderController@index');
             Route::get('my/orders/{order_id}', 'Mobile\OrderController@show')
                 ->where('order_id', '[0-9]+');
+            //物流详情
+            Route::get('my/orders/{order_id}/express', 'Mobile\OrderController@getExpress')
+                ->where('order_id', '[0-9]+');
             //取消
             Route::post('my/orders/{order_id}/cancel', 'Mobile\OrderController@setCancel')
                 ->where('order_id', '[0-9]+');

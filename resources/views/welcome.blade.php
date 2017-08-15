@@ -3,25 +3,27 @@
 
 @section('content')
     <div class="index-container" id="welcome" v-cloak>
-        <div class="btns">
-            <div class="enter">
-                <a href="{{ url('/') }}">
-                    <span>进入商城</span>
-                </a>
-            </div>
-            <div class="download">
-                <a href="{{ url('download/app') }}">
-                    <span>下载APP</span>
-                </a>
-            </div>
-        </div>
+        <a href="{{ url('/') }}" class="enter"></a>
         <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
-            <div v-for="top in tops" class="swiper-slide" slot="swiper-con">
-                <img :data-src="top.image" class="swiper-lazy silde-img">
+            <div v-for="(top, index) in tops" class="swiper-slide" slot="swiper-con">
+                <a :href="top.url">
+                    <img :data-src="top.image" class="swiper-lazy silde-img">
+                </a>
+                <div class="top" v-if="index > 0">
+                    <div class="inner">
+                        <div class="text">
+                            <div class="title">方寸堂</div>
+                            <div class="vtitle">自有我天地</div>
+                        </div>
+                        <img src="{{ fct_title('/images/logo2.png') }}" class="logo">
+                        <div class="btn-container">
+                            <a href="{{ url('/') }}" class="btn">进入</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </m-swipe>
     </div>
-
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container" :class="swipeid">
             <div class="swiper-wrapper">

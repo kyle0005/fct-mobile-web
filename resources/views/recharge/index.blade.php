@@ -31,8 +31,7 @@
             </div>
         </div>
 
-        <p v-if="pager.next == 0" class="empty_data">没有更多了</p>
-        <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
+        <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
 @endsection

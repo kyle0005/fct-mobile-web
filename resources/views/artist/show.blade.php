@@ -66,7 +66,7 @@
                 </div>
             </div>
 
-            <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
     </script>
     {{--艺术家作品--}}
@@ -126,7 +126,7 @@
                     <span class="no">当前没有相关数据哟~</span>
                 </div>
             </div>
-            <footer class="loader_more" v-show="preventRepeatReuqest">正在加载更多...</footer>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
 
             <section class="sub-chat">
                 <div class="inner">

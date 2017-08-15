@@ -62,9 +62,9 @@ class Main
     public static function welcome()
     {
         $slides = [
-            ["image" => "/images/resource/01.png", "url" => "javascript:;"],
-            ["image" => "/images/resource/02.png", "url" => "javascript:;"],
-            ["image" => "/images/resource/03.png", "url" => "javascript:;"],
+            ["image" => "/images/resource/wel0.png", "url" => "javascript:;"],
+            ["image" => "/images/resource/wel1.png", "url" => "javascript:;"],
+            ["image" => "/images/resource/wel2.png", "url" => "javascript:;"],
             //["image" => "images/resource/04.png", "url" => "javascript:;"],
         ];
 

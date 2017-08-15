@@ -1,0 +1,1 @@
+"use strict";var app=new Vue({computed:{},mounted:function(){},data:{},watch:{},methods:{}}).$mount("#logistics");

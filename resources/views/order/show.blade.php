@@ -18,10 +18,10 @@
         </section>
         <section class="detail">
             <div class="express" v-if="order_detail.orderReceiver.expressNO">
-                <a href="javascript:;" class="link">
-        <span class="img-container item">
-            <img src="{{ fct_cdn('/images/order_transport.png') }}">
-          </span>
+                <a href="{{ url('my/orders/'. $entity->orderId .'/express') }}" class="link">
+                    <span class="img-container item">
+                        <img src="{{ fct_cdn('/images/order_transport.png') }}">
+                    </span>
                     <span class="item t">@{{ order_detail.orderReceiver.expressPlatform }}(@{{ order_detail.orderReceiver.expressNO }})<br><span class="time">@{{ order_detail.orderReceiver.deliveryTime }}</span></span>
                     <span class="wei-arrow-right"></span>
                 </a>
