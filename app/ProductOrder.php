@@ -35,7 +35,7 @@ class ProductOrder
             $status = -1;
         }
 
-        $pageSize = 20;
+        $pageSize = 5;
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
