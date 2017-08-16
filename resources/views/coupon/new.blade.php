@@ -5,7 +5,7 @@
         <head-top></head-top>
         <section class="content" v-if="couponlist && couponlist.length > 0">
             <div class="list-item" v-for="(item, index) in couponlist">
-                <coupons :couponitem="item" @pop="pop"></coupons>
+                <coupons :couponitem="item" @pop="pop" @succhandle="succhandle"></coupons>
             </div>
         </section>
 
