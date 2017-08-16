@@ -15,7 +15,7 @@
                 </span>
             </div>
             <div v-html="detail.description"></div>
-            <div class="comment">
+            <div class="comment" v-if="detail.productList && detail.productList.length > 0">
                 <ul class="others">
                     <li v-for="p in detail.productList">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">

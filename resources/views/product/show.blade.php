@@ -220,7 +220,7 @@
                 </div>
             </section>
             <div class="text-container" v-html="artistsingle.description"></div>
-            <section class="comment">
+            <section class="comment" v-if="artistsingle.products && artistsingle.products.length > 0">
                 <ul class="others">
                     <li v-for="p in artistsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
@@ -258,7 +258,7 @@
                 </div>
             </section>
             <section class="pug-container" v-html="pugsingle.description"></section>
-            <section class="spec">
+            <section class="spec" v-if="pugsingle.products && pugsingle.products.length > 0">
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
