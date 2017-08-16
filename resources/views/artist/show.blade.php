@@ -37,7 +37,6 @@
                 <div class="text">@{{ top.content }}</div>
                 <div class="media" >
                     <mVideo v-if="top.videoUrl !== ''" :item="top"></mVideo>
-                    <!--<video id="video_top" class="video-js vjs-big-play-centered" controls v-if="top.videoUrl !== ''"></video>-->
                     <ul class="img-list" v-if="topImg">
                         <li v-for="imgs in top.images">
                             <img v-view="imgs" src="{{ fct_cdn('/images/img_loader.gif') }}">

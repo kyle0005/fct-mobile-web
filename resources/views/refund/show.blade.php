@@ -12,7 +12,7 @@
             </div>
             <div class="pro-item price-container">
                 <div class="price"><small class="pri-mark">￥</small>@{{ product.orderGoods.price }}</div>
-                <div class="num">*@{{ product.orderGoods.buyCount }}</div>
+                <div class="num">&times; @{{ product.orderGoods.buyCount }}</div>
                 <div class="total"><span class="inner">合计:<span class="pri"><small class="pri-mark">￥</small>@{{ product.orderGoods.payAmount }}</span></span></div>
             </div>
         </section>
