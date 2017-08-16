@@ -90,7 +90,7 @@
                 <div class="comment" v-if="order_detail.status == 0">
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
                 </div>
-                <div class="comment" v-if="order_detail.status == 3 && order_detail.commentStatus == 1">
+                <div class="comment" v-if="order_detail.status == 3 && order_detail.commentStatus == 0">
                     <a :href="'{{ url('my/orders') }}/' + order_detail.orderId + '/comments/create'">我要评价</a>
                 </div>
 
