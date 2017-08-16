@@ -115,7 +115,7 @@ class ProductOrder
     {
         if (!$orderGoodsInfo)
         {
-            throw new BusinessException("提交的订单产品不存在");
+            throw new BusinessException("提交的订单宝贝不存在");
         }
 
         $result = Base::http(
@@ -221,7 +221,7 @@ class ProductOrder
         ];
     }
 
-    /**获取订单商品
+    /**获取订单宝贝
      * @param $id
      * @return mixed
      * @throws BusinessException

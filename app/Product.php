@@ -16,7 +16,7 @@ class Product
 {
     public static $resourceUrl = '/mall/products';
 
-    /**产品详情
+    /**宝贝详情
      * @param $id
      * @return array
      * @throws BusinessException
@@ -25,7 +25,7 @@ class Product
     {
         $id = intval($id);
         if (!$id) {
-            throw new BusinessException("无此产品");
+            throw new BusinessException("无此宝贝");
         }
 
 
@@ -87,7 +87,7 @@ class Product
         return $result->data;
     }
 
-    /**获取分享的产品
+    /**获取分享的宝贝
      * @param $categoryCode
      * @param $name
      * @param $page

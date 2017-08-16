@@ -43,7 +43,7 @@
                     </div>
                     <div class="right">
                         <div class="item">@{{ couponitem.name }}</div>
-                        <div class="item">@{{ couponitem.typeId == 0 ? "全场通用" : "部分商品" }}</div>
+                        <div class="item">@{{ couponitem.typeId == 0 ? "全场通用" : "部分宝贝" }}</div>
                         <div class="line">
                             <span class="date">@{{ couponitem.startTime }}-@{{ couponitem.endTime }}</span>
                             <span class="btn" v-if="couponitem.auditStatus == 0">

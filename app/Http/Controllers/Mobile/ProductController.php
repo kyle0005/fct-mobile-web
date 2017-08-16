@@ -11,14 +11,14 @@ use App\ProductCategory;
 use App\ProductMaterial;
 use Illuminate\Http\Request;
 
-/**产品
+/**宝贝
  * Class ProductController
  * @package App\Http\Controllers\Mobile
  */
 class ProductController extends BaseController
 {
 
-    /**产品详情
+    /**宝贝详情
      * @param Request $request
      * @param $id
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -49,7 +49,7 @@ class ProductController extends BaseController
             "comment" => $result->name . '--' . url('product/' . $result->id) . '"}',
         ];
 
-        $title = (isset($result->name) && $result->name ? $result->name : '产品详情');
+        $title = (isset($result->name) && $result->name ? $result->name : '宝贝详情');
 
         return view('product.show', [
             'title' => fct_title($title),
@@ -90,7 +90,7 @@ class ProductController extends BaseController
         try
         {
             $result = Artist::getArtistsByProductId($product_id);
-            return $this->returnAjaxSuccess('获取产品艺术家列表成功', null, $result);
+            return $this->returnAjaxSuccess('获取宝贝艺术家列表成功', null, $result);
         }
         catch (BusinessException $e)
         {
@@ -106,7 +106,7 @@ class ProductController extends BaseController
         {
             $result = ProductMaterial::getMaterialsByIds($materialIds, $product_id);
 
-            return $this->returnAjaxSuccess('获取产品泥料列表成功', null, $result);
+            return $this->returnAjaxSuccess('获取宝贝泥料列表成功', null, $result);
         }
         catch (BusinessException $e)
         {

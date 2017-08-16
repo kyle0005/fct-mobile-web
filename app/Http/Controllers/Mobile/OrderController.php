@@ -74,7 +74,7 @@ class OrderController  extends BaseController
             ];
             if ($productId < 1 || $buyNumber <= 0)
             {
-                return $this->autoReturn("产品不存在或数量小于1");
+                return $this->autoReturn("宝贝不存在或数量小于1");
             }
         }
 
@@ -88,7 +88,7 @@ class OrderController  extends BaseController
                 $buyNumber = intval($cartProduct['buyCount']);
                 if ($productId < 1 || $buyNumber <= 0)
                 {
-                    return $this->autoReturn("购物车中的产品不存在或数量小于1");
+                    return $this->autoReturn("购物车中的宝贝不存在或数量小于1");
                 }
 
                 $productInfo[] = [
@@ -138,7 +138,7 @@ class OrderController  extends BaseController
         $orderGoodsInfo = $request->get('orderGoodsInfo', '');
         if (!$orderGoodsInfo)
         {
-            return $this->autoReturn("没找到需下单的产品");
+            return $this->autoReturn("没找到需下单的宝贝");
         }
         $orderGoodsInfo = json_decode($orderGoodsInfo);
 
@@ -150,7 +150,7 @@ class OrderController  extends BaseController
             if (!$result)
                 return $this->autoReturn('生成订单异常');
 
-            return $this->returnAjaxSuccess("订单创建成功",
+            return $this->returnAjaxSuccess("订单提交成功",
                 sprintf('%s?tradetype=buy&tradeid=%s', env('PAY_URL'), $result));
         }
         catch (BusinessException $e)

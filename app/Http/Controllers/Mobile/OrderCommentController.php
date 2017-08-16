@@ -37,12 +37,12 @@ class OrderCommentController extends BaseController
         $productInfo = $request->get('products', '');
         if (!$productInfo)
         {
-            return $this->autoReturn("评价的产品不存在");
+            return $this->autoReturn("评价的宝贝不存在");
         }
         /*$productInfo = FctCommon::fctBase64Decode($productInfo);
         if (!$productInfo)
         {
-            return $this->autoReturn("评价的产品不存在");
+            return $this->autoReturn("评价的宝贝不存在");
         }*/
 
         try
@@ -53,14 +53,14 @@ class OrderCommentController extends BaseController
             $jsonProducts = json_decode($productInfo);
             if (!$jsonProducts)
             {
-                return $this->autoReturn("评价的产品不存在");
+                return $this->autoReturn("评价的宝贝不存在");
             }
 
             foreach ($jsonProducts as $key=>$product)
             {
                 if ($product->goodsId < 1)
                 {
-                    return $this->autoReturn("评价的产品不存在");
+                    return $this->autoReturn("评价的宝贝不存在");
                 }
                 FctValidator::hasBetween($product->descScore, 1, 5, "", "评论描述星级");
                 FctValidator::hasRequire($product->content, '评论内容');

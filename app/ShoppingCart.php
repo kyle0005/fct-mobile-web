@@ -33,7 +33,7 @@ class ShoppingCart
         ];
     }
 
-    /**增加（添加）或减少购物车产品数量
+    /**增加（添加）或减少购物车宝贝数量
      * @param $productId
      * @param $extendId
      * @param $number
@@ -60,7 +60,7 @@ class ShoppingCart
         return $result;
     }
 
-    /**从购物车中删除产品
+    /**从购物车中删除宝贝
      * @param $id
      * @return mixed|object|\Psr\Http\Message\ResponseInterface
      * @throws BusinessException

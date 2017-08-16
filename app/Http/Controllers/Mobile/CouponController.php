@@ -65,17 +65,17 @@ class CouponController extends BaseController
 
         if (!$productInfo)
         {
-            return $this->autoReturn('无效的产品');
+            return $this->autoReturn('无效的宝贝');
         }
 
         $productInfo = Crypt::decryptString($productInfo);
         if (!$productInfo)
         {
-            return $this->autoReturn('无效的产品');
+            return $this->autoReturn('无效的宝贝');
         }
         if (!json_decode($productInfo))
         {
-            return $this->autoReturn('无效的产品');
+            return $this->autoReturn('无效的宝贝');
         }
 
         try

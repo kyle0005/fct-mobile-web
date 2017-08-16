@@ -38,7 +38,7 @@ class RefundController extends BaseController
         $orderProductId = $request->get('og_id', 0);
         if (!$orderProductId)
         {
-            return $this->autoReturn("订单里无此产品");
+            return $this->autoReturn("订单里无此宝贝");
         }
 
         try
@@ -96,7 +96,7 @@ class RefundController extends BaseController
         try
         {
             FctValidator::hasRequire($orderId, "订单号");
-            FctValidator::hasRequire($orderProductId, "订单产品");
+            FctValidator::hasRequire($orderProductId, "订单宝贝");
             FctValidator::hasRequire($reason, "申请原因");
             FctValidator::hasRequire($description, "申请描述");
 

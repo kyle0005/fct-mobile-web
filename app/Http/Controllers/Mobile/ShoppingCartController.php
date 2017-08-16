@@ -32,10 +32,10 @@ class ShoppingCartController extends BaseController
         $extendId = intval($request->get('spec_id', 0));
 
         if ($productId < 1) {
-            return $this->autoReturn('添加的产品不存在');
+            return $this->autoReturn('添加的宝贝不存在');
         }
 /*        if ($buyNumber < 1) {
-            return $this->autoReturn('产品数量不能小于1');
+            return $this->autoReturn('宝贝数量不能小于1');
         }*/
 
         try {
@@ -55,7 +55,7 @@ class ShoppingCartController extends BaseController
 
             ShoppingCart::remove($id);
 
-            return $this->returnAjaxSuccess('从购物车删除产品成功');
+            return $this->returnAjaxSuccess('从购物车删除宝贝成功');
         } catch (BusinessException $e) {
 
             return $this->autoReturn($e->getMessage());

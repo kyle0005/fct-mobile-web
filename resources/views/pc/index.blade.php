@@ -29,7 +29,7 @@
                         id="ywMnavName">紫砂细作</span>
             </a>
             <div id="ywMnav" class="yw-nav"><a href="#copyright" class="yw-nav-a active">紫砂细作</a> <a href="#mobile"
-                                                                                                     class="yw-nav-a">移动产品</a>
+                                                                                                     class="yw-nav-a">移动宝贝</a>
                 <a href="#brand" class="yw-nav-a">守艺人</a> <a href="#news" class="yw-nav-a">新闻中心</a> <a href="#contact"
                                                                                                         class="yw-nav-a">联系我们</a>
             </div>
@@ -114,7 +114,7 @@
         </div>
     </div>
     <div id="mobile" class="yw-home-app">
-        <div class="yw-constr"><h3 class="yw-home-h3">移动产品</h3>
+        <div class="yw-constr"><h3 class="yw-home-h3">移动宝贝</h3>
             <div id="tabApp" class="yw-tab-tab"><a href="javascript:" class="yw-tab-a active" data-rel="tabPanel1">方寸堂APP</a> <a
                         href="javascript:" class="yw-tab-a" data-rel="tabPanel2">移动web版</a> <a href="javascript:" class="yw-tab-a"
                                                                                                data-rel="tabPanel3">微信小程序</a> <i
