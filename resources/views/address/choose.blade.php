@@ -14,13 +14,6 @@
             </li>
         </ul>
 
-        <div class="noData" v-if="nodata">
-            <div class="inner">
-                <img src="{{ fct_cdn('/images/no_data.png') }}">
-                <span class="no">当前没有相关数据哟~</span>
-            </div>
-        </div>
-
         <div class="address-btn">
             <a href="{{ url('my/address') }}">管理</a>
         </div>
