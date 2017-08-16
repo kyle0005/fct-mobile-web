@@ -146,6 +146,9 @@ class Main
         }
         $weChatConfig->jsApiList = $jsApiList;
 
+        if ($desc)
+            $desc = strip_tags($desc);
+
         $shareStr = '';
         foreach ($jsShares as $value)
         {
