@@ -39,7 +39,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url("my/orders") }}?status=3" class="link">
+                    <a href="{{ url("my/orders") }}?status=3&comment_status=0" class="link">
                         <img src="{{ fct_cdn('/images/user_evaluation_pending.png') }}"><br>
                         <span>待评价</span>
                     </a>
