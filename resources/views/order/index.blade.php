@@ -49,7 +49,7 @@
                     </div>
                 </div>
 
-                <div class="btn clearfix" v-if="item.status == 3 && item.commentStatus == 1">
+                <div class="btn clearfix" v-if="item.status == 3 && item.commentStatus == 0">
                     <div class="btn-container">
                         <a :href="'{{ url('my/orders') }}/' + item.orderId + '/comments/create'" class="black">评价</a>
                     </div>
