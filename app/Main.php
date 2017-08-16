@@ -113,7 +113,10 @@ class Main
 
     public static function weChatShare($title, $link, $imgUrl, $desc, $jsApiList = [])
     {
-        $locationUrl = request()->getUri();
+        $locationUrl = env('APP_URL') . request()->server('REQUEST_URI');
+        $cutIndex = strpos($locationUrl, '#');
+        if ($cutIndex)
+            $locationUrl = substr($locationUrl, 0, $cutIndex);
 
         $result = Base::http(
             env('API_URL') . '/mall/share/wechat',
@@ -148,7 +151,7 @@ class Main
 
         if ($desc)
             $desc = strip_tags($desc);
-        
+
         $shareStr = '';
         foreach ($jsShares as $value)
         {
