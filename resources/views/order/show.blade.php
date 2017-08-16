@@ -69,14 +69,16 @@
                 共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件商品&nbsp;合计:<span class="pri-color"><small class="pri-mark">￥</small>@{{ order_detail.payAmount }}</span>（含运费）
             </div>
         </section>
-        <section class="inner">
-            <span v-if="order_detail.orderId">订单编号：@{{ order_detail.orderId }}<br></span>
-            <span v-if="order_detail.payOrderId">支付单号：@{{ order_detail.payOrderId }}<br></span>
-            <span v-if="order_detail.payName">支付方式：@{{ order_detail.payName }}（@{{ order_detail.status == 0 || order_detail.status == 4 ? '未付款' : '已付款' }}）<br></span>
-            <span v-if="order_detail.createTime">创建时间：@{{ order_detail.createTime }}<br></span>
-            <span v-if="order_detail.payTime">付款时间：@{{ order_detail.payTime }}<br></span>
-            <span v-if="order_detail.expiresTime">发货时间：@{{ order_detail.expiresTime }}<br></span>
-            <span v-if="order_detail.finishTime">完成时间：@{{ order_detail.finishTime }}</span>
+        <section class="order-detail">
+            <div class="inner">
+                <span v-if="order_detail.orderId">订单编号：@{{ order_detail.orderId }}<br></span>
+                <span v-if="order_detail.payOrderId">支付单号：@{{ order_detail.payOrderId }}<br></span>
+                <span v-if="order_detail.payName">支付方式：@{{ order_detail.payName }}（@{{ order_detail.status == 0 || order_detail.status == 4 ? '未付款' : '已付款' }}）<br></span>
+                <span v-if="order_detail.createTime">创建时间：@{{ order_detail.createTime }}<br></span>
+                <span v-if="order_detail.payTime">付款时间：@{{ order_detail.payTime }}<br></span>
+                <span v-if="order_detail.expiresTime">发货时间：@{{ order_detail.expiresTime }}<br></span>
+                <span v-if="order_detail.finishTime">完成时间：@{{ order_detail.finishTime }}</span>
+            </div>
         </section>
         <footer class="footer">
             <div class="inner">
