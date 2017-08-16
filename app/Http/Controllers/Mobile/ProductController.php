@@ -59,10 +59,10 @@ class ProductController extends BaseController
                 . ($member ? $member->memberId : "")
                 . '&metadata=' .urlencode(json_encode($chatDatas, JSON_UNESCAPED_UNICODE)),
             'share' => [
-                'title' => $title,
+                'title' => '发现一个宝贝 - '. $result->name,
                 'link' => $shareUrl,
-                'img' => 'http://test.fangcuntang.com/images/logo.png',
-                'desc' => '方寸天地间',
+                'img' => $result->defaultImage,
+                'desc' => $result->intro,
             ]
         ]);
     }

@@ -44,10 +44,10 @@ class ArtistController extends BaseController
             'title' => fct_title('守艺人'),
             'entries' => $result->entries,
             'share' => [
-                'title' => '守艺人',
+                'title' => fct_title('守艺人'),
                 'link' => $shareUrl,
-                'img' => 'http://test.fangcuntang.com/images/logo.png',
-                'desc' => '艺术家',
+                'img' => 'http://cdn.fangcun.com/static/img/fc_logo.png',
+                'desc' => '守一种精神 做一个“匠人”',
             ]
         ]);
     }
@@ -75,17 +75,17 @@ class ArtistController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
-        $title = (isset($result->name) && $result->name ? $result->name : '守艺人详情');
+        $title = fct_title(isset($result->name) && $result->name ? $result->name : '守艺人详情');
 
         return view('artist.show', [
-            'title' => fct_title($title),
+            'title' => $title,
             'artist' => $result,
             'categories' => ProductCategory::getCategories(),
             'share' => [
                 'title' => $title,
                 'link' => $shareUrl,
-                'img' => 'http://test.fangcuntang.com/images/logo.png',
-                'desc' => '艺术家',
+                'img' => $result->headPortrait,
+                'desc' => $result->intro,
             ]
         ]);
     }

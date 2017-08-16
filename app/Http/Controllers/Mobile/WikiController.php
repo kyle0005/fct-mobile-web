@@ -35,13 +35,13 @@ class WikiController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
-        $result['title'] = fct_title('紫砂百科');
+        $result['title'] = fct_title('百科');
         $result['categories'] = ProductCategory::getCategories();
         $result['share'] = [
-            'title' => '紫砂百科',
+            'title' => fct_title('百科'),
             'link' => $shareUrl,
-            'img' => 'http://test.fangcuntang.com/images/logo.png',
-            'desc' => '紫砂',
+            'img' => 'http://cdn.fangcun.com/static/img/fc_logo.png',
+            'desc' => '方寸堂百科，专注于紫砂领域知识的创建与分享。',
         ];
 
         return view('wiki.index', $result);
@@ -67,14 +67,14 @@ class WikiController extends BaseController
         }
 
         return view('wiki.show', [
-            'title' => fct_title('紫砂百科'),
+            'title' => fct_title($result->name),
             'categories' => ProductCategory::getCategories(),
             'entry' => $result,
             'share' => [
-                'title' => '紫砂百科',
+                'title' => fct_title($result->name),
                 'link' => $shareUrl,
-                'img' => 'http://test.fangcuntang.com/images/logo.png',
-                'desc' => '紫砂',
+                'img' => $result->image,
+                'desc' => $result->intro,
             ]
         ]);
     }
