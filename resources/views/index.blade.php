@@ -13,7 +13,7 @@
             </ul>
         </section>
         <div class="prolist-container">
-            <ul class="prolist" v-if="pro_list.length">
+            <ul class="prolist" v-if="pro_list && pro_list.length">
                 <li class="item" v-for="item in pro_list">
                     <a :href="'/products/' + item.id">
                         <span class="pro-main"><img v-view="item.videoImg" src="{{ fct_cdn('/images/img_loader.gif') }}"></span>
