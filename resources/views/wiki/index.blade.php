@@ -12,15 +12,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="search-container" :class="{show:show_search}">
-                <div class="cancel-search">
-                    <a href="javascript:;" class="fork" @click="search(0)">取消</a>
-                </div>
-                <input type="search" class="search-input">
-                <a href="javascript:;" class="search-link" @click="search(0)">
-                    <i class="fa fa-search"></i>
-                </a>
-            </div>
+            <m-search  @subSearch="subSearch"></m-search>
         </section>
         <section class="list">
             <div class="tab-list">
@@ -42,15 +34,7 @@
                     <a href="javascript:;">泥料</a>
                 </li>
             </ul>
-            <div class="search-container" :class="{show:show_search_d}">
-                <div class="cancel-search">
-                    <a href="javascript:;" class="fork" @click="search(1)">取消</a>
-                </div>
-                <input type="search" class="search-input">
-                <a href="javascript:;" class="search-link" @click="search(1)">
-                    <i class="fa fa-search"></i>
-                </a>
-            </div>
+            <m-search  @subSearch="subSearch"></m-search>
         </section>
 
         <section class="list">
@@ -101,6 +85,18 @@
             </section>
         </div>
     </template>
+    <template id="search">
+        <div class="search-container" :class="{show:show_search}">
+            <div class="cancel-search">
+                <a href="javascript:;" class="fork" @click="search(0)">取消</a>
+            </div>
+            <input type="search" class="search-input" :placeholder="placeholder" v-model="keywords">
+            <a href="javascript:;" class="search-link" @click="search(1)">
+                <i class="fa fa-search"></i>
+            </a>
+        </div>
+    </template>
+
     <script src="{{ fct_cdn('/js/encyclopedias.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
