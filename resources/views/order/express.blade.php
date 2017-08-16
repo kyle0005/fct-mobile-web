@@ -47,7 +47,7 @@
             </div>
         </div>
         <div class="footer">
-            <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata={\"comment\":{\"orderId\":\"{{ $entity->orderId }}\"}}">
+            <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata={%22comment%22:{%22orderId%22:%22{{ $entity->orderId }}%22}}">
             <img src="{{ fct_cdn('/images/order_chat.png') }}">在线客服</a>
         </div>
     </div>
