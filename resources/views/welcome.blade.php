@@ -13,7 +13,7 @@
                     <div class="inner">
                         <div class="text">
                             <div class="title">方寸堂</div>
-                            <div class="vtitle">自有我天地</div>
+                            <div class="vtitle">只为不同</div>
                         </div>
                         <img src="{{ fct_title('/images/logo2.png') }}" class="logo">
                         <div class="btn-container">
@@ -40,4 +40,16 @@
     </script>
     <script src="{{ fct_cdn('js/swiper.js') }}"></script>
     <script src="{{ fct_cdn('js/welcome.js') }}"></script>
+    {!! wechat_share($share) !!}
+    <script>
+        var _mtac = {};
+        (function() {
+            var mta = document.createElement("script");
+            mta.src = "http://pingjs.qq.com/h5/stats.js?v2.0.2";
+            mta.setAttribute("name", "MTAH5");
+            mta.setAttribute("sid", "500500357");
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(mta, s);
+        })();
+    </script>
 @endsection

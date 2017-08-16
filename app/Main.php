@@ -68,10 +68,7 @@ class Main
             //["image" => "images/resource/04.png", "url" => "javascript:;"],
         ];
 
-        return [
-            'title' => fct_title(),
-            'slides' => json_encode($slides, JSON_UNESCAPED_UNICODE),
-        ];
+        return $slides;
 
     }
 
