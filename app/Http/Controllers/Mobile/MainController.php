@@ -82,10 +82,8 @@ class MainController extends BaseController
         if ($shopId > 0) {
             $this->setShopId();
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
-        } else {
-            $shareUrl .= '/';
         }
-
+        
         return view('welcome', [
             'title' => fct_title(),
             'slides' => json_encode($result, JSON_UNESCAPED_UNICODE),
