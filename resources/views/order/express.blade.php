@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="logistics-info">
-            @if (strpos($entity->expressPlatform, '顺丰'))
+            @if (strpos($entity->expressPlatform, '顺丰') !== false)
             <a href="http://www.sf-express.com/cn/sc/" class="title">
                 <img src="{{ fct_cdn('/images/resource/sf.png') }}">本数据由<span class="name">顺丰快递</span>提供<span class="wei-arrow-right"></span>
             </a>
