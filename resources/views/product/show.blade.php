@@ -208,7 +208,7 @@
                     </a>
                 </li>
             </ul>
-            <section class="artist">
+            <section class="artist" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
                   <span class="photo">
                       <img :src="artistsingle.headPortrait"/>
@@ -234,9 +234,10 @@
         </div>
     </script>
 
+
     <script type="text/x-template" id="pug">
-        <div>
-            <ul class="pugs-list clearfix" v-if="titleshow">
+        <div class="artist-contianer">
+            <ul class="artist-list clearfix" v-if="titleshow">
                 <li v-for="(item, index) in pugs">
                     <a href="javascript:;" :class="{red:index===pug_num}" @click="loadsingle(index)">
                         <span class="img-container">
@@ -246,19 +247,19 @@
                     </a>
                 </li>
             </ul>
-            <section class="pug-container">
-                <div class="intro clearfix">
-                    <span class="photo">
-                        <img :src="pugsingle.image">
+            <section class="artist" :class="{'top-max':!titleshow,'top-min':titleshow}">
+                <div class="intro">
+                  <span class="photo">
+                      <img :src="pugsingle.image">
+                  </span>
+                    <span class="artist-info">
+                      <span class="artist-name">@{{ pugsingle.name }}</span><br>
+                      <span v-html="pugsingle.intro"></span>
                     </span>
-                    <span class="pug">
-            <span class="pug-name">@{{ pugsingle.name }}</span><br>
-            <span class="pug-detail" v-html="pugsingle.intro"></span>
-          </span>
                 </div>
             </section>
-            <section class="pug-container" v-html="pugsingle.description"></section>
-            <section class="spec" v-if="pugsingle.products && pugsingle.products.length > 0">
+            <div class="text-container" v-html="pugsingle.description"></div>
+            <section class="comment">
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
