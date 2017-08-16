@@ -78,7 +78,7 @@ class ArtistController extends BaseController
         $title = (isset($result->name) && $result->name ? $result->name : '守艺人详情');
 
         return view('artist.show', [
-            'title' => $title,
+            'title' => fct_title($title),
             'artist' => $result,
             'categories' => ProductCategory::getCategories(),
             'share' => [

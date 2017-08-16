@@ -130,7 +130,7 @@ class MemberController extends BaseController
 
         $this->cacheRedirectSourceUrl('', true);
 
-        return view('login', ['title' => "用户登录"]);
+        return view('login', ['title' => fct_title("用户登录")]);
     }
 
     /**注册
