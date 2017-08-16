@@ -24,8 +24,8 @@
             <div class="detail">
                 @if ($entity->expressInfoList)
                 <ul>
-                    @foreach($entity->expressInfoList as $express)
-                    <li class="item active">
+                    @foreach($entity->expressInfoList as $key=>$express)
+                    <li class="item {{ $key ? "" : "active" }}">
                         <div class="inner clearfix">
                             <div class="line"></div>
                             <div class="content">
