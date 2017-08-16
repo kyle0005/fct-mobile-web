@@ -16,35 +16,28 @@
                 <img src="{{ fct_cdn('/images/resource/sf.png') }}">本数据由<span class="name">顺丰官网</span>提供<span class="wei-arrow-right"></span>
             </a>
             <div class="detail">
+                @if ($entity->expressInfoList)
                 <ul>
+                    @foreach($entity->expressInfoList as $express)
                     <li class="item active">
                         <div class="inner clearfix">
                             <div class="line"></div>
                             <div class="content">
-                                <div class="up">快件已从xxxx发出</div>
-                                <div class="down">2017-08-08 02:03:04</div>
+                                <div class="up">{{ $express->status }}</div>
+                                <div class="down">{{ $express->time }}</div>
                             </div>
                         </div>
                     </li>
-                    <li class="item">
-                        <div class="inner clearfix">
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="up">快件已从xxxx发出</div>
-                                <div class="down">2017-08-08 02:03:04</div>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="item">
-                        <div class="inner clearfix">
-                            <div class="line"></div>
-                            <div class="content">
-                                <div class="up">快件已从xxxx发出</div>
-                                <div class="down">2017-08-08 02:03:04</div>
-                            </div>
-                        </div>
-                    </li>
+                    @endforeach
                 </ul>
+                @else
+                    <div class="noData">
+                        <div class="inner">
+                            <img src="{{ fct_cdn('/images/no_data.png') }}">
+                            <span class="no">当前没有相关数据哟~</span>
+                        </div>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="footer">
