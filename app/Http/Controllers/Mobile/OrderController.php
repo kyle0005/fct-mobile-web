@@ -17,7 +17,7 @@ class OrderController  extends BaseController
     {
         $keyword = $request->get('keyword', '');
         $status = $request->get('status', -1);
-        $commentStatus = $request->get('status', -1);
+        $commentStatus = $request->get('comment_status', -1);
         $page = $request->get('page', 1);
         try
         {
