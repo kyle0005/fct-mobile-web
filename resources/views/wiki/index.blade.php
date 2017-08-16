@@ -102,7 +102,6 @@
         </div>
     </template>
     <script src="{{ fct_cdn('/js/encyclopedias.js') }}"></script>
-
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};

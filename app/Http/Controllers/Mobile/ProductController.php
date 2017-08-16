@@ -61,8 +61,8 @@ class ProductController extends BaseController
             'share' => [
                 'title' => '发现一个宝贝 - '. $result->name,
                 'link' => $shareUrl,
-                'img' => "",$result->defaultImage,
-                'desc' => "",//$result->intro,
+                'img' => $result->defaultImage,
+                'desc' => $result->intro,
             ]
         ]);
     }

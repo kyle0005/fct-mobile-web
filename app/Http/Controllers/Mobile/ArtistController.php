@@ -84,7 +84,7 @@ class ArtistController extends BaseController
             'share' => [
                 'title' => $title,
                 'link' => $shareUrl,
-                'img' => "",//$result->headPortrait,
+                'img' => $result->headPortrait,
                 'desc' => $result->intro,
             ]
         ]);

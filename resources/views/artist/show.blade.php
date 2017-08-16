@@ -176,7 +176,6 @@
     </script>
     <script src="{{ fct_cdn('/js/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/artist.js') }}"></script>
-
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
