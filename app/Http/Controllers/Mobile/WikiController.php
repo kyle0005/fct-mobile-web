@@ -59,11 +59,11 @@ class WikiController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        $shareUrl = url('wiki');
+        $shareUrl = url('wiki/item?from_type='.$type.'&from_id='.$typeId);
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
             $this->setShopId();
-            $shareUrl = $shareUrl . '?' . env('SHARE_SHOP_ID_KEY') . '=' . $shopId;
+            $shareUrl = $shareUrl . '&' . env('SHARE_SHOP_ID_KEY') . '=' . $shopId;
         }
 
         return view('wiki.show', [
