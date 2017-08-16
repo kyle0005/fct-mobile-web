@@ -45,12 +45,13 @@
                     </ul>
                 </div>
             </section>
+
             <ul class="news" v-load-more="nextPage" type="1" v-if="liveList && liveList.length > 0">
                 <li class="item" v-for="(item, index) in liveList">
                     <div class="text">@{{ item.content }}</div>
                     <div class="media">
                         <mVideo v-if="item.videoUrl !== ''" :poster="item.videoImage" :url="item.videoUrl" id="'video' + item.id"></mVideo>
-                        <ul class="img-list" v-if="item.images.length > 0">
+                        <ul class="img-list clearfix" v-if="item.images.length > 0">
                             <li v-for="(img, i) in item.images">
                                 <img v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </li>
