@@ -62,6 +62,8 @@ class ArtistController extends BaseController
         try
         {
             $result = Artist::getArtist($id);
+            if ($result)
+                Artist::addVisitCount($id);
         }
         catch (BusinessException $e)
         {

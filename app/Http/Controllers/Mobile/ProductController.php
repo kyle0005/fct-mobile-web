@@ -28,6 +28,8 @@ class ProductController extends BaseController
         try
         {
             $result = Product::getProduct($id);
+            if ($result)
+                Product::addVisitCount($id);
         }
         catch (BusinessException $e)
         {

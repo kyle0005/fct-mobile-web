@@ -121,4 +121,20 @@ class Product
 
         return $pagination;
     }
+
+    public static function addVisitCount($id) {
+
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/%d/visit', self::$resourceUrl, $id),
+            [],
+            [],
+            'POST'
+        );
+/*
+        if ($result->code != 200) {
+            throw new BusinessException($result->msg);
+        }*/
+
+        return true;
+    }
 }

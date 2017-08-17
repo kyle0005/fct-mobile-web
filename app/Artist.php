@@ -117,4 +117,20 @@ class Artist
 
         return $cacheResult;
     }
+
+    public static function addVisitCount($id) {
+
+        $result = Base::http(
+            env('API_URL') . sprintf('/artists/%d/visit', $id),
+            [],
+            [],
+            'POST'
+        );
+/*
+        if ($result->code != 200) {
+            throw new BusinessException($result->msg);
+        }*/
+
+        return true;
+    }
 }
