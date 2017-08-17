@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="orderreturn-container" id="orderreturn" v-cloak>
         <section class="product">

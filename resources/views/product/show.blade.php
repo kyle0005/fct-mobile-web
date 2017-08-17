@@ -233,8 +233,6 @@
             </section>
         </div>
     </script>
-
-
     <script type="text/x-template" id="pug">
         <div class="artist-contianer">
             <ul class="artist-list clearfix" v-if="titleshow">

@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="share-container" id="share" v-cloak>
         <section class="top">

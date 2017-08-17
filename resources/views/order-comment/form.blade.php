@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="ordercomment-container" id="ordercomment" v-cloak>
         <section class="list">

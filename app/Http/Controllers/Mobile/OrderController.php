@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Mobile;
 
 use App\Exceptions\BusinessException;
 use App\FctCommon;
+use App\FctValidator;
 use App\ProductOrder;
 use Illuminate\Http\Request;
 
@@ -157,6 +158,58 @@ class OrderController  extends BaseController
         {
             return $this->autoReturn($e->getMessage());
         }
+    }
+
+    public function saveOrderInvoice(Request $request, $order_id)
+    {
+        if ($request->getMethod() == 'POST') {
+
+            $title = $request->get('title', '');
+            $content = $request->get('content', '');
+            $taxNumber = $request->get('tax_number', '');
+            $telephone = $request->get('telephone', '');
+            $address = $request->get('address', '');
+            $depositBank = $request->get('deposit_bank', '');
+            $bankAccount = $request->get('bank_account', '');
+            $remark = $request->get('remark', '');
+
+            try {
+                FctValidator::hasRequire($title, '抬头');
+                FctValidator::hasRequire($content, '内容');
+                if ($taxNumber) {
+                    FctValidator::hasRequire($telephone, '公司电话');
+                    FctValidator::hasRequire($address, '公司地址');
+                    FctValidator::hasRequire($depositBank, '公司开户行');
+                    FctValidator::hasRequire($bankAccount, '公司开户行账户');
+                }
+
+                ProductOrder::saveOrderInvoice($order_id, $title, $content, $taxNumber,
+                    $telephone, $address, $depositBank, $bankAccount, $remark);
+
+                return $this->returnAjaxSuccess("申请成功", url('my/orders/' . $order_id));
+            } catch (BusinessException $e) {
+                return $this->autoReturn($e->getMessage());
+            }
+        }
+
+        try
+        {
+            $result = ProductOrder::getOrder($order_id);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+
+        if ($request->orderInvoice && $request->orderInvoice->status != 3) {
+
+            return $this->autoReturn('您已申请过发票了，请到详情查看申请结果');
+        }
+
+        return view('order.invoice', [
+            'title' => fct_title('申请发票'),
+            'entity' => $result,
+        ]);
     }
 
     /**取消订单

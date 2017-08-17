@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="buy-container" id="buy_address" v-cloak>
         <ul class="address-list" v-if="address && address.length > 0">

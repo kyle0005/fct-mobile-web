@@ -1,6 +1,4 @@
 @extends("layout")
-
-
 @section('content')
     <div class="index-container" id="welcome" v-cloak>
         <a href="{{ url('/') }}" class="enter"></a>

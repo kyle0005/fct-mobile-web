@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="buy-container" id="buy_address" v-cloak>
         <form id="addr">

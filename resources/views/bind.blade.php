@@ -1,6 +1,4 @@
 @extends("layout")
-
-
 @section('content')
     <div class="login-container" id="login" v-cloak>
         <div class="logo"></div>

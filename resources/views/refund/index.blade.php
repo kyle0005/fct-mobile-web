@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="aftersale-container" id="aftersale" v-cloak>
         <ul class="after-list" v-load-more="nextPage" type="1" v-if="refund && refund.length > 0">

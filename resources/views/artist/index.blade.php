@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="artist-container" id="artist_list">
         <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="coverflow">

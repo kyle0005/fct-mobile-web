@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="order-container" id="order" v-cloak>
         <section class="info">
@@ -37,7 +36,7 @@
                 <div class="address">收货地址：@{{ order_detail.orderReceiver.province + "&nbsp;" + order_detail.orderReceiver.city + "&nbsp;" +  order_detail.orderReceiver.region + "&nbsp;" + order_detail.orderReceiver.address }}</div>
             </div>
             <div class="express invoice" v-if="order_detail.status == 3">
-                <a href="javascript:;" class="link">
+                <a href="{{ url('my/orders/'. $entity->orderId .'/invoice') }}" class="link">
                     <span class="img-container item">
                         <img src="{{ fct_cdn('/images/order_invoice.png') }}">
                       </span>

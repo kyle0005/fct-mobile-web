@@ -1,6 +1,4 @@
 @extends("layout")
-
-
 @section('content')
     <div class="encyclopedias-container" id="encyclopedias" v-cloak>
         <head-top></head-top>

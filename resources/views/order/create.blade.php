@@ -1,6 +1,4 @@
 @extends("layout")
-
-
 @section('content')
     <div class="buy-container" id="buy" v-cloak>
         <form id="buyOrder">

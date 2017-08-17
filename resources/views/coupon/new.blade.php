@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="coupon-container" id="coupon" v-cloak>
         <head-top></head-top>

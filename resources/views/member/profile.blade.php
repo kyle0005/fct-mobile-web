@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="userinfo-container" id="userinfo" v-cloak>
         <section class="photo-container">

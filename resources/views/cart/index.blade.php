@@ -1,47 +1,46 @@
 @extends("layout")
-
-
 @section('content')
     <div class="cart-container" id="cart" v-cloak>
         <form id="cart-form">
-            <ul class="cart-list" v-if="pro_list && pro_list.length > 0">
-                <li class="cart-item" v-for="(item, index) in pro_list">
-                    <label class="chk col">
-                        <input type="checkbox" name="chk-items" class="chk-items" :value="item" v-model="ischeck" @change="caltotalpri()">
-                    </label>
-                    <a href="javascript:;" class="product col">
-                      <span class="pro-item pro-img">
-                        <img :="item.img">
-                      </span>
-                      <span class="pro-item pro-t">
-                        <span class="t">
-                          <span class="title overText">@{{ item.name }}</span>
-                          <span class="spec" v-if="item.specName && item.specName != null">规格: @{{ item.specName }}</span>
-                          <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del v-if="item.promotionPrice != item.price"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
-                        </span>
-                      </span>
-                    </a>
-                    <div class="num-container col">
-                        <div class="num clearfix">
-                            <a href="javascript:;" :class="{dis:min}" @click="minus(item, index)">
-                                <i class="fa fa-minus"></i>
-                            </a>
-                            <input type="text" class="numbers" :value="item.buyCount">
-                            <a href="javascript:;" :class="{dis:max}" @click="add(item)">
-                                <i class="fa fa-plus"></i>
-                            </a>
+            <div class="contianer">
+                <ul class="cart-list" v-if="pro_list && pro_list.length > 0">
+                    <li class="cart-item" v-for="(item, index) in pro_list">
+                        <label class="chk col">
+                            <input type="checkbox" name="chk-items" class="chk-items" :value="item" v-model="ischeck" @change="caltotalpri()">
+                        </label>
+                        <a href="javascript:;" class="product col">
+                          <span class="pro-item pro-img">
+                            <img :="item.img">
+                          </span>
+                          <span class="pro-item pro-t">
+                            <span class="t">
+                              <span class="title overText">@{{ item.name }}</span>
+                              <span class="spec" v-if="item.specName && item.specName != null">规格: @{{ item.specName }}</span>
+                              <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del v-if="item.promotionPrice != item.price"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
+                            </span>
+                          </span>
+                        </a>
+                        <div class="num-container col">
+                            <div class="num clearfix">
+                                <a href="javascript:;" :class="{dis:min}" @click="minus(item, index)">
+                                    <i class="fa fa-minus"></i>
+                                </a>
+                                <input type="text" class="numbers" :value="item.buyCount">
+                                <a href="javascript:;" :class="{dis:max}" @click="add(item)">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
 
-            <div class="noData" v-if="nodata || (pro_list && pro_list.length <= 0)">
-                <div class="inner">
-                    <img src="{{ fct_cdn('/images/no_data.png') }}">
-                    <span class="no">当前没有相关数据哟~</span>
+                <div class="noData" v-if="nodata || (pro_list && pro_list.length <= 0)">
+                    <div class="inner">
+                        <img src="{{ fct_cdn('/images/no_data.png') }}">
+                        <span class="no">当前没有相关数据哟~</span>
+                    </div>
                 </div>
             </div>
-
             <section class="guess-container">
                 <div class="title">猜你喜欢</div>
                 <ul class="guess clearfix">

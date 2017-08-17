@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="art-container" id="artist" v-cloak>
         <head-top></head-top>

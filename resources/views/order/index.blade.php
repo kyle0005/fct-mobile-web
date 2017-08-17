@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="orderlist-container" id="orderlist" v-cloak>
         <div class="tabs">

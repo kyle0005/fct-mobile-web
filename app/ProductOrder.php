@@ -142,6 +142,41 @@ class ProductOrder
         return $result->data;
     }
 
+    /*     * @param order_id
+     * @param title
+     * @param content
+     * @param tax_number
+     * @param telephone
+     * @param address
+     * @param deposit_bank
+     * @param bank_account
+     * @param remark*/
+    public static function saveOrderInvoice($orderId, $title, $content, $taxNumber,
+                                        $telephone, $address, $depositBank, $bankAccount, $remark)
+    {
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/%s/invoice', self::$resourceUrl, $orderId),
+            [
+                'title' => $title,
+                'content' => $content,
+                'tax_number' => $taxNumber,
+                'telephone' => $telephone,
+                'address' => $address,
+                'deposit_bank' => $depositBank,
+                'bank_account' => $bankAccount,
+                'remark' => $remark,
+            ],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()]
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        return true;
+    }
+
     /**取消订单
      * @param $orderId
      * @return mixed|object|\Psr\Http\Message\ResponseInterface

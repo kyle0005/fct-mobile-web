@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="recharge-container" id="recharge" v-cloak>
         <section class="top">

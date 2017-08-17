@@ -1,5 +1,4 @@
 @extends("layout")
-
 @section('content')
     <div class="wallet-container">
         <section class="top">
