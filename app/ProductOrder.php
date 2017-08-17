@@ -17,10 +17,12 @@ class ProductOrder
     public static $resourceUrl = '/mall/orders';
 
     /**获取订单列表
-     * @param $orderId
+     * @param $keyword
      * @param $status
+     * @param $commentStatus
      * @param int $pageIndex
-     * @return array|bool|object
+     * @return object
+     * @throws BusinessException
      */
     public static function getOrders($keyword, $status, $commentStatus, $pageIndex = 1)
     {
@@ -39,7 +41,7 @@ class ProductOrder
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
-                'order_id' => $keyword,
+                'order_id' => urlencode($keyword),
                 'status' => $status,
                 'comment_status' => $commentStatus,
                 'page_index' => $pageIndex,
