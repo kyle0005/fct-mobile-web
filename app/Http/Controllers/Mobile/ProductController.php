@@ -37,6 +37,13 @@ class ProductController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
+        if (!$result) return $this->autoReturn('没有找到此产品内容');
+
+        //处理content图片延迟加载
+/*        $result->content = str_replace(
+            'src="', 'src="'.fct_cdn('/images/img_loader.gif').'" v-view="',
+            $result->content);*/
+
         $shareUrl = url('products/'. $id);
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
@@ -51,10 +58,8 @@ class ProductController extends BaseController
             "comment" => $result->name . '--' . url('product/' . $result->id) . '"}',
         ];
 
-        $title = (isset($result->name) && $result->name ? $result->name : '宝贝详情');
-
         return view('product.show', [
-            'title' => fct_title($title),
+            'title' => fct_title($result->name),
             'categories' => ProductCategory::getCategories(),
             'product' => $result,
             'chat_url' => 'https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid='
