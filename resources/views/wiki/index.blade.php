@@ -15,7 +15,7 @@
             <m-search  @subSearch="subSearch"></m-search>
         </section>
         <section class="list">
-            <div class="tab-list">
+            <div class="tab-list" v-if="item && item.length > 0">
                 <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
                     <div v-for="(item, index) in list" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
@@ -27,6 +27,14 @@
                     </div>
                 </m-swipe>
             </div>
+
+            <div class="noData" v-else>
+                <div class="inner">
+                    <img src="{{ fct_cdn('/images/no_data.png') }}">
+                    <span class="no">当前没有相关数据哟~</span>
+                </div>
+            </div>
+
         </section>
         <section class="nav-bar">
             <ul>
@@ -48,6 +56,14 @@
                     </div>
                 </m-swipe>
             </div>
+
+            <div class="noData" v-else>
+                <div class="inner">
+                    <img src="{{ fct_cdn('/images/no_data.png') }}">
+                    <span class="no">当前没有相关数据哟~</span>
+                </div>
+            </div>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </section>
         <div class="copyright-container">
             <div class="info">
