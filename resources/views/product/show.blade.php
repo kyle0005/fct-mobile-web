@@ -302,7 +302,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="nodata">
+            <div class="noData" v-if="nodata || (commentlist && commentlist.length <= 0)">
                 <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>

@@ -2,42 +2,38 @@
 @section('content')
     <div class="logistics-container" id="logistics" v-cloak>
         <div class="info-container clearfix">
-            <div class="img-container"><img src="{{ $entity->image }}"></div>
+            <div class="img-container"><img :src="logistics.image"></div>
             <div class="text-container">
                 <div class="inner">
-                    <div class="status">物流状态<span class="t">{{ $entity->expressStatus }}</span></div>
-                    <div>承运来源:&ensp;{{ $entity->expressPlatform }}</div>
-                    <div>运单编号:&ensp;{{ $entity->expressNO }}</div>
+                    <div class="status">物流状态<span class="t">@{{ logistics.expressStatus }}</span></div>
+                    <div>承运来源:&ensp;@{{ logistics.expressPlatform }}</div>
+                    <div>运单编号:&ensp;@{{ logistics.expressNO }}</div>
                 </div>
             </div>
         </div>
-        <div class="logistics-info">
-            <a href="{{ $entity->expressUrl }}" class="title">
-                <img src="{{ fct_cdn('/images/resource/' . $entity->expressEnglishName . '.png') }}">本数据由<span class="name">{{ $entity->expressPlatform }}</span>提供<span class="wei-arrow-right"></span>
+        <div class="logistics-info" v-if="logistics && logistics.expressInfoList && logistics.expressInfoList.length > 0">
+            <a :href="logistics.expressUrl" class="title">
+                <img :src="'{{ fct_cdn('/images/') }}' + logistics.expressEnglishName + '.png'">本数据由<span class="name">@{{ logistics.expressPlatform }}</span>提供<span class="wei-arrow-right"></span>
             </a>
             <div class="detail">
-                @if ($entity->expressInfoList)
                 <ul>
-                    @foreach($entity->expressInfoList as $key=>$express)
-                    <li class="item {{ $key ? "" : "active" }}">
-                        <div class="inner clearfix">
+                    <li class="item" v-for="(item, index) in logistics.expressInfoList">
+                        <div class="inner">
                             <div class="line"></div>
                             <div class="content">
-                                <div class="up">{{ $express->status }}</div>
-                                <div class="down">{{ $express->time }}</div>
+                                <div class="up">@{{ item.status }}</div>
+                                <div class="down">@{{ item.time }}</div>
                             </div>
                         </div>
                     </li>
-                    @endforeach
                 </ul>
-                @else
-                    <div class="noData">
-                        <div class="inner">
-                            <img src="{{ fct_cdn('/images/no_data.png') }}">
-                            <span class="no">当前没有相关数据哟~</span>
-                        </div>
-                    </div>
-                @endif
+            </div>
+        </div>
+
+        <div class="noData" v-else>
+            <div class="inner">
+                <img src="{{ fct_cdn('/images/no_data.png') }}">
+                <span class="no">当前没有相关数据哟~</span>
             </div>
         </div>
 
@@ -50,5 +46,8 @@
     </div>
 @endsection
 @section('javascript')
+    <script>
+        config.logistics = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
+    </script>
     <script src="{{ fct_cdn('/js/orderlogistics.js') }}"></script>
 @endsection

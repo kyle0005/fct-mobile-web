@@ -29,11 +29,11 @@
             <li>
                 <a href="{{ url('/') .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}" class="link">
                     <span class="left">
-                      <img src="{{ fct_cdn('/images/resource/pro01.png') }}">
+                      <img src="{{ fct_cdn('/images/logo2.png') }}">
                     </span>
                     <span class="center">
-                      <span class="title">方寸堂</span>
-                      <span class="t2">紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶紫砂壶</span>
+                      <span class="title">方寸堂 - 只为不同</span>
+                      <span class="t2">汇聚东方美学匠心之作的紫砂交流电商平台。</span>
                     </span>
                     <span class="right"><img src="{{ fct_cdn('/images/share.png') }}"></span>
                 </a>
@@ -57,7 +57,7 @@
             </li>
         </ul>
 
-        <div class="noData" v-if="nodata">
+        <div class="noData" v-if="nodata || (shareList && shareList.length <= 0)">
             <div class="inner">
                 <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>

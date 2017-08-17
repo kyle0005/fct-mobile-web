@@ -13,7 +13,7 @@
             </ul>
         </section>
         <div class="prolist-container">
-            <ul class="prolist" v-if="pro_list && pro_list.length">
+            <ul class="prolist" v-if="pro_list && pro_list.length > 0">
                 <li class="item" v-for="item in pro_list">
                     <a :href="'/products/' + item.id">
                         <span class="pro-main"><img v-view="item.videoImg" src="{{ fct_cdn('/images/img_loader.gif') }}"></span>
@@ -32,7 +32,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="nodata">
+            <div class="noData" v-if="nodata || (pro_list && pro_list.length <= 0)">
                 <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>

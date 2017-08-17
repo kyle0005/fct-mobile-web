@@ -102,7 +102,7 @@ class Product
         $result = Base::http(
             env('API_URL') . sprintf('%s/share', self::$resourceUrl),
             [
-                'name' => $name,
+                'name' => urlencode($name),
                 'code' => $categoryCode,
                 'sort_index' => $sortIndex,
                 'page_index' => $pageIndex,

@@ -7,16 +7,15 @@
         <section class="nav-bar">
             <ul>
                 <li class="item" v-for="(item, index) in tabs" :class="{chosen: index===tab_num}" @click="linkTo(index)">
-                    <a href="javascript:;">
-                        @{{ item }}
-                    </a>
+                    <a href="javascript:;">@{{ item }}</a>
                 </li>
             </ul>
-            <m-search  @subSearch="subSearch"></m-search>
+            <m-search @subsearch="subsearch" :dat="list" :sid="'up'"></m-search>
         </section>
+
         <section class="list">
-            <div class="tab-list" v-if="item && item.length > 0">
-                <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
+            <div class="tab-list">
+                <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide" v-if="list && list.length > 0">
                     <div v-for="(item, index) in list" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
                             <a :href="'{{ url('wiki/item') }}?from_type=category&from_id=' + i_item.id" class="link">
@@ -26,28 +25,28 @@
                         </div>
                     </div>
                 </m-swipe>
-            </div>
 
-            <div class="noData" v-else>
-                <div class="inner">
-                    <img src="{{ fct_cdn('/images/no_data.png') }}">
-                    <span class="no">当前没有相关数据哟~</span>
+                <div class="noData" v-if="(list && list.length <= 0) || nodata">
+                    <div class="inner">
+                        <img src="{{ fct_cdn('/images/no_data.png') }}">
+                        <span class="no">当前没有相关数据哟~</span>
+                    </div>
                 </div>
             </div>
-
         </section>
+
         <section class="nav-bar">
             <ul>
                 <li class="item chosen">
                     <a href="javascript:;">泥料</a>
                 </li>
             </ul>
-            <m-search  @subSearch="subSearch"></m-search>
+            <m-search @subsearch="subsearch" :dat="list_t" :sid="'down'"></m-search>
         </section>
 
         <section class="list">
             <div class="tab-list down">
-                <m-swipe swipeid="swipet" ref="swipert" :autoplay="0" effect="slide">
+                <m-swipe swipeid="swipet" ref="swipert" :autoplay="0" effect="slide" v-if="list_t && list_t.length > 0">
                     <div v-for="(item, index) in list_t" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
                             <a :href="'{{ url('wiki/item') }}?from_type=material&from_id=' + i_item.id"
@@ -55,14 +54,15 @@
                         </div>
                     </div>
                 </m-swipe>
-            </div>
 
-            <div class="noData" v-else>
-                <div class="inner">
-                    <img src="{{ fct_cdn('/images/no_data.png') }}">
-                    <span class="no">当前没有相关数据哟~</span>
+                <div class="noData" v-if="(list_t && list_t.length <= 0) || nodata">
+                    <div class="inner">
+                        <img src="{{ fct_cdn('/images/no_data.png') }}">
+                        <span class="no">当前没有相关数据哟~</span>
+                    </div>
                 </div>
             </div>
+
         </section>
         <div class="copyright-container">
             <div class="info">
@@ -79,8 +79,6 @@
         config.wikiCategories = {!! json_encode($wikiCategories, JSON_UNESCAPED_UNICODE) !!};
         config.materials = {!! json_encode($materials, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/swiper.js') }}"></script>
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container tab-container" :class="swipeid">
             <div class="swiper-wrapper">
@@ -111,7 +109,8 @@
             </a>
         </div>
     </template>
-
+    <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/swiper.js') }}"></script>
     <script src="{{ fct_cdn('/js/encyclopedias.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
