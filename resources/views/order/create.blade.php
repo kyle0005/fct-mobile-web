@@ -28,7 +28,7 @@
                     <span class="container overText">
                       <span class="name">@{{ item.name }}</span>
                       <span class="spec">@{{ item.specName }}</span>
-                      <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del class="gray"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
+                      <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del class="gray" v-if="item.promotionPrice != item.price"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
                     </span>
                   </span>
                     <span class="num">
