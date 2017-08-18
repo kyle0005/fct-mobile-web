@@ -35,16 +35,19 @@ class WikiController extends BaseController
             $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
         }
 
-        $result['title'] = fct_title('百科');
-        $result['categories'] = ProductCategory::getCategories();
-        $result['share'] = [
+        return view('wiki.index', [
             'title' => fct_title('百科'),
-            'link' => $shareUrl,
-            'img' => 'http://cdn.fangcun.com/static/img/fc_logo.png',
-            'desc' => '方寸堂百科，专注于紫砂领域知识的创建与分享。',
-        ];
-
-        return view('wiki.index', $result);
+            'categories' => ProductCategory::getCategories(),
+            'wikiCategories' => $result->wikiCategories,
+            'materials' => $result->materials,
+            'articles' =>  $result->articles,
+            'share' => [
+                'title' => fct_title('百科'),
+                'link' => $shareUrl,
+                'img' => 'http://cdn.fangcun.com/static/img/fc_logo.png',
+                'desc' => '方寸堂百科，专注于紫砂领域知识的创建与分享。',
+            ]
+        ]);
     }
 
     public function show(Request $request)
@@ -52,12 +55,24 @@ class WikiController extends BaseController
 
         $typeId = intval($request->get('from_id', 0));
         $type = $request->get('from_type', '');
+        if (!$typeId)
+            return $this->autoReturn('ID不存在');
+        if (!$type)
+            return $this->autoReturn('百科类型不存在');
 
         try {
+
             $result = Wiki::getItem($typeId, $type);
+            //获取分类
+            if (!$request->ajax())
+                $entities = Wiki::getFromTypes($type, $typeId);
+
         } catch (BusinessException $e) {
             return $this->autoReturn($e->getMessage());
         }
+
+        if ($request->ajax())
+            return $this->returnAjaxSuccess("获取成功", null, $result);
 
         $shareUrl = url('wiki/item?from_type='.$type.'&from_id='.$typeId);
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
@@ -69,7 +84,9 @@ class WikiController extends BaseController
         return view('wiki.show', [
             'title' => fct_title($result->name),
             'categories' => ProductCategory::getCategories(),
-            'entry' => $result,
+            'entities' => $entities,
+            'entity' => $result,
+            'fromType' => $type,
             'share' => [
                 'title' => fct_title($result->name),
                 'link' => $shareUrl,

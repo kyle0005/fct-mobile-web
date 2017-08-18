@@ -198,9 +198,9 @@
     </script>
     <script type="text/x-template" id="artist">
         <div class="artist-contianer">
-            <ul class="artist-list clearfix" v-if="titleshow">
-                <li v-for="(item, index) in artist">
-                    <a href="javascript:;" :class="{red:index===art_num}" @click="loadsingle(index)">
+            <ul class="top-list clearfix" v-if="titleshow">
+                <li v-for="(item, index) in artist" :class="{red:index===art_num}">
+                    <a href="javascript:;" @click="loadsingle(index)">
                         <span class="img-container">
                           <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </span>
@@ -208,17 +208,19 @@
                     </a>
                 </li>
             </ul>
-            <section class="artist" :class="{'top-max':!titleshow,'top-min':titleshow}">
+
+            <section class="content" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
-                  <span class="photo">
-                      <img :src="artistsingle.headPortrait"/>
-                  </span>
-                    <span class="artist-info">
-                      <span class="artist-name">@{{ artistsingle.name }}</span>&nbsp;-&nbsp;<span class="v-title">@{{ artistsingle.title }}</span><br>
-                      <span v-html="artistsingle.intro"></span>
+                    <span class="photo">
+                        <img :src="artistsingle.headPortrait"/>
+                    </span>
+                    <span class="intro-info">
+                        <span class="intro-name">@{{ artistsingle.name }}</span>&nbsp;-&nbsp;<span class="v-title">@{{ artistsingle.title }}</span><br>
+                        <span v-html="artistsingle.intro"></span>
                     </span>
                 </div>
             </section>
+
             <div class="text-container" v-html="artistsingle.description"></div>
             <section class="comment" v-if="artistsingle.products && artistsingle.products.length > 0">
                 <ul class="others">
@@ -235,9 +237,9 @@
     </script>
     <script type="text/x-template" id="pug">
         <div class="artist-contianer">
-            <ul class="artist-list clearfix" v-if="titleshow">
-                <li v-for="(item, index) in pugs">
-                    <a href="javascript:;" :class="{red:index===pug_num}" @click="loadsingle(index)">
+            <ul class="top-list clearfix" v-if="titleshow">
+                <li v-for="(item, index) in pugs" :class="{red:index===pug_num}">
+                    <a href="javascript:;" @click="loadsingle(index)">
                         <span class="img-container">
                           <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </span>
@@ -245,13 +247,14 @@
                     </a>
                 </li>
             </ul>
-            <section class="artist" :class="{'top-max':!titleshow,'top-min':titleshow}">
+
+            <section class="content" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
                   <span class="photo">
                       <img :src="pugsingle.image">
                   </span>
-                    <span class="artist-info">
-                      <span class="artist-name">@{{ pugsingle.name }}</span><br>
+                    <span class="intro-info">
+                      <span class="intro-name">@{{ pugsingle.name }}</span><br>
                       <span v-html="pugsingle.intro"></span>
                     </span>
                 </div>

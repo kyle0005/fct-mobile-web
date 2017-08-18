@@ -39,9 +39,10 @@ class Wiki
                 throw new BusinessException($result->msg);
             }
 
-            $cacheResult = [
-                'wikiCategories' => $result->data->categoryList,
-                'materials' => $result->data->materialList,
+            $cacheResult = (object) [
+                'wikiCategories' => $result->data->categoryList ? $result->data->categoryList : [],
+                'materials' => $result->data->materialList ? $result->data->materialList : [],
+                'articles' =>  $result->data->articleList ? $result->data->articleList : [],
             ];
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
@@ -87,5 +88,42 @@ class Wiki
         }
 
         return $cacheResult;
+    }
+
+    public static function getFromTypes($type, $id)
+    {
+        $result = self::getHome();
+        if (!$result)
+        {
+            return [];
+        }
+
+        $resultList = [];
+        switch ($type)
+        {
+            case 'category':
+                foreach ($result->wikiCategories as $category)
+                {
+                    foreach ($category->subList as $subCategory)
+                    {
+                        if ($subCategory->id == $id)
+                        {
+                            $resultList = $category->subList;
+                            break;
+                        }
+                    }
+                    if ($resultList)
+                        break;
+                }
+                break;
+            case 'material':
+                $resultList = $result->materials;
+                break;
+            case 'article':
+                $resultList = $result->articles;
+                break;
+        }
+
+        return $resultList;
     }
 }
