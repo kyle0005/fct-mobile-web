@@ -6,8 +6,8 @@
                 <a href="javascript:;" class="link">@{{ item }}</a>
             </div>
         </div>
-        <div class="collection-list" v-if="collection && collection.length > 0">
-            <div class="item" v-for="(item, index) in collection">
+        <div class="collection-list">
+            <div class="item" v-for="(item, index) in collection" v-if="collection && collection.length > 0">
                 <div class="img-container">
                     <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                 </div>
@@ -18,15 +18,15 @@
                     </a>
                 </div>
             </div>
-        </div>
 
-        <div class="noData" v-if="nodata || (collection && collection.length <= 0)">
-            <div class="inner">
-                <img src="{{ fct_cdn('/images/no_data.png') }}">
-                <span class="no">当前没有相关数据哟~</span>
+            <div class="noData" v-if="nodata || (collection && collection.length <= 0)">
+                <div class="inner">
+                    <img src="{{ fct_cdn('/images/no_data.png') }}">
+                    <span class="no">当前没有相关数据哟~</span>
+                </div>
             </div>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
-
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
 @endsection

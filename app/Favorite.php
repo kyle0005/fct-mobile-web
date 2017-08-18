@@ -47,7 +47,7 @@ class Favorite
             {
                 $result->data = $result->data->elements;
             }
-            $cacheResult = $result->data;
+            $cacheResult = $result->data ? $result->data : [];
 
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
