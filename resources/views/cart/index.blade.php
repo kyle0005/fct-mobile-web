@@ -10,7 +10,7 @@
                         </label>
                         <a href="javascript:;" class="product col">
                           <span class="pro-item pro-img">
-                            <img :="item.img">
+                              <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                           </span>
                           <span class="pro-item pro-t">
                             <span class="t">

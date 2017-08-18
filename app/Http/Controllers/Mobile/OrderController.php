@@ -171,7 +171,6 @@ class OrderController  extends BaseController
             $address = $request->get('address', '');
             $depositBank = $request->get('deposit_bank', '');
             $bankAccount = $request->get('bank_account', '');
-            $remark = $request->get('remark', '');
 
             try {
                 FctValidator::hasRequire($title, '抬头');
@@ -184,7 +183,7 @@ class OrderController  extends BaseController
                 }
 
                 ProductOrder::saveOrderInvoice($order_id, $title, $content, $taxNumber,
-                    $telephone, $address, $depositBank, $bankAccount, $remark);
+                    $telephone, $address, $depositBank, $bankAccount);
 
                 return $this->returnAjaxSuccess("申请成功", url('my/orders/' . $order_id));
             } catch (BusinessException $e) {

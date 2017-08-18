@@ -22,7 +22,11 @@ class ShoppingCartController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('cart.index', $result);
+        return view('cart.index', [
+            'title' => fct_title('购物车'),
+            'carts' => json_encode($result->cartList, JSON_UNESCAPED_UNICODE),
+            'likes' => json_encode($result->likeList, JSON_UNESCAPED_UNICODE),
+        ]);
     }
 
     public function store(Request $request)

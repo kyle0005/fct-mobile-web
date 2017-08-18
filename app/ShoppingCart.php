@@ -26,11 +26,12 @@ class ShoppingCart
             throw new BusinessException($result->msg);
         }
 
-        return [
-            'title' => fct_title('购物车'),
-            'carts' => json_encode($result->data->cartList, JSON_UNESCAPED_UNICODE),
-            'likes' => json_encode($result->data->likeList, JSON_UNESCAPED_UNICODE),
+        $result = (object) [
+            'cartList' => $result->data->cartList ? $result->data->cartList : [],
+            'likeList' => $result->data->likeList ? $result->data->likeList : [],
         ];
+
+        return $result;
     }
 
     /**增加（添加）或减少购物车宝贝数量

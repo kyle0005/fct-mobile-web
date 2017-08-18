@@ -152,7 +152,7 @@ class ProductOrder
      * @param bank_account
      * @param remark*/
     public static function saveOrderInvoice($orderId, $title, $content, $taxNumber,
-                                        $telephone, $address, $depositBank, $bankAccount, $remark)
+                                        $telephone, $address, $depositBank, $bankAccount)
     {
         $result = Base::http(
             env('API_URL') . sprintf('%s/%s/invoice', self::$resourceUrl, $orderId),
@@ -164,7 +164,6 @@ class ProductOrder
                 'address' => $address,
                 'deposit_bank' => $depositBank,
                 'bank_account' => $bankAccount,
-                'remark' => $remark,
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );
