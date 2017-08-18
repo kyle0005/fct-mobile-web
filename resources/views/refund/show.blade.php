@@ -52,17 +52,54 @@
                 </div>
             </div>
         </section>
-        <div class="sub-btn">
-            <a href="javascript:;" @click="confirm(closeApp)">关闭申请</a>
-        </div>
-        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :msg="msg"></confirm>
+
+        <footer class="foot-container">
+            <div class="inner">
+                <div class="sub-btn">
+                    <a href="javascript:;" @click="confirm(closeApp)" v-if="product.status == 0">关闭申请</a>
+                    <a href="javascript:;" @click="sendback()" v-if="product.status == 1">寄回宝贝</a>
+                </div>
+
+                <div class="aside" :class="{open:open,docked:docked}" @click.prevent="sendback()">
+                    <div class="container">
+                        <form id="deliver">
+                            <div class="choose" @click.stop="">
+                                <section class="list-container">
+                                    <div class="line">
+                                        <div class="left">物流公司</div>
+                                        <div class="right">
+                                            <input type="text" class="right-inp" name="title" v-model="name">
+                                        </div>
+                                    </div>
+                                    <div class="line">
+                                        <div class="left">物流单号</div>
+                                        <div class="right">
+                                            <input type="text" class="right-inp" name="number" v-model="number">
+                                        </div>
+                                    </div>
+                                </section>
+                                <div class="fork-container" @click="sendback()">
+                                    <a href="javascript:;" class="fork" >&nbsp;</a>
+                                </div>
+                            </div>
+                            <a href="javascript:;" class="sub">
+                                <subpost :txt="subText" ref="subpost" @callback="deliver" @succhandle="succhandle"></subpost>
+                            </a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :msg="msg"></confirm>
     </div>
 @endsection
 @section('javascript')
     <script>
         config.product = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
         config.cancel_url = "{{ url('my/refunds/' . $entity->id . '/cancel') }}";
+        config.sendbackUrl = "{{ url('my/refunds/' . $entity->id . '/express') }}"
     </script>
     <script src="{{ fct_cdn('/js/aftersale_detail.js') }}"></script>
 @endsection

@@ -40,7 +40,8 @@
                     <span class="img-container item">
                         <img src="{{ fct_cdn('/images/order_invoice.png') }}">
                       </span>
-                    <span class="item t">申请发票</span>
+                    <span class="item t" v-if="order_detail.orderInvoice && order_detail.orderInvoice.title">已申请（@{{ order_detail.orderInvoice.statusName }}）</span>
+                    <span class="item t" v-else>申请发票</span>
                     <span class="wei-arrow-right"></span>
                 </a>
             </div>

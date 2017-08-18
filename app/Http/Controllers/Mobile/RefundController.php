@@ -126,4 +126,25 @@ class RefundController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
     }
+
+    public function saveRefundExpress(Request $request, $id)
+    {
+        if ($id < 1)
+        {
+            return $this->autoReturn('记录不存在');
+        }
+        $expressName = $request->get('name', '');
+        $expressNumber = $request->get('number', '');
+        try
+        {
+            FctValidator::hasRequire($expressName, '物流名称');
+            FctValidator::hasRequire($expressNumber, '物流单号');
+            Refund::refundExpress($id, $expressName, $expressNumber);
+            return $this->returnAjaxSuccess('提交成功', url('my/refunds/' . $id));
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage());
+        }
+    }
 }

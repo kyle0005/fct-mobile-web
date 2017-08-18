@@ -162,6 +162,9 @@ class OrderController  extends BaseController
 
     public function saveOrderInvoice(Request $request, $order_id)
     {
+        if (!$order_id)
+            return $this->autoReturn('订单不存在');
+
         if ($request->getMethod() == 'POST') {
 
             $title = $request->get('title', '');

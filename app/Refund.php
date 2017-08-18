@@ -79,14 +79,14 @@ class Refund
         return $result->data;
     }
 
-    public static function refundExpress($id, $description, $images)
+    public static function refundExpress($id, $expressName, $expressNumber)
     {
         $result = Base::http(
             env('API_URL') . sprintf('%s/%d/express', self::$resourceUrl, $id),
             [
                 'id' => $id,
-                'description' => $description,
-                'images' => $images,
+                'express_name' => $expressName,
+                'express_number' => $expressNumber,
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );

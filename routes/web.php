@@ -124,6 +124,8 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'test.fangcuntang.com')], functio
             Route::resource('my/refunds', 'Mobile\RefundController', ['index', 'create', 'store', 'show']);
                 //关闭申请
                 Route::post('my/refunds/{id}/cancel', 'Mobile\RefundController@setCancel');
+                //退回宝贝
+                Route::post('my/refunds/{id}/express', 'Mobile\RefundController@saveRefundExpress');
 
         //我的钱包
         Route::get('my/account', 'Mobile\MemberAccountController@wallet');
