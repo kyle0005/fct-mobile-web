@@ -34,7 +34,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.rechargeUrl="@{{ url('my/account/recharge') }}";
+        config.rechargeUrl="{{ url('my/account/recharge') }}";
         config.charge = {!! json_encode($recharge) !!};
     </script>
     <script src="{{ fct_cdn('/js/recharge.js') }}"></script>
