@@ -297,7 +297,9 @@
                     <div class="comments">
                         <span class="text" v-html="item.content"></span>
                         <span class="imgs">
-                        <img v-view="img_item" src="{{ fct_cdn('/images/img_loader.gif') }}" v-for="(img_item, index) in item.pictures">
+                        <img v-img="{ group: item.id, exsrc: item.largePictures[index]}"
+                             v-view="img_item" src="{{ fct_cdn('/images/img_loader.gif') }}"
+                             v-for="(img_item, index) in item.pictures">
                       </span>
                     </div>
                 </li>
