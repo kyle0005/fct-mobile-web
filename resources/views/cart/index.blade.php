@@ -1,7 +1,8 @@
 @extends("layout")
 @section('content')
     <div class="cart-container" id="cart" v-cloak>
-        <form id="cart-form">
+        <head-top></head-top>
+        <form id="cart-form" v-if="pro_list && pro_list.length > 0">
             <div class="contianer">
                 <ul class="cart-list" v-if="pro_list && pro_list.length > 0">
                     <li class="cart-item" v-for="(item, index) in pro_list">
@@ -10,13 +11,13 @@
                         </label>
                         <a href="javascript:;" class="product col">
                           <span class="pro-item pro-img">
-                              <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                           </span>
                           <span class="pro-item pro-t">
                             <span class="t">
                               <span class="title overText">@{{ item.name }}</span>
-                              <span class="spec" v-if="item.specName && item.specName != null">规格: @{{ item.specName }}</span>
-                              <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del v-if="item.promotionPrice != item.price"><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
+                              <span class="spec">规格: @{{ item.specName }}</span>
+                              <span class="price"><small class="pri-mark">￥</small>@{{ item.promotionPrice }}<del><small class="pri-mark">￥</small>@{{ item.price }}</del></span>
                             </span>
                           </span>
                         </a>
@@ -33,27 +34,21 @@
                         </div>
                     </li>
                 </ul>
-
-                <div class="noData" v-if="nodata || (pro_list && pro_list.length <= 0)">
-                    <div class="inner">
-                        <img src="{{ fct_cdn('/images/no_data.png') }}">
-                        <span class="no">当前没有相关数据哟~</span>
-                    </div>
-                </div>
+                <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             </div>
             <section class="guess-container">
                 <div class="title">猜你喜欢</div>
                 <ul class="guess clearfix">
                     <li v-for="(item, index) in like_list">
-                        <a :href="'{{ url('products') }}/' + item.id" class="guess-link">
-                            <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                        <a href="javascript:;" class="guess-link">
+                            <img :src="item.defaultImage">
                         </a>
                         <div class="v-title">@{{ item.name }}</div>
                         <div class="v-price"><small class="pri-mark">￥</small>@{{ item.price }}</div>
                     </li>
                 </ul>
             </section>
-            <footer class="foot-container">
+            <footer class="foot-container" >
                 <div class="inner">
                     <ul class="nav">
                         <li class="choose">
@@ -73,12 +68,22 @@
                 </div>
             </footer>
         </form>
+
+        <div class="noData" v-if="(pro_list && pro_list.length <= 0) || nodata">
+            <div class="inner">
+                <a href="javascript:;">
+                    <img src="{{ fct_cdn('/images/nocart.png') }}" class="no-cart">
+                    <span class="no">去添加点什么吧？</span>
+                </a>
+            </div>
+        </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
         <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="cartItem" :msg="msg"></confirm>
     </div>
 @endsection
 @section('javascript')
     <script>
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.carts = {!! $carts !!};
         config.like_list = {!! $likes !!};
         config.buy_url = "{{ url('orders/create') }}";

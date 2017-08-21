@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Mobile;
 
 use App\Exceptions\BusinessException;
+use App\ProductCategory;
 use App\ShoppingCart;
 use Illuminate\Http\Request;
 
@@ -24,6 +25,7 @@ class ShoppingCartController extends BaseController
 
         return view('cart.index', [
             'title' => fct_title('购物车'),
+            'categories' => ProductCategory::getCategories(),
             'carts' => json_encode($result->cartList, JSON_UNESCAPED_UNICODE),
             'likes' => json_encode($result->likeList, JSON_UNESCAPED_UNICODE),
         ]);

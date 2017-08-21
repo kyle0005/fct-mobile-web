@@ -38,7 +38,7 @@
                     <mVideo v-if="top.videoUrl !== ''" :item="top"></mVideo>
                     <ul class="img-list" v-if="topImg">
                         <li v-for="imgs in top.images">
-                            <img v-view="imgs" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-img="{ group: 'top', exsrc: top.largeImages[index]}" v-view="imgs" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </li>
                     </ul>
                 </div>
@@ -51,7 +51,7 @@
                         <mVideo v-if="item.videoUrl !== ''" :poster="item.videoImage" :url="item.videoUrl" id="'video' + item.id"></mVideo>
                         <ul class="img-list clearfix" v-if="item.images.length > 0">
                             <li v-for="(img, i) in item.images">
-                                <img v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                                <img v-img="{ group: item.id, exsrc: item.largeImages[i]}" v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </li>
                         </ul>
                     </div>
