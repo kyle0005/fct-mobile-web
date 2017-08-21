@@ -2,7 +2,7 @@
 @section('content')
     <div class="encyclopedias-container" id="encyclopedias" v-cloak>
         <head-top></head-top>
-        <section class="nav-bar">
+        <section class="nav-bar" v-if="list && list.length > 0">
             <ul>
                 <li class="item" v-for="(item, index) in tabs" :class="{chosen: index===tab_num}" @click="linkTo(index)">
                     <a href="javascript:;">@{{ item }}</a>
@@ -11,9 +11,9 @@
             <m-search @subsearch="subsearch" :dat="list" :sid="'up'"></m-search>
         </section>
 
-        <section class="list">
+        <section class="list" v-if="list && list.length > 0">
             <div class="tab-list">
-                <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide" v-if="list && list.length > 0">
+                <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
                     <div v-for="(item, index) in list" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
                             <a :href="'{{ url('wiki/item') }}?from_type=category&from_id=' + i_item.id" class="link">
@@ -23,18 +23,10 @@
                         </div>
                     </div>
                 </m-swipe>
-
-                <div class="noData" v-if="(list && list.length <= 0) || nodata">
-                    <div class="inner">
-                        <img src="{{ fct_cdn('/images/no_data.png') }}">
-                        <span class="no">当前没有相关数据哟~</span>
-                    </div>
-                </div>
-                <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             </div>
         </section>
 
-        <section class="nav-bar">
+        <section class="nav-bar" v-if="list_t && list_t.length > 0">
             <ul>
                 <li class="item chosen">
                     <a href="javascript:;">泥料</a>
@@ -42,10 +34,9 @@
             </ul>
             <m-search @subsearch="subsearch" :dat="list_t" :sid="'down'"></m-search>
         </section>
-
-        <section class="list">
+        <section class="list" v-if="list_t && list_t.length > 0">
             <div class="tab-list down">
-                <m-swipe swipeid="swipet" ref="swipert" :autoplay="0" effect="slide" v-if="list_t && list_t.length > 0">
+                <m-swipe swipeid="swipet" ref="swipert" :autoplay="0" effect="slide">
                     <div v-for="(item, index) in list_t" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
                             <a :href="'{{ url('wiki/item') }}?from_type=material&from_id=' + i_item.id"
@@ -53,16 +44,28 @@
                         </div>
                     </div>
                 </m-swipe>
-
-                <div class="noData" v-if="(list_t && list_t.length <= 0) || nodata">
-                    <div class="inner">
-                        <img src="{{ fct_cdn('/images/no_data.png') }}">
-                        <span class="no">当前没有相关数据哟~</span>
-                    </div>
-                </div>
-                <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             </div>
+        </section>
 
+        <section class="nav-bar" v-if="list_term && list_term.length > 0">
+            <ul>
+                <li class="item chosen">
+                    <a href="javascript:;">术语</a>
+                </li>
+            </ul>
+            <m-search @subsearch="subsearch" :dat="list_term" :sid="'term'"></m-search>
+        </section>
+        <section class="list" v-if="list_term && list_term.length > 0">
+            <div class="tab-list down last">
+                <m-swipe swipeid="swipeterm" ref="swiperterm" :autoplay="0" effect="slide">
+                    <div v-for="(item, index) in list_term" class="swiper-slide inner-container" :key="index" slot="swiper-con">
+                        <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
+                            <a :href="'{{ url('wiki/item') }}?from_type=article&from_id=' + i_item.id"
+                               class="link overText">@{{ i_item.name }}</a>
+                        </div>
+                    </div>
+                </m-swipe>
+            </div>
         </section>
         <div class="copyright-container">
             <div class="info">
@@ -78,6 +81,7 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.wikiCategories = {!! json_encode($wikiCategories, JSON_UNESCAPED_UNICODE) !!};
         config.materials = {!! json_encode($materials, JSON_UNESCAPED_UNICODE) !!};
+        config.term = {!! json_encode($articles, JSON_UNESCAPED_UNICODE) !!}
     </script>
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container tab-container" :class="swipeid">

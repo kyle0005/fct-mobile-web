@@ -52,7 +52,7 @@ class Wiki
 
     public static function getItem($typeId, $type)
     {
-        $allowTypes = ['category', 'material'];
+        $allowTypes = ['category', 'material','article'];
         if (!in_array($type, $allowTypes)) {
             throw new BusinessException("请求的类型不存在");
         }
