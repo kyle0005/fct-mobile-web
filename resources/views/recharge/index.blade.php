@@ -23,7 +23,7 @@
             </li>
         </ul>
 
-        <div class="noData" v-if="nodata || (chargeRecordList && chargeRecordList.length <= 0)">
+        <div class="noData" v-if="(chargeRecordList && chargeRecordList.length <= 0)||nodata">
             <div class="inner">
                 <img src="{{ fct_cdn('/images/no_data.png') }}">
                 <span class="no">当前没有相关数据哟~</span>

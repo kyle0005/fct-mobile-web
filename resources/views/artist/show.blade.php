@@ -58,7 +58,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="nodata || (liveList && liveList.length <= 0)">
+            <div class="noData" v-if="(liveList && liveList.length <= 0)||nodata">
                 <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
@@ -88,7 +88,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="nodata || (workslist && workslist.length <= 0)">
+            <div class="noData" v-if="(workslist && workslist.length <= 0)||nodata">
                 <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
@@ -119,7 +119,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="nodata || (chatlist && chatlist.length <= 0)">
+            <div class="noData" v-if="(chatlist && chatlist.length <= 0)||nodata">
                 <div class="inner">
                     <img src="{{ fct_cdn('/images/no_data.png') }}">
                     <span class="no">当前没有相关数据哟~</span>
