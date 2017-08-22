@@ -47,7 +47,7 @@
             <ul class="news" v-load-more="nextPage" type="1" v-if="liveList && liveList.length > 0">
                 <li class="item" v-for="(item, index) in liveList">
                     <div class="text">@{{ item.content }}</div>
-                    <div class="media">
+                    <div class="media" :class="{vi: top.videoUrl!==''}">
                         <mVideo v-if="item.videoUrl !== ''" :poster="item.videoImage" :url="item.videoUrl" id="'video' + item.id"></mVideo>
                         <ul class="img-list clearfix" v-if="item.images.length > 0">
                             <li v-for="(img, i) in item.images">
