@@ -198,6 +198,8 @@
     </script>
     <script type="text/x-template" id="artist">
         <div class="artist-contianer">
+            <no-data v-if="nodata"></no-data>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <ul class="top-list clearfix" v-if="titleshow">
                 <li v-for="(item, index) in artist" :class="{red:index===art_num}">
                     <a href="javascript:;" @click="loadsingle(index)">
@@ -233,12 +235,12 @@
                 </ul>
                 <a href="{{ url('/') }}" class="for-more">点击了解更多》</a>
             </section>
-            <no-data v-if="nodata"></no-data>
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
     </script>
     <script type="text/x-template" id="pug">
         <div class="artist-contianer">
+            <no-data v-if="nodata"></no-data>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <ul class="top-list clearfix" v-if="titleshow">
                 <li v-for="(item, index) in pugs" :class="{red:index===pug_num}">
                     <a href="javascript:;" @click="loadsingle(index)">
@@ -272,8 +274,6 @@
                     </li>
                 </ul>
             </section>
-            <no-data v-if="nodata"></no-data>
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
     </script>
 
@@ -329,6 +329,7 @@
     </template>
 
     <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/hammer.js') }}"></script>
     <script src="{{ fct_cdn('/js/detail.js') }}"></script>
 
     {!! wechat_share($share) !!}
