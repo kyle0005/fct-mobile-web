@@ -3,16 +3,21 @@
     <div class="encyclopedias-container" id="encyclopediasdetail" v-cloak>
         <head-top></head-top>
         <section class="encyclopedias-content">
-            <ul class="top-list clearfix">
-                <li v-for="(item, index) in encyclopedias_list" :class="{red:index===encynum}">
-                    <a href="javascript:;" @click="loadsingle(index, item.id)">
-                        <span class="img-container">
-                          <img :src="item.image">
-                        </span>
-                        <span class="name-container overText">@{{ item.name }}</span>
-                    </a>
-                </li>
-            </ul>
+            <div class="top-container">
+                <div class="inner">
+                    <ul class="top-list" name="top">
+                        <li v-for="(item, index) in encyclopedias_list" :name="'list' + index" :class="{red:index===encynum}">
+                            <a href="javascript:;" @click="loadsingle(index, item.id)">
+                                <span class="img-container">
+                                  <img :src="item.image">
+                                </span>
+                                <span class="name-container overText">@{{ item.name }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
             <section class="content top-min">
                 <div class="intro">
                   <span class="photo">
