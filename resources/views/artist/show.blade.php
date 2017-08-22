@@ -34,7 +34,7 @@
         <div class="tabs">
             <section class="ptop">
                 <div class="text">@{{ top.content }}</div>
-                <div class="media" >
+                <div class="media" :class="{vi: top.videoUrl!==''}">
                     <mVideo v-if="top.videoUrl !== ''" :item="top"></mVideo>
                     <ul class="img-list" v-if="topImg">
                         <li v-for="imgs in top.images">
