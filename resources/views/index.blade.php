@@ -30,12 +30,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="(pro_list && pro_list.length <= 0)||nodata">
-                <div class="inner">
-                    <img src="{{ fct_cdn('/images/no_data.png') }}">
-                    <span class="no">当前没有相关数据哟~</span>
-                </div>
-            </div>
+            <no-data v-if="nodata"></no-data>
             <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
         <div class="copyright-container">

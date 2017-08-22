@@ -15,13 +15,13 @@
             </ul>
             <section class="content top-min">
                 <div class="intro">
-          <span class="photo">
-            <img :src="detail.image">
-          </span>
-                    <span class="intro-info">
-          <span class="intro-name">@{{ detail.name }}</span><br>
-          <span v-html="detail.intro"></span>
-        </span>
+                  <span class="photo">
+                    <img :src="detail.image">
+                  </span>
+                <span class="intro-info">
+                  <span class="intro-name">@{{ detail.name }}</span><br>
+                  <span v-html="detail.intro"></span>
+                </span>
                 </div>
             </section>
             <section class="text-container" v-html="detail.description"></section>
@@ -35,6 +35,8 @@
                     </li>
                 </ul>
             </section>
+            <no-data v-if="nodata"></no-data>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </section>
     </div>
 @endsection

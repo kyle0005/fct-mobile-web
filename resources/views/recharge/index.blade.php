@@ -23,12 +23,7 @@
             </li>
         </ul>
 
-        <div class="noData" v-if="(chargeRecordList && chargeRecordList.length <= 0)||nodata">
-            <div class="inner">
-                <img src="{{ fct_cdn('/images/no_data.png') }}">
-                <span class="no">当前没有相关数据哟~</span>
-            </div>
-        </div>
+        <no-data v-if="nodata"></no-data>
         <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>

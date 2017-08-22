@@ -58,12 +58,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="(liveList && liveList.length <= 0)||nodata">
-                <div class="inner">
-                    <img src="{{ fct_cdn('/images/no_data.png') }}">
-                    <span class="no">当前没有相关数据哟~</span>
-                </div>
-            </div>
+            <no-data v-if="nodata"></no-data>
             <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
     </script>
@@ -88,12 +83,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="(workslist && workslist.length <= 0)||nodata">
-                <div class="inner">
-                    <img src="{{ fct_cdn('/images/no_data.png') }}">
-                    <span class="no">当前没有相关数据哟~</span>
-                </div>
-            </div>
+            <no-data v-if="nodata"></no-data>
             <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
     </script>
@@ -119,12 +109,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="(chatlist && chatlist.length <= 0)||nodata">
-                <div class="inner">
-                    <img src="{{ fct_cdn('/images/no_data.png') }}">
-                    <span class="no">当前没有相关数据哟~</span>
-                </div>
-            </div>
+            <no-data v-if="nodata"></no-data>
             <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
 
             <section class="sub-chat">
@@ -174,6 +159,7 @@
         config.chat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
     </script>
     <script src="{{ fct_cdn('/js/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/hammer.js') }}"></script>
     <script src="{{ fct_cdn('/js/artist.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>

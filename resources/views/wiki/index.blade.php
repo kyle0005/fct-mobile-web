@@ -24,12 +24,7 @@
                     </div>
                 </m-swipe>
 
-                <div class="noData" v-if="(list && list.length <= 0) || nodata">
-                    <div class="inner">
-                        <img src="{{ fct_cdn('/images/no_data.png') }}">
-                        <span class="no">当前没有相关数据哟~</span>
-                    </div>
-                </div>
+                <no-data v-if="nodata"></no-data>
             </div>
         </section>
 

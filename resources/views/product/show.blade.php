@@ -233,6 +233,8 @@
                 </ul>
                 <a href="{{ url('/') }}" class="for-more">点击了解更多》</a>
             </section>
+            <no-data v-if="nodata"></no-data>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
     </script>
     <script type="text/x-template" id="pug">
@@ -270,11 +272,15 @@
                     </li>
                 </ul>
             </section>
+            <no-data v-if="nodata"></no-data>
+            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
     </script>
 
     <script type="text/x-template" id="service">
         <section class="service" v-html="tab_service"></section>
+        <no-data v-if="nodata"></no-data>
+        <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
     </script>
     <script type="text/x-template" id="discuss">
         <section class="discuss">
@@ -305,12 +311,7 @@
                 </li>
             </ul>
 
-            <div class="noData" v-if="(commentlist && commentlist.length <= 0)||nodata">
-                <div class="inner">
-                    <img src="{{ fct_cdn('/images/no_data.png') }}">
-                    <span class="no">当前没有相关数据哟~</span>
-                </div>
-            </div>
+            <no-data v-if="nodata"></no-data>
             <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </section>
     </script>
