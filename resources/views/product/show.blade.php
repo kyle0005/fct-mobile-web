@@ -218,7 +218,7 @@
             <section class="content" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
                       <span class="photo">
-                        <img :src="artistsingle.headPortrait">
+                          <img v-view="artistsingle.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                       </span>
                     <span class="intro-info">
                       <span class="intro-name">@{{ artistsingle.name }}&nbsp;-&nbsp;<span class="v-title">@{{ artistsingle.title }}</span></span>
@@ -254,7 +254,7 @@
                         <li v-for="(item, index) in pugs" :class="{red:index===pug_num}">
                             <a href="javascript:;" @click="loadsingle(index)">
                                 <span class="img-container">
-                                  <img :src="item.image">
+                                  <img :src="item.headPortrait">
                                 </span>
                                 <span class="name-container overText">@{{ item.name }}</span>
                             </a>
@@ -265,9 +265,9 @@
             <section class="content" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
                   <span class="photo">
-                    <img :src="pugsingle.image">
+                          <img v-view="pugsingle.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                   </span>
-                            <span class="intro-info">
+                <span class="intro-info">
                   <span class="intro-name">@{{ pugsingle.name }}</span>
                   <span class="intro-content">@{{ pugsingle.intro }}</span>
                 </span>
