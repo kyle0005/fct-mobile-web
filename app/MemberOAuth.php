@@ -63,10 +63,10 @@ class MemberOAuth
 
         $member = $result->data;
 
-        if (Member::getToken())
-            Member::cleanAuth();
-        elseif ($member && $member->memberId > 0)
-            Member::setAuth($member);
+        //有过期的帐户，请空
+        if (Member::getToken()) Member::cleanAuth();
+        //自动登录
+        if ($member && $member->memberId > 0) Member::setAuth($member);
 
         return $member;
     }
