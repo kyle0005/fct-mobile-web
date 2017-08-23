@@ -28,7 +28,7 @@
                     </span>
                 </div>
             </section>
-            <section class="text-container" v-html="detail.description"></section>
+            <section class="text-container" v-html="detail.description" v-if="detail.description"></section>
             <section class="comment" v-if="detail.productList && detail.productList.length > 0">
                 <div class="lines">
                     <div class="text">相关宝贝</div>
