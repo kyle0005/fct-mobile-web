@@ -284,10 +284,10 @@ class Member
     public static function cleanAuth($hasAll = true)
     {
         $token = self::getToken();
-        if ($token)
+        if ($token && Cache::has($token))
             Cache::forget($token);
         //清空所有
-        if ($hasAll)
+        if ($hasAll && Cookie::has(env('MEMBER_COOKIE_NAME')))
             Cookie::forget(env('MEMBER_COOKIE_NAME'));
     }
 

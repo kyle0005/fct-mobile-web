@@ -65,7 +65,6 @@ class MemberOAuth
 
         if (Member::getToken())
             Member::cleanAuth();
-
         elseif ($member && $member->memberId > 0)
             Member::setAuth($member);
 
