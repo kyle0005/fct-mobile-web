@@ -227,11 +227,11 @@
                 </div>
             </section>
             <section class="text-container" v-html="artistsingle.description"></section>
-            <section class="comment" v-if="artistsingle.img && artistsingle.products.length > 0">
+            <section class="comment" v-if="artistsingle.products && artistsingle.products.length > 0">
                 <div class="lines">
                     <div class="text">相关宝贝</div>
                 </div>
-                <ul class="others" v-if="artistsingle.img && artistsingle.products.length > 0">
+                <ul class="others" v-if="artistsingle.products && artistsingle.products.length > 0">
                     <li v-for="p in artistsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
