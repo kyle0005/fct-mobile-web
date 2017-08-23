@@ -8,29 +8,31 @@
                     <ul class="top-list" name="top">
                         <li v-for="(item, index) in encyclopedias_list" :name="'list' + index" :class="{red:index===encynum}">
                             <a href="javascript:;" @click="loadsingle(index, item.id)">
-                                <span class="img-container">
-                                  <img :src="item.image">
-                                </span>
+                              <span class="img-container">
+                                <img :src="item.image">
+                              </span>
                                 <span class="name-container overText">@{{ item.name }}</span>
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-
             <section class="content top-min">
                 <div class="intro">
-                  <span class="photo">
-                    <img :src="detail.image">
-                  </span>
-                <span class="intro-info">
-                  <span class="intro-name">@{{ detail.name }}</span><br>
-                  <span v-html="detail.intro"></span>
-                </span>
+                    <span class="photo">
+                      <img :src="detail.image">
+                    </span>
+                    <span class="intro-info">
+                      <span class="intro-name">@{{ detail.name }}</span>
+                      <span class="intro-content">@{{ detail.intro }}</span>
+                    </span>
                 </div>
             </section>
             <section class="text-container" v-html="detail.description"></section>
             <section class="comment">
+                <div class="lines">
+                    <div class="text">相关宝贝</div>
+                </div>
                 <ul class="others" v-if="detail.productList && detail.productList.length > 0">
                     <li v-for="p in detail.productList">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">

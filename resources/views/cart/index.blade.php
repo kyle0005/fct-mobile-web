@@ -37,7 +37,11 @@
                 <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             </div>
             <section class="guess-container">
-                <div class="title">猜你喜欢</div>
+                <div class="title">
+                    <div class="lines">
+                        <div class="text">猜你喜欢</div>
+                    </div>
+                </div>
                 <ul class="guess clearfix">
                     <li v-for="(item, index) in like_list">
                         <a href="javascript:;" class="guess-link">

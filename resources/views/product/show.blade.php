@@ -196,36 +196,42 @@
             <section class="edit-context" v-html="product.content"></section>
         </div>
     </script>
+
     <script type="text/x-template" id="artist">
         <div class="artist-contianer">
-            <no-data v-if="nodata"></no-data>
             <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
-            <ul class="top-list clearfix" v-if="titleshow">
-                <li v-for="(item, index) in artist" :class="{red:index===art_num}">
-                    <a href="javascript:;" @click="loadsingle(index)">
-                        <span class="img-container">
-                          <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
-                        </span>
-                        <span class="name-container overText">@{{ item.name }}</span>
-                    </a>
-                </li>
-            </ul>
-
+            <no-data v-if="nodata"></no-data>
+            <div class="top-container" v-if="titleshow">
+                <div class="inner o">
+                    <ul class="top-list">
+                        <li v-for="(item, index) in artist" :class="{red:index===art_num}">
+                            <a href="javascript:;" @click="loadsingle(index)">
+                                <span class="img-container">
+                                  <img :src="item.headPortrait">
+                                </span>
+                                <span class="name-container overText">@{{ item.name }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <section class="content" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
-                    <span class="photo">
-                        <img :src="artistsingle.headPortrait"/>
-                    </span>
+                      <span class="photo">
+                        <img :src="artistsingle.headPortrait">
+                      </span>
                     <span class="intro-info">
-                        <span class="intro-name">@{{ artistsingle.name }}</span>&nbsp;-&nbsp;<span class="v-title">@{{ artistsingle.title }}</span><br>
-                        <span v-html="artistsingle.intro"></span>
+                      <span class="intro-name">@{{ artistsingle.name }}&nbsp;-&nbsp;<span class="v-title">@{{ artistsingle.title }}</span></span>
+                      <span class="intro-content">@{{ artistsingle.intro }}</span>
                     </span>
                 </div>
             </section>
-
-            <div class="text-container" v-html="artistsingle.description"></div>
-            <section class="comment" v-if="artistsingle.products && artistsingle.products.length > 0">
-                <ul class="others">
+            <section class="text-container" v-html="artistsingle.description"></section>
+            <section class="comment">
+                <div class="lines">
+                    <div class="text">相关宝贝</div>
+                </div>
+                <ul class="others" v-if="artistsingle.img && artistsingle.img.length > 0">
                     <li v-for="p in artistsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
@@ -233,38 +239,45 @@
                         </a>
                     </li>
                 </ul>
-                <a href="{{ url('/') }}" class="for-more">点击了解更多》</a>
+                <a :href="artistsingle.link" class="for-more">点击了解更多》</a>
             </section>
         </div>
     </script>
+
     <script type="text/x-template" id="pug">
         <div class="artist-contianer">
-            <no-data v-if="nodata"></no-data>
             <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
-            <ul class="top-list clearfix" v-if="titleshow">
-                <li v-for="(item, index) in pugs" :class="{red:index===pug_num}">
-                    <a href="javascript:;" @click="loadsingle(index)">
-                        <span class="img-container">
-                          <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
-                        </span>
-                        <span class="name-container overText">@{{ item.name }}</span>
-                    </a>
-                </li>
-            </ul>
-
+            <no-data v-if="nodata"></no-data>
+            <div class="top-container" v-if="titleshow">
+                <div class="inner o">
+                    <ul class="top-list">
+                        <li v-for="(item, index) in pugs" :class="{red:index===pug_num}">
+                            <a href="javascript:;" @click="loadsingle(index)">
+                                <span class="img-container">
+                                  <img :src="item.image">
+                                </span>
+                                <span class="name-container overText">@{{ item.name }}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
             <section class="content" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
                   <span class="photo">
-                      <img :src="pugsingle.image">
+                    <img :src="pugsingle.image">
                   </span>
-                    <span class="intro-info">
-                      <span class="intro-name">@{{ pugsingle.name }}</span><br>
-                      <span v-html="pugsingle.intro"></span>
-                    </span>
+                            <span class="intro-info">
+                  <span class="intro-name">@{{ pugsingle.name }}</span>
+                  <span class="intro-content">@{{ pugsingle.intro }}</span>
+                </span>
                 </div>
             </section>
-            <div class="text-container" v-html="pugsingle.description"></div>
+            <section class="text-container" v-html="pugsingle.description"></section>
             <section class="comment">
+                <div class="lines">
+                    <div class="text">相关宝贝</div>
+                </div>
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
