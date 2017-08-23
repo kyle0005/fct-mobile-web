@@ -120,6 +120,23 @@ class Artist
 
     public static function addVisitCount($id) {
 
+        $limitVisitCacheName = 'a_v_' . $id;
+        $longIp = ip2long(request()->ip());
+        $visiters = [];
+        if (Cache::has($limitVisitCacheName))
+        {
+            $visiters = Cache::get($limitVisitCacheName);
+        }
+        if (in_array($longIp, $visiters)) {
+
+            return true;
+        }
+        //初次访问记录ip
+        $visiters[] = $longIp;
+        //获取当天过期时间变缓存
+        $cacheTime = (strtotime(date('Y-m-d 23:59:59')) - time()) / 60;
+        Cache::put($limitVisitCacheName, $visiters, $cacheTime);
+
         $result = Base::http(
             env('API_URL') . sprintf('/artists/%d/visit', $id),
             [],
