@@ -9,7 +9,7 @@
                         <label class="chk col">
                             <input type="checkbox" name="chk-items" class="chk-items" :value="item" v-model="ischeck" @change="caltotalpri()">
                         </label>
-                        <a href="javascript:;" class="product col">
+                        <a :href="'{{ url('products') }}/' + item.goodsId" class="product col">
                           <span class="pro-item pro-img">
                             <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                           </span>
@@ -44,7 +44,7 @@
                 </div>
                 <ul class="guess clearfix">
                     <li v-for="(item, index) in like_list">
-                        <a href="javascript:;" class="guess-link">
+                        <a :href="'{{ url('products') }}/' + item.id" class="guess-link">
                             <img :src="item.defaultImage">
                         </a>
                         <div class="v-title">@{{ item.name }}</div>
