@@ -167,7 +167,7 @@ class MainController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('article.help', [
+        return view('help', [
             'title' => fct_title('帮助中心'),
             'categoryId' => $categoryId,
             'articleId' => $articleId,
