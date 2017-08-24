@@ -143,7 +143,7 @@
                         &ensp;享<span class="discount-color">@{{ product.discount.discountRate * 10 }}折，限购@{{ product.discount.singleCount }}件</span>
                     </div>
                     <div class="right">
-                        距<span v-if="product.discount.hasBegin"></span>结束<span v-else>开始</span>仅剩<m-time :endTime="product.discount.discountTime" :callback="end"></m-time>
+                        距<span v-if="product.discount.hasBegin">结束</span><span v-else>开始</span>仅剩<m-time :endTime="product.discount.discountTime" :callback="end"></m-time>
                     </div>
                 </div>
             </section>
