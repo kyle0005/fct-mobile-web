@@ -53,10 +53,18 @@ class MainController extends BaseController
                 $shareUrl .= '/';
             }
 
+            $levels = array_merge([
+                (object) [
+                    'id' => 0,
+                    'name' => '所有品级',
+                    'img' => fct_cdn('/images/rank_00.png'),
+                ],
+            ], $result->goodsGradeList);
+
             return view('index', [
                 'title' => fct_title(),
                 'categories' => ProductCategory::getCategories(),
-                'levels' =>  $result->goodsGradeList,
+                'levels' =>  $levels,
                 'products' => $result->pagination->entries,
                 'pager' => $result->pagination->pager,
                 'share' => [
