@@ -154,29 +154,25 @@ class MainController extends BaseController
         return $this->errorPage($message, $redirectUrl);
     }
 
-    public function weChatShare(Request $request)
+    public function getHelp(Request $request)
     {
-        $title = $request->get('title', '');
-        $link = $request->get('link', '');
-        $desc = $request->get('desc', '');
-        $img = $request->get('img', '');
-
-        if (!FctCommon::hasWeChat())
-            return '';
-
-        if (!$title) return '';
-        if (!$link) return '';
-        if (!$img) return '';
+        $categoryId = $request->get('category_id', 0);
+        $articleId = $request->get('article_id', 0);
 
         try
         {
-            $result = Main::weChatShare($title, $link, $desc, $img);
-            return $result;
-        }
-        catch (BusinessException $e)
+            $result = Main::getHelp();
+        } catch (BusinessException $e)
         {
-            return "";
+            return $this->autoReturn($e->getMessage());
         }
+
+        return view('coupon.new', [
+            'title' => fct_title('帮助中心'),
+            'categories' => ProductCategory::getCategories(),
+            'articleCategories' => $result->categoryList,
+            'articles' => $result->articleList,
+        ]);
     }
 
 }

@@ -14,6 +14,13 @@ use Illuminate\Support\Facades\Cache;
 
 class Main
 {
+    /**首页
+     * @param string $categoryId
+     * @param int $levelId
+     * @param int $pageIndex
+     * @return bool
+     * @throws BusinessException
+     */
     public static function getHome($categoryId = "", $levelId = -1, $pageIndex = 1)
     {
         $cacheKey = 'main_' . $pageIndex
@@ -59,6 +66,9 @@ class Main
         return $cacheResult;
     }
 
+    /**欢迎页
+     * @return array
+     */
     public static function welcome()
     {
         $slides = [
@@ -72,6 +82,10 @@ class Main
 
     }
 
+    /**PC首页
+     * @return array|bool
+     * @throws BusinessException
+     */
     public static function getPcHome()
     {
         $cacheKey = 'pc_main';
@@ -111,6 +125,49 @@ class Main
         return $cacheResult;
     }
 
+    /**帮助手册
+     * @return bool
+     * @throws BusinessException
+     */
+    public static function getHelp()
+    {
+        $cacheKey = 'help';
+        $cacheTime = 86400;
+        $cacheResult = false;
+
+        if (Cache::has($cacheKey)) {
+            $cacheResult = Cache::get($cacheKey);
+        }
+
+        if (!$cacheResult) {
+            $result = Base::http(
+                env('API_URL') . '/help',
+                [],
+                [],
+                'GET'
+            );
+
+            if ($result->code != 200)
+            {
+                throw new BusinessException($result->msg);
+            }
+
+            $cacheResult = $result->data;
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
+    }
+
+    /**微信分享
+     * @param $title
+     * @param $link
+     * @param $imgUrl
+     * @param $desc
+     * @param array $jsApiList
+     * @return string
+     * @throws BusinessException
+     */
     public static function weChatShare($title, $link, $imgUrl, $desc, $jsApiList = [])
     {
         $locationUrl = env('APP_URL') . request()->server('REQUEST_URI');

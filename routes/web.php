@@ -25,7 +25,7 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'test.fangcuntang.com')], functio
     //欢迎页
     Route::get('welcome', 'Mobile\MainController@welcome');
     //分享js接口
-    Route::get('share/wechat', 'Mobile\MainController@weChatShare');
+    Route::get('help', 'Mobile\MainController@getHelp');
     //app下载
     Route::get('download/app', 'Mobile\MainController@downloadApp');
     //领取优惠券
