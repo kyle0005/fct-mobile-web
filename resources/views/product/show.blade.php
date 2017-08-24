@@ -34,7 +34,7 @@
                                         <span class="stock">库存：@{{ calstock }}</span>
                                     </div>
                                 </div>
-                                <input id="pro_id" name="pro_id" type="hidden" :value="product.id">
+                                <input id="pro_id" name="product_id" type="hidden" :value="product.id">
                                 <div v-if="product.specification.length > 0">
                                     <input id="spec_id" name="spec_id" type="hidden" :value="specs_single.id">
                                 </div>
@@ -50,7 +50,7 @@
                                             <a href="javascript:;" :class="{dis:min}" @click="minus()">
                                                 <i class="fa fa-minus"></i>
                                             </a>
-                                            <input type="text" name="number" class="numbers" v-model="input_val">
+                                            <input type="text" name="buy_number" class="numbers" v-model="input_val">
                                             <a href="javascript:;" @click="add()" :class="{dis:max}">
                                                 <i class="fa fa-plus"></i>
                                             </a>
