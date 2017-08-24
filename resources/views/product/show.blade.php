@@ -226,7 +226,7 @@
             <section class="content" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
                       <span class="photo">
-                          <img :src="artistsingle.image">
+                          <img v-view="artistsingle.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                       </span>
                     <span class="intro-info">
                       <span class="intro-name">@{{ artistsingle.name }}&nbsp;-&nbsp;<span class="v-title">@{{ artistsingle.title }}</span></span>
@@ -273,7 +273,7 @@
             <section class="content" :class="{'top-max':!titleshow,'top-min':titleshow}">
                 <div class="intro">
                       <span class="photo">
-                        <img :src="pugsingle.image">
+                          <img v-view="pugsingle.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                       </span>
                     <span class="intro-info">
           <span class="intro-name">@{{ pugsingle.name }}</span>
