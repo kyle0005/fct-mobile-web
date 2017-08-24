@@ -138,8 +138,8 @@
                 <mVideo :poster="product.video.poster" :url="product.video.url" id="videotop"></mVideo>
                 <div class="sale clearfix" v-if="product.hasDiscount">
                     <div class="left">
-                        <span class="title" v-if="product.discount && product.discount.hasBuy">限时购</span>
-                        <span class="title">秒杀</span>
+                        <span class="title" v-if="product.discount && product.discount.canBuy">限时购</span>
+                        <span class="title" v-else>秒杀</span>
                         &ensp;享<span class="discount-color">@{{ product.discount.discountRate * 10 }}折，限购@{{ product.discount.singleCount }}件</span>
                     </div>
                     <div class="right">

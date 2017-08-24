@@ -167,8 +167,10 @@ class MainController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        return view('coupon.new', [
+        return view('article.help', [
             'title' => fct_title('帮助中心'),
+            'categoryId' => $categoryId,
+            'articleId' => $articleId,
             'categories' => ProductCategory::getCategories(),
             'articleCategories' => $result->categoryList,
             'articles' => $result->articleList,

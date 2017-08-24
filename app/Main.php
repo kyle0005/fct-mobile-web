@@ -141,7 +141,7 @@ class Main
 
         if (!$cacheResult) {
             $result = Base::http(
-                env('API_URL') . '/help',
+                env('API_URL') . '/mall/articles/help',
                 [],
                 [],
                 'GET'
