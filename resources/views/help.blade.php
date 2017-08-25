@@ -75,8 +75,6 @@
 @endsection
 @section('javascript')
     <script>
-        config.categoryId = {{ $categoryId }};
-        config.articleId = {{ $articleId }};
         config.articleCategories = {!! json_encode($articleCategories, JSON_UNESCAPED_UNICODE) !!};
         config.articles = {!! json_encode($articles, JSON_UNESCAPED_UNICODE) !!};
     </script>

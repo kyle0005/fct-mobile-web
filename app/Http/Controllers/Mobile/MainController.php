@@ -164,9 +164,6 @@ class MainController extends BaseController
 
     public function getHelp(Request $request)
     {
-        $categoryId = $request->get('category_id', 0);
-        $articleId = $request->get('article_id', 0);
-
         try
         {
             $result = Main::getHelp();
@@ -177,8 +174,6 @@ class MainController extends BaseController
 
         return view('help', [
             'title' => fct_title('帮助中心'),
-            'categoryId' => $categoryId,
-            'articleId' => $articleId,
             'articleCategories' => $result->categoryList,
             'articles' => $result->articleList,
         ]);
