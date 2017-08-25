@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Cache;
 
 class Artist
 {
+    public static $resourceUrl = '/artists';
 
     public static function getArtists($pageIndex)
     {
@@ -30,7 +31,7 @@ class Artist
 
             $pageSize = 20;
             $result = Base::http(
-                env('API_URL') . '/artists',
+                env('API_URL') . self::$resourceUrl,
                 [
                     'page_index' => $pageIndex,
                     'page_size' => $pageSize,
@@ -66,7 +67,7 @@ class Artist
         if (!$cacheResult) {
             $pageSize = 20;
             $result = Base::http(
-                env('API_URL') . sprintf('/artists/%d', $id),
+                env('API_URL') . sprintf('%s/%d', self::$resourceUrl, $id),
                 [],
                 [],
                 'GET'
@@ -85,10 +86,10 @@ class Artist
         return $cacheResult;
     }
 
-    public static function getArtistsByProductId($productId)
+    public static function getArtistAndProducts($id, $productId = 0)
     {
-        $cacheKey = 'artists_by_product_' . $productId;
-        $cacheTime = 10;
+        $cacheKey = 'artist_' . $id .'_products';
+        $cacheTime = 30;
         $cacheResult = false;
 
         if (Cache::has($cacheKey))
@@ -98,10 +99,8 @@ class Artist
 
         if (!$cacheResult) {
             $result = Base::http(
-                env('API_URL') . '/artists/by-product',
-                [
-                    'product_id' => $productId,
-                ],
+                env('API_URL') . sprintf('%s/%d/products', self::$resourceUrl, $id),
+                [],
                 [],
                 'GET'
             );
@@ -111,11 +110,45 @@ class Artist
             }
 
             $cacheResult = $result->data;
-
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
 
+        if ($cacheResult->products) {
+            $products = [];
+            $temp = 0;
+            foreach ($cacheResult->products as $product) {
+                if ($product->id != $productId)
+                {
+                    $products[] = $product;
+                    $temp++;
+                }
+
+                if ($temp == 3)
+                    break;
+            }
+
+            $cacheResult->products = $products;
+        }
+
         return $cacheResult;
+    }
+
+    public static function getArtistByIds($ids, $productId)
+    {
+        if (!$ids)
+            throw new BusinessException('守艺人不存在');
+
+        $idArr = explode(',', $ids);
+        if (!$idArr)
+            throw new BusinessException('守艺人不存在');
+
+        $artists = [];
+        foreach ($idArr as $value)
+        {
+            $artists[] = self::getArtistAndProducts($value, $productId);
+        }
+
+        return $artists;
     }
 
     public static function addVisitCount($id) {
@@ -138,15 +171,11 @@ class Artist
         Cache::put($limitVisitCacheName, $visiters, $cacheTime);
 
         $result = Base::http(
-            env('API_URL') . sprintf('/artists/%d/visit', $id),
+            env('API_URL') . sprintf('%s/%d/visit', self::$resourceUrl, $id),
             [],
             [],
             'POST'
         );
-/*
-        if ($result->code != 200) {
-            throw new BusinessException($result->msg);
-        }*/
 
         return true;
     }

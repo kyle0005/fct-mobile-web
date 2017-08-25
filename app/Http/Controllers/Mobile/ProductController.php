@@ -93,10 +93,10 @@ class ProductController extends BaseController
 
     public function getProductArtists(Request $request, $product_id)
     {
-
+        $ids = $request->get('ids', '');
         try
         {
-            $result = Artist::getArtistsByProductId($product_id);
+            $result = Artist::getArtistByIds($ids, $product_id);
             return $this->returnAjaxSuccess('获取宝贝艺术家列表成功', null, $result);
         }
         catch (BusinessException $e)
@@ -108,7 +108,7 @@ class ProductController extends BaseController
 
     public function getProductaMaterials(Request $request, $product_id)
     {
-        $materialIds = $request->get('material_ids');
+        $materialIds = $request->get('ids');
         try
         {
             $result = ProductMaterial::getMaterialsByIds($materialIds, $product_id);

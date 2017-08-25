@@ -344,8 +344,8 @@
         config.product = {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!};
         config.fav_url = "{!! url('my/favorites?from_type=0&from_id=' . $product->id) !!}";
         config.discuss_url = "{{ url('products/'.$product->id .'/comments') }}";
-        config.artist_url = "{{ url('products/'.$product->id .'/artists') }}";
-        config.pug_url = "{{ url('products/'.$product->id .'/materials?material_ids=' . urlencode($product->materialId)) }}";
+        config.artist_url = "{{ url('products/'.$product->id .'/artists?ids=' . urlencode($product->artistIds)) }}";
+        config.pug_url = "{{ url('products/'.$product->id .'/materials?ids=' . urlencode($product->materialIds)) }}";
         config.addcart_url = "{{ url('carts') }}";
         config.buy_url = "{{ url('orders/create') }}";
         config.tab_artist = [];

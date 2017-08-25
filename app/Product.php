@@ -54,29 +54,6 @@ class Product
                 $product->coupon_url = url('coupons/new?product_id=' . $product->id);
             }
 
-            $materialNames = '';
-            $materials = ProductMaterial::getMaterialsByIds($product->materialId, $product->id);
-            if ($materials)
-            {
-                foreach ($materials as $material) {
-
-                    $materialNames .= ($materialNames ? '、' : '') . $material->name;
-                }
-            }
-
-            $artistNames = '';
-            $artists = Artist::getArtistsByProductId($product->id);
-            if ($materials)
-            {
-                foreach ($artists as $artist) {
-
-                    $artistNames .= ($artistNames ? '、' : '') . $artist->name;
-                }
-            }
-
-            $product->artistNames = $artistNames;
-            $product->materialNames = $materialNames;
-
             $cacheResult = $product;
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
