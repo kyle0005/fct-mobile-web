@@ -104,10 +104,10 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:;" class="link">
-              <span class="img-container item">
-              <img src="{{ fct_cdn('/images/u_help.png') }}">
-              </span>
+                    <a href="{{ url('help') }}" class="link">
+                          <span class="img-container item">
+                          <img src="{{ fct_cdn('/images/u_help.png') }}">
+                          </span>
                         <span class="item t">帮助中心</span>
                         <span class="wei-arrow-right"></span>
                     </a>
