@@ -59,6 +59,11 @@ class Wiki
         if ($typeId < 1) {
             throw new BusinessException("请求的类型不存在");
         }
+
+        //泥料与产品详情共享数据
+        if ($type == 'material')
+            return ProductMaterial::getMaterialAndProducts($typeId);
+
         $cacheKey = 'wiki_' . $type . '_' . $typeId;
         $cacheTime = 30;
         $cacheResult = false;
