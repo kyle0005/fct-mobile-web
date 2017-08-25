@@ -179,7 +179,6 @@ class MainController extends BaseController
             'title' => fct_title('帮助中心'),
             'categoryId' => $categoryId,
             'articleId' => $articleId,
-            'categories' => ProductCategory::getCategories(),
             'articleCategories' => $result->categoryList,
             'articles' => $result->articleList,
         ]);
