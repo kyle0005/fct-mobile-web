@@ -152,7 +152,7 @@
                 <li class="yw-brand-desc-li in">
                     <p class="yw-brand-p">{{ $artist->intro }}</p>
                     <div class="brands-qrcode">
-                        <img src="{{ fct_cdn('/img/pc_qrcode.png') }}">
+                        <img src="{{ $qrcodeUrl.env('APP_URL') . '/artists/' . $artist->id }}">
                         <br><span>扫一扫，了解更多</span>
                     </div>
 
