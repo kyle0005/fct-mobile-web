@@ -173,7 +173,7 @@
             </section>
             <section class="info clearfix">
                 <div class="item">
-                    <span class="left">艺人</span>
+                    <span class="left">作者</span>
                     <span class="right">@{{ product.artistNames }}</span>
                 </div>
                 <div class="item">
