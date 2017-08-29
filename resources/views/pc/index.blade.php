@@ -148,7 +148,7 @@
         <div class="yw-constr"><h3 class="yw-home-h3">守艺人</h3>
             <ul id="brandDescX" class="yw-brand-desc">
             @foreach($artists as $key => $artist)
-                <li class="yw-brand-desc-li in">
+                <li class="yw-brand-desc-li">
                     <p class="yw-brand-p">{{ $artist->intro }}</p>
                     <div class="brands-qrcode">
                         <img src="{{ $qrcodeUrl.env('APP_URL') . '/artists/' . $artist->id }}">
