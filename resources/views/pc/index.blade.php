@@ -148,7 +148,6 @@
         <div class="yw-constr"><h3 class="yw-home-h3">守艺人</h3>
             <ul id="brandDescX" class="yw-brand-desc">
             @foreach($artists as $key => $artist)
-            @if($key == 0)
                 <li class="yw-brand-desc-li in">
                     <p class="yw-brand-p">{{ $artist->intro }}</p>
                     <div class="brands-qrcode">
@@ -157,11 +156,6 @@
                     </div>
 
                 </li>
-            @else
-                <li class="yw-brand-desc-li"><i class="brand"></i>
-                    <p class="yw-brand-p">{{ $artist->intro }}</p>
-                </li>
-            @endif
             @endforeach
             </ul>
 
