@@ -66,7 +66,7 @@
 
                             <ul class="nav">
                                 <li class="message" @click="">
-                                    <a href="javascript:;" class="foot-link">
+                                    <a href="{!! $chat_url !!}" class="foot-link">
                                         <img src="{{ fct_cdn('/images/msg.png') }}">
                                     </a>
                                 </li>
