@@ -1,27 +1,30 @@
 @extends("layout")
 @section('content')
     <div class="index-container" id="welcome" v-cloak>
-        <a href="{{ url('/') }}" class="enter"></a>
-        <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
+        <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide" @slideindex="slideindex">
             <div v-for="(top, index) in tops" class="swiper-slide" slot="swiper-con">
-                <a :href="top.url">
+                <a :href="top.url" class="link">
                     <img :data-src="top.image" class="swiper-lazy silde-img">
                 </a>
-                <div class="top" v-if="index > 0">
-                    <div class="inner">
-                        <div class="text">
-                            <div class="title">方寸堂</div>
-                            <div class="vtitle">只为不同</div>
-                        </div>
-                        <img src="{{ fct_cdn('/images/logo2.png') }}" class="logo">
-                        <div class="btn-container">
-                            <a href="{{ url('/') }}" class="btn">进入</a>
-                        </div>
+                <a href="{{ url('/') }}" class="enter"  v-if="index==0"></a>
+            </div>
+        </m-swipe>
+        <transition name="fade">
+            <div class="top" v-if="flagIndex">
+                <div class="inner">
+                    <div class="text">
+                        <div class="title">方寸堂</div>
+                        <div class="vtitle">只为不同</div>
+                    </div>
+                    <img src="{{ fct_cdn('/images/logo2.png') }}" class="logo">
+                    <div class="btn-container">
+                        <a href="{{ url('/') }}" class="btn">进入</a>
                     </div>
                 </div>
             </div>
-        </m-swipe>
+        </transition>
     </div>
+
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container" :class="swipeid">
             <div class="swiper-wrapper">
