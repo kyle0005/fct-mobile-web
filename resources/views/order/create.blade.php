@@ -85,7 +85,7 @@
             </section>
             <section class="agreement">
                 <input type="checkbox" id="agree" name="agree" v-model="has_terms" class="ck">
-                <label for="agree" class="agree-container">我已认真阅读并同意方寸堂《服务协议》</label>
+                <a for="agree" class="agree-container">我已认真阅读并同意方寸堂<a href="{{ url('help') }}#/detail?articleId=15">《服务协议》</a></label>
             </section>
             <footer class="foot">
                 <div class="inner">

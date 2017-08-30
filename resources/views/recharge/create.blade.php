@@ -20,7 +20,7 @@
                 <a href="javascript:;" class="link" v-else><span class="pri-mark">￥</span> @{{ item.price }}</a>
             </div>
         </section>
-        <div class="tips">点我要充值，即表示您已同意方寸堂<strong>《充返活动协议》</strong></div>
+        <div class="tips">点我要充值，即表示您已同意方寸堂<strong><a href="{{ url('help') }}#/detail?articleId=17">《充返活动协议》</a></strong></div>
         <footer class="foot">
             <div class="pri">应付:<small class="pri-mark">￥</small>@{{ toFloat(charge_num) }}</div>
             <div class="sub">
