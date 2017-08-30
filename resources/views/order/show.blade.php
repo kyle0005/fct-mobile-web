@@ -49,7 +49,7 @@
         <section class="">
             <div class="product" v-for="(item, index) in order_detail.orderGoods">
                 <div class="pro-item img-container">
-                    <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                    <img v-view="item.img" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
                 </div>
                 <div class="pro-item title-container">
                     <div class="title">@{{ item.name }}</div>

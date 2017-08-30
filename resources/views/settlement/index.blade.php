@@ -15,7 +15,7 @@
                 <ul class="list">
                     <li class="product" v-for="(i, index) in item.orderGoods">
                         <div class="pro-item img-container">
-                            <img v-view="i.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="i.img" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
                         </div>
                         <div class="pro-item title-container">
                             <div class="title">@{{ i.name }}</div>

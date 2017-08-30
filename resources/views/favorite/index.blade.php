@@ -9,7 +9,7 @@
         <div class="collection-list">
             <div class="item" v-for="(item, index) in collection" v-if="collection && collection.length > 0">
                 <div class="img-container">
-                    <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                    <img v-view="item.image" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
                 </div>
                 <div class="content">
                     <span class="title">@{{ item.name }}&emsp;<span v-if="item.title">@{{ item.title }}</span></span>

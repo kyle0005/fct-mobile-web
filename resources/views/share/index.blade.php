@@ -42,7 +42,7 @@
             <li v-for="(item, index) in shareList">
                 <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="link">
                     <span class="left">
-                        <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                        <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
                     </span>
                     <span class="center">
                       <span class="title">@{{ item.name }}</span>

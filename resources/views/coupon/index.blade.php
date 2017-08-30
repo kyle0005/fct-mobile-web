@@ -65,7 +65,7 @@
                 <ul class="pros clearfix">
                     <li v-for="(o, i) in couponitem.goods">
                         <a :href="'{{ url('products') }}/' + o.id" class="link">
-                            <img v-view="o.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="o.defaultImage" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
                         </a>
                     </li>
                 </ul>

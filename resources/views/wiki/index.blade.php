@@ -97,7 +97,7 @@
     <template id="info">
         <div class="alet_container">
             <section class="ency-container">
-                <img v-view="msg.img" class="photo" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                <img v-view="msg.img" class="photo" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
                 <p class="title">@{{ msg.name }}</p>
                 <p class="text">@{{ msg.text }}</p>
                 <a href="javascript:;" class="close" @click="close()"></a>

@@ -41,7 +41,7 @@ class ProductController extends BaseController
 
         //处理content图片延迟加载
 /*        $result->content = str_replace(
-            'src="', 'src="'.fct_cdn('/images/img_loader.gif').'" v-view="',
+            'src="', 'src="'.fct_cdn('/images/img_loader_s.gif').'" v-view="',
             $result->content);*/
 
         $shareUrl = url('products/'. $id);
