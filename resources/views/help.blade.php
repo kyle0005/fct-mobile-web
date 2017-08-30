@@ -67,9 +67,13 @@
         </section>
     </template>
     <template id="articledetail">
-        <section class="service-container">
-            <div class="title">@{{ article.title }}</div>
-            <div class="content" v-html="article.content"></div>
+        <section class="service">
+            <div class="service-container">
+                <section class="sec">
+                    <div class="title">@{{ article.title }}</div>
+                    <div class="content" v-html="article.content"></div>
+                </section>
+            </div>
         </section>
     </template>
 @endsection
