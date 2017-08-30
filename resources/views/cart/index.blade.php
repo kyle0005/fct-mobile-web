@@ -11,7 +11,7 @@
                         </label>
                         <a :href="'{{ url('products') }}/' + item.goodsId" class="product col">
                           <span class="pro-item pro-img">
-                            <img v-view="item.img" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                            <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                           </span>
                           <span class="pro-item pro-t">
                             <span class="t">

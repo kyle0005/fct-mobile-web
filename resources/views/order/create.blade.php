@@ -22,7 +22,7 @@
             <section class="product">
                 <a href="javascript:;" class="link" v-for="(item, index) in carts">
                   <span class="item intro">
-                    <img v-view="item.img" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                    <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                   </span>
                     <span class="item info">
                     <span class="container overText">

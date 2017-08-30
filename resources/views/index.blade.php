@@ -14,12 +14,12 @@
             <ul class="prolist" v-if="pro_list && pro_list.length > 0">
                 <li class="item" v-for="item in pro_list">
                     <a :href="'/products/' + item.id">
-                        <span class="pro-main"><img v-view="item.videoImg" src="{{ fct_cdn('/images/img_loader_s.gif') }}"></span>
+                        <span class="pro-main"><img v-view="item.videoImg" src="{{ fct_cdn('/images/img_loader.gif') }}"></span>
                         <span class="title">@{{ item.name }}</span>
                         <span class="description" v-html="item.intro"></span>
                         <span class="pro-lists">
                             <span class="imgs" v-for="image in item.multiImages">
-                                <img v-view="image" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                                <img v-view="image" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </span>
                         </span>
                         <span class="ops">

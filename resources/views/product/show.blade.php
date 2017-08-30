@@ -242,7 +242,7 @@
                 <ul class="others">
                     <li v-for="p in artistsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
-                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
@@ -289,7 +289,7 @@
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
-                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
@@ -359,7 +359,7 @@
                     <div class="user-info clearfix">
                         <div class="left clearfix">
                             <div class="user-photo">
-                                <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                                <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </div>
                             <div class="user-opt">
                                 <div>@{{ item.userName }}</div>
@@ -374,7 +374,7 @@
                         <span class="text" v-html="item.content"></span>
                         <span class="imgs">
                         <img v-img="{ group: item.id, exsrc: item.largePictures[index]}"
-                             v-view="img_item" src="{{ fct_cdn('/images/img_loader_s.gif') }}"
+                             v-view="img_item" src="{{ fct_cdn('/images/img_loader.gif') }}"
                              v-for="(img_item, index) in item.pictures">
                       </span>
                     </div>

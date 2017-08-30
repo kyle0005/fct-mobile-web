@@ -9,7 +9,7 @@
                 </div>
                 <div class="product">
                     <div class="pro-item img-container">
-                        <img v-view="item.img" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                        <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                     </div>
                     <div class="pro-item title-container">
                         <div class="title">@{{ item.name }}</div>

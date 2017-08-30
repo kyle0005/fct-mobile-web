@@ -38,7 +38,7 @@
                     <mVideo v-if="top.videoUrl !== ''" :item="top"></mVideo>
                     <ul class="img-list" v-if="topImg">
                         <li v-for="imgs in top.images">
-                            <img v-img="{ group: 'top', exsrc: top.largeImages[index]}" v-view="imgs" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                            <img v-img="{ group: 'top', exsrc: top.largeImages[index]}" v-view="imgs" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </li>
                     </ul>
                 </div>
@@ -51,7 +51,7 @@
                         <mVideo v-if="item.videoUrl !== ''" :poster="item.videoImage" :url="item.videoUrl" id="'video' + item.id"></mVideo>
                         <ul class="img-list clearfix" v-if="item.images.length > 0">
                             <li v-for="(img, i) in item.images">
-                                <img v-img="{ group: item.id, exsrc: item.largeImages[i]}" v-view="img" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                                <img v-img="{ group: item.id, exsrc: item.largeImages[i]}" v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </li>
                         </ul>
                     </div>
@@ -69,7 +69,7 @@
                 <li v-for="(item, index) in workslist">
                     <div class="inner">
                         <div class="left">
-                            <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                            <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                         </div>
                         <div class="right">
                             <div class="title overText">@{{ item.name }}</div>
@@ -95,7 +95,7 @@
                     <div class="inner">
                         <div class="info">
                             <div class="img-container">
-                                <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                                <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             </div>
                             <div class="user">@{{ item.userName }}</div>
                             <div class="time">@{{ item.createTime }}</div>
@@ -143,7 +143,7 @@
         <div class="m-video-container">
             <div class="video-inner">
                 <div v-if="!isVideoLoad" class="play-container" @click="loadVideo()">
-                    <img v-view="poster" class="poster-img" src="{{ fct_cdn('/images/img_loader_s.gif') }}">
+                    <img v-view="poster" class="poster-img" src="{{ fct_cdn('/images/img_loader.gif') }}">
                     <img src="{{ fct_cdn('/images/video_play.png') }}" class="poster-play" />
                 </div>
                 <video class="m-video" :src="url" :id="id" preload="metadata" controls v-else></video>
