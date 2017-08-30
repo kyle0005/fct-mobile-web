@@ -68,11 +68,7 @@
     </template>
     <template id="articledetail">
         <section class="service">
-            <div class="service-container">
-                <section class="sec">
-                    <div class="title">@{{ article.title }}</div>
-                    <div class="content" v-html="article.content"></div>
-                </section>
+            <div class="service-container" v-html="article.content">
             </div>
         </section>
     </template>
