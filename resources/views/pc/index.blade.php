@@ -196,6 +196,7 @@
                     </div></script>
             </div>--}}
             <div class="yw-news-x">
+            @if ($articles)
             @foreach($articles as $article)
               <div class="yw-news-li">
                 <div class="yw-news-detail">
@@ -211,6 +212,7 @@
                 </div>
               </div>
             @endforeach
+            @endif
               <a href="javascript:" class="yw-btn-blue" data-page="1">查看更多 &gt;</a>
             </div>
         </div>
