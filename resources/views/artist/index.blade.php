@@ -2,24 +2,25 @@
 @section('content')
     <div class="artist-container" id="artist_list">
         <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="coverflow">
-            <div v-for="item in artist" class="swiper-slide" slot="swiper-con">
+            <div v-for="(item, index) in artist" class="swiper-slide" slot="swiper-con">
                 <a :href="'{{ url('artists') }}/' + item.id" class="link-item">
                     <span class="img-con">
-                      <img :data-src="item.image" class="swiper-lazy silde-img">
+                        <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}" class="silde-img">
                     </span>
+
                     <span class="art-con">
-                        <span class="title">@{{ item.name }}</span><br>
+                        <span class="title">@{{ item.name }}</span><span class="">@{{ item.title }}</span><br>
                         <span class="product-num overText"><i class="fa fa-heart-o"></i>@{{ item.followCount }}</span>
                         <span class="product-num overText"><img src="{{ fct_cdn('/images/zhh.png') }}" class="i-img">@{{ item.goodsCount }}件</span>
-                        <span class="overTextH3" v-html="item.intro"></span>
-                      </span>
+                        <span class="overTextH3">@{{ item.intro }}</span>
+                    </span>
                 </a>
             </div>
         </m-swipe>
+        <no-data v-if="nodata"></no-data>
+        <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
     </div>
-@endsection
-@section('javascript')
-    <script src="{{ fct_cdn('/js/swiper.js') }}"></script>
+
     <script type="text/x-template" id="m_swipe">
         <div class="swiper-container" :class="swipeid">
             <div class="swiper-wrapper">
@@ -27,6 +28,10 @@
             </div>
         </div>
     </script>
+
+@endsection
+@section('javascript')
+    <script src="{{ fct_cdn('/js/swiper.js') }}"></script>
     <script>
         config.artist = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
