@@ -91,8 +91,8 @@
                 @foreach($products as $key => $product)
                     @if (!($key % 2))
                 <li class="yw-copy-li">
-                    <div class="yw-copy-part yw-copy-part-{{ ($key % 2) ? 'l' : 's' }}">
-                        <img class="yw-ip-img" data-src="{{ ($key % 2) ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
+                    <div class="yw-copy-part yw-copy-part-s">
+                        <img class="yw-ip-img" data-src="{{ $product->videoImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
                                 <h6 class="yw-ip-name">{{ $product->name }}</h6>
@@ -103,8 +103,8 @@
                         </div>
                     </div>
                     @else
-                    <div class="yw-copy-part yw-copy-part-{{ ($key % 2) ? 's' : 'l' }}">
-                        <img class="yw-ip-img" data-src="{{ ($key % 2) ? $product->videoImage : $product->defaultImage }}" alt="{{ $product->name }}">
+                    <div class="yw-copy-part yw-copy-part-l">
+                        <img class="yw-ip-img" data-src="{{ $product->defaultImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
                                 <h6 class="yw-ip-name">{{ $product->name }}</h6>
