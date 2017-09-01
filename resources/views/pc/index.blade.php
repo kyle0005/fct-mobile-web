@@ -87,11 +87,12 @@
         <h3 class="yw-home-h3">紫砂细作</h3>
         <div id="ywCopyX" class="yw-copy-x">
             <ul class="yw-copy-center">
+                <?php $series = 0;?>
                 @foreach($products as $key => $product)
                     @if (!($key % 2))
                 <li class="yw-copy-li">
-                    <div class="yw-copy-part yw-copy-part-s">
-                        <img class="yw-ip-img" data-src="{{ $product->videoImage }}" alt="{{ $product->name }}">
+                    <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
+                        <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
                                 <h6 class="yw-ip-name">{{ $product->name }}</h6>
@@ -101,9 +102,10 @@
                             <i class="yw-mid-i"></i>
                         </div>
                     </div>
+                    <?php $series = 0;?>
                     @else
-                    <div class="yw-copy-part yw-copy-part-l">
-                        <img class="yw-ip-img" data-src="{{ $product->defaultImage }}" alt="{{ $product->name }}">
+                    <div class="yw-copy-part {{ $series ? 'yw-copy-part-s' : 'yw-copy-part-l'}}">
+                        <img class="yw-ip-img" data-src="{{$series ? $product->videoImage : $product->defaultImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
                                 <h6 class="yw-ip-name">{{ $product->name }}</h6>
@@ -114,6 +116,7 @@
                         </div>
                     </div>
                 </li>
+                <?php $series = 1;?>
                 @endif
                 @endforeach
                 @if(count($products) % 2)
