@@ -104,8 +104,8 @@
                     </div>
                     <?php $series = 0;?>
                     @else
-                    <div class="yw-copy-part {{ $series ? 'yw-copy-part-s' : 'yw-copy-part-l'}}">
-                        <img class="yw-ip-img" data-src="{{$series ? $product->videoImage : $product->defaultImage }}" alt="{{ $product->name }}">
+                    <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
+                        <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
                                 <h6 class="yw-ip-name">{{ $product->name }}</h6>
