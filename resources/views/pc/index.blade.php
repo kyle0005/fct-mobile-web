@@ -87,7 +87,6 @@
         <h3 class="yw-home-h3">紫砂细作</h3>
         <div id="ywCopyX" class="yw-copy-x">
             <ul class="yw-copy-center">
-                <li class="yw-copy-center">
                 @foreach($products as $key => $product)
                     @if (!($key % 2))
                 <li class="yw-copy-li">
