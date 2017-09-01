@@ -102,7 +102,7 @@
                             <i class="yw-mid-i"></i>
                         </div>
                     </div>
-                    <?php $series = 0;?>
+                    <?php $series = ($key % 4) ? 0 : 1;?>
                     @else
                     <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
                         <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                 </li>
-                <?php $series = 1;?>
+                <?php $series = ($key % 4) ? 1 : 0;?>
                 @endif
                 @endforeach
                 @if(count($products) % 2)
@@ -211,9 +211,8 @@
     <div id="contact" class="yw-footer">
         <div class="yw-constr">
             <div class="yw-footerbox">
-                <p class="yw-footer-copyright">©
-                    <script>document.write((new Date).getFullYear())</script>
-                    Copyright&nbsp&copy;&nbsp;2017&nbsp;,宜兴方寸堂文化传媒有限公司<span class="br">版权所有</span></p>
+                <p class="yw-footer-copyright">
+                    Copyright&nbsp&copy;&nbsp;<script>document.write((new Date).getFullYear())</script>&nbsp;,宜兴方寸堂文化传媒有限公司<span class="br">版权所有</span></p>
                 <p class="yw-footer-copyrightmore">苏公安备32028202000436号&nbsp;苏ICP备14043090号-4</p>
                 <p class="yw-footer-copyrightmore">联系电话：<a href="tel:4000510570" class="law">400-0510-570</a></p></div>
             <div class="yw-footer-share">
