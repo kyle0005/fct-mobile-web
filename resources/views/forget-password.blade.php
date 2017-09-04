@@ -48,5 +48,5 @@
         mobileCodeResource:"{{ url('send-captcha') }}"
     };
     </script>
-    <script src="{{ fct_cdn('js/findpwd.js') }}"></script>
+    <script src="{{ fct_cdn('/js/findpwd.js') }}"></script>
 @endsection
