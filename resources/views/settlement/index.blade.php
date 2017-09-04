@@ -28,7 +28,7 @@
                     </li>
                 </ul>
                 <div class="total">
-                    <div class="inner">共<span class="pri">@{{ item.totalCount }}</span>件宝贝&nbsp;合计佣金：<span class="pri"><small class="pri-mark">￥</small>@{{ toFloat(item.commission) }}</span></div>
+                    <div class="inner">共<span class="pri">@{{ item.totalCount }}</span>件宝贝&nbsp;合计佣金：<span class="pri"><small class="pri-mark">￥</small>@{{ item.commission }}</span></div>
                 </div>
             </div>
         </div>
