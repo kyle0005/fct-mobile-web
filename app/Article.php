@@ -100,25 +100,51 @@ class Article
         $entries = $pagination->entries;
         if ($entries) {
             $temp = false;
+            $hasCurrent = false;
             foreach ($entries as $key => $article) {
-                if ($article->id == $id && $temp) {
-                    $response->prevId = $temp->id;
-                    $article = isset($entries[$key + 1]) ? $entries[$key + 1] : false;
-                    if ($article) {
-                        $response->nextId = $article->id;
-                    } elseif ($current + 1 == $pagination->pager->next) {
-                        //重新获取下一页
-                        $pagination = self::getArticles($current + 1);
-                        if ($pagination->entries)
-                            $response->nextId = $pagination->entries[0]->id;
-                    }
 
+                //获取nextId
+                if ($hasCurrent && $article->urlType) {
+
+                    $response->nextId = $article->id;
                     break;
                 }
-                $temp = $article;
+
+                if ($article->id == $id) {
+                    //判断是否有前面的id
+                    if ($temp)
+                        $response->prevId = $temp->id;
+                    //当前id已经出现了
+                    $hasCurrent = true;
+                }
+
+                //过滤外链的页面
+                if ($article->urlType)
+                    $temp = $article;
+            }
+
+            if ($response->nextId < 1 && $current < $pagination->pager->next) {
+                $nextId = self::iterationNextId($current);
+                if ($nextId)
+                    $response->nextId = $nextId;
             }
         }
 
         return $response;
+    }
+
+    public static function iterationNextId($page) {
+
+        $current = $page + 1;
+        $pagination = self::getArticles($current);
+        if ($pagination->entries) {
+            foreach ($pagination->entries as $entry) {
+                if ($entry->urlType)
+                    return $entry->id;
+            }
+
+            if ($current < $pagination->pager->next)
+                return self::iterationNextId($current);
+        }
     }
 }
