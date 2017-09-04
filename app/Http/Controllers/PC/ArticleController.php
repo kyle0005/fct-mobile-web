@@ -31,7 +31,7 @@ class ArticleController extends BaseController
         $html = '';
         foreach ($result->entries as $article)
         {
-            $url = $article->urlType ? url('articles/' . $article->id) : $article->url;
+            $url = $article->urlType ? url('articles/' . $article->id).'?current='.$page : $article->url;
             $html .= '<div class="yw-news-li"><div class="yw-news-detail">'
                 . '<h5 class="yw-news-title"><a href="javascript:;" data-urltype="'
                 . $article->urlType
@@ -43,7 +43,9 @@ class ArticleController extends BaseController
                 . '<p class="yw-news-more"><a href="javascript:;" data-urltype="'
                 . $article->urlType
                 . '" class="news-link" data-url="' . $url
-                . '" target="_blank" class="yw-news-more-a">阅读更多&gt;</a></p></div></div>';
+                . '" target="_blank" class="yw-news-more-a">阅读更多&gt;</a></p></div></div>'
+                .'<a href="javascript:" class="yw-btn-blue jsLayMore" data-page="'
+                . $result->pager->next . '">查看更多</a>';
         }
         $result->entries = $html;
 
@@ -57,14 +59,27 @@ class ArticleController extends BaseController
             return $this->autoReturn('新闻不存在');
         }
 
+        $current = $request->get('current', 1);
+
         try
         {
-            $result = Article::getArticle($id);
+            $result = Article::getArticle($id, $current);
         }
         catch (BusinessException $e)
         {
             return $this->autoReturn($e->getMessage());
         }
+
+        $prevClick = '';
+        $nextClick = '';
+        if ($result->prevId > 0)
+            $prevClick = '<a href="javascript:;" class="prev js-opt" data-url="'
+                . url('articles/' . $result->prevId)
+                . '"><img src="'.fct_cdn('/img/fct/p_prev.png').'"></a>';
+        if ($result->nextId > 0)
+        $nextClick = '<a href="javascript:;" class="next js-opt" data-url="'
+            . url('articles/' . $result->nextId)
+            . '"><img src="'.fct_cdn('/img/fct/p_next.png').'"></a>';
 
         $result = '<div class="yw-news-li"><div class="yw-news-detail"><h5 class="yw-news-title"><a href="'
             . url('articles/' . $result->id)
@@ -74,7 +89,11 @@ class ArticleController extends BaseController
             . $result->source
             . '</span></div><p class="yw-news-sum">'
             . $result->content
-            . '</p></div></div></div>';
+            . '</p></div></div></div>'
+            . '<div class="btn-container">' . $prevClick . $nextClick
+            . '<a href="javascript:;" class="back" id="back"><img src="'
+            . fct_cdn('/img/fct/p_back.png')
+            . '"><span class="txt">返回全部</span></a></div>';
 
         return $this->returnAjaxSuccess('获取成功', null, $result);
     }

@@ -102,7 +102,7 @@
                             <i class="yw-mid-i"></i>
                         </div>
                     </div>
-                    <?php $series = ($key % 4) ? 0 : 1;?>
+                    <?php $series = ($key % 3) ? 0 : 1;?>
                     @else
                     <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
                         <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
@@ -116,7 +116,7 @@
                         </div>
                     </div>
                 </li>
-                <?php $series = ($key % 4) ? 1 : 0;?>
+                <?php $series = ($key % 3) ? 1 : 0;?>
                 @endif
                 @endforeach
                 @if(count($products) % 2)
@@ -125,6 +125,7 @@
             </ul>
         </div>
     </div>
+
     <div id="mobile" class="yw-home-app">
         <div class="yw-constr"><h3 class="yw-home-h3">移动平台</h3>
             <div id="tabApp" class="yw-tab-tab"><a href="javascript:" class="yw-tab-a active" data-rel="tabPanel1">微信公众号</a> <a
@@ -135,27 +136,61 @@
                 <li id="tabPanel1" class="yw-tab-panel-li active">
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂微信公众号</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
-                        <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
-                    <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"
+                        <div class="check-code">
+                            <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
+                            <div class="qrcode-contianer">
+                                <div class="triangle_border_left">
+                                    <span></span>
+                                </div>
+                                <div>
+                                    <img src="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yw-app-img-x"><img src="{{ fct_cdn('/img/fct/platform-wxgxh.png') }}"
                                                    class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel2" class="yw-tab-panel-li ">
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
-                        <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
-                    <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"
+                        <div class="check-code">
+                            <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
+                            <div class="qrcode-contianer">
+                                <div class="triangle_border_left">
+                                    <span></span>
+                                </div>
+                                <div>
+                                    <img src="{{ fct_cdn('/img/fct/qrcode-wap.png') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yw-app-img-x"><img src="{{ fct_cdn('/img/fct/platform-wap.png') }}"
                                                    class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel3" class="yw-tab-panel-li ">
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
                         <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
-                        <p><a href="javascript:" target="_blank" class="yw-btn-blue" title="查看详情">查看详情 &gt;</a></p></div>
-                    <div class="yw-app-img-x"><img src="/img/fct/fct-app.png"
+                        <div class="check-code">
+                            <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
+                            <div class="qrcode-contianer">
+                                <div class="triangle_border_left">
+                                    <span></span>
+                                </div>
+                                <div>
+                                    <img src="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="yw-app-img-x"><img src="{{ fct_cdn('/img/fct/platform-wxxcx.png') }}"
                                                    class="yw-app-img"></div>
                 </li>
             </ul>
         </div>
     </div>
+
     <div id="brand" class="yw-brand">
         <div class="yw-constr"><h3 class="yw-home-h3">守艺人</h3>
             <ul id="brandDescX" class="yw-brand-desc">
@@ -190,7 +225,7 @@
                 <div class="yw-news-li">
                     <div class="yw-news-detail">
                         <h5 class="yw-news-title"><a href="javascript:;" data-urltype="{{ $article->urlType }}" class="news-link"
-                                                     data-url="{{ $article->urlType ? url('articles/' . $article->id) : $article->url }}" target="_blank">{{ $article->title }}</a></h5>
+                                                     data-url="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" target="_blank">{{ $article->title }}</a></h5>
                         <div class="yw-news-time">
                             <span class="yw-news-tag">{{ $article->categoryName }}</span>
                             <time>{{ date('Y-m-d', intval($article->createTime / 1000)) }}</time>
@@ -198,7 +233,7 @@
                         <p class="yw-news-sum">{!! $article->intro !!}</p>
                         <p class="yw-news-more">
                             <a href="javascript:;" data-urltype="{{ $article->urlType }}" class="news-link yw-news-more-a"
-                               data-url="{{ $article->urlType ? url('articles/' . $article->id) : $article->url }}" target="_blank">阅读更多 &gt;</a>
+                               data-url="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" target="_blank">阅读更多 &gt;</a>
                         </p>
                     </div>
                 </div>
@@ -224,7 +259,6 @@
     </div>
 </div>
 
-
 <div id="ywOverlay" class="yw-overlay">
     <div class="yw-mid-con"></div>
     <i class="yw-mid-i"></i></div>
@@ -237,6 +271,7 @@
             </div>
             <div id="news-detail" class="news-list">
             </div>
+
         </div>
     </div>
     <i class="yw-mid-i"></i>
