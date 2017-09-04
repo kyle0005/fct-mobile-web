@@ -87,9 +87,10 @@ class ArticleController extends BaseController
             . url('articles/' . $result->id)
             . '" target="_blank">' . $result->title . '</a></h5><div class="yw-news-time"><span class="yw-news-tag">'
             . $result->categoryName
-            . '</span><time>' . date('Y-m-d', intval($result->createTime / 1000)) . '</time><span>&nbsp;来源：'
+            . '</span><span>&nbsp;来源：'
             . $result->source
-            . '</span></div><p class="yw-news-sum">'
+            . '</span><time>' . date('Y-m-d', intval($result->createTime / 1000))
+            . '</time></div><div class="det-intro">' . $result->intro . '</div><p class="yw-news-sum">'
             . $result->content
             . '</p></div></div></div>'
             . '<div class="btn-container">' . $prevClick . $nextClick
