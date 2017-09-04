@@ -43,10 +43,12 @@ class ArticleController extends BaseController
                 . '<p class="yw-news-more"><a href="javascript:;" data-urltype="'
                 . $article->urlType
                 . '" class="news-link" data-url="' . $url
-                . '" target="_blank" class="yw-news-more-a">阅读更多&gt;</a></p></div></div>'
-                .'<a href="javascript:" class="yw-btn-blue jsLayMore" data-page="'
-                . $result->pager->next . '">查看更多</a>';
+                . '" target="_blank" class="yw-news-more-a">阅读更多&gt;</a></p></div></div>';
         }
+
+        $html .= '<a href="javascript:" class="yw-btn-blue jsLayMore" data-page="'
+            . $result->pager->next . '">查看更多</a>';
+
         $result->entries = $html;
 
         return $this->returnAjaxSuccess('获取成功', null, $result);
