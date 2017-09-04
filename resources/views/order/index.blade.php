@@ -37,7 +37,7 @@
                     </li>
                 </ul>
                 <div class="total">
-                    <div class="inner">共@{{ item.buyTotalCount }}件宝贝&nbsp;合计:<small class="pri-mark">￥</small><span class="payAmount">@{{ item.payAmount }}</span>（含运费）</div>
+                    <div class="inner">共@{{ item.buyTotalCount }}件宝贝&nbsp;合计:<small class="pri-mark">￥</small><span class="payAmount">@{{ toFloat(item.payAmount) }}</span>（含运费）</div>
                 </div>
                 <div class="btn clearfix" v-if="item.status == 0">
                     <div class="btn-container">

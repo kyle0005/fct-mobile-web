@@ -89,7 +89,7 @@
             </section>
             <footer class="foot">
                 <div class="inner">
-                    <div class="pri">应付：<small class="pri-mark">￥</small><span class="pri">@{{ totalPrice }}</span></div>
+                    <div class="pri">应付：<small class="pri-mark">￥</small><span class="pri">@{{ toFloat(totalPrice) }}</span></div>
                     <div class="sub">
                         <a href="javascript:;" class="sub">
                             <subpost :txt="payText" ref="paypost" @callback="pay" @succhandle="payhandle"></subpost>
