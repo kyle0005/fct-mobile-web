@@ -80,4 +80,5 @@
     </script>
     <script src="{{ fct_cdn('/js/vue-router.js') }}"></script>
     <script src="{{ fct_cdn('/js/help.js') }}"></script>
+    {!! wechat_share($share) !!}
 @endsection
