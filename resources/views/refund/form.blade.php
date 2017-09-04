@@ -22,7 +22,7 @@
                         <span class="left">服务类型</span>
                         <select class="select" v-model="servicetype">
                             <option value="0">退货退款</option>
-                            <option value="1" selected>仅退款</option>
+                            <option value="1">仅退款</option>
                         </select>
                     </div>
                 </li>
