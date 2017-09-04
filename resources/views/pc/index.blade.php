@@ -135,7 +135,7 @@
             <ul class="yw-tab-panel">
                 <li id="tabPanel1" class="yw-tab-panel-li active">
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂微信公众号</h3>
-                        <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
+                        <p class="yw-app-desc-detail">微信搜索“方寸堂”或"fangcuntang"。</p>
                         <div class="check-code">
                             <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
                             <div class="qrcode-contianer">
@@ -152,8 +152,8 @@
                                                    class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel2" class="yw-tab-panel-li ">
-                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
-                        <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
+                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂移动Web</h3>
+                        <p class="yw-app-desc-detail">官方域名：https://m.fangcun.com，支持所有浏览器终端访问。</p>
                         <div class="check-code">
                             <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
                             <div class="qrcode-contianer">
@@ -170,8 +170,8 @@
                                                    class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel3" class="yw-tab-panel-li ">
-                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂<span class="yw-font-en">APP</span>(<span class="yw-font-en">IOS</span>、<span class="yw-font-en">Android</span>版)</h3>
-                        <p class="yw-app-desc-detail">精致排版，感受极致赏壶体验。</p>
+                    <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂小程序</h3>
+                        <p class="yw-app-desc-detail">与时俱进，感受极致赏壶体验。</p>
                         <div class="check-code">
                             <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
                             <div class="qrcode-contianer">
