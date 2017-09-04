@@ -70,7 +70,7 @@ class MainController extends BaseController
                 'share' => [
                     'title' => '方寸堂 - 只为不同',
                     'link' => $shareUrl,
-                    'img' => 'http://cdn.fangcun.com/static/img/fc_logo.png',
+                    'img' => fct_cdn('/images/fc_logo.png'),
                     'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
                 ],
                 ]);
@@ -98,7 +98,7 @@ class MainController extends BaseController
             'share' => [
                 'title' => '方寸堂 - 只为不同',
                 'link' => $shareUrl,
-                'img' => 'http://cdn.fangcun.com/static/img/fc_logo.png',
+                'img' => fct_cdn('/images/fc_logo.png'),
                 'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
             ],
         ]);
@@ -176,6 +176,12 @@ class MainController extends BaseController
             'title' => fct_title('帮助中心'),
             'articleCategories' => $result->categoryList,
             'articles' => $result->articleList,
+            'share' => [
+                'title' => '方寸堂 - 帮助中心',
+                'link' => url('help'),
+                'img' => fct_cdn('/images/question-mark.png'),
+                'desc' => '方寸堂官方帮助中心,这里为用户提供平台使用常见问题的搜索与解答…',
+            ],
         ]);
     }
 

@@ -16,7 +16,7 @@ class BaseController extends Controller
     {
         $member = $this->memberLogged(false);
         //默认头像
-        $shareAvatar = env('STATIC_URL') . '/img/nologin-head.png';
+        $shareAvatar = fct_cdn('/images/nologin-head.png');
         if ($member) {
 
             $shareAvatar = $member->headPortrait;
