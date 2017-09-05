@@ -18,10 +18,10 @@
 </head>
 <body>
 <div id="ywPage" class="yw-page">
-    <div id="ywNewslay" class="yw-overlay">
+    <div>
         <div class="yw-mid-con yw-news-lay">
             <div class="yw-news-lay-x">
-                <div id="news-detail" class="news-list">
+                <div>
                     {!! $html !!}
                 </div>
             </div>
