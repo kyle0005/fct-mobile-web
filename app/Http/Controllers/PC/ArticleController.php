@@ -38,7 +38,7 @@ class ArticleController extends BaseController
                 . '" class="news-link" data-url="' . $url
                 . '" target="_blank">'. $article->title .'</a></h5><div class="yw-news-time">'
                 . '<span class="yw-news-tag">'. $article->categoryName
-                . '</span>&nbsp;<time>' . date('Y-m-d', intval($article->createTime / 1000))
+                . '</span><time>' . date('Y-m-d', intval($article->createTime / 1000))
                 . '</time></div><p class="yw-news-sum">' . $article->intro .'</p>'
                 . '<p class="yw-news-more"><a href="'.$url.'" data-urltype="'
                 . $article->urlType
@@ -76,6 +76,7 @@ class ArticleController extends BaseController
 
         $prevClick = '';
         $nextClick = '';
+        $source = '<span>&nbsp;来源：' . $result->source . '</span>';
         if ($result->prevId > 0 && $hasAjax)
             $prevClick = '<a href="javascript:;" class="prev js-opt" data-url="'
                 . url('articles/' . $result->prevId)
@@ -84,14 +85,14 @@ class ArticleController extends BaseController
         $nextClick = '<a href="javascript:;" class="next js-opt" data-url="'
             . url('articles/' . $result->nextId)
             . '"><img src="'.fct_cdn('/img/fct/p_next.png').'"></a>';
+        if ($result->source)
+            $source =
 
         $html = '<div class="yw-news-li"><div class="yw-news-detail"><h5 class="yw-news-title"><a href="'
             . url('articles/' . $result->id)
             . '" target="_blank">' . $result->title . '</a></h5><div class="yw-news-time"><span class="yw-news-tag">'
             . $result->categoryName
-            . '</span><span>&nbsp;来源：'
-            . $result->source
-            . '</span><time>' . date('Y-m-d', intval($result->createTime / 1000))
+            . '</span><time>&nbsp;' . date('Y-m-d', intval($result->createTime / 1000))
             . '</time></div><div class="det-intro">' . $result->intro . '</div><p class="yw-news-sum">'
             . $result->content
             . '</p></div></div></div>'
