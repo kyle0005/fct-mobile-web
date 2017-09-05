@@ -263,7 +263,8 @@
 
 <div id="ywOverlay" class="yw-overlay">
     <div class="yw-mid-con"></div>
-    <i class="yw-mid-i"></i></div>
+    <i class="yw-mid-i"></i>
+</div>
 <div id="ywNewslay" class="yw-overlay">
     <div class="yw-mid-con yw-news-lay">
         <a href="javascript:" class="yw-news-lay-shut jsShut">×</a>
