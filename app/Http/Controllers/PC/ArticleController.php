@@ -38,7 +38,7 @@ class ArticleController extends BaseController
                 . '" class="news-link" data-url="' . $url
                 . '" target="_blank">'. $article->title .'</a></h5><div class="yw-news-time">'
                 . '<span class="yw-news-tag">'. $article->categoryName
-                . '</span><time>' . date('Y-m-d', intval($article->createTime / 1000))
+                . '</span>&emsp;<time>' . date('Y-m-d', intval($article->createTime / 1000))
                 . '</time></div><p class="yw-news-sum">' . $article->intro .'</p>'
                 . '<p class="yw-news-more"><a href="'.$url.'" data-urltype="'
                 . $article->urlType
