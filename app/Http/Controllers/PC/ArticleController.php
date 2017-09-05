@@ -93,10 +93,7 @@ class ArticleController extends BaseController
             . '</time></div><div class="det-intro">' . $result->intro . '</div><p class="yw-news-sum">'
             . $result->content
             . '</p></div></div></div>'
-            . '<div class="btn-container">' . $prevClick . $nextClick
-            . '<a href="javascript:;" class="back" id="back"><img src="'
-            . fct_cdn('/img/fct/p_back.png')
-            . '"><span class="txt">返回全部</span></a></div>';
+            . '<div class="btn-container">' . $prevClick . $nextClick . '</div>';
 
         return $this->returnAjaxSuccess('获取成功', null, $result);
     }

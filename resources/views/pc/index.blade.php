@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="renderer" content="webkit" />
+    <meta dynamic-meta name="mobile-agent" content="format=html5; url={{ env('APP_URL') }}" />
     <title>方寸堂</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
@@ -271,8 +273,10 @@
             </div>
             <div id="news-detail" class="news-list">
             </div>
-
         </div>
+        <a href="javascript:;" class="back" id="back">
+            <img src="{{ fct_cdn('/img/fct/p_back.png') }}"><span class="txt">返回全部</span>
+        </a>
     </div>
     <i class="yw-mid-i"></i>
 </div>
