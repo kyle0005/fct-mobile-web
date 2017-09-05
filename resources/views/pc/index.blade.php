@@ -151,7 +151,7 @@
                 </li>
                 <li id="tabPanel2" class="yw-tab-panel-li ">
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂移动Web</h3>
-                        <p class="yw-app-desc-detail">官方域名：https://m.fangcun.com，支持所有浏览器终端访问。</p>
+                        <p class="yw-app-desc-detail">m.fangcun.com，支持所有浏览器终端访问。</p>
                         <div class="check-code">
                             <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
                             <div class="qrcode-contianer">
