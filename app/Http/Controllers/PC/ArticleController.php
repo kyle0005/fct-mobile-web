@@ -72,13 +72,15 @@ class ArticleController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
+        $hasAjax = $request->ajax();
+
         $prevClick = '';
         $nextClick = '';
-        if ($result->prevId > 0)
+        if ($result->prevId > 0 && $hasAjax)
             $prevClick = '<a href="javascript:;" class="prev js-opt" data-url="'
                 . url('articles/' . $result->prevId)
                 . '"><img src="'.fct_cdn('/img/fct/p_prev.png').'"></a>';
-        if ($result->nextId > 0)
+        if ($result->nextId > 0 && $hasAjax)
         $nextClick = '<a href="javascript:;" class="next js-opt" data-url="'
             . url('articles/' . $result->nextId)
             . '"><img src="'.fct_cdn('/img/fct/p_next.png').'"></a>';
@@ -95,6 +97,9 @@ class ArticleController extends BaseController
             . '</p></div></div></div>'
             . '<div class="btn-container">' . $prevClick . $nextClick . '</div>';
 
-        return $this->returnAjaxSuccess('获取成功', null, $result);
+        if ($hasAjax)
+            return $this->returnAjaxSuccess('获取成功', null, $result);
+
+        return view('pc.article.show', ['html' => $result]);
     }
 }
