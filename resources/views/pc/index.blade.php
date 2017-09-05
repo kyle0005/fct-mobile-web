@@ -146,8 +146,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="yw-app-img-x"><img src="{{ fct_cdn('/img/fct/platform-wxgxh.png') }}"
-                                                   class="yw-app-img"></div>
+                    <div class="yw-app-img-x"><img src="{{ fct_cdn('/img/fct/platform-wxgxh.png') }}" class="yw-app-img"></div>
                 </li>
                 <li id="tabPanel2" class="yw-tab-panel-li ">
                     <div class="yw-app-desc"><h3 class="yw-app-slogon">方寸堂移动Web</h3>
@@ -155,12 +154,7 @@
                         <div class="check-code">
                             <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
                             <div class="qrcode-contianer">
-                                <div class="triangle_border_left">
-                                    <span></span>
-                                </div>
-                                <div>
-                                    <img src="{{ fct_cdn('/img/fct/qrcode-wap.png') }}">
-                                </div>
+                                <img src="{{ fct_cdn('/img/fct/qrcode-wap.png') }}">
                             </div>
                         </div>
                     </div>
@@ -173,12 +167,7 @@
                         <div class="check-code">
                             <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
                             <div class="qrcode-contianer">
-                                <div class="triangle_border_left">
-                                    <span></span>
-                                </div>
-                                <div>
-                                    <img src="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}">
-                                </div>
+                                <img src="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}">
                             </div>
                         </div>
                     </div>
