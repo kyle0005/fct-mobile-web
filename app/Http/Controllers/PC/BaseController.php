@@ -18,8 +18,10 @@ class BaseController extends Controller
 {
     public function __construct()
     {
-        if (is_mobile())
-            return redirect(env('APP_URL'));
+        if (is_mobile()) {
+            header('location:' . env('APP_URL'));
+            exit();
+        }
     }
 
     /**成功ajax返回内容
