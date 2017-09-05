@@ -251,7 +251,7 @@
                 <p class="yw-footer-copyrightmore">苏公安备32028202000436号&nbsp;苏ICP备14043090号-4</p>
                 <p class="yw-footer-copyrightmore">联系电话：<a href="tel:4000510570" class="law">400-0510-570</a></p></div>
             <div class="yw-footer-share">
-                <a href="{{ fct_cdn('/img/fct/fct-qrcode.png') }}"
+                <a href="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}"
                    class="icon-share icon-share-weixin" title="方寸堂官方微信公众号" target="_blank">方寸堂官方微信公众号</a>
                 <a href="javascript:;" class="icon-share icon-share-weibo" title="方寸堂官方微博" target="_blank">方寸堂官方微博</a>
             </div>
