@@ -234,7 +234,7 @@
                         </div>
                         <p class="yw-news-sum">{!! $article->intro !!}</p>
                         <p class="yw-news-more">
-                            <a href="javascript:;" data-urltype="{{ $article->urlType }}" class="news-link yw-news-more-a"
+                            <a href="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" data-urltype="{{ $article->urlType }}" class="news-link yw-news-more-a"
                                data-url="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" target="_blank">阅读更多 &gt;</a>
                         </p>
                     </div>
