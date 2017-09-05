@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>方寸堂</title>
+    <title>{{ $title }}</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
@@ -20,7 +20,7 @@
         <div class="yw-mid-con yw-news-lay">
             <div class="yw-news-lay-x">
                 <div id="news-detail" class="news-list">
-                    {{ $html }}
+                    {!! $html !!}
                 </div>
             </div>
             <a href="{{ url('/') }}" class="back">

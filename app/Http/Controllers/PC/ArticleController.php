@@ -85,7 +85,7 @@ class ArticleController extends BaseController
             . url('articles/' . $result->nextId)
             . '"><img src="'.fct_cdn('/img/fct/p_next.png').'"></a>';
 
-        $result = '<div class="yw-news-li"><div class="yw-news-detail"><h5 class="yw-news-title"><a href="'
+        $html = '<div class="yw-news-li"><div class="yw-news-detail"><h5 class="yw-news-title"><a href="'
             . url('articles/' . $result->id)
             . '" target="_blank">' . $result->title . '</a></h5><div class="yw-news-time"><span class="yw-news-tag">'
             . $result->categoryName
@@ -100,6 +100,9 @@ class ArticleController extends BaseController
         if ($hasAjax)
             return $this->returnAjaxSuccess('获取成功', null, $result);
 
-        return view('pc.article.show', ['html' => $result]);
+        return view('pc.article.show', [
+            'title' => fct_title($result->title),
+            'html' => $html
+        ]);
     }
 }
