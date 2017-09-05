@@ -64,6 +64,7 @@
                 <a href="javascript:" class="yw-hd-dot-a" data-rel="hdSlide3">3</a>
             </div>
         </div>
+        <img src="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}" class="h-qrcode">
     </div>
 
     <div class="yw-data">
@@ -141,12 +142,7 @@
                         <div class="check-code">
                             <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
                             <div class="qrcode-contianer">
-                                <div class="triangle_border_left">
-                                    <span></span>
-                                </div>
-                                <div>
-                                    <img src="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}">
-                                </div>
+                                <img src="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}">
                             </div>
                         </div>
                     </div>
