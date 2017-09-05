@@ -98,7 +98,7 @@ class ArticleController extends BaseController
             . '<div class="btn-container">' . $prevClick . $nextClick . '</div>';
 
         if ($hasAjax)
-            return $this->returnAjaxSuccess('获取成功', null, $result);
+            return $this->returnAjaxSuccess('获取成功', null, $html);
 
         return view('pc.article.show', [
             'title' => fct_title($result->title),
