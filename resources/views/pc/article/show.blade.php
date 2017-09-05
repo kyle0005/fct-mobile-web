@@ -2,6 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
+    <meta name="renderer" content="webkit" />
+    <meta dynamic-meta name="mobile-agent" content="format=html5; url={{ env('APP_URL') }}" />
     <title>{{ $title }}</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
