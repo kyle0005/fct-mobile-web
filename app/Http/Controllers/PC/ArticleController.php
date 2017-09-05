@@ -92,7 +92,7 @@ class ArticleController extends BaseController
             . url('articles/' . $result->id)
             . '" target="_blank">' . $result->title . '</a></h5><div class="yw-news-time"><span class="yw-news-tag">'
             . $result->categoryName
-            . '</span><time>&nbsp;' . date('Y-m-d', intval($result->createTime / 1000))
+            . '</span>' . $source . '<time>&nbsp;' . date('Y-m-d', intval($result->createTime / 1000))
             . '</time></div><div class="det-intro">' . $result->intro . '</div><p class="yw-news-sum">'
             . $result->content
             . '</p></div></div></div>'
