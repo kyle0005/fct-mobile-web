@@ -17,21 +17,20 @@
         }(document, window)</script>
 </head>
 <body>
-<div id="ywPage" class="yw-page">
-    <div>
-        <div class="yw-mid-con yw-news-lay">
-            <div class="yw-news-lay-x">
-                <div>
-                    {!! $html !!}
-                </div>
+<div>
+    <div class="yw-mid-con yw-news-lay">
+        <div class="yw-news-lay-x">
+            <div>
+                {!! $html !!}
             </div>
-            <a href="{{ url('/') }}" class="back">
-                <img src="{{ fct_cdn('/img/fct/p_back.png') }}"><span class="txt">返回全部</span>
-            </a>
         </div>
-        <i class="yw-mid-i"></i>
+        <a href="{{ url('/') }}" class="back">
+            <img src="{{ fct_cdn('/img/fct/p_back.png') }}"><span class="txt">返回全部</span>
+        </a>
     </div>
-
+    <i class="yw-mid-i"></i>
+</div>
+<div id="ywPage" class="yw-page">
     <div id="contact" class="yw-footer">
         <div class="yw-constr">
             <div class="yw-footerbox">
