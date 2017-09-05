@@ -27,7 +27,7 @@
             <a href="{{ url('/') }}" class="yw-logo"><h1>方寸堂</h1></a>
             <a href="javascript:" id="ywMnavBtn" class="yw-hd-curnav"><span id="ywMnavName">紫砂细作</span></a>
             <div id="ywMnav" class="yw-nav">
-                <a href="#copyright" class="yw-nav-a active">紫砂细作</a>
+                <a href="#copyright" class="yw-nav-a active">原创好物</a>
                 <a href="#mobile" class="yw-nav-a">移动平台</a>
                 <a href="#brand" class="yw-nav-a">守艺人</a>
                 <a href="#news" class="yw-nav-a">新闻中心</a>
@@ -86,7 +86,7 @@
     </div>
 
     <div id="copyright" class="yw-copyright">
-        <h3 class="yw-home-h3">紫砂细作</h3>
+        <h3 class="yw-home-h3">原创好物</h3>
         <div id="ywCopyX" class="yw-copy-x">
             <ul class="yw-copy-center">
                 <?php $series = 0;?>
