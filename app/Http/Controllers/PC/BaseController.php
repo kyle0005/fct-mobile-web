@@ -16,6 +16,12 @@ use App\Http\Controllers\Controller;
 
 class BaseController extends Controller
 {
+    public function __construct()
+    {
+        if (is_mobile())
+            return redirect(env('APP_URL'));
+    }
+
     /**成功ajax返回内容
      * @param $message
      * @param null $url
