@@ -33,7 +33,7 @@ class ArticleController extends BaseController
         {
             $url = $article->urlType ? url('articles/' . $article->id).'?current='.$page : $article->url;
             $html .= '<div class="yw-news-li"><div class="yw-news-detail">'
-                . '<h5 class="yw-news-title"><a href="javascript:;" data-urltype="'
+                . '<h5 class="yw-news-title"><a href="' . $url . '" data-urltype="'
                 . $article->urlType
                 . '" class="news-link" data-url="' . $url
                 . '" target="_blank">'. $article->title .'</a></h5><div class="yw-news-time">'
@@ -76,7 +76,7 @@ class ArticleController extends BaseController
 
         $prevClick = '';
         $nextClick = '';
-        $source = '<span>&nbsp;来源：' . $result->source . '</span>';
+        $source = '';
         if ($result->prevId > 0 && $hasAjax)
             $prevClick = '<a href="javascript:;" class="prev js-opt" data-url="'
                 . url('articles/' . $result->prevId)
@@ -86,7 +86,7 @@ class ArticleController extends BaseController
             . url('articles/' . $result->nextId)
             . '"><img src="'.fct_cdn('/img/fct/p_next.png').'"></a>';
         if ($result->source)
-            $source =
+            $source = '<span>&nbsp;来源：' . $result->source . '</span>';
 
         $html = '<div class="yw-news-li"><div class="yw-news-detail"><h5 class="yw-news-title"><a href="'
             . url('articles/' . $result->id)

@@ -211,7 +211,7 @@
             @foreach($articles as $article)
                 <div class="yw-news-li">
                     <div class="yw-news-detail">
-                        <h5 class="yw-news-title"><a href="javascript:;" data-urltype="{{ $article->urlType }}" class="news-link"
+                        <h5 class="yw-news-title"><a href="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" data-urltype="{{ $article->urlType }}" class="news-link"
                                                      data-url="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" target="_blank">{{ $article->title }}</a></h5>
                         <div class="yw-news-time">
                             <span class="yw-news-tag">{{ $article->categoryName }}</span>
