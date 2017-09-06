@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="//cdn.fangcun.com/static/img/favicon.png" type="image/png" />
-    <link rel="stylesheet" href="{{ fct_cdn('/css/pc.app.css?_v=201709061145') }}">
+    <link rel="stylesheet" href="{{ fct_cdn('/css/pc.app.css?_v=201709061645') }}">
     <script>!function (e, n) {
             var a = 0, o = 'M', t = e.documentElement
             window.screen && screen.width && (a = screen.width, a > 1920 ? o = 'L' : a < 480 && (o = 'S')), t.className = o, navigator.platform && (t.className += ' ' + navigator.platform.toLowerCase()), window.SIZE = o
@@ -233,7 +233,7 @@
 
     <div id="contact" class="yw-contact">
         <i class="yw-contact-bg"></i>
-        <div class="yw-constr">
+        <div class="yw-constrv">
             <div class="video-container">
                 <a href="javascript:;" class="js-poster v-poster">
                     <img src="https://img.yzcdn.cn/job/www/video.jpg">
