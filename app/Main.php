@@ -101,7 +101,7 @@ class Main
                 env('API_URL') . '/mall/pc-home',
                 [
                     'article_code' => ',3,',
-                    'article_count' => 6,
+                    'article_count' => 4,
                     'product_count' => 10,
                     'artist_count' => 7,
                 ],
