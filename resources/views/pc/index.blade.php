@@ -4,9 +4,9 @@
     <meta charset="utf-8">
     <meta name="renderer" content="webkit" />
     <meta dynamic-meta name="mobile-agent" content="format=html5; url={{ env('APP_URL') }}" />
-    <title>方寸网 - 只为不同！中国宜兴紫砂壶品牌倡导者</title>
-    <meta name="keywords" content="方寸堂,方寸网,全手工紫砂壶,真正宜兴紫砂壶,宜兴,宜兴紫砂陶,紫砂壶原产地,紫砂壶名家,紫砂壶鉴别">
-    <meta name="description" content="方寸网系方寸堂的紫砂壶线上门户综合平台，为壶友提供宜兴紫砂壶作品和官方权威的信息服务，每件作品都出自作者本人并采用纯天然宜兴紫砂泥料手工制作而成。">
+    <title>方寸堂 - 只为不同！中国宜兴紫砂壶品牌倡导者</title>
+    <meta name="keywords" content="方寸网,方寸堂,全手工紫砂壶,真正宜兴紫砂壶,宜兴,宜兴紫砂陶,紫砂壶原产地,紫砂壶名家,紫砂壶鉴别">
+    <meta name="description" content="方寸堂系方寸堂的紫砂壶线上门户综合平台，为壶友提供宜兴紫砂壶作品和官方权威的信息服务，每件作品都出自作者本人并采用纯天然宜兴紫砂泥料手工制作而成。">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="//cdn.fangcun.com/static/img/favicon.png" type="image/png" />
