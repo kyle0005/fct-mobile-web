@@ -98,7 +98,6 @@ class RefundController extends BaseController
             FctValidator::hasRequire($orderId, "订单号");
             FctValidator::hasRequire($orderProductId, "订单宝贝");
             FctValidator::hasRequire($reason, "申请原因");
-            FctValidator::hasRequire($description, "申请描述");
 
             Refund::saveRefund($orderId, $orderProductId, $serviceType, $reason, $description, $images);
 
