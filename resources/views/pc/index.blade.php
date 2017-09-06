@@ -230,7 +230,41 @@
             </div>
         </div>
     </div>
-    <div id="contact" class="yw-footer">
+
+    <div id="contact" class="yw-contact">
+        <i class="yw-contact-bg"></i>
+        <div class="yw-constr">
+            <div class="video-container">
+                <a href="javascript:;" class="js-poster v-poster">
+                    <img src="https://img.yzcdn.cn/job/www/video.jpg">
+                </a>
+                <video data-src="http://dl.yzcdn.cn/video/youzan-job-20150815.mp4" class="js-v bot-v" controls></video>
+            </div>
+            <div class="yw-contact-detail">
+                <dl class="yw-contact-dl">
+                    <dt class="yw-contact-dt">商务合作</dt>
+                    <dd class="yw-contact-dd">刘先生</dd>
+                    <dd class="yw-contact-dd">电话：234524280882</dd>
+                </dl>
+                <dl class="yw-contact-dl">
+                    <dt class="yw-contact-dt">加入我们</dt>
+                    <dd class="yw-contact-dd">刘先生</dd>
+                    <dd class="yw-contact-dd">电话：234524280882</dd>
+                </dl>
+                <dl class="yw-contact-dl">
+                    <dt class="yw-contact-dt">公司地址</dt>
+                    <dd class="yw-contact-dd">xxxxxxxx</dd>
+                    <dd class="yw-contact-dd">xxxxxxxxxxx</dd>
+                </dl>
+            </div>
+            <div class="yw-contact-map">
+                <span class="yw-local-sh"><i class="icon-local"></i>上海</span>
+                <span class="yw-local-yx">宜兴<i class="icon-local"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="yw-footer">
         <div class="yw-constr">
             <div class="yw-footerbox">
                 <p class="yw-footer-copyright">
