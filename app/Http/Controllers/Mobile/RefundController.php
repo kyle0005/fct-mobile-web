@@ -85,13 +85,13 @@ class RefundController extends BaseController
         if ($images)
         {
             $images = json_decode($images, true);
-            if (!$images)
-            {
-                return $this->autoReturn("图片上传有误");
-            }
-
-            $images = implode(',', $images);
+            if ($images)
+                $images = implode(',', $images);
+            else
+                $images = "";
         }
+        else
+            $images = "";
 
         try
         {
