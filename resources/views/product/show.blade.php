@@ -413,7 +413,7 @@
     <script src="{{ fct_cdn('/js/hammer.js') }}"></script>
     <script src="{{ fct_cdn('/js/detail.js') }}"></script>
     {!! wechat_share($share) !!}
-    <script>
+{{--    <script>
         var _mtac = {};
         (function() {
             var mta = document.createElement("script");
@@ -423,5 +423,5 @@
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(mta, s);
         })();
-    </script>
+    </script>--}}
 @endsection
