@@ -40,9 +40,9 @@ class ProductController extends BaseController
         if (!$result) return $this->autoReturn('没有找到此产品内容');
 
         //处理content图片延迟加载
-/*        $result->content = str_replace(
+        $result->content = str_replace(
             'src="', 'src="'.fct_cdn('/images/img_loader.gif').'" v-view="',
-            $result->content);*/
+            $result->content);
 
         $shareUrl = url('products/'. $id);
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));

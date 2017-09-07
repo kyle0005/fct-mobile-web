@@ -200,8 +200,8 @@
                     <span class="right">@{{ product.code }}</span>
                 </div>
             </section>
-            <section class="edit-context" v-html="product.content">
-                @{{ product.content }}
+            <section class="edit-context">
+                {!! $product->content !!}
             </section>
         </div>
     </script>
