@@ -40,9 +40,26 @@ class ProductController extends BaseController
         if (!$result) return $this->autoReturn('没有找到此产品内容');
 
         //处理content图片延迟加载
-        $result->content = str_replace(
+/*        $result->content = str_replace(
             'src="', 'src="'.fct_cdn('/images/img_loader.gif').'" v-view="',
-            $result->content);
+            $result->content);*/
+        $images = [];
+        $contentImages = [];
+        preg_match_all("/src=[\"|'| ]{0,}((?!\").)+\"/is", $result->content, $images);
+        if ($images && $images[0])
+        {
+            $content = $result->content;
+            foreach ($images[0] as $key=>$val) {
+                $imageKey = "image" . $key;
+                $content = str_replace($val, 'v-view="product.cImgs.'.$imageKey.'" src="'.fct_cdn('/images/img_loader.gif').'"', $content);
+                $val = str_replace("src=", "", str_replace('"', '', $val));
+                $contentImages[$imageKey] = $val;
+            }
+
+            $result->content = $content;
+        }
+
+        $result->cImgs = $contentImages;
 
         $shareUrl = url('products/'. $id);
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
