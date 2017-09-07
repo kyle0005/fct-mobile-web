@@ -247,7 +247,7 @@
                         </a>
                     </li>
                 </ul>
-                <a href="{{ url('/') }}" class="for-more">点击了解更多》</a>
+                <a :href="'{{ url('artists') }}/' + artistsingle.id" class="for-more">点击了解更多》</a>
             </section>
 
         </div>
