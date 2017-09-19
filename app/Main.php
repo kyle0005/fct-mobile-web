@@ -114,9 +114,9 @@ class Main
             }
 
             $cacheResult = [
-                'articles' => $result->data ? $result->data->articleList : "",
-                'products' => $result->data ? $result->data->productList : "",
-                'artists' => $result->data ? $result->data->artistList : "",
+                'articles' => $result->data ? $result->data->articleList : [],
+                'products' => $result->data ? $result->data->productList : [],
+                'artists' => $result->data ? $result->data->artistList : [],
             ];
 
             Cache::put($cacheKey, $cacheResult, $cacheTime);
