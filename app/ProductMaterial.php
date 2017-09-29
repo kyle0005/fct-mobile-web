@@ -43,7 +43,7 @@ class ProductMaterial
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
 
-        if ($cacheResult->products) {
+        if ($cacheResult && $cacheResult->products) {
             $products = [];
             $temp = 0;
             foreach ($cacheResult->products as $product) {
@@ -64,50 +64,20 @@ class ProductMaterial
 
     public static function getMaterialsByIds($materialIds, $productId)
     {
-        $cacheKey = 'materials_product_' . $productId;
-        $cacheTime = 30;
-        $cacheResult = false;
+        if (!$materialIds)
+            throw new BusinessException('守艺人不存在');
 
-        if (Cache::has($cacheKey)) {
-            $cacheResult = Cache::get($cacheKey);
+        $idArr = explode(',', $materialIds);
+        if (!$materialIds)
+            throw new BusinessException('守艺人不存在');
+
+        $materials = [];
+        foreach ($idArr as $value)
+        {
+            $materials[] = self::getMaterialAndProducts($value, $productId);
         }
 
-        if (!$cacheResult) {
-            $result = Base::http(
-                env('API_URL') . sprintf('%s/by-product', self::$resourceUrl),
-                [
-                    'product_id' => $productId,
-                    'ids' => $materialIds,
-                ],
-                [],
-                'GET'
-            );
 
-            if ($result->code != 200) {
-                throw new BusinessException($result->msg);
-            }
-
-            $cacheResult = $result->data;
-            Cache::put($cacheKey, $cacheResult, $cacheTime);
-        }
-
-        if ($cacheResult && isset($cacheResult->products) && $cacheResult->products) {
-            $products = [];
-            $temp = 0;
-            foreach ($cacheResult->products as $product) {
-                if ($product->id != $productId)
-                {
-                    $products[] = $product;
-                    $temp++;
-                }
-
-                if ($temp == 3)
-                    break;
-            }
-
-            $cacheResult->products = $products;
-        }
-
-        return $cacheResult;
+        return $materials;
     }
 }
