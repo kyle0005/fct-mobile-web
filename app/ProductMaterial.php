@@ -91,7 +91,7 @@ class ProductMaterial
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
 
-        if ($cacheResult && $cacheResult->products) {
+        if ($cacheResult && isset($cacheResult->products) && $cacheResult->products) {
             $products = [];
             $temp = 0;
             foreach ($cacheResult->products as $product) {
