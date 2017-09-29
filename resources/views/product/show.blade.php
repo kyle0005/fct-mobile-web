@@ -241,7 +241,7 @@
                     <div class="text">相关宝贝</div>
                 </div>
                 <ul class="others">
-                    <li v-for="p in artistsingle.products">
+                    <li v-for="p in artistsingle.products" v-if="p.id != prdocut.id">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
@@ -288,7 +288,7 @@
                     <div class="text">相关宝贝</div>
                 </div>
                 <ul class="others">
-                    <li v-for="p in pugsingle.products">
+                    <li v-for="p in pugsingle.products" v-if="p.id != prdocut.id">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
