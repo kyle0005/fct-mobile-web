@@ -113,7 +113,7 @@ class Artist
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
 
-        if ($cacheResult->products) {
+        if ($cacheResult && $cacheResult->products) {
             $products = [];
             $temp = 0;
             foreach ($cacheResult->products as $product) {
