@@ -37,12 +37,12 @@ class FavoriteController extends BaseController
 
         if ($fromId < 1)
         {
-            return $this->returnAjaxError('收藏来源错误');
+            return $this->autoReturn('收藏来源错误');
         }
 
         if ($fromType != '0' && !$fromType)
         {
-            return $this->returnAjaxError('收藏来源错误');
+            return $this->autoReturn('收藏来源错误');
         }
 
         try
