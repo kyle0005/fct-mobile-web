@@ -24,12 +24,12 @@ class Authenticate
         Member::cleanAuth();
         if ($request->ajax())
         {
-            return new Response(json_encode([
+            return new Response([
                 'code' => 404,
                 'message' => '登录授权已过期，请重新登录',
                 'url' => url('login'),
                 'data' => [],
-            ], JSON_UNESCAPED_UNICODE));
+            ]);
         }
 
         FctCommon::cacheRedirectURI($request->getUri(), true);
