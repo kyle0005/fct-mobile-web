@@ -150,9 +150,10 @@
             <section class="product-context">
                 <strong class="title">@{{ product.name }}</strong>
                 <div class="vice-title">@{{ product.subTitle }}</div>
-                <div class="price">
+                <div class="price" v-if="product.promotionPrice > 0">
                     <small class="pri-mark">￥</small>@{{ product.promotionPrice }}&ensp;<del class="del-price" v-if="product.hasDiscount">@{{ product.salePrice }}</del>
                 </div>
+                <div class="price" v-else>暂无售价</div>
                 <div class="sale-info">
                     <img src="{{ fct_cdn('/images/items.png') }}">包邮&emsp;
                     <img src="{{ fct_cdn('/images/items.png') }}">保真保值&emsp;
