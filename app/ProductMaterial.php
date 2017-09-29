@@ -91,6 +91,23 @@ class ProductMaterial
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
 
+        if ($cacheResult->products) {
+            $products = [];
+            $temp = 0;
+            foreach ($cacheResult->products as $product) {
+                if ($product->id != $productId)
+                {
+                    $products[] = $product;
+                    $temp++;
+                }
+
+                if ($temp == 3)
+                    break;
+            }
+
+            $cacheResult->products = $products;
+        }
+
         return $cacheResult;
     }
 }
