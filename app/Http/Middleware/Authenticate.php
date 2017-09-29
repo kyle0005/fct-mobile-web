@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\FctCommon;
 use App\Member;
 use Closure;
+use Illuminate\Http\Response;
 
 class Authenticate
 {
@@ -23,12 +24,12 @@ class Authenticate
         Member::cleanAuth();
         if ($request->ajax())
         {
-            return json_encode([
+            return new Response(json_encode([
                 'code' => 404,
                 'message' => '登录授权已过期，请重新登录',
                 'url' => url('login'),
                 'data' => [],
-            ], JSON_UNESCAPED_UNICODE);
+            ], JSON_UNESCAPED_UNICODE));
         }
 
         FctCommon::cacheRedirectURI($request->getUri(), true);
