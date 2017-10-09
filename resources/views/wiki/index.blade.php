@@ -72,7 +72,7 @@
         <div class="copyright-container">
             <div class="info">
                 Copyright&nbsp&copy;&nbsp;2017&nbsp;,fangcuntang&nbsp;Co.,Ltd.All&nbsp;Rights&nbsp;Reserved.<br>
-                宜兴方寸堂文化传媒有限公司&ensp;|&ensp;<a href="tel:4000510570" class="law">400-0510-570</a><br>
+                宜兴方寸堂文化传媒有限公司&ensp;|&ensp;<a href="tel:051087410606" class="law">0510-87410606</a><br>
                 <span class="bottom">苏公安备32028202000436号&nbsp;苏ICP备14043090号-4</span>
             </div>
         </div>
