@@ -36,7 +36,7 @@ class MemberAddressController extends BaseController
             'address' => json_encode((object)[]),
         ];
 
-        $this->cacheRedirectSourceUrl('', true);
+        $this->cacheRedirectSourceUrl($request->server('HTTP_REFERER'), true);
 
         return view('address.form', $result);
     }
@@ -47,7 +47,7 @@ class MemberAddressController extends BaseController
         try
         {
             $result = MemberAddress::getAddress($id);
-            $this->cacheRedirectSourceUrl('', true);
+            $this->cacheRedirectSourceUrl($request->server('HTTP_REFERER'), true);
         }
         catch (BusinessException $e)
         {
