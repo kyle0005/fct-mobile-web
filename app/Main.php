@@ -103,7 +103,7 @@ class Main
                     'article_code' => ',3,',
                     'article_count' => 4,
                     'product_count' => 10,
-                    'artist_count' => 7,
+                    'artist_count' => 8,
                 ],
                 [],
                 'GET'
