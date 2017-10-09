@@ -47,6 +47,7 @@ class MemberAddressController extends BaseController
         try
         {
             $result = MemberAddress::getAddress($id);
+            $this->cacheRedirectSourceUrl('', true);
         }
         catch (BusinessException $e)
         {
