@@ -105,7 +105,7 @@
                             <i class="yw-mid-i"></i>
                         </div>
                     </div>
-                    <?php $series = $key % 3 || ($key % 3 && $key % 2 != 0) ? 0 : 1;?>
+                    <?php $series = $key % 3 ? 0 : 1;?>
                     @else
                     <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
                         <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
@@ -119,7 +119,7 @@
                         </div>
                     </div>
                 </li>
-                <?php $series = $key % 3 || ($key % 3 && $key % 2 != 0) ? 1 : 0;?>
+                <?php $series = $key % 3 ? 1 : 0;?>
                 @endif
                 @endforeach
                 @if(count($products) % 2)
