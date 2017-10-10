@@ -119,7 +119,7 @@
                         </div>
                     </div>
                 </li>
-                    <?php $series = ($key % 4 != 0) ? 0 : 1;?>
+                    <?php $series = ($key % 4 == 0) ? 0 : 1;?>
                 @endif
                 @endforeach
                 @if(count($products) % 2)
