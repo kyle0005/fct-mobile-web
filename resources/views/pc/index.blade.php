@@ -99,7 +99,7 @@
                         <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
-                                <h6 class="yw-ip-name">{{ $product->name }} {{$key}} {{$series}}</h6>
+                                <h6 class="yw-ip-name">{{ $product->name }}</h6>
                                 <i class="yw-copy-line"></i>
                                 <p class="yw-ip-text"><img src="{{ $qrcodeUrl.env('APP_URL') . '/products/' . $product->id }}"></p>
                             </div>
@@ -113,7 +113,7 @@
                         <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
-                                <h6 class="yw-ip-name">{{ $product->name }} {{$key}} {{$series}}</h6>
+                                <h6 class="yw-ip-name">{{ $product->name }}</h6>
                                 <i class="yw-copy-line"></i>
                                 <p class="yw-ip-text"><img src="{{ $qrcodeUrl.env('APP_URL') . '/products/' . $product->id }}"></p>
                             </div>
