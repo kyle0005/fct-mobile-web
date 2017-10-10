@@ -92,7 +92,7 @@
             <ul class="yw-copy-center">
             @foreach($products as $key => $product)
                 <?php $series = ($key % 4 == 0) ? 0 : 1;?>
-                <?php $series = $series && ($key % 4 == 0) ? 0 : 1;?>
+                <?php $series = $series && ($key % 4 != 0) ? 0 : 1;?>
                 @if (!($key % 2))
                 <li class="yw-copy-li">
                     <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
