@@ -41,7 +41,7 @@ class ProductController extends BaseController
 
         //处理content图片延迟加载
 /*        $result->content = str_replace(
-            'src="', 'src="'.fct_cdn('/images/img_loader.gif').'" v-view="',
+            'src="', 'src="'.fct_cdn('/img/mobile/img_loader.gif').'" v-view="',
             $result->content);*/
         $images = [];
         $contentImages = [];
@@ -51,7 +51,7 @@ class ProductController extends BaseController
             $content = $result->content;
             foreach ($images[0] as $key=>$val) {
                 $imageKey = "image" . $key;
-                $content = str_replace($val, 'v-view="product.cImgs.'.$imageKey.'" src="'.fct_cdn('/images/img_loader.gif').'"', $content);
+                $content = str_replace($val, 'v-view="product.cImgs.'.$imageKey.'" src="'.fct_cdn('/img/mobile/img_loader.gif').'"', $content);
                 $val = str_replace("src=", "", str_replace('"', '', $val));
                 $contentImages[$imageKey] = $val;
             }

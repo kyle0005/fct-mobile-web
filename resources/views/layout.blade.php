@@ -24,7 +24,7 @@
                     <i class="fa fa-bars"></i>
                 </li>
                 <li class="logo" @click="toIndex()">
-                    <img src="{{ fct_cdn('/images/logo.png') }}">
+                    <img src="{{ fct_cdn('/img/mobile/logo.png') }}">
                 </li>
                 <li class="user" @click="toLogin()">
                     <span class="img-container">
@@ -43,19 +43,19 @@
                     <ul class="lines clearfix">
                         <li class="item">
                             <a href="{{ url('artists') }}">
-                                <img src="{{ fct_cdn('/images/menu1.png') }}">
+                                <img src="{{ fct_cdn('/img/mobile/menu1.png') }}">
                                 <span>守艺人</span>
                             </a>
                         </li>
                         <li class="item">
                             <a href="{{ url('wiki') }}">
-                                <img src="{{ fct_cdn('/images/menu2.png') }}">
+                                <img src="{{ fct_cdn('/img/mobile/menu2.png') }}">
                                 <span>百科</span>
                             </a>
                         </li>
                         <li class="item">
                             <a href="{{ url('welcome') }}">
-                                <img src="{{ fct_cdn('/images/menu5.png') }}">
+                                <img src="{{ fct_cdn('/img/mobile/menu5.png') }}">
                                 <span>品牌理念</span>
                             </a>
                         </li>

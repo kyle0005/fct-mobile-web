@@ -14,24 +14,24 @@
             <ul class="prolist" v-if="pro_list && pro_list.length > 0">
                 <li class="item" v-for="item in pro_list">
                     <a :href="'/products/' + item.id">
-                        <span class="pro-main"><img v-view="item.videoImg" src="{{ fct_cdn('/images/img_loader.gif') }}"></span>
+                        <span class="pro-main"><img v-view="item.videoImg" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}"></span>
                         <span class="title">@{{ item.name }}</span>
                         <span class="description" v-html="item.intro"></span>
                         <span class="pro-lists">
                             <span class="imgs" v-for="image in item.multiImages">
-                                <img v-view="image" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                                <img v-view="image" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             </span>
                         </span>
                         <span class="ops">
-                          <img src="{{ fct_cdn('/images/clickAmount.png') }}"><span>@{{ item.viewCount }}</span>
-                          <img src="{{ fct_cdn('/images/saleAmount.png') }}"><span>@{{ item.commentCount }}</span>
+                          <img src="{{ fct_cdn('/img/mobile/clickAmount.png') }}"><span>@{{ item.viewCount }}</span>
+                          <img src="{{ fct_cdn('/img/mobile/saleAmount.png') }}"><span>@{{ item.commentCount }}</span>
                         </span>
                     </a>
                 </li>
             </ul>
 
             <no-data v-if="nodata"></no-data>
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+            <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
         <div class="copyright-container">
             <div class="info">

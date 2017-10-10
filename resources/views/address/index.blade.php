@@ -15,9 +15,9 @@
                             <span class="">默认地址</span>
                         </label>
                         <div class="options-container">
-                            <a href="javascript:;" @click="edit(item)"><img src="{{ fct_cdn('/images/edit.png') }}"><span class="items">编辑</span></a>
+                            <a href="javascript:;" @click="edit(item)"><img src="{{ fct_cdn('/img/mobile/edit.png') }}"><span class="items">编辑</span></a>
                             <a href="javascript:;">
-                                <img src="{{ fct_cdn('/images/del.png') }}">
+                                <img src="{{ fct_cdn('/img/mobile/del.png') }}">
                                 <span class="items">
                                   <subpost :txt="subText" :ref="'subpost' + index" @callback="del({item,index})" @succhandle="succhandle"></subpost>
                                 </span>

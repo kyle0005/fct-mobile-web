@@ -9,7 +9,7 @@
         </section>
 
         <no-data v-if="nodata"></no-data>
-        <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+        <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
 
@@ -36,7 +36,7 @@
                         <div class="info clearfix">
                             <span class="text">详细信息</span>
                             <a href="javascript:;" class="pin" :class="{open:show_detail}" @click="showdetail()">
-                                <img src="{{ fct_cdn('/images/pin.png') }}">
+                                <img src="{{ fct_cdn('/img/mobile/pin.png') }}">
                             </a>
                         </div>
                     </div>
@@ -46,7 +46,7 @@
                 <ul class="pros clearfix">
                     <li v-for="(o, i) in couponitem.goods">
                         <a :href="'{{ url('products') }}/' + o.id" class="link">
-                            <img v-view="o.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="o.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                         </a>
                     </li>
                 </ul>

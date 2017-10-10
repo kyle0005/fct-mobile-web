@@ -3,7 +3,7 @@
     <div class="aftersaledetail-container" id="aftersaledetail" v-cloak>
         <section class="product">
             <div class="pro-item img-container">
-                <img v-view="product.orderGoods.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                <img v-view="product.orderGoods.img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
             </div>
             <div class="pro-item title-container">
                 <div class="title">@{{ product.orderGoods.name }}</div>
@@ -47,7 +47,7 @@
                 </div>
                 <div class="line">
                     <div class="img" v-for="(img, i) in item.images">
-                        <img v-view="img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                        <img v-view="img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                     </div>
                 </div>
             </div>

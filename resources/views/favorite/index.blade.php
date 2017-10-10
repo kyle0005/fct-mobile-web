@@ -9,18 +9,18 @@
         <div class="collection-list">
             <div class="item" v-for="(item, index) in collection" v-if="collection && collection.length > 0">
                 <div class="img-container">
-                    <img v-view="item.image" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                    <img v-view="item.image" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                 </div>
                 <div class="content">
                     <span class="title">@{{ item.name }}&emsp;<span v-if="item.title">@{{ item.title }}</span></span>
                     <a href="javascript:;" class="close" @click="del(item, index)">
-                        <img src="{{ fct_cdn('/images/close.png') }}">
+                        <img src="{{ fct_cdn('/img/mobile/close.png') }}">
                     </a>
                 </div>
             </div>
 
             <no-data v-if="nodata"></no-data>
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+            <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>

@@ -28,13 +28,13 @@
             <li>
                 <a href="{{ url('/') .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}" class="link">
                     <span class="left">
-                      <img src="{{ fct_cdn('/images/logo2.png') }}">
+                      <img src="{{ fct_cdn('/img/mobile/logo2.png') }}">
                     </span>
                     <span class="center">
                       <span class="title">方寸堂 - 只为不同</span>
                       <span class="t2">汇聚东方美学匠心之作的紫砂交流电商平台。</span>
                     </span>
-                    <span class="right"><img src="{{ fct_cdn('/images/share.png') }}"></span>
+                    <span class="right"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></span>
                 </a>
             </li>
         </ul>
@@ -42,7 +42,7 @@
             <li v-for="(item, index) in shareList">
                 <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="link">
                     <span class="left">
-                        <img v-view="item.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                        <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                     </span>
                     <span class="center">
                       <span class="title">@{{ item.name }}</span>
@@ -51,13 +51,13 @@
                       <span class="t2" v-if="item.commission instanceof Array">佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
                       <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission }}</strong></span>
                     </span>
-                    <span class="right"><img src="{{ fct_cdn('/images/share.png') }}"></span>
+                    <span class="right"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></span>
                 </a>
             </li>
         </ul>
 
         <no-data v-if="nodata"></no-data>
-        <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+        <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
 @endsection

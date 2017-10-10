@@ -9,7 +9,7 @@
                 </div>
                 <div class="product">
                     <div class="pro-item img-container">
-                        <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                        <img v-view="item.img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                     </div>
                     <div class="pro-item title-container">
                         <div class="title">@{{ item.name }}</div>
@@ -30,7 +30,7 @@
         </ul>
 
         <no-data v-if="nodata"></no-data>
-        <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+        <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
 @endsection

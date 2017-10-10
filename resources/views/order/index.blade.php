@@ -24,7 +24,7 @@
                 <ul class="list">
                     <li class="product" v-for="(good, index) in item.orderGoods" @click="todetail(item)">
                         <div class="pro-item img-container">
-                            <img v-view="good.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="good.img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                         </div>
                         <div class="pro-item title-container">
                             <div class="title">@{{ good.name }}</div>
@@ -57,7 +57,7 @@
         </div>
 
         <no-data v-if="nodata"></no-data>
-        <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+        <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
 
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
         <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="orderId" :msg="msg"></confirm>

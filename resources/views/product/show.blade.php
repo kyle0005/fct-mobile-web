@@ -15,7 +15,7 @@
             </keep-alive>
         </div>
         <a href="javascript:;" class="top" @click="top()">
-            <img src="{{ fct_cdn('/images/top.png') }}">
+            <img src="{{ fct_cdn('/img/mobile/top.png') }}">
         </a>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
         <footer class="foot-container">
@@ -26,7 +26,7 @@
                             <div class="choose" @click.stop="">
                                 <div class="clearfix">
                                     <div class="pro-img">
-                                        <img src="{{ fct_cdn('/images/resource/pro01.png') }}">
+                                        <img src="{{ fct_cdn('/img/mobile/resource/pro01.png') }}">
                                     </div>
                                     <div class="info">
                                         <span class="title">@{{ product.name }}</span>
@@ -67,12 +67,12 @@
                             <ul class="nav">
                                 <li class="message" @click="">
                                     <a href="{!! $chat_url !!}" class="foot-link">
-                                        <img src="{{ fct_cdn('/images/msg.png') }}">
+                                        <img src="{{ fct_cdn('/img/mobile/msg.png') }}">
                                     </a>
                                 </li>
                                 <li class="cart">
                                     <a href="{{ url('carts') }}" class="foot-link">
-                                        <img src="{{ fct_cdn('/images/cart.png') }}">
+                                        <img src="{{ fct_cdn('/img/mobile/cart.png') }}">
                                         <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
                                     </a>
                                 </li>
@@ -94,12 +94,12 @@
                 <ul class="nav">
                     <li class="message" @click="">
                         <a href="{!! $chat_url !!}" class="foot-link">
-                            <img src="{{ fct_cdn('/images/msg.png') }}">
+                            <img src="{{ fct_cdn('/img/mobile/msg.png') }}">
                         </a>
                     </li>
                     <li class="cart">
                         <a href="{{ url('carts') }}" class="foot-link">
-                            <img src="{{ fct_cdn('/images/cart.png') }}">
+                            <img src="{{ fct_cdn('/img/mobile/cart.png') }}">
                             <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
                         </a>
                     </li>
@@ -125,7 +125,7 @@
             <div class="video-inner">
                 <div v-if="!isVideoLoad" class="play-container" @click="loadVideo()">
                     <img :src="poster" class="poster-img" />
-                    <img src="{{ fct_cdn('/images/video_play.png') }}" class="poster-play" />
+                    <img src="{{ fct_cdn('/img/mobile/video_play.png') }}" class="poster-play" />
                 </div>
                 <video class="m-video" :src="url" :id="id" preload="metadata" controls v-else></video>
             </div>
@@ -155,9 +155,9 @@
                 </div>
                 <div class="price" v-else>暂无售价</div>
                 <div class="sale-info">
-                    <img src="{{ fct_cdn('/images/items.png') }}">包邮&emsp;
-                    <img src="{{ fct_cdn('/images/items.png') }}">保真保值&emsp;
-                    <img src="{{ fct_cdn('/images/items.png') }}">30天无忧退换货
+                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">包邮&emsp;
+                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">保真保值&emsp;
+                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">30天无忧退换货
                 </div>
                 <div class="view">
                     <div class="inner">
@@ -167,7 +167,7 @@
                 </div>
             </section>
             <section class="coupon" v-if="product.hasCoupon">
-                <img src="{{ fct_cdn('/images/d_coup.png') }}">领取优惠券
+                <img src="{{ fct_cdn('/img/mobile/d_coup.png') }}">领取优惠券
                 <div class="get-coupon">
                     <a :href="product.coupon_url" class="coup-link">领取</a>
                 </div>
@@ -208,7 +208,7 @@
     </script>
     <script type="text/x-template" id="artist">
         <div class="artist-contianer">
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+            <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <no-data v-if="nodata"></no-data>
             <div class="top-container" v-if="titleshow">
                 <div class="inner o">
@@ -243,7 +243,7 @@
                 <ul class="others">
                     <li v-for="p in artistsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
-                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="p.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
@@ -255,7 +255,7 @@
     </script>
     <script type="text/x-template" id="pug">
         <div class="artist-contianer">
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+            <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <no-data v-if="nodata"></no-data>
             <div class="top-container" v-if="titleshow">
                 <div class="inner o">
@@ -290,7 +290,7 @@
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
-                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="p.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
@@ -301,7 +301,7 @@
     <script type="text/x-template" id="service">
         <div>
             <no-data v-if="nodata"></no-data>
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+            <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <section class="service">
                 <div class="service-container">
                     <section class="sec">
@@ -360,7 +360,7 @@
                     <div class="user-info clearfix">
                         <div class="left clearfix">
                             <div class="user-photo">
-                                <img v-view="item.headPortrait" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                                <img v-view="item.headPortrait" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             </div>
                             <div class="user-opt">
                                 <div>@{{ item.userName }}</div>
@@ -375,7 +375,7 @@
                         <span class="text" v-html="item.content"></span>
                         <span class="imgs">
                         <img v-img="{ group: item.id, exsrc: item.largePictures[index]}"
-                             v-view="img_item" src="{{ fct_cdn('/images/img_loader.gif') }}"
+                             v-view="img_item" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}"
                              v-for="(img_item, index) in item.pictures">
                       </span>
                     </div>
@@ -383,7 +383,7 @@
             </ul>
 
             <no-data v-if="nodata"></no-data>
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+            <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </section>
     </script>
 @endsection

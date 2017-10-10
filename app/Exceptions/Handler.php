@@ -46,7 +46,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
 
-        $shareAvatar = fct_cdn('/images/nologin-head.png');
+        $shareAvatar = fct_cdn('/img/mobile/nologin-head.png');
         view()->share('shareAvatar', $shareAvatar);
         view()->share('categories', ProductCategory::getCategories());
 

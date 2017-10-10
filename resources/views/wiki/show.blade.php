@@ -36,14 +36,14 @@
                 <ul class="others" v-if="detail.productList && detail.productList.length > 0">
                     <li v-for="p in detail.productList">
                         <a :href="'{{ url('products') }}/' + p.id" class="item">
-                            <img v-view="p.defaultImage" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="p.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
                 </ul>
             </section>
             <no-data v-if="nodata"></no-data>
-            <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+            <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </section>
     </div>
 @endsection

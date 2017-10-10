@@ -16,7 +16,7 @@
                     </div>
                 </li>
                 <li class="items clearfix">
-                    <div class="left"><img src="{{ fct_cdn('/images/valicode.png') }}"></div>
+                    <div class="left"><img src="{{ fct_cdn('/img/mobile/valicode.png') }}"></div>
                     <div class="right">
                         <input type="text" class="val-code" placeholder="请输入验证码" name="mobileCode"
                                maxlength="6" v-model="mobileCode">

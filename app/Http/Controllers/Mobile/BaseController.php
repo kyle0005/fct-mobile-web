@@ -21,7 +21,7 @@ class BaseController extends Controller
 
         $member = $this->memberLogged(false);
         //默认头像
-        $shareAvatar = fct_cdn('/images/nologin-head.png');
+        $shareAvatar = fct_cdn('/img/mobile/nologin-head.png');
         if ($member) {
 
             $shareAvatar = $member->headPortrait;

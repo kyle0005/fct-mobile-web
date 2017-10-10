@@ -11,7 +11,7 @@
                         </label>
                         <a :href="'{{ url('products') }}/' + item.goodsId" class="product col">
                           <span class="pro-item pro-img">
-                            <img v-view="item.img" src="{{ fct_cdn('/images/img_loader.gif') }}">
+                            <img v-view="item.img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                           </span>
                           <span class="pro-item pro-t">
                             <span class="t">
@@ -34,7 +34,7 @@
                         </div>
                     </li>
                 </ul>
-                <img src="{{ fct_cdn('/images/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+                <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             </div>
             <section class="guess-container">
                 <div class="title">
@@ -76,7 +76,7 @@
         <div class="noData" v-if="(pro_list && pro_list.length <= 0) || nodata">
             <div class="inner">
                 <a href="javascript:;">
-                    <img src="{{ fct_cdn('/images/nocart.png') }}" class="no-cart">
+                    <img src="{{ fct_cdn('/img/mobile/nocart.png') }}" class="no-cart">
                     <span class="no">去添加点什么吧？</span>
                 </a>
             </div>
