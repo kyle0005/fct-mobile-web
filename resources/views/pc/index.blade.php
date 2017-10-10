@@ -92,6 +92,7 @@
             <ul class="yw-copy-center">
             @foreach($products as $key => $product)
                 <?php $series = ($key % 4 == 0) ? 0 : 1;?>
+                <?php $series = $series && ($key % 4 == 0) ? 0 : 1;?>
                 @if (!($key % 2))
                 <li class="yw-copy-li">
                     <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
@@ -105,7 +106,6 @@
                             <i class="yw-mid-i"></i>
                         </div>
                     </div>
-                    <?php $series = $series ? 0 : 1;?>
                 @else
                     <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
                         <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
