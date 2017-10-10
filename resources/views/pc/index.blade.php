@@ -90,27 +90,28 @@
         <h3 class="yw-home-h3">原创好物</h3>
         <div id="ywCopyX" class="yw-copy-x">
             <ul class="yw-copy-center">
-                <?php $series = 0;?>
-                @foreach($products as $key => $product)
-                    @if (!($key % 2))
+            <?php $series = 0;?>
+            @foreach($products as $key => $product)
+                @if (!($key % 2))
                 <li class="yw-copy-li">
                     <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
                         <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
-                                <h6 class="yw-ip-name">{{ $product->name }}</h6>
+                                <h6 class="yw-ip-name">{{ $product->name }}{{$series}}</h6>
                                 <i class="yw-copy-line"></i>
                                 <p class="yw-ip-text"><img src="{{ $qrcodeUrl.env('APP_URL') . '/products/' . $product->id }}"></p>
                             </div>
                             <i class="yw-mid-i"></i>
                         </div>
                     </div>
-                    @else
+                    <?php $series = $key % 3 ? 0 : 1;?>
+                @else
                     <div class="yw-copy-part {{ $series ? 'yw-copy-part-l' : 'yw-copy-part-s'}}">
                         <img class="yw-ip-img" data-src="{{$series ? $product->defaultImage : $product->videoImage }}" alt="{{ $product->name }}">
                         <div class="yw-ip-desc">
                             <div class="yw-mid-con">
-                                <h6 class="yw-ip-name">{{ $product->name }}</h6>
+                                <h6 class="yw-ip-name">{{ $product->name }}{{$series}}</h6>
                                 <i class="yw-copy-line"></i>
                                 <p class="yw-ip-text"><img src="{{ $qrcodeUrl.env('APP_URL') . '/products/' . $product->id }}"></p>
                             </div>
@@ -118,8 +119,8 @@
                         </div>
                     </div>
                 </li>
+                    <?php $series = $key % 3 ? 1 : 0;?>
                 @endif
-                <?php $series = $key % 3 ? 0 : 1;?>
                 @endforeach
                 @if(count($products) % 2)
                 </li>
