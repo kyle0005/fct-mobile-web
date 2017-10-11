@@ -239,7 +239,7 @@
                 <a href="javascript:;" class="js-poster v-poster">
                     <img src="https://img.yzcdn.cn/job/www/video.jpg">
                 </a>
-                <video data-src="http://dl.yzcdn.cn/video/youzan-job-20150815.mp4" class="js-v bot-v" controls></video>
+                <video data-src="" class="js-v bot-v" controls></video>
             </div>
             <div class="yw-contact-detail">
                 <dl class="yw-contact-dl">

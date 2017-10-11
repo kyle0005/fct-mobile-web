@@ -50,9 +50,10 @@ class Base
 
         try
         {
-            $client = new Client();
             if (env('APP_SECURE'))
-                $client->setDefaultOption('verify', false);
+                $client = new Client(['verify' => base_path() . '/cacert.pem']);
+            else
+                $client = new Client();
 
             $result = $client->request($method, $url, $options);
         }
