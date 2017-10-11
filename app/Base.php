@@ -44,17 +44,15 @@ class Base
             $options['multipart'] = $multiparts;
         }
 
-        if ($headers) {
+        if ($headers)
             $options['headers'] = $headers;
-        }
+
+        if (env('APP_SECURE'))
+            $options['verify'] = true;
 
         try
         {
-            if (env('APP_SECURE'))
-                $client = new Client(['verify' => base_path() . '/cacert.pem']);
-            else
-                $client = new Client();
-
+            $client = new Client();
             $result = $client->request($method, $url, $options);
         }
         catch (BadResponseException $e)
