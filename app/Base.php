@@ -53,7 +53,10 @@ class Base
         try
         {
             $client = new Client();
-            $result = $client->request($method, $url, $options);
+            if ($method == 'GET')
+                $result = $client->get($url, $options);
+            else
+                $result = $client->post($url, $options);
         }
         catch (BadResponseException $e)
         {
