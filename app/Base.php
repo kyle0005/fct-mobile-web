@@ -44,12 +44,13 @@ class Base
             $options['multipart'] = $multiparts;
         }
 
-        if ($headers)
+        if ($headers) {
             $options['headers'] = $headers;
+        }
 
         try
         {
-            $client = new Client(env('APP_SECURE') ? ['verify' => true] : []);
+            $client = new Client();
             $result = $client->request($method, $url, $options);
         }
         catch (BadResponseException $e)
