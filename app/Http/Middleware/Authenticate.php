@@ -34,6 +34,6 @@ class Authenticate
 
         FctCommon::cacheRedirectURI($request->getUri(), true);
 
-        return redirect(FctCommon::hasWeChat() ? 'oauth' : 'login');
+        return redirect(url(FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')));
     }
 }
