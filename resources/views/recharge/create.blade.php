@@ -37,5 +37,5 @@
         config.rechargeUrl="{{ url('my/account/recharge') }}";
         config.charge = {!! json_encode($recharge) !!};
     </script>
-    <script src="{{ fct_cdn('/js/recharge.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/recharge.js') }}"></script>
 @endsection

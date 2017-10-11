@@ -111,5 +111,5 @@
         config.cancel_url = "{{ url('my/orders') }}";
         config.finish_url = "{{ url('my/orders') }}";
     </script>
-    <script src="{{ fct_cdn('/js/order.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/order.js') }}"></script>
 @endsection

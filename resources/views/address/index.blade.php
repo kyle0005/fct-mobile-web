@@ -42,5 +42,5 @@
         config.delAddrUrl = "{{ url('my/address/delete') }}";
         config.editUrl = "{{ url('my/address/edit') }}";
     </script>
-    <script src="{{ fct_cdn('/js/buy_address.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/buy_address.js') }}"></script>
 @endsection

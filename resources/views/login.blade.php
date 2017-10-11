@@ -75,5 +75,5 @@
         mobileCodeResource:"{{ url('send-captcha') }}"
     };
     </script>
-    <script src="{{ fct_cdn('/js/login.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/login.js') }}"></script>
 @endsection

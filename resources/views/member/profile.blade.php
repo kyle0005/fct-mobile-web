@@ -74,5 +74,5 @@
         config.uploadFileUrl = "{{ url('upload/image') }}";
         config.userinfoUrl = "{{ url('my/profile') }}";
     </script>
-    <script src="{{ fct_cdn('/js/userinfo.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/userinfo.js') }}"></script>
 @endsection

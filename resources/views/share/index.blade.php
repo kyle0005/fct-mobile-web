@@ -68,5 +68,5 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.share = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/share.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/share.js') }}"></script>
 @endsection

@@ -115,9 +115,9 @@
             </a>
         </div>
     </template>
-    <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/swiper.js') }}"></script>
-    <script src="{{ fct_cdn('/js/encyclopedias.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/swiper.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/encyclopedias.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};

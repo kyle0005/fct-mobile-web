@@ -24,5 +24,5 @@
         config.walletaccountUrl = "{{ url('my/account/logs') }}";
         config.walletaccountList = {!! json_encode($logs, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/walletaccount.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/walletaccount.js') }}"></script>
 @endsection

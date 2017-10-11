@@ -31,5 +31,5 @@
         config.collectionDel = "{{ url('my/favorites') }}";
         config.collection = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/collection.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/collection.js') }}"></script>
 @endsection

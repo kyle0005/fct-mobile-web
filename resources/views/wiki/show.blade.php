@@ -54,8 +54,8 @@
         config.detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
         config.ency_url = "{{ url('wiki/item') }}?from_type={{ $fromType }}&from_id=";
     </script>
-    <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/encyclopedias_detail.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/encyclopedias_detail.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};

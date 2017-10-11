@@ -159,9 +159,9 @@
         config.artistChat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
         config.chat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
     </script>
-    <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/hammer.js') }}"></script>
-    <script src="{{ fct_cdn('/js/artist.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/hammer.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/artist.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};

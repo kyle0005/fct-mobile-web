@@ -78,7 +78,7 @@
         config.articleCategories = {!! json_encode($articleCategories, JSON_UNESCAPED_UNICODE) !!};
         config.articles = {!! json_encode($articles, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/vue-router.js') }}"></script>
-    <script src="{{ fct_cdn('/js/help.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/vue-router.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/help.js') }}"></script>
     {!! wechat_share($share) !!}
 @endsection

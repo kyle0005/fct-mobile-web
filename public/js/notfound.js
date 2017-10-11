@@ -1,1 +1,0 @@
-"use strict";var app=new Vue({mounted:function(){},data:{showAlert:!1,msg:null},watch:{},methods:{close:function(){this.showAlert=!1},close_auto:function(t,o){var n=this;setTimeout(function(){n.showAlert=!1,t&&t(o)},1500)},linkto:function(t){t&&(location.href=t)}}}).$mount("#notfound");

@@ -33,5 +33,5 @@
         config.chargeRecordUrl = "{{ url('my/account/recharge') }}";
         config.chargeRecordList = {!! json_encode($recharges, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/recordrecharge.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/recordrecharge.js') }}"></script>
 @endsection

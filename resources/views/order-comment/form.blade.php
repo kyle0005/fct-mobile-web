@@ -88,5 +88,5 @@
             <input type="hidden" name="uploadimg" :value="subUpload">
         </div>
     </script>
-    <script src="{{ fct_cdn('/js/ordercomment.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/ordercomment.js') }}"></script>
 @endsection

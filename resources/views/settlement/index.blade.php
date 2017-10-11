@@ -44,5 +44,5 @@
         config.status = {{ $status }};
         config.commissionlist = {!! json_encode($settlements, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/commission.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/commission.js') }}"></script>
 @endsection

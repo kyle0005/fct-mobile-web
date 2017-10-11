@@ -24,5 +24,5 @@
         config.address = {!! json_encode($addressList, JSON_UNESCAPED_UNICODE) !!};
         config.chooseAddrUrl = "{{ url('my/address/default') }}";
     </script>
-    <script src="{{ fct_cdn('/js/buy_address_choose.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/buy_address_choose.js') }}"></script>
 @endsection

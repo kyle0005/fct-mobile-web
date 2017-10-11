@@ -49,8 +49,8 @@
         config.productsRank = {!! json_encode($levels, JSON_UNESCAPED_UNICODE) !!};
         config.products = {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/main.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/main.js') }}"></script>
 
     {!! wechat_share($share) !!}
     <script>

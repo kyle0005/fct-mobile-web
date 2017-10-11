@@ -115,5 +115,5 @@
             "pay_url": "{{ url('orders') }}"
         }
     </script>
-    <script src="{{ fct_cdn('/js/buy.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/buy.js') }}"></script>
 @endsection

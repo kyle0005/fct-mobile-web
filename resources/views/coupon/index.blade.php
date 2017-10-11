@@ -83,5 +83,5 @@
 
         }
     </script>
-    <script src="{{ fct_cdn('/js/coupon.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/coupon.js') }}"></script>
 @endsection

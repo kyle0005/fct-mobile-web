@@ -1,1 +1,0 @@
-"use strict";var app=new Vue({computed:{},mounted:function(){},data:{}}).$mount("#wallet");

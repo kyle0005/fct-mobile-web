@@ -31,11 +31,11 @@
 
 @endsection
 @section('javascript')
-    <script src="{{ fct_cdn('/js/swiper.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/swiper.js') }}"></script>
     <script>
         config.artist = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/artist_list.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/artist_list.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};

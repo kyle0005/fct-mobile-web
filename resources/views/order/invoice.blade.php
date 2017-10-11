@@ -56,5 +56,5 @@
         config.invoiceUrl = "{{ url('my/orders/' . $entity->orderId . '/invoice') }}";
         @endif
     </script>
-    <script src="{{ fct_cdn('/js/invoice.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/invoice.js') }}"></script>
 @endsection

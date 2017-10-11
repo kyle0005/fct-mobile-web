@@ -39,5 +39,5 @@
         config.refundUrl = "{{ url('my/refunds') }}";
         config.refund = {!! json_encode($refunds, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/aftersale.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/aftersale.js') }}"></script>
 @endsection

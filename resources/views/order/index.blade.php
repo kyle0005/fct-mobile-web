@@ -72,6 +72,6 @@
         config.detail_url = "{{ url('my/orders') }}"; // /my/orders/12345678912345678
         config.cancel_url = "{{ url('my/orders') }}"; // /my/orders/12345678912345678/cancel
     </script>
-    <script src="{{ fct_cdn('/js/orderlist.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/orderlist.js') }}"></script>
 
 @endsection

@@ -45,5 +45,5 @@
     <script>
         config.logistics = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/orderlogistics.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/orderlogistics.js') }}"></script>
 @endsection

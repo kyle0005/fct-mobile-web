@@ -93,6 +93,6 @@
         config.buy_url = "{{ url('orders/create') }}";
         config.delete_url = "{{ url('carts') }}";
     </script>
-    <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/cart.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/cart.js') }}"></script>
 @endsection

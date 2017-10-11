@@ -410,9 +410,9 @@
             "3、对宝贝（或部分）不满意<br>若您对某件或某几件宝贝的质量不满意，您在拒收这些宝贝的同时，可正常接收其它宝贝，对于其它不满意的宝贝可根据您的意愿联系“方寸堂”的客服为您换货或退款。<br></p>";
     </script>
 
-    <script src="{{ fct_cdn('/js/head.js') }}"></script>
-    <script src="{{ fct_cdn('/js/hammer.js') }}"></script>
-    <script src="{{ fct_cdn('/js/detail.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/hammer.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/detail.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};

@@ -101,5 +101,5 @@
         config.cancel_url = "{{ url('my/refunds/' . $entity->id . '/cancel') }}";
         config.sendbackUrl = "{{ url('my/refunds/' . $entity->id . '/express') }}"
     </script>
-    <script src="{{ fct_cdn('/js/aftersale_detail.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/aftersale_detail.js') }}"></script>
 @endsection

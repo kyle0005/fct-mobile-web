@@ -25,7 +25,7 @@
             </div>
         </div>
         <a href="/" class="back" id="back">
-            <img src="public/img/fct/p_back.png"><span class="txt">返回全部</span>
+            <img src="{{ fct_cdn('/img/fct/p_back.png') }}"><span class="txt">返回全部</span>
         </a>
     </div>
 </div>
