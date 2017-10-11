@@ -51,6 +51,9 @@ class Base
         try
         {
             $client = new Client();
+            if (env('APP_SECURE'))
+                $client->setDefaultOption('verify', false);
+
             $result = $client->request($method, $url, $options);
         }
         catch (BadResponseException $e)
