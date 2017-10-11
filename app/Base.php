@@ -47,12 +47,9 @@ class Base
         if ($headers)
             $options['headers'] = $headers;
 
-        if (env('APP_SECURE'))
-            $options['verify'] = true;
-
         try
         {
-            $client = new Client();
+            $client = new Client(env('APP_SECURE') ? ['verify' => true] : []);
             $result = $client->request($method, $url, $options);
         }
         catch (BadResponseException $e)
