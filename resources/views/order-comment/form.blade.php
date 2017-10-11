@@ -51,8 +51,8 @@
 @section('javascript')
 
     <script>
-        config.uploadFileUrl = "{{ url('upload/image') }}";
-        config.commentUrl = "{{ url('my/orders/' . $entity->orderId . '/comments') }}";
+        config.uploadFileUrl = "{{ url('upload/image', [], env('APP_SECURE')) }}";
+        config.commentUrl = "{{ url('my/orders/' . $entity->orderId . '/comments', [], env('APP_SECURE')) }}";
         config.order_detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script type="text/x-template" id="m_star">

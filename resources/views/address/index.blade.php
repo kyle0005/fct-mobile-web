@@ -29,7 +29,7 @@
         </ul>
 
         <div class="address-btn">
-            <a href="{{ url('my/address/create') }}">添加新地址</a>
+            <a href="{{ url('my/address/create', [], env('APP_SECURE')) }}">添加新地址</a>
         </div>
     <!--radio选中的是:@{{ picked }}-->
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
@@ -38,9 +38,9 @@
 @section('javascript')
     <script>
         config.address = {!! json_encode($addressList, JSON_UNESCAPED_UNICODE) !!};
-        config.defaultAddrUrl = "{{ url('my/address/default') }}";
-        config.delAddrUrl = "{{ url('my/address/delete') }}";
-        config.editUrl = "{{ url('my/address/edit') }}";
+        config.defaultAddrUrl = "{{ url('my/address/default', [], env('APP_SECURE')) }}";
+        config.delAddrUrl = "{{ url('my/address/delete', [], env('APP_SECURE')) }}";
+        config.editUrl = "{{ url('my/address/edit', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/buy_address.js') }}"></script>
 @endsection

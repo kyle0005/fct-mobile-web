@@ -98,8 +98,8 @@
 @section('javascript')
     <script>
         config.product = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
-        config.cancel_url = "{{ url('my/refunds/' . $entity->id . '/cancel') }}";
-        config.sendbackUrl = "{{ url('my/refunds/' . $entity->id . '/express') }}"
+        config.cancel_url = "{{ url('my/refunds/' . $entity->id . '/cancel', [], env('APP_SECURE')) }}";
+        config.sendbackUrl = "{{ url('my/refunds/' . $entity->id . '/express', [], env('APP_SECURE')) }}"
     </script>
     <script src="{{ fct_cdn('/js/mobile/aftersale_detail.js') }}"></script>
 @endsection

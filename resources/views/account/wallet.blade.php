@@ -16,39 +16,39 @@
             @elseif ($member->authStatus == 1)
                     <a href="javascript:;" class="btn">审核中</a>
             @else
-                <a href="{{ url('my/account/real-auth') }}" class="btn">申请认证</a>
+                <a href="{{ url('my/account/real-auth', [], env('APP_SECURE')) }}" class="btn">申请认证</a>
             @endif
             </div>
         </section>
         <section class="items">
             <ul class="list">
                 <li>
-                    <a href="{{ url('my/account/recharge/create') }}" class="link">
+                    <a href="{{ url('my/account/recharge/create', [], env('APP_SECURE')) }}" class="link">
                         <img src="{{ fct_cdn('/img/mobile/wallet_recharge.png') }}"><br>充值
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('my/account/withdraw/create') }}" class="link">
+                    <a href="{{ url('my/account/withdraw/create', [], env('APP_SECURE')) }}" class="link">
                         <img src="{{ fct_cdn('/img/mobile/wallet_withdrawals.png') }}"><br>申请提现
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('my/account/settlement') }}" class="link">
+                    <a href="{{ url('my/account/settlement', [], env('APP_SECURE')) }}" class="link">
                         <img src="{{ fct_cdn('/img/mobile/wallet_commission.png') }}"><br>佣金结算
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('my/account/recharge') }}" class="link">
+                    <a href="{{ url('my/account/recharge', [], env('APP_SECURE')) }}" class="link">
                         <img src="{{ fct_cdn('/img/mobile/wallet_record_c.png') }}"><br>充值记录
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('my/account/withdraw') }}" class="link">
+                    <a href="{{ url('my/account/withdraw', [], env('APP_SECURE')) }}" class="link">
                         <img src="{{ fct_cdn('/img/mobile/wallet_record_w.png') }}"><br>提现记录
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('my/account/logs') }}" class="link">
+                    <a href="{{ url('my/account/logs', [], env('APP_SECURE')) }}" class="link">
                         <img src="{{ fct_cdn('/img/mobile/wallet_account.png') }}"><br>账户明细
                     </a>
                 </li>

@@ -66,6 +66,6 @@ class Handler extends ExceptionHandler
             return response()->json(['error' => 'Unauthenticated.'], 401);
         }
 
-        return redirect(url('login'));
+        return redirect(url('login', [], env('APP_SECURE')));
     }
 }

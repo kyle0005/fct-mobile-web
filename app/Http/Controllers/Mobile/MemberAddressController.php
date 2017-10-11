@@ -74,7 +74,7 @@ class MemberAddressController extends BaseController
 
             $redirectUrl = $this->getRedirectSourceUrl(true, false);
             if (!$redirectUrl) {
-                $redirectUrl = url('my/address');
+                $redirectUrl = url('my/address', [], env('APP_SECURE'));
             }
 
             return $this->returnAjaxSuccess(($id ? '修改' : '添加') . '成功', $redirectUrl);
@@ -96,7 +96,7 @@ class MemberAddressController extends BaseController
 
             $redirectUrl = $this->getRedirectSourceUrl(true, false);
             if (!$redirectUrl) {
-                $redirectUrl = url('my/address');
+                $redirectUrl = url('my/address', [], env('APP_SECURE'));
             }
 
             return $this->returnAjaxSuccess('设置默认成功', $redirectUrl);

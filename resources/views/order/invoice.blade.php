@@ -53,7 +53,7 @@
         @if ($entity->orderInvoice)
         config.invoice = {!! json_encode($entity->orderInvoice, JSON_UNESCAPED_UNICODE) !!};
         @else
-        config.invoiceUrl = "{{ url('my/orders/' . $entity->orderId . '/invoice') }}";
+        config.invoiceUrl = "{{ url('my/orders/' . $entity->orderId . '/invoice', [], env('APP_SECURE')) }}";
         @endif
     </script>
     <script src="{{ fct_cdn('/js/mobile/invoice.js') }}"></script>

@@ -45,7 +45,7 @@
             <div class="slide" :class="{open:show_detail}">
                 <ul class="pros clearfix">
                     <li v-for="(o, i) in couponitem.goods">
-                        <a :href="'{{ url('products') }}/' + o.id" class="link">
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + o.id" class="link">
                             <img v-view="o.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                         </a>
                     </li>
@@ -56,7 +56,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.getCouponUrl = "{{ url('my/coupons') }}";
+        config.getCouponUrl = "{{ url('my/coupons', [], env('APP_SECURE')) }}";
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.couponlist = {!! json_encode($coupons, JSON_UNESCAPED_UNICODE) !!};
     </script>

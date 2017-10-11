@@ -26,7 +26,7 @@
         </section>
         <ul class="list">
             <li>
-                <a href="{{ url('/') .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}" class="link">
+                <a href="{{ url('/', [], env('APP_SECURE')) .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}" class="link">
                     <span class="left">
                       <img src="{{ fct_cdn('/img/mobile/logo2.png') }}">
                     </span>
@@ -63,7 +63,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.shareUrl = "{{ url('my/share') }}";
+        config.shareUrl = "{{ url('my/share', [], env('APP_SECURE')) }}";
         config.sort = ['综合排序', '人气最高', '利润最高'];
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.share = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};

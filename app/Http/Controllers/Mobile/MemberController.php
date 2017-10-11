@@ -43,7 +43,7 @@ class MemberController extends BaseController
             if ($result && $result->memberId > 0)
                 $redirectUrl = $this->getRedirectSourceUrl();
             else
-                $redirectUrl = url('oauth/bind')."?openid=$result->openId";
+                $redirectUrl = url('oauth/bind', [], env('APP_SECURE'))."?openid=$result->openId";
 
             return redirect($redirectUrl);
             //return $this->returnAjaxSuccess(($result ? '授权成功' : '授权完成,去绑定手机'), $redirectUrl);
@@ -188,7 +188,7 @@ class MemberController extends BaseController
                 Member::updateInfo($username, $avatar, $gender, $birthday, $weixin);
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('修改成功', url('my'));
+                return $this->returnAjaxSuccess('修改成功', url('my', [], env('APP_SECURE')));
             }
             catch (BusinessException $e)
             {
@@ -236,7 +236,7 @@ class MemberController extends BaseController
                 Member::changePassowrd($oldPassword, $newPassword);
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('密码修改成功', url('my'));
+                return $this->returnAjaxSuccess('密码修改成功', url('my', [], env('APP_SECURE')));
             }
             catch (BusinessException $e)
             {
@@ -277,7 +277,7 @@ class MemberController extends BaseController
                 $member = [];
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('密码找回成功', url('login'));
+                return $this->returnAjaxSuccess('密码找回成功', url('login', [], env('APP_SECURE')));
             }
             catch (BusinessException $e)
             {
@@ -315,7 +315,7 @@ class MemberController extends BaseController
                 Member::realAuth($name, $idCardNo, $idCardImageUrl, $bankName, $bankAccount);
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('提交认证信息成功', url('my/account'));
+                return $this->returnAjaxSuccess('提交认证信息成功', url('my/account', [], env('APP_SECURE')));
             }
             catch (BusinessException $e)
             {
@@ -346,7 +346,7 @@ class MemberController extends BaseController
     public function logout(Request $request)
     {
         Member::logout();
-        return redirect(url('/'));
+        return redirect(url('/', [], env('APP_SECURE')));
     }
 
 

@@ -50,7 +50,7 @@
 
                 <div class="btn clearfix" v-if="item.status == 3 && item.commentStatus == 0">
                     <div class="btn-container">
-                        <a :href="'{{ url('my/orders') }}/' + item.orderId + '/comments/create'" class="black">评价</a>
+                        <a :href="'{{ url('my/orders', [], env('APP_SECURE')) }}/' + item.orderId + '/comments/create'" class="black">评价</a>
                     </div>
                 </div>
             </div>
@@ -67,10 +67,10 @@
     <script>
         config.status = {{ $status }};
         config.orderlist = {!! json_encode($orderlist, JSON_UNESCAPED_UNICODE) !!};
-        config.orderlist_url = "{{ url('my/orders') }}"; // /my/orders
-        config.search_url = "{{ url('my/orders') }}"; // /my/orders
-        config.detail_url = "{{ url('my/orders') }}"; // /my/orders/12345678912345678
-        config.cancel_url = "{{ url('my/orders') }}"; // /my/orders/12345678912345678/cancel
+        config.orderlist_url = "{{ url('my/orders', [], env('APP_SECURE')) }}"; // /my/orders
+        config.search_url = "{{ url('my/orders', [], env('APP_SECURE')) }}"; // /my/orders
+        config.detail_url = "{{ url('my/orders', [], env('APP_SECURE')) }}"; // /my/orders/12345678912345678
+        config.cancel_url = "{{ url('my/orders', [], env('APP_SECURE')) }}"; // /my/orders/12345678912345678/cancel
     </script>
     <script src="{{ fct_cdn('/js/mobile/orderlist.js') }}"></script>
 

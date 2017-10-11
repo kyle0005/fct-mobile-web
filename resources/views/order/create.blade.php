@@ -3,11 +3,11 @@
     <div class="buy-container" id="buy" v-cloak>
         <form id="buyOrder">
             <section class="address no" v-if="!hasAddress">
-                <a href="{{ url('my/address/create') . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}"
+                <a href="{{ url('my/address/create', [], env('APP_SECURE')) . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}"
                    class="link">亲，请新建或选择默认收货地址以确保宝贝顺利到达<span class="wei-arrow-right"></span></a>
             </section>
             <section class="address" v-else>
-                <a href="{{ url('address/choose') . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}" class="link">
+                <a href="{{ url('address/choose', [], env('APP_SECURE')) . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}" class="link">
         <span class="left item">
           <span class="overText">@{{ address.name }}</span>
           <span class="def">默认</span>
@@ -85,7 +85,7 @@
             </section>
             <section class="agreement">
                 <input type="checkbox" id="agree" name="agree" v-model="has_terms" class="ck">
-                <a for="agree" class="agree-container">我已认真阅读并同意方寸堂<a href="{{ url('help') }}#/detail?articleId=15">《服务协议》</a></label>
+                <a for="agree" class="agree-container">我已认真阅读并同意方寸堂<a href="{{ url('help', [], env('APP_SECURE')) }}#/detail?articleId=15">《服务协议》</a></label>
             </section>
             <footer class="foot">
                 <div class="inner">
@@ -111,8 +111,8 @@
             "accountAmount": {{ $availableAmount }},    /* 余额,单位元 */
             "validateCoupon": '{!! $submitCouponProducts !!}',   /* 验证优惠券 */
             "has_terms": true,
-            "coupon_url": '{{ url('my/coupons/use') }}',
-            "pay_url": "{{ url('orders') }}"
+            "coupon_url": '{{ url('my/coupons/use', [], env('APP_SECURE')) }}',
+            "pay_url": "{{ url('orders', [], env('APP_SECURE')) }}"
         }
     </script>
     <script src="{{ fct_cdn('/js/mobile/buy.js') }}"></script>

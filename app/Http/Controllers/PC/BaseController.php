@@ -75,7 +75,7 @@ class BaseController extends Controller
 
         if ($code != 200)
         {
-            $errorUrl = url('error') . '?message=' . $message;
+            $errorUrl = url('error', [], env('APP_SECURE')) . '?message=' . $message;
             if ($url)
                 $errorUrl .= '&' . env('REDIRECT_KEY') . '=' . $url;
 

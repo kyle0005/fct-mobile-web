@@ -71,7 +71,7 @@
                                     </a>
                                 </li>
                                 <li class="cart">
-                                    <a href="{{ url('carts') }}" class="foot-link">
+                                    <a href="{{ url('carts', [], env('APP_SECURE')) }}" class="foot-link">
                                         <img src="{{ fct_cdn('/img/mobile/cart.png') }}">
                                         <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
                                     </a>
@@ -98,7 +98,7 @@
                         </a>
                     </li>
                     <li class="cart">
-                        <a href="{{ url('carts') }}" class="foot-link">
+                        <a href="{{ url('carts', [], env('APP_SECURE')) }}" class="foot-link">
                             <img src="{{ fct_cdn('/img/mobile/cart.png') }}">
                             <span class="nums" v-if="numsshow">@{{ cart_num }}</span>
                         </a>
@@ -242,13 +242,13 @@
                 </div>
                 <ul class="others">
                     <li v-for="p in artistsingle.products">
-                        <a :href="'{{ url('products') }}/' + p.id" class="item">
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
                     </li>
                 </ul>
-                <a :href="'{{ url('artists') }}/' + artistsingle.id" class="for-more">点击了解更多》</a>
+                <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/' + artistsingle.id" class="for-more">点击了解更多》</a>
             </section>
 
         </div>
@@ -289,7 +289,7 @@
                 </div>
                 <ul class="others">
                     <li v-for="p in pugsingle.products">
-                        <a :href="'{{ url('products') }}/' + p.id" class="item">
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
@@ -391,12 +391,12 @@
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.product = {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!};
-        config.fav_url = "{!! url('my/favorites?from_type=0&from_id=' . $product->id) !!}";
-        config.discuss_url = "{{ url('products/'.$product->id .'/comments') }}";
-        config.artist_url = "{{ url('products/'.$product->id .'/artists?ids=' . urlencode($product->artistIds)) }}";
-        config.pug_url = "{{ url('products/'.$product->id .'/materials?ids=' . urlencode($product->materialIds)) }}";
-        config.addcart_url = "{{ url('carts') }}";
-        config.buy_url = "{{ url('orders/create') }}";
+        config.fav_url = "{!! url('my/favorites?from_type=0&from_id=' . $product->id, [], env('APP_SECURE')) !!}";
+        config.discuss_url = "{{ url('products/'.$product->id .'/comments', [], env('APP_SECURE')) }}";
+        config.artist_url = "{{ url('products/'.$product->id .'/artists?ids=' . urlencode($product->artistIds), [], env('APP_SECURE')) }}";
+        config.pug_url = "{{ url('products/'.$product->id .'/materials?ids=' . urlencode($product->materialIds), [], env('APP_SECURE')) }}";
+        config.addcart_url = "{{ url('carts', [], env('APP_SECURE')) }}";
+        config.buy_url = "{{ url('orders/create', [], env('APP_SECURE')) }}";
         config.tab_artist = [];
         config.tab_pug = [];
         config.tab_service = "<div class='title'>退换货政策</div><p>自您签收宝贝之日起10日内，方寸堂将为您办理退换货服务，且寄回宝贝实际运费由客户承担；如需办理退换货业务，请您致电客服热线400-0510-570咨询办理。</p><p>" +

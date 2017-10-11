@@ -3,7 +3,7 @@
     <div class="artist-container" id="artist_list">
         <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="coverflow">
             <div v-for="(item, index) in artist" class="swiper-slide" slot="swiper-con">
-                <a :href="'{{ url('artists') }}/' + item.id" class="link-item">
+                <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/' + item.id" class="link-item">
                     <span class="img-con">
                         <img v-view="item.image" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="silde-img">
                     </span>

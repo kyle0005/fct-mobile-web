@@ -71,8 +71,8 @@
 @section('javascript')
     <script>
         config.userinfo = {!! json_encode($member, JSON_UNESCAPED_UNICODE) !!};
-        config.uploadFileUrl = "{{ url('upload/image') }}";
-        config.userinfoUrl = "{{ url('my/profile') }}";
+        config.uploadFileUrl = "{{ url('upload/image', [], env('APP_SECURE')) }}";
+        config.userinfoUrl = "{{ url('my/profile', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/userinfo.js') }}"></script>
 @endsection

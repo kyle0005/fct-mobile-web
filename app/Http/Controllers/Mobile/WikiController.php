@@ -28,7 +28,7 @@ class WikiController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        $shareUrl = url('wiki');
+        $shareUrl = url('wiki', [], env('APP_SECURE'));
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
             $this->setShopId();
@@ -74,7 +74,7 @@ class WikiController extends BaseController
         if ($request->ajax())
             return $this->returnAjaxSuccess("获取成功", null, $result);
 
-        $shareUrl = url('wiki/item?from_type='.$type.'&from_id='.$typeId);
+        $shareUrl = url('wiki/item', [], env('APP_SECURE')) . '?from_type='.$type.'&from_id='.$typeId;
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
             $this->setShopId();

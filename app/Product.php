@@ -51,7 +51,7 @@ class Product
 
             $product = $result->data;
             if ($product->hasCoupon) {
-                $product->coupon_url = url('coupons/new?product_id=' . $product->id);
+                $product->coupon_url = url('coupons/new?product_id=' . $product->id, [], env('APP_SECURE'));
             }
 
             $cacheResult = $product;

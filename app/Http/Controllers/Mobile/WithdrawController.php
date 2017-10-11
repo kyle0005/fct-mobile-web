@@ -37,7 +37,7 @@ class WithdrawController extends BaseController
         try
         {
             Withdraw::saveWithdraw($amount);
-            return $this->returnAjaxSuccess('提交成功', url('my/account/withdraw'));
+            return $this->returnAjaxSuccess('提交成功', url('my/account/withdraw', [], env('APP_SECURE')));
         }
         catch (BusinessException $e)
         {
@@ -56,9 +56,9 @@ class WithdrawController extends BaseController
         {
             $url = null;
             if ($e->getCode() == 401)
-                $url = url('my/account');
+                $url = url('my/account', [], env('APP_SECURE'));
             elseif ($e->getCode() == 402)
-                $url = url('my/account/real-auth');
+                $url = url('my/account/real-auth', [], env('APP_SECURE'));
 
             return $this->autoReturn($e->getMessage(), $url);
         }

@@ -42,19 +42,19 @@
                     </ul>
                     <ul class="lines clearfix">
                         <li class="item">
-                            <a href="{{ url('artists') }}">
+                            <a href="{{ url('artists', [], env('APP_SECURE')) }}">
                                 <img src="{{ fct_cdn('/img/mobile/menu1.png') }}">
                                 <span>守艺人</span>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="{{ url('wiki') }}">
+                            <a href="{{ url('wiki', [], env('APP_SECURE')) }}">
                                 <img src="{{ fct_cdn('/img/mobile/menu2.png') }}">
                                 <span>百科</span>
                             </a>
                         </li>
                         <li class="item">
-                            <a href="{{ url('welcome') }}">
+                            <a href="{{ url('welcome', [], env('APP_SECURE')) }}">
                                 <img src="{{ fct_cdn('/img/mobile/menu5.png') }}">
                                 <span>品牌理念</span>
                             </a>
@@ -66,9 +66,9 @@
     </script>
     <script>
         var config = {
-            "index": "{{ url('/') }}",
-            "login": "{{ url('my') }}",
-            "product_url": "{{ url('/') }}"
+            "index": "{{ url('/', [], env('APP_SECURE')) }}",
+            "login": "{{ url('my', [], env('APP_SECURE')) }}",
+            "product_url": "{{ url('/', [], env('APP_SECURE')) }}"
         }
     </script>
     @yield('javascript')

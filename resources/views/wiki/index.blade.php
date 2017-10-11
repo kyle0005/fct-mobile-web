@@ -16,7 +16,7 @@
                 <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide" v-if="list && list.length > 0">
                     <div v-for="(item, index) in list" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
-                            <a :href="'{{ url('wiki/item') }}?from_type=category&from_id=' + i_item.id" class="link">
+                            <a :href="'{{ url('wiki/item', [], env('APP_SECURE')) }}?from_type=category&from_id=' + i_item.id" class="link">
                                 <img :src="i_item.image">
                                 <span>@{{ i_item.name }}</span>
                             </a>
@@ -41,7 +41,7 @@
                 <m-swipe swipeid="swipet" ref="swipert" :autoplay="0" effect="slide">
                     <div v-for="(item, index) in list_t" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
-                            <a :href="'{{ url('wiki/item') }}?from_type=material&from_id=' + i_item.id"
+                            <a :href="'{{ url('wiki/item', [], env('APP_SECURE')) }}?from_type=material&from_id=' + i_item.id"
                                class="link overText">@{{ i_item.name }}</a>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                 <m-swipe swipeid="swipeterm" ref="swiperterm" :autoplay="0" effect="slide">
                     <div v-for="(item, index) in list_term" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
-                            <a :href="'{{ url('wiki/item') }}?from_type=article&from_id=' + i_item.id"
+                            <a :href="'{{ url('wiki/item', [], env('APP_SECURE')) }}?from_type=article&from_id=' + i_item.id"
                                class="link overText">@{{ i_item.name }}</a>
                         </div>
                     </div>

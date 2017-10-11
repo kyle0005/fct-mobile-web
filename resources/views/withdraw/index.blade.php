@@ -21,7 +21,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.withdrawalRecordUrl = "{{ url('my/account/withdraw') }}";
+        config.withdrawalRecordUrl = "{{ url('my/account/withdraw', [], env('APP_SECURE')) }}";
         config.withdrawalRecordList = {!! json_encode($withdraws, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/withdrawalsrecord.js') }}"></script>

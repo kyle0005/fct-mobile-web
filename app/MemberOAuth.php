@@ -17,7 +17,7 @@ class MemberOAuth
 
     public static function getURL()
     {
-        $callback = url('oauth/callback');
+        $callback = url('oauth/callback', [], env('APP_SECURE'));
 
         $result = Base::http(
             env('API_URL') . sprintf('%s', self::$resourceUrl),

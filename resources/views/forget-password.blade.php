@@ -44,8 +44,8 @@
 @section('javascript')
     <script>
     var apis = {
-        userResource:"{{ url('forget-password')  }}",
-        mobileCodeResource:"{{ url('send-captcha') }}"
+        userResource:"{{ url('forget-password', [], env('APP_SECURE'))  }}",
+        mobileCodeResource:"{{ url('send-captcha', [], env('APP_SECURE')) }}"
     };
     </script>
     <script src="{{ fct_cdn('/js/mobile/findpwd.js') }}"></script>

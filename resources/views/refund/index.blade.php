@@ -23,7 +23,7 @@
                 <div class="btn clearfix">
                     <div class="txt">退款金额：<small class="pri-mark">￥</small>@{{ item.payAmount }}</div>
                     <div class="btn-container">
-                        <a :href="'{{ url('my/refunds') }}/' + item.id" class="black">查看详情</a>
+                        <a :href="'{{ url('my/refunds', [], env('APP_SECURE')) }}/' + item.id" class="black">查看详情</a>
                     </div>
                 </div>
             </li>
@@ -36,7 +36,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.refundUrl = "{{ url('my/refunds') }}";
+        config.refundUrl = "{{ url('my/refunds', [], env('APP_SECURE')) }}";
         config.refund = {!! json_encode($refunds, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/aftersale.js') }}"></script>

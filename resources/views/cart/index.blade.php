@@ -9,7 +9,7 @@
                         <label class="chk col">
                             <input type="checkbox" name="chk-items" class="chk-items" :value="item" v-model="ischeck" @change="caltotalpri()">
                         </label>
-                        <a :href="'{{ url('products') }}/' + item.goodsId" class="product col">
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.goodsId" class="product col">
                           <span class="pro-item pro-img">
                             <img v-view="item.img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                           </span>
@@ -44,7 +44,7 @@
                 </div>
                 <ul class="guess clearfix">
                     <li v-for="(item, index) in like_list">
-                        <a :href="'{{ url('products') }}/' + item.id" class="guess-link">
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="guess-link">
                             <img :src="item.defaultImage">
                         </a>
                         <div class="v-title">@{{ item.name }}</div>
@@ -90,8 +90,8 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.carts = {!! $carts !!};
         config.like_list = {!! $likes !!};
-        config.buy_url = "{{ url('orders/create') }}";
-        config.delete_url = "{{ url('carts') }}";
+        config.buy_url = "{{ url('orders/create', [], env('APP_SECURE')) }}";
+        config.delete_url = "{{ url('carts', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/cart.js') }}"></script>

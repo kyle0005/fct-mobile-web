@@ -35,7 +35,7 @@
                 </div>
                 <ul class="others" v-if="detail.productList && detail.productList.length > 0">
                     <li v-for="p in detail.productList">
-                        <a :href="'{{ url('products') }}/' + p.id" class="item">
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + p.id" class="item">
                             <img v-view="p.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             <span class="p-title">@{{ p.name }}</span>
                         </a>
@@ -52,7 +52,7 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.encyclopedias_list = {!! json_encode($entities, JSON_UNESCAPED_UNICODE) !!};
         config.detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
-        config.ency_url = "{{ url('wiki/item') }}?from_type={{ $fromType }}&from_id=";
+        config.ency_url = "{{ url('wiki/item', [], env('APP_SECURE')) }}?from_type={{ $fromType }}&from_id=";
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/encyclopedias_detail.js') }}"></script>

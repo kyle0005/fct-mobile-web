@@ -27,7 +27,7 @@ class Authenticate
             return new Response([
                 'code' => 404,
                 'message' => '登录授权已过期，请重新登录',
-                'url' => url('login'),
+                'url' => url('login', [], env('APP_SECURE')),
                 'data' => [],
             ]);
         }

@@ -8,7 +8,7 @@
         </div>
         <section class="content" v-if="couponlist && couponlist.length > 0">
             <div class="tips" v-if="couponcount > 0">
-                <a href="{{ url('coupons/new') }}" class="link">
+                <a href="{{ url('coupons/new', [], env('APP_SECURE')) }}" class="link">
                   <span class="img-container item">
                     <img src="{{ fct_cdn('/img/mobile/coupon.png') }}">
                   </span>
@@ -64,7 +64,7 @@
             <div class="slide" :class="{open:show_detail}">
                 <ul class="pros clearfix">
                     <li v-for="(o, i) in couponitem.goods">
-                        <a :href="'{{ url('products') }}/' + o.id" class="link">
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + o.id" class="link">
                             <img v-view="o.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                         </a>
                     </li>
@@ -76,8 +76,8 @@
 @section('javascript')
     <script>
         var config = {
-            "couponlistUrl": "{{ url('my/coupons') }}",
-            "useUrl": "{{ url('my/coupons') }}",
+            "couponlistUrl": "{{ url('my/coupons', [], env('APP_SECURE')) }}",
+            "useUrl": "{{ url('my/coupons', [], env('APP_SECURE')) }}",
             "couponlist": {!! json_encode($coupons, JSON_UNESCAPED_UNICODE) !!},
             "couponcount": {{ $canReceiveCount }}
 

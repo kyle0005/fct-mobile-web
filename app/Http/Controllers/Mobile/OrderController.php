@@ -188,7 +188,7 @@ class OrderController  extends BaseController
                 ProductOrder::saveOrderInvoice($order_id, $title, $content, $taxNumber,
                     $telephone, $address, $depositBank, $bankAccount);
 
-                return $this->returnAjaxSuccess("申请成功", url('my/orders/' . $order_id));
+                return $this->returnAjaxSuccess("申请成功", url('my/orders/' . $order_id, [], env('APP_SECURE')));
             } catch (BusinessException $e) {
                 return $this->autoReturn($e->getMessage());
             }
@@ -225,7 +225,7 @@ class OrderController  extends BaseController
         {
             ProductOrder::cancelOrder($order_id);
 
-            $url = url('my/orders');
+            $url = url('my/orders', [], env('APP_SECURE'));
             if (strpos($request->server('HTTP_REFERER'), '/orders/') !== false) {
                 $url .= '/'. $order_id;
             }
@@ -248,7 +248,7 @@ class OrderController  extends BaseController
         {
             ProductOrder::finishOrder($order_id);
 
-            $url = url('my/orders');
+            $url = url('my/orders', [], env('APP_SECURE'));
             if (strpos($request->server('HTTP_REFERER'), '/orders/') !== false) {
                 $url .= '/'. $order_id;
             }

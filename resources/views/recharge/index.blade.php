@@ -30,7 +30,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.chargeRecordUrl = "{{ url('my/account/recharge') }}";
+        config.chargeRecordUrl = "{{ url('my/account/recharge', [], env('APP_SECURE')) }}";
         config.chargeRecordList = {!! json_encode($recharges, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/recordrecharge.js') }}"></script>

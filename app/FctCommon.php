@@ -152,7 +152,7 @@ class FctCommon
 
         if ($hasDefault)
             //返回默认指定页面
-            return url('/');
+            return url('/', [], env('APP_SECURE'));
 
         return '';
     }

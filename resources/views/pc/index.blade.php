@@ -21,10 +21,10 @@
 <div id="ywBarX" class="yw-bar">
     <div class="yw-constr">
         <div class="yw-hd-bar">
-            <a href="{{ url('/') }}" class="yw-logo"><h1>方寸堂</h1></a>
+            <a href="{{ url('/', [], env('APP_SECURE')) }}" class="yw-logo"><h1>方寸堂</h1></a>
         </div>
         <div id="ywHdBar" class="yw-hd-bar">
-            <a href="{{ url('/') }}" class="yw-logo"><h1>方寸堂</h1></a>
+            <a href="{{ url('/', [], env('APP_SECURE')) }}" class="yw-logo"><h1>方寸堂</h1></a>
             <a href="javascript:" id="ywMnavBtn" class="yw-hd-curnav"><span id="ywMnavName">紫砂细作</span></a>
             <div id="ywMnav" class="yw-nav">
                 <a href="#copyright" class="yw-nav-a active">原创好物</a>
@@ -212,16 +212,16 @@
             @foreach($articles as $article)
                 <div class="yw-news-li">
                     <div class="yw-news-detail">
-                        <h5 class="yw-news-title"><a href="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" data-urltype="{{ $article->urlType }}" class="news-link"
-                                                     data-url="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" target="_blank">{{ $article->title }}</a></h5>
+                        <h5 class="yw-news-title"><a href="{{ $article->urlType ? url('articles/' . $article->id, [], env('APP_SECURE')).'?current=1' : $article->url }}" data-urltype="{{ $article->urlType }}" class="news-link"
+                                                     data-url="{{ $article->urlType ? url('articles/' . $article->id, [], env('APP_SECURE')).'?current=1' : $article->url }}" target="_blank">{{ $article->title }}</a></h5>
                         <div class="yw-news-time">
                             <span class="yw-news-tag">{{ $article->categoryName }}</span>
                             <time>{{ date('Y-m-d', intval($article->createTime / 1000)) }}</time>
                         </div>
                         <p class="yw-news-sum">{!! $article->intro !!}</p>
                         <p class="yw-news-more">
-                            <a href="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" data-urltype="{{ $article->urlType }}" class="news-link yw-news-more-a"
-                               data-url="{{ $article->urlType ? url('articles/' . $article->id).'?current=1' : $article->url }}" target="_blank">阅读更多 &gt;</a>
+                            <a href="{{ $article->urlType ? url('articles/' . $article->id, [], env('APP_SECURE')).'?current=1' : $article->url }}" data-urltype="{{ $article->urlType }}" class="news-link yw-news-more-a"
+                               data-url="{{ $article->urlType ? url('articles/' . $article->id, [], env('APP_SECURE')).'?current=1' : $article->url }}" target="_blank">阅读更多 &gt;</a>
                         </p>
                     </div>
                 </div>
@@ -305,7 +305,7 @@
 <script src="{{ fct_cdn('/js/pc.index.js') }}"></script>
 <script>
     var URLLIB = "{{ fct_cdn('/js/jquery-1.9.0.js') }}";
-    history.pushState, function (t) {'addEventListener' in t && t.addEventListener('DOMContentLoaded', function () {FastClick.attach(t.body)}, !1), YUEWEN.urlNewsList = '{{ url('articles') }}', YUEWEN.load(URLLIB, function () {this.init(), this.slide('#hdDotX a')})}(document)
+    history.pushState, function (t) {'addEventListener' in t && t.addEventListener('DOMContentLoaded', function () {FastClick.attach(t.body)}, !1), YUEWEN.urlNewsList = '{{ url('articles', [], env('APP_SECURE')) }}', YUEWEN.load(URLLIB, function () {this.init(), this.slide('#hdDotX a')})}(document)
 </script>
 </body>
 </html>

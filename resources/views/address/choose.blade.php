@@ -14,7 +14,7 @@
         </ul>
 
         <div class="address-btn">
-            <a href="{{ url('my/address') }}">管理</a>
+            <a href="{{ url('my/address', [], env('APP_SECURE')) }}">管理</a>
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
@@ -22,7 +22,7 @@
 @section('javascript')
     <script>
         config.address = {!! json_encode($addressList, JSON_UNESCAPED_UNICODE) !!};
-        config.chooseAddrUrl = "{{ url('my/address/default') }}";
+        config.chooseAddrUrl = "{{ url('my/address/default', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/buy_address_choose.js') }}"></script>
 @endsection

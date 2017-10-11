@@ -17,7 +17,7 @@
         </section>
         <section class="detail">
             <div class="express" v-if="order_detail.orderReceiver.expressNO">
-                <a href="{{ url('my/orders/'. $entity->orderId .'/express') }}" class="link">
+                <a href="{{ url('my/orders/'. $entity->orderId .'/express', [], env('APP_SECURE')) }}" class="link">
                     <span class="img-container item">
                         <img src="{{ fct_cdn('/img/mobile/order_transport.png') }}">
                     </span>
@@ -36,7 +36,7 @@
                 <div class="address">收货地址：@{{ order_detail.orderReceiver.province + "&nbsp;" + order_detail.orderReceiver.city + "&nbsp;" +  order_detail.orderReceiver.region + "&nbsp;" + order_detail.orderReceiver.address }}</div>
             </div>
             <div class="express invoice" v-if="order_detail.status == 3">
-                <a href="{{ url('my/orders/'. $entity->orderId .'/invoice') }}" class="link">
+                <a href="{{ url('my/orders/'. $entity->orderId .'/invoice', [], env('APP_SECURE')) }}" class="link">
                     <span class="img-container item">
                         <img src="{{ fct_cdn('/img/mobile/order_invoice.png') }}">
                       </span>
@@ -58,7 +58,7 @@
                 <div class="pro-item price-container">
                     <div class="price"><small class="pri-mark">￥</small>@{{ item.price }}</div>
                     <div class="num">&times; @{{ item.buyCount }}</div>
-                    <a :href="'{{ url('my/refunds/create') }}?og_id=' + item.id"
+                    <a :href="'{{ url('my/refunds/create', [], env('APP_SECURE')) }}?og_id=' + item.id"
                        class="after-sale" v-if="item.status == -1">申请售后</a>
                     <a href="javascript:;" class="after-sale" v-if="item.statusName">@{{ item.statusName }}</a>      <!-- href的url带参数status -->
                 </div>
@@ -91,7 +91,7 @@
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
                 </div>
                 <div class="comment" v-if="order_detail.status == 3 && order_detail.commentStatus == 0">
-                    <a :href="'{{ url('my/orders') }}/' + order_detail.orderId + '/comments/create'">我要评价</a>
+                    <a :href="'{{ url('my/orders', [], env('APP_SECURE')) }}/' + order_detail.orderId + '/comments/create'">我要评价</a>
                 </div>
 
                 <div class="comment" v-if="order_detail.status == 2">
@@ -108,8 +108,8 @@
 @section('javascript')
     <script>
         config.order_detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
-        config.cancel_url = "{{ url('my/orders') }}";
-        config.finish_url = "{{ url('my/orders') }}";
+        config.cancel_url = "{{ url('my/orders', [], env('APP_SECURE')) }}";
+        config.finish_url = "{{ url('my/orders', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/order.js') }}"></script>
 @endsection

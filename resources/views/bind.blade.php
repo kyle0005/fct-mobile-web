@@ -38,8 +38,8 @@
     <script>
         config.openid = "{{ $openid }}";
         var apis = {
-            "bindUrl": "{{ url('oauth/bind') }}",
-            "smsUrl": "{{ url('send-captcha') }}"
+            "bindUrl": "{{ url('oauth/bind', [], env('APP_SECURE')) }}",
+            "smsUrl": "{{ url('send-captcha', [], env('APP_SECURE')) }}"
         };
     </script>
     <script src="{{ fct_cdn('/js/mobile/bind.js') }}"></script>

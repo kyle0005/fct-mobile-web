@@ -102,7 +102,7 @@ class RefundController extends BaseController
 
             Refund::saveRefund($orderId, $orderProductId, $serviceType, $reason, $description, $images);
 
-            return $this->returnAjaxSuccess("申请成功", url('my/refunds'));
+            return $this->returnAjaxSuccess("申请成功", url('my/refunds', [], env('APP_SECURE')));
         }
         catch (BusinessException $e)
         {
@@ -119,7 +119,7 @@ class RefundController extends BaseController
         try
         {
             Refund::cancel($id);
-            return $this->returnAjaxSuccess('取消成功', url('my/refunds/' . $id));
+            return $this->returnAjaxSuccess('取消成功', url('my/refunds/' . $id, [], env('APP_SECURE')));
         }
         catch (BusinessException $e)
         {
@@ -140,7 +140,7 @@ class RefundController extends BaseController
             FctValidator::hasRequire($expressName, '物流名称');
             FctValidator::hasRequire($expressNumber, '物流单号');
             Refund::refundExpress($id, $expressName, $expressNumber);
-            return $this->returnAjaxSuccess('提交成功', url('my/refunds/' . $id));
+            return $this->returnAjaxSuccess('提交成功', url('my/refunds/' . $id, [], env('APP_SECURE')));
         }
         catch (BusinessException $e)
         {

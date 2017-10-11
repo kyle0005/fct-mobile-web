@@ -31,7 +31,7 @@ class ArticleController extends BaseController
         $html = '';
         foreach ($result->entries as $article)
         {
-            $url = $article->urlType ? url('articles/' . $article->id).'?current='.$page : $article->url;
+            $url = $article->urlType ? url('articles/' . $article->id, [], env('APP_SECURE')).'?current='.$page : $article->url;
             $html .= '<div class="yw-news-li"><div class="yw-news-detail">'
                 . '<h5 class="yw-news-title"><a href="' . $url . '" data-urltype="'
                 . $article->urlType
@@ -79,17 +79,17 @@ class ArticleController extends BaseController
         $source = '';
         if ($result->prevId > 0 && $hasAjax)
             $prevClick = '<a href="javascript:;" class="prev js-opt" data-url="'
-                . url('articles/' . $result->prevId)
+                . url('articles/' . $result->prevId, [], env('APP_SECURE'))
                 . '"><img src="'.fct_cdn('/img/fct/p_prev.png').'"></a>';
         if ($result->nextId > 0 && $hasAjax)
         $nextClick = '<a href="javascript:;" class="next js-opt" data-url="'
-            . url('articles/' . $result->nextId)
+            . url('articles/' . $result->nextId, [], env('APP_SECURE'))
             . '"><img src="'.fct_cdn('/img/fct/p_next.png').'"></a>';
         if ($result->source)
             $source = '<span>&nbsp;来源：' . $result->source . '</span>';
 
         $html = '<div class="yw-news-li"><div class="yw-news-detail"><h5 class="yw-news-title"><a href="'
-            . url('articles/' . $result->id)
+            . url('articles/' . $result->id, [], env('APP_SECURE'))
             . '" target="_blank">' . $result->title . '</a></h5><div class="yw-news-time"><span class="yw-news-tag">'
             . $result->categoryName
             . '</span>' . $source . '<time>&nbsp;' . date('Y-m-d', intval($result->createTime / 1000))

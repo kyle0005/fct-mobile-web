@@ -77,7 +77,7 @@
                             <div class="price overText" v-if="item.price > 0">￥@{{ item.price }}</div>
                             <div class="price overText" v-else>暂无售价</div>
                             <div class="btn-container">
-                                <a :href="'{{ url('products') }}/' + item.id" class="btn">我要购买</a>
+                                <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="btn">我要购买</a>
                             </div>
                         </div>
                     </div>
@@ -154,10 +154,10 @@
     <script>
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.artist = {!! json_encode($artist, JSON_UNESCAPED_UNICODE) !!};
-        config.artistPage_url = "{{ url('artists/' . $artist->id) }}";
-        config.artistWorks_url = "{{ url('artists/' . $artist->id . '/products') }}";
-        config.artistChat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
-        config.chat_url = "{{ url('artists/' . $artist->id . '/comments') }}";
+        config.artistPage_url = "{{ url('artists/' . $artist->id, [], env('APP_SECURE')) }}";
+        config.artistWorks_url = "{{ url('artists/' . $artist->id . '/products', [], env('APP_SECURE')) }}";
+        config.artistChat_url = "{{ url('artists/' . $artist->id . '/comments', [], env('APP_SECURE')) }}";
+        config.chat_url = "{{ url('artists/' . $artist->id . '/comments', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/hammer.js') }}"></script>

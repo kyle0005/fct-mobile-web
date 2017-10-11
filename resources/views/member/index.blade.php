@@ -15,37 +15,37 @@
             </a>
         </section>
         <section class="user-sec">
-            <a href="{{ url("my/orders") }}?status=-1" class="order">
+            <a href="{{ url("my/orders", [], env('APP_SECURE')) }}?status=-1" class="order">
                 <span>我的订单</span>
                 <span class="wei-arrow-right"></span>
             </a>
             <ul class="list">
                 <li>
-                    <a href="{{ url("my/orders") }}?status=0" class="link">
+                    <a href="{{ url("my/orders", [], env('APP_SECURE')) }}?status=0" class="link">
                         <img src="{{ fct_cdn('/img/mobile/user_payment_pending.png') }}"><br>
                         <span>待付款</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url("my/orders") }}?status=1" class="link">
+                    <a href="{{ url("my/orders", [], env('APP_SECURE')) }}?status=1" class="link">
                         <img src="{{ fct_cdn('/img/mobile/user_shipment_pending.png') }}"><br>
                         <span>待发货</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url("my/orders") }}?status=2" class="link">
+                    <a href="{{ url("my/orders", [], env('APP_SECURE')) }}?status=2" class="link">
                         <img src="{{ fct_cdn('/img/mobile/user_shipped.png') }}"><br>
                         <span>已发货</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url("my/orders") }}?status=3&comment_status=0" class="link">
+                    <a href="{{ url("my/orders", [], env('APP_SECURE')) }}?status=3&comment_status=0" class="link">
                         <img src="{{ fct_cdn('/img/mobile/user_evaluation_pending.png') }}"><br>
                         <span>待评价</span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url("my/refunds") }}" class="link">
+                    <a href="{{ url("my/refunds", [], env('APP_SECURE')) }}" class="link">
                         <img src="{{ fct_cdn('/img/mobile/user_aftersale.png') }}"><br>
                         <span>售后服务</span>
                     </a>
@@ -55,7 +55,7 @@
         <section class="user-sec">
             <ul class="funcs-list">
                 <li>
-                    <a href="{{ url('my/account') }}" class="link">
+                    <a href="{{ url('my/account', [], env('APP_SECURE')) }}" class="link">
                       <span class="img-container item">
                         <img src="{{ fct_cdn('/img/mobile/u_money.png') }}">
                       </span>
@@ -64,7 +64,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('my/coupons') }}" class="link">
+                    <a href="{{ url('my/coupons', [], env('APP_SECURE')) }}" class="link">
                       <span class="img-container item">
                         <img src="{{ fct_cdn('/img/mobile/u_coupon.png') }}">
                       </span>
@@ -73,7 +73,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('my/favorites') }}?from_type=0" class="link">
+                    <a href="{{ url('my/favorites', [], env('APP_SECURE')) }}?from_type=0" class="link">
                       <span class="img-container item">
                       <img src="{{ fct_cdn('/img/mobile/u_fav.png') }}">
                       </span>
@@ -82,7 +82,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('my/address') }}" class="link">
+                    <a href="{{ url('my/address', [], env('APP_SECURE')) }}" class="link">
               <span class="img-container item">
               <img src="{{ fct_cdn('/img/mobile/u_address.png') }}">
               </span>
@@ -104,7 +104,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ url('help') }}" class="link">
+                    <a href="{{ url('help', [], env('APP_SECURE')) }}" class="link">
                           <span class="img-container item">
                           <img src="{{ fct_cdn('/img/mobile/u_help.png') }}">
                           </span>
@@ -113,7 +113,7 @@
                     </a>
                 </li>
                 <li v-if="user.shopId > 0">
-                    <a href="{{ url('my/share') }}" class="link">
+                    <a href="{{ url('my/share', [], env('APP_SECURE')) }}" class="link">
                       <span class="img-container item">
                       <img src="{{ fct_cdn('/img/mobile/u_share.png') }}">
                       </span>

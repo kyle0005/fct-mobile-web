@@ -27,8 +27,8 @@
 @endsection
 @section('javascript')
     <script>
-        config.collectionUrl = "{{ url('my/favorites') }}";
-        config.collectionDel = "{{ url('my/favorites') }}";
+        config.collectionUrl = "{{ url('my/favorites', [], env('APP_SECURE')) }}";
+        config.collectionDel = "{{ url('my/favorites', [], env('APP_SECURE')) }}";
         config.collection = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/collection.js') }}"></script>

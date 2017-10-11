@@ -73,7 +73,7 @@ class OrderCommentController extends BaseController
 
             $result = OrderComment::saveComment($order_id, $expressScore, $hasAnonymous, $saleScore, $productInfo);
 
-            $url = url('my/orders');
+            $url = url('my/orders', [], env('APP_SECURE'));
             if (strpos($request->server('HTTP_REFERER'), '/orders/') !== false) {
                 $url .= '/'. $order_id;
             }

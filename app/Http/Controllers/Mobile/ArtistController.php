@@ -33,7 +33,7 @@ class ArtistController extends BaseController
         if ($request->ajax())
             return $this->returnAjaxSuccess("成功", null, $result);
 
-        $shareUrl = url('artists');
+        $shareUrl = url('artists', [], env('APP_SECURE'));
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
             $this->setShopId();
@@ -70,7 +70,7 @@ class ArtistController extends BaseController
             return $this->autoReturn($e->getMessage());
         }
 
-        $shareUrl = url('artists/' . $id);
+        $shareUrl = url('artists/' . $id, [], env('APP_SECURE'));
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
             $this->setShopId();

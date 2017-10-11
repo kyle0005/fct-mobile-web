@@ -64,8 +64,8 @@
 @endsection
 @section('javascript')
     <script>
-        config.uploadFileUrl = "{{ url('upload/image') }}";
-        config.authenticationUrl = "{{ url('my/account/real-auth') }}";
+        config.uploadFileUrl = "{{ url('upload/image', [], env('APP_SECURE')) }}";
+        config.authenticationUrl = "{{ url('my/account/real-auth', [], env('APP_SECURE')) }}";
         config.bankList = {!! json_encode($banks, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/authentication.js') }}"></script>

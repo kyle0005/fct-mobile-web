@@ -9,7 +9,7 @@
             @else
                 <div class="title">404&nbsp;error</div>
             @endif
-            <div class="txt">别着急，点击<a href="{{ (isset($url) && $url) ? $url : url('/') }}" class="link">这里</a>可以继续访问</div>
+            <div class="txt">别着急，点击<a href="{{ (isset($url) && $url) ? $url : url('/', [], env('APP_SECURE')) }}" class="link">这里</a>可以继续访问</div>
         </section>
     </div>
 @endsection

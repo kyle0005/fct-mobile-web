@@ -20,7 +20,7 @@
                 <a href="javascript:;" class="link" v-else><span class="pri-mark">￥</span> @{{ item.price }}</a>
             </div>
         </section>
-        <div class="tips">点我要充值，即表示您已同意方寸堂<strong><a href="{{ url('help') }}#/detail?articleId=17">《充返活动协议》</a></strong></div>
+        <div class="tips">点我要充值，即表示您已同意方寸堂<strong><a href="{{ url('help', [], env('APP_SECURE')) }}#/detail?articleId=17">《充返活动协议》</a></strong></div>
         <footer class="foot">
             <div class="pri">应付:<small class="pri-mark">￥</small>@{{ toFloat(charge_num) }}</div>
             <div class="sub">
@@ -34,7 +34,7 @@
 @endsection
 @section('javascript')
     <script>
-        config.rechargeUrl="{{ url('my/account/recharge') }}";
+        config.rechargeUrl="{{ url('my/account/recharge', [], env('APP_SECURE')) }}";
         config.charge = {!! json_encode($recharge) !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/recharge.js') }}"></script>

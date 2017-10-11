@@ -6,7 +6,7 @@
                 <a :href="top.url" class="link">
                     <img :data-src="top.image" class="swiper-lazy silde-img">
                 </a>
-                <a href="{{ url('/') }}" class="enter"  v-if="index==0"></a>
+                <a href="{{ url('/', [], env('APP_SECURE')) }}" class="enter"  v-if="index==0"></a>
             </div>
         </m-swipe>
         <transition name="fade">
@@ -18,7 +18,7 @@
                     </div>
                     <img src="{{ fct_cdn('/img/mobile/logo2.png') }}" class="logo">
                     <div class="btn-container">
-                        <a href="{{ url('/') }}" class="btn">进入</a>
+                        <a href="{{ url('/', [], env('APP_SECURE')) }}" class="btn">进入</a>
                     </div>
                 </div>
             </div>

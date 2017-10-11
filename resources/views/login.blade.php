@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="options">
-                <a href="{{ url('forget-password') }}">忘记密码？</a>
+                <a href="{{ url('forget-password', [], env('APP_SECURE')) }}">忘记密码？</a>
                 <a href="javascript:;" @click="changeway(loginWay)">快捷登录</a>
             </div>
         </form>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="options">
-                <a href="{{ url('forget-password') }}">忘记密码？</a>
+                <a href="{{ url('forget-password', [], env('APP_SECURE')) }}">忘记密码？</a>
                 <a href="javascript:;" @click="changeway(loginWay)">密码登录</a>
             </div>
         </form>
@@ -71,8 +71,8 @@
 @section('javascript')
     <script>
     var apis = {
-        userResource:"{{ url('login')  }}",
-        mobileCodeResource:"{{ url('send-captcha') }}"
+        userResource:"{{ url('login', [], env('APP_SECURE'))  }}",
+        mobileCodeResource:"{{ url('send-captcha', [], env('APP_SECURE')) }}"
     };
     </script>
     <script src="{{ fct_cdn('/js/mobile/login.js') }}"></script>

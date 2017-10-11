@@ -61,7 +61,7 @@ class ProductController extends BaseController
 
         $result->cImgs = $contentImages;
 
-        $shareUrl = url('products/'. $id);
+        $shareUrl = url('products/'. $id, [], env('APP_SECURE'));
         $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
         if ($shopId > 0) {
             $this->setShopId();
@@ -72,7 +72,7 @@ class ProductController extends BaseController
         $chatDatas = [
             "name" => $member ? $member->userName : "",
             "tel" => $member ? $member->cellPhone : "",
-            "comment" => $result->name . '--' . url('product/' . $result->id) . '"}',
+            "comment" => $result->name . '--' . url('product/' . $result->id, [], env('APP_SECURE')) . '"}',
         ];
 
         return view('product.show', [

@@ -66,8 +66,8 @@
 @section('javascript')
     <script>
         config.product = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
-        config.returnUrl = "{{ url('my/refunds') }}";
-        config.uploadFileUrl = "{{ url('upload/image') }}";
+        config.returnUrl = "{{ url('my/refunds', [], env('APP_SECURE')) }}";
+        config.uploadFileUrl = "{{ url('upload/image', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/orderreturn.js') }}"></script>
 @endsection

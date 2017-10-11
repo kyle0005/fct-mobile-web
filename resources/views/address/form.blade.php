@@ -69,7 +69,7 @@
 @section('javascript')
     <script>
         config.address = {!! json_encode($address, JSON_UNESCAPED_UNICODE) !!};
-        config.saveAddressddUrl = "{{ url('my/address') }}";
+        config.saveAddressddUrl = "{{ url('my/address', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/common/city.min.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/buy_address_opt.js') }}"></script>
