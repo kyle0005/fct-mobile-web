@@ -95,7 +95,7 @@ class Product
     public static function getShareProducts($categoryCode, $name, $sortIndex, $page)
     {
         $pageIndex = $page < 1 ? 1 : $page;
-        $pageSize = 20;
+        $pageSize = 10;
 
         $result = Base::http(
             env('API_URL') . sprintf('%s/share', self::$resourceUrl),
