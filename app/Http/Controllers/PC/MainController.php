@@ -28,6 +28,7 @@ class MainController extends BaseController
 
         $result['title'] = '方寸堂';
         $result['qrcodeUrl'] = 'http://qr.topscan.com/api.php?text=';
+        $result['qrcodeUrl'] = 'https://pan.baidu.com/share/qrcode?w=300&h=300&url=';
 
         return view('pc.index', $result);
     }
