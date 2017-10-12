@@ -168,7 +168,7 @@
                         <div class="check-code">
                             <a href="javascript:" target="_blank" class="yw-btn-blue pop-btn" title="查看详情">查看详情 &gt;</a>
                             <div class="qrcode-contianer">
-                                <img src="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}">
+                                <img src="{{ fct_cdn('/img/fct/qrcode-baike.jpg') }}">
                             </div>
                         </div>
                     </div>
