@@ -10,8 +10,8 @@
                 </li>
             </ul>
         </section>
-        <div class="prolist-container" v-load-more="nextPage" type="1">
-            <ul class="prolist" v-if="pro_list && pro_list.length > 0">
+        <div class="prolist-container">
+            <ul class="prolist" v-if="pro_list && pro_list.length > 0" v-load-more="nextPage" type="1">
                 <li class="item" v-for="item in pro_list">
                     <a :href="'/products/' + item.id">
                         <span class="pro-main"><img v-view="item.videoImg" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}"></span>
