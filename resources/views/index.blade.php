@@ -10,7 +10,7 @@
                 </li>
             </ul>
         </section>
-        <div class="prolist-container">
+        <div class="prolist-container" v-load-more="nextPage" type="1">
             <ul class="prolist" v-if="pro_list && pro_list.length > 0">
                 <li class="item" v-for="item in pro_list">
                     <a :href="'/products/' + item.id">

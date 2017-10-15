@@ -39,7 +39,7 @@ class MainController extends BaseController
 
         if ($request->ajax())
         {
-            return $this->returnAjaxSuccess($request->message, "", $result->pagination->entries);
+            return $this->returnAjaxSuccess($request->message, "", $result->pagination);
         }
         else
         {
@@ -57,8 +57,7 @@ class MainController extends BaseController
                 'title' => fct_title(),
                 'categories' => ProductCategory::getCategories(),
                 'levels' =>  $result->goodsGradeList,
-                'products' => $result->pagination->entries,
-                'pager' => $result->pagination->pager,
+                'products' => $result->pagination,
                 'share' => [
                     'title' => '方寸堂 - 只为不同',
                     'link' => $shareUrl,
