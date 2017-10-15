@@ -36,7 +36,7 @@ class Settlement
             throw new BusinessException($result->msg);
         }
 
-        $pagination = Base::pagination($result->data, $pageSize);
+        $pagination = Base::pagination($result->data, $pageIndex, $pageSize);
         return $pagination;
     }
 }

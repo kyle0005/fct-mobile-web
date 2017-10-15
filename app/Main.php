@@ -54,7 +54,7 @@ class Main
 
             $result = $result->data;
 
-            $pagination = Base::pagination($result->goodsList, $pageSize);
+            $pagination = Base::pagination($result->goodsList, $pageIndex, $pageSize);
 
             $result->pagination = $pagination;
             unset($result->goodsList);

@@ -45,7 +45,7 @@ class Article
                 throw new BusinessException($result->msg);
             }
 
-            $pagination = Base::pagination($result->data, $pageSize);
+            $pagination = Base::pagination($result->data, $pageIndex, $pageSize);
 
             $cacheResult = $pagination;
             Cache::put($cacheKey, $cacheResult, $cacheTime);

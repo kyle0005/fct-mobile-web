@@ -44,7 +44,7 @@ class Artist
                 throw new BusinessException($result->msg);
             }
 
-            $pagination = Base::pagination($result->data, $pageSize);
+            $pagination = Base::pagination($result->data, $pageIndex, $pageSize);
 
             $cacheResult = $pagination;
             Cache::put($cacheKey, $cacheResult, $cacheTime);
@@ -78,7 +78,7 @@ class Artist
             }
 
             $artist = $result->data;
-            $artist->dynamicList = Base::pagination($artist->dynamicList, $pageSize);
+            $artist->dynamicList = Base::pagination($artist->dynamicList, 1, $pageSize);
             $cacheResult = $artist;
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
