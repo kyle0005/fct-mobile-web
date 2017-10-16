@@ -15,7 +15,7 @@
     @yield('header')
     @yield('content')
     <script src="{{ fct_cdn('/js/mobile/vue.js') }}"></script>
-    <script src="{{ fct_cdn('/js/mobile/api/index.js?_rd=2017072418') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/api/index.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/common/tools.js') }}"></script>
     <script type="text/x-template" id="head_top">
         <header class="head-container">
