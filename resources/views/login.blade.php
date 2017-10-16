@@ -57,14 +57,14 @@
                 <a href="javascript:;" @click="changeway(loginWay)">密码登录</a>
             </div>
         </form>
-        <div class="others">
+{{--        <div class="others">
             <a href="javascript:;">
                 <img src="{{ fct_cdn('/img/mobile/qq.png') }}">
             </a>
             <a href="javascript:;">
                 <img src="{{ fct_cdn('/img/mobile/weibo.png') }}">
             </a>
-        </div>
+        </div>--}}
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
 @endsection
