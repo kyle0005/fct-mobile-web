@@ -19,6 +19,7 @@
         </m-swipe>
         <no-data v-if="nodata"></no-data>
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
+        <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
     </div>
 
     <script type="text/x-template" id="m_swipe">

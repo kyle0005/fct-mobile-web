@@ -32,7 +32,6 @@
 
         <no-data v-if="nodata"></no-data>
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
-
         <div class="footer">
             <div class="inner">
                 <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata={%22comment%22:{%22orderId%22:%22{{ $entity->orderId }}%22}}">
