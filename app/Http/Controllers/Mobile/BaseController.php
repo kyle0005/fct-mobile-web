@@ -14,10 +14,10 @@ class BaseController extends Controller
 
     public function __construct(Request $request)
     {
-        if (!is_mobile()) {
+/*        if (!is_mobile()) {
             header('location:' . env('APP_PC_URL'));
             exit();
-        }
+        }*/
 
         $member = $this->memberLogged(false);
         //默认头像
