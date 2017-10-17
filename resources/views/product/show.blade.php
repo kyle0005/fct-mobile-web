@@ -193,19 +193,19 @@
             <section class="info clearfix">
                 <div class="item">
                     <span class="left">作者</span>
-                    <span class="right">@{{ product.artistNames }}</span>
+                    <span class="right overText">@{{ product.artistNames }}</span>
                 </div>
                 <div class="item">
                     <span class="left">泥料</span>
-                    <span class="right">@{{ product.materialNames }}</span>
+                    <span class="right overText">@{{ product.materialNames }}</span>
                 </div>
                 <div class="item">
                     <span class="left">壶型</span>
-                    <span class="right">@{{ product.categoryNames }}</span>
+                    <span class="right overText">@{{ product.categoryNames }}</span>
                 </div>
                 <div class="item">
                     <span class="left">容量</span>
-                    <span class="right">
+                    <span class="right overText">
           <span v-if="product.volumes instanceof Array">@{{ product.volumes[0] }}CC&nbsp;~&nbsp;@{{ product.volumes[1] }}CC</span>
           <span v-else>@{{ product.volumes }}CC</span>
         </span>
