@@ -135,7 +135,15 @@
     <script type="text/x-template" id="overview">
         <div class="overview-container">
             <section class="video-container">
-                <mVideo :poster="product.video.poster" :url="product.video.url" id="videotop"></mVideo>
+                <mVideo v-if="product.video" :poster="product.video.poster" :url="product.video.url" id="videotop"></mVideo>
+                <m-swipe v-else swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
+                    <div v-for="(top, index) in tops" class="swiper-slide" slot="swiper-con">
+                        <a :href="top.url" class="link">
+                            <img :data-src="top" class="swiper-lazy silde-img">
+                        </a>
+                    </div>
+                </m-swipe>
+
                 <div class="sale clearfix" v-if="product.hasDiscount">
                     <div class="left">
                         <span class="title" v-if="product.discount && product.discount.canBuy">限时购</span>

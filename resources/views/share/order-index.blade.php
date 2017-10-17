@@ -57,6 +57,6 @@
         config.search_url = "{{ url('my/share/orders', [], env('APP_SECURE')) }}"; // /my/share/orders
         config.detail_url = "{{ url('my/share/orders', [], env('APP_SECURE')) }}"; // /my/share/orders/12345678912345678
     </script>
-    <script src="{{ fct_cdn('/js/mobile/orderlist.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/orderlist_m.js') }}"></script>
 
 @endsection

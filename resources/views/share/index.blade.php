@@ -60,6 +60,21 @@
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+
+        <footer class="footer">
+            <div class="inner">
+                <a href="{{ url('my/share/orders', [], env('APP_SECURE')) }}" class="link">
+                    <img src="{{ fct_cdn('/img/mobile/share_point.png') }}"><br>销售订单
+                </a>
+                <a href="{{ url('my/account/settlement', [], env('APP_SECURE')) }}" class="link">
+                    <img src="{{ fct_cdn('/img/mobile/share_detail.png') }}"><br>结算明细
+                </a>
+                <a href="{{ url('help', [], env('APP_SECURE')) }}#/list?id=16" class="link">
+                    <img src="{{ fct_cdn('/img/mobile/share_help.png') }}"><br>使用帮助
+                </a>
+            </div>
+
+        </footer>
     </div>
 @endsection
 @section('javascript')
