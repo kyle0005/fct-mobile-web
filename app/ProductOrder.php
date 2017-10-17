@@ -221,9 +221,8 @@ class ProductOrder
 
     /**订单订单价格
      * @param $productInfo
-     * @param $accountAmount
-     * @param $points
-     * @param $couponCode
+     * @return array
+     * @throws BusinessException
      */
     public static function checkoutOrderGoods($productInfo)
     {
@@ -278,4 +277,65 @@ class ProductOrder
 
         return $result->data;
     }
+
+
+    /**銷售訂單
+     * @param $keyword
+     * @param $status
+     * @param int $pageIndex
+     * @return object
+     * @throws BusinessException
+     */
+    public static function getShopOrders($keyword, $status, $pageIndex = 1)
+    {
+        $statuses = [0,1,2,3,4];
+        if (!in_array($status, $statuses))
+        {
+            $status = -1;
+        }
+
+        $pageSize = 5;
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/shop', self::$resourceUrl),
+            [
+                'order_id' => urlencode($keyword),
+                'status' => $status,
+                'page_index' => $pageIndex,
+                'page_size' => $pageSize,
+            ],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+
+        $pagination = Base::pagination($result->data, $pageIndex, $pageSize);
+
+        return $pagination;
+    }
+
+    /**銷售訂單詳情
+     * @param $orderId
+     * @return mixed
+     * @throws BusinessException
+     */
+    public static function getShopOrder($orderId)
+    {
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/shop/%s', self::$resourceUrl, $orderId),
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg);
+        }
+        return $result->data;
+    }
+
 }

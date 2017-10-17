@@ -169,6 +169,9 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
                 ->where('id', '[0-9]+');
         //分享
         Route::resource('my/share', 'Mobile\ShareController', ['index']);
+            Route::get('my/share/orders', 'Mobile\ShareController@getOrders');
+                Route::get('my/share/orders/{order_id}', 'Mobile\ShareController@getOrder')
+                    ->where('order_id', '[0-9]+');
     });
 });
 
