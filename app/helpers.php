@@ -14,7 +14,7 @@ if (!function_exists('fct_cdn'))
             return '';
 
         $domain = $customDomain ? $customDomain : env('STATIC_URL', '');
-        return rtrim($domain, '/') . $path . '?_rd=' . '201710161514';
+        return rtrim($domain, '/') . $path . '?_rd=' . '201710171824';
     }
 }
 
