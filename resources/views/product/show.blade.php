@@ -431,8 +431,8 @@
 
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/hammer.js') }}"></script>
-    <script src="{{ fct_cdn('/js/mobile/detail.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/swiper.js') }}"></script>
+    <script src="{{ fct_cdn('/js/mobile/detail.js') }}"></script>
     {!! wechat_share($share) !!}
     <script>
         var _mtac = {};
