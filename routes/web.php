@@ -168,7 +168,7 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
             Route::post('my/address/{id}/delete', 'Mobile\MemberAddressController@setDelete')
                 ->where('id', '[0-9]+');
         //分享
-        Route::resource('my/share', 'Mobile\ShareController', ['index']);
+        Route::get('my/share', 'Mobile\ShareController', ['index']);
             Route::get('my/share/orders', 'Mobile\ShareController@getOrders');
                 Route::get('my/share/orders/{order_id}', 'Mobile\ShareController@getOrder')
                     ->where('order_id', '[0-9]+');
