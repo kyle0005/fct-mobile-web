@@ -132,6 +132,16 @@
         </div>
     </template>
 
+    <script type="text/x-template" id="m_swipe">
+        <div class="swiper-container" :class="swipeid">
+            <div class="swiper-wrapper">
+                <slot name="swiper-con"></slot>
+            </div>
+            <!-- 分页器 -->
+            <div :class="{'swiper-pagination':pagination}"></div>
+        </div>
+    </script>
+
     <script type="text/x-template" id="overview">
         <div class="overview-container">
             <section class="video-container">
