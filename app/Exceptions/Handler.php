@@ -46,12 +46,12 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if (is_mobile()) {
-            if (strpos(env('APP_URL'), $request->server('HTTP_HOST')) !== false) {
+            if (strpos(env('APP_URL'), $request->server('HTTP_HOST')) === false) {
                 header('location:' . env('APP_URL') . request()->server('REQUEST_URI'));
                 exit();
             }
         } else {
-            if (strpos(env('APP_PC_URL'), $request->server('HTTP_HOST')) !== false) {
+            if (strpos(env('APP_PC_URL'), $request->server('HTTP_HOST')) === false) {
                 header('location:' . env('APP_PC_URL') . request()->server('REQUEST_URI'));
                 exit();
             }
