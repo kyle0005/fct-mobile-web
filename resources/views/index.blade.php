@@ -54,7 +54,7 @@
     <script src="{{ fct_cdn('/js/mobile/main.js') }}"></script>
 
     {!! wechat_share($share) !!}
-    <script>
+    {{--<script>
         var _mtac = {};
         (function() {
             var mta = document.createElement("script");
@@ -64,5 +64,5 @@
             var s = document.getElementsByTagName("script")[0];
             s.parentNode.insertBefore(mta, s);
         })();
-    </script>
+    </script>--}}
 @endsection
