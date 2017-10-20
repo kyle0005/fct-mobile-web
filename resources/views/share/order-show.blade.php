@@ -39,7 +39,7 @@
         <section class="">
             <div class="product" v-for="(item, index) in order_detail.orderGoods">
                 <div class="pro-item img-container">
-                    <img v-view="item.img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
+                    <a :href="'{{ url('products') }}/' + item.goodsId"><img v-view="item.img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}"></a>
                 </div>
                 <div class="pro-item title-container">
                     <div class="title">@{{ item.name }}</div>
