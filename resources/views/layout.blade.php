@@ -3,9 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="x-dns-prefetch-control" content="on">
     <title>{{ $title or "404" }}</title>
+    <meta name="apple-mobile-web-app-title" content="方寸堂">
     <meta name="keywords" content="">
     <meta name="description" content="">
+    <link rel="dns-prefetch" href="//cdn.fangcun.com"/>
     <link rel="shortcut icon" href="//cdn.fangcun.com/static/img/favicon.png" type="image/png" />
     <!-- build:css styles/main.css -->
     <link rel="stylesheet" href="{{ fct_cdn('/css/app.css') }}">
