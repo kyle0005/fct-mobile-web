@@ -39,10 +39,7 @@ class ProductCategory
                 throw new BusinessException($result->msg);
             }
 
-            $categories = [
-                (object)['name' => '全部', 'code' => ""],
-            ];
-            $cacheResult = $result->data ? array_merge($categories, $result->data) : $categories;
+            $cacheResult = $result->data;
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
 
