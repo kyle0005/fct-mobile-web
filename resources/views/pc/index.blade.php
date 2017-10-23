@@ -17,7 +17,6 @@
         }(document, window)</script>
 </head>
 <body>
-<img src="{{ fct_cdn('/img/fct/yw-share-cover.png') }}" style="position:absolute;left:-99em">
 <div id="ywBarX" class="yw-bar">
     <div class="yw-constr">
         <div class="yw-hd-bar">
