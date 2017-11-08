@@ -158,7 +158,12 @@
                     <div class="left">
                         <span class="title" v-if="product.discount && product.discount.canBuy">限时购</span>
                         <span class="title" v-else>秒杀</span>
-                        &ensp;享<span class="discount-color">@{{ product.discount.discountRate * 10 }}折，限购@{{ product.discount.singleCount }}件</span>
+                        &ensp;享
+                        <span class="discount-color">
+                            @{{ product.discount.discountRate * 10 }}折，
+                            <span v-if="product.discount.singleCount > 0">限购@{{ product.discount.singleCount }}件</span>
+                            <span v-else>不限购</span>
+                        </span>
                     </div>
                     <div class="right">
                         距<span v-if="product.discount.hasBegin">结束</span><span v-else>开始</span>仅剩<m-time :endTime="product.discount.discountTime" :callback="end"></m-time>
