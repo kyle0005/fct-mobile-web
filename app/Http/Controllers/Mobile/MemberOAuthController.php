@@ -29,7 +29,7 @@ class MemberOAuthController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -39,16 +39,16 @@ class MemberOAuthController extends BaseController
         $code = $request->get('code', '');
 
         if (!$code)
-            return $this->autoReturn("授权失败", $this->getRedirectSourceUrl());
+            return $this->autoReturn("授权失败", 404, $this->getRedirectSourceUrl());
 
         try
         {
             MemberOAuth::saveOAuth($code);
-            return $this->autoReturn("授权成功", $this->getRedirectSourceUrl(), 200);
+            return $this->autoReturn("授权成功", 200, $this->getRedirectSourceUrl());
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn("授权失败", $this->getRedirectSourceUrl());
+            return $this->autoReturn("授权失败", 404, $this->getRedirectSourceUrl());
         }
     }
 
@@ -65,11 +65,11 @@ class MemberOAuthController extends BaseController
         try
         {
             MemberOAuth::bindOAuth($openid,$cellphone, $captcha, $sessionId, $request->ip());
-            return $this->autoReturn("授权成功", $this->getRedirectSourceUrl(), 200);
+            return $this->autoReturn("授权成功", 200, $this->getRedirectSourceUrl());
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn("授权失败", $this->getRedirectSourceUrl());
+            return $this->autoReturn("授权失败", 404, $this->getRedirectSourceUrl());
         }
     }
 

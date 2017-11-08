@@ -20,7 +20,7 @@ class ShoppingCartController extends BaseController
             $result = ShoppingCart::getShoppingCarts();
         } catch (BusinessException $e) {
 
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         return view('cart.index', [
@@ -50,7 +50,7 @@ class ShoppingCartController extends BaseController
             return $this->returnAjaxSuccess('添加购物车成功', null, ['cartProductCount' => $result->data]);
         } catch (BusinessException $e) {
 
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
     }
@@ -64,7 +64,7 @@ class ShoppingCartController extends BaseController
             return $this->returnAjaxSuccess('从购物车删除宝贝成功');
         } catch (BusinessException $e) {
 
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 }

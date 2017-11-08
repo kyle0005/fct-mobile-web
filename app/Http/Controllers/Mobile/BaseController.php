@@ -111,7 +111,7 @@ class BaseController extends Controller
      * @param null $extras
      * @return string
      */
-    protected function autoReturn($message, $url = null, $code = 404, $extras = null)
+    protected function autoReturn($message, $code = 404, $url = null, $extras = null)
     {
         if ($message == 'loginExpire') {
 
@@ -158,7 +158,7 @@ class BaseController extends Controller
         $member = Member::getAuth();
         if ($hasReturnError && !$member)
         {
-            return $this->autoReturn('请先登录后再执行操作', $this->getRedirectSourceUrl(), 404);
+            return $this->autoReturn('请先登录后再执行操作', 401, $this->getRedirectSourceUrl());
         }
 
         return $member;

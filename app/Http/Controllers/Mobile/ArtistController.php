@@ -27,7 +27,7 @@ class ArtistController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         if ($request->ajax())
@@ -67,7 +67,7 @@ class ArtistController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         $shareUrl = url('artists/' . $id, [], env('APP_SECURE'));
@@ -102,7 +102,7 @@ class ArtistController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 }

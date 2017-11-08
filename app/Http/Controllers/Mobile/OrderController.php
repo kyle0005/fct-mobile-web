@@ -26,7 +26,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         if ($request->ajax())
@@ -47,7 +47,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         return view('order.show', [
@@ -111,7 +111,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         $result[env('REDIRECT_KEY')] = urlencode($request->getUri());
@@ -156,7 +156,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -190,7 +190,7 @@ class OrderController  extends BaseController
 
                 return $this->returnAjaxSuccess("申请成功", url('my/orders/' . $order_id, [], env('APP_SECURE')));
             } catch (BusinessException $e) {
-                return $this->autoReturn($e->getMessage());
+                return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
 
@@ -200,7 +200,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         if ($request->orderInvoice && $request->orderInvoice->status != 3) {
@@ -233,7 +233,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -257,7 +257,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -269,7 +269,7 @@ class OrderController  extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         return view('order.express', [

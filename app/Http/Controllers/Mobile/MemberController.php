@@ -25,7 +25,7 @@ class MemberController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -49,7 +49,7 @@ class MemberController extends BaseController
             //return $this->returnAjaxSuccess(($result ? '授权成功' : '授权完成,去绑定手机'), $redirectUrl);
         } catch (BusinessException $e) {
 
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -73,7 +73,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->autoReturn($e->getMessage());
+                return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
 
@@ -124,7 +124,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->autoReturn($e->getMessage());
+                return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
 
@@ -159,7 +159,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->autoReturn($e->getMessage());
+                return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
         return view('register');
@@ -192,7 +192,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->autoReturn($e->getMessage());
+                return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
 
@@ -202,7 +202,7 @@ class MemberController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         $result = [
@@ -240,7 +240,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->autoReturn($e->getMessage());
+                return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
 
@@ -281,7 +281,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->autoReturn($e->getMessage());
+                return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
         return view('forget-password', ['title' => fct_title('找回密码')]);
@@ -319,7 +319,7 @@ class MemberController extends BaseController
             }
             catch (BusinessException $e)
             {
-                return $this->autoReturn($e->getMessage());
+                return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
 
@@ -329,7 +329,7 @@ class MemberController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         $result = [

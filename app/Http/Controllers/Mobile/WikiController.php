@@ -25,7 +25,7 @@ class WikiController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         $shareUrl = url('wiki', [], env('APP_SECURE'));
@@ -68,7 +68,7 @@ class WikiController extends BaseController
                 $entities = Wiki::getFromTypes($type, $typeId);
 
         } catch (BusinessException $e) {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         if ($request->ajax())

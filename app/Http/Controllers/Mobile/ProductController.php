@@ -34,7 +34,7 @@ class ProductController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         if (!$result) return $this->autoReturn('没有找到此产品内容');
@@ -102,7 +102,7 @@ class ProductController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         return $this->returnAjaxSuccess("获取评论列表成功", null, $result);
@@ -119,7 +119,7 @@ class ProductController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -135,7 +135,7 @@ class ProductController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 }

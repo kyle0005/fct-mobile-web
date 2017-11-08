@@ -18,7 +18,7 @@ class WithdrawController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         if ($request->ajax())
@@ -41,7 +41,7 @@ class WithdrawController extends BaseController
         }
         catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -55,12 +55,12 @@ class WithdrawController extends BaseController
         catch (BusinessException $e)
         {
             $url = null;
-            if ($e->getCode() == 401)
+            if ($e->getCode() == 403)
                 $url = url('my/account', [], env('APP_SECURE'));
-            elseif ($e->getCode() == 402)
+            elseif ($e->getCode() == 405)
                 $url = url('my/account/real-auth', [], env('APP_SECURE'));
 
-            return $this->autoReturn($e->getMessage(), $url);
+            return $this->autoReturn($e->getMessage(), 404, $url);
         }
 
 

@@ -34,7 +34,7 @@ class MainController extends BaseController
         catch (BusinessException $e)
         {
             //错误处理
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         if ($request->ajax())
@@ -111,7 +111,7 @@ class MainController extends BaseController
 
         } catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
 
@@ -123,7 +123,7 @@ class MainController extends BaseController
             $result = Coupon::getCoupons($productId);
         } catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         return view('coupon.new', [
@@ -160,7 +160,7 @@ class MainController extends BaseController
             $result = Main::getHelp();
         } catch (BusinessException $e)
         {
-            return $this->autoReturn($e->getMessage());
+            return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
         return view('help', [

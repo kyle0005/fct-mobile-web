@@ -62,7 +62,7 @@ class BaseController extends Controller
      * @param null $extras
      * @return string
      */
-    protected function autoReturn($message, $url = null, $code = 404, $extras = null)
+    protected function autoReturn($message, $code = 404, $url = null, $extras = null)
     {
         if (request()->ajax()) {
             return json_encode([
