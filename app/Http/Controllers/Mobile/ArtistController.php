@@ -33,13 +33,7 @@ class ArtistController extends BaseController
         if ($request->ajax())
             return $this->returnAjaxSuccess("成功", null, $result);
 
-        $shareUrl = url('artists', [], env('APP_SECURE'));
-        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
-        if ($shopId > 0) {
-            $this->setShopId();
-            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
-        }
-
+        $shareUrl = $this->myShareUrl(url('artists', [], env('APP_SECURE')));
         return view('artist.index', [
             'title' => fct_title('守艺人'),
             'entries' => $result->entries,
@@ -70,13 +64,7 @@ class ArtistController extends BaseController
             return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
-        $shareUrl = url('artists/' . $id, [], env('APP_SECURE'));
-        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
-        if ($shopId > 0) {
-            $this->setShopId();
-            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
-        }
-
+        $shareUrl = $this->myShareUrl(url('artists/' . $id, [], env('APP_SECURE')));
         $title = fct_title(isset($result->name) && $result->name ? $result->name : '守艺人详情');
 
         return view('artist.show', [

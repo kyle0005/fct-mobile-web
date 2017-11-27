@@ -28,12 +28,7 @@ class WikiController extends BaseController
             return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
-        $shareUrl = url('wiki', [], env('APP_SECURE'));
-        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
-        if ($shopId > 0) {
-            $this->setShopId();
-            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
-        }
+        $shareUrl = $this->myShareUrl(url('wiki', [], env('APP_SECURE')));
 
         return view('wiki.index', [
             'title' => fct_title('百科'),
@@ -74,13 +69,7 @@ class WikiController extends BaseController
         if ($request->ajax())
             return $this->returnAjaxSuccess("获取成功", null, $result);
 
-        $shareUrl = url('wiki/item', [], env('APP_SECURE')) . '?from_type='.$type.'&from_id='.$typeId;
-        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
-        if ($shopId > 0) {
-            $this->setShopId();
-            $shareUrl = $shareUrl . '&' . env('SHARE_SHOP_ID_KEY') . '=' . $shopId;
-        }
-
+        $shareUrl = $this->myShareUrl(url('wiki/item', [], env('APP_SECURE')) . '?from_type='.$type.'&from_id='.$typeId);
         return view('wiki.show', [
             'title' => fct_title($result->name),
             'categories' => ProductCategory::getCategories(),

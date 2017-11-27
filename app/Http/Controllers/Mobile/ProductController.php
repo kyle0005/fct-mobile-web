@@ -61,12 +61,7 @@ class ProductController extends BaseController
 
         $result->cImgs = $contentImages;
 
-        $shareUrl = url('products/'. $id, [], env('APP_SECURE'));
-        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
-        if ($shopId > 0) {
-            $this->setShopId();
-            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
-        }
+        $shareUrl = $this->myShareUrl(url('products/'. $id, [], env('APP_SECURE')));
 
         $member = Member::getAuth();
         $chatDatas = [

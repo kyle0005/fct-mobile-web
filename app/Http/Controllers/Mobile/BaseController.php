@@ -14,10 +14,11 @@ class BaseController extends Controller
 
     public function __construct(Request $request)
     {
-/*        if (!is_mobile()) {
-            header('location:' . env('APP_PC_URL'));
-            exit();
-        }*/
+
+        //店铺分享
+        $this->setShopId();
+        //设置邀请
+        $this->setInviterId();
 
         $member = $this->memberLogged(false);
         //默认头像
@@ -30,7 +31,45 @@ class BaseController extends Controller
         view()->share('shareAvatar', $shareAvatar);
     }
 
-    /**设置分享id
+    protected function myShareUrl($url)
+    {
+        $member = $this->memberLogged(false);
+        //用户存在
+        if ($member && $member->memberId) {
+            $quote = strpos($url, '?') > 0 ? '&' : '?';
+            $url .= sprintf('%s%s=%d', $quote, env('SHARE_MEMBER_ID_KEY'), $member->memberId);
+            //申请并通过了店铺审查
+            if ($member->shopId > 0) {
+                $url .= sprintf('&%s=%d', env('SHARE_SHOP_ID_KEY'), $member->shopId);
+            }
+        }
+
+        return $url;
+    }
+
+    /**设置分享ID
+     *
+     */
+    protected function setInviterId()
+    {
+        $memberId= intval(request()->get(env('SHARE_MEMBER_ID_KEY'), 0));
+        //设置微店长分享的ID
+        if ($memberId > 0 && $memberId <> $this->getShopId())
+        {
+            Cookie::queue(env('SHARE_MEMBER_ID_KEY'), $memberId, 10080);
+        }
+    }
+
+    /**获取分享ID
+     * @return int|string
+     */
+    protected function getInviterId()
+    {
+        return Cookie::has(env('SHARE_MEMBER_ID_KEY'))
+            ? Cookie::get(env('SHARE_MEMBER_ID_KEY')) : 0;
+    }
+
+    /**设置店铺id
      *
      */
     protected function setShopId()
@@ -43,7 +82,7 @@ class BaseController extends Controller
         }
     }
 
-    /**获取分享id
+    /**获取店铺id
      * @return string
      */
     protected function getShopId()

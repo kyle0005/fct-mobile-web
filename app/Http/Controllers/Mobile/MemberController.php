@@ -68,7 +68,7 @@ class MemberController extends BaseController
                 FctValidator::hasMobile($cellphone);
                 FctValidator::hasMobileCaptcha($captcha);
 
-                MemberOAuth::bindOAuth($openid, $cellphone, $captcha, $sessionId, $request->ip());
+                MemberOAuth::bindOAuth($this->getInviterId(), $openid, $cellphone, $captcha, $sessionId, $request->ip());
                 return $this->returnAjaxSuccess('授权成功', $this->getRedirectSourceUrl());
             }
             catch (BusinessException $e)
@@ -117,7 +117,7 @@ class MemberController extends BaseController
 
                 //csrf验证
                 //用户登录操作
-                Member::login($cellphone, $password, $captcha, $sessionId, $request->ip());
+                Member::login($this->getInviterId(), $cellphone, $password, $captcha, $sessionId, $request->ip());
                 //成功返回成功提示和跳转的url
                 return $this->returnAjaxSuccess('登录成功', $this->getRedirectSourceUrl());
                 //return redirect($this->getRedirectSourceUrl(), 301, ['token' => $member->token], true);
@@ -131,38 +131,6 @@ class MemberController extends BaseController
         $this->cacheRedirectSourceUrl('', true);
 
         return view('login', ['title' => fct_title("用户登录")]);
-    }
-
-    /**注册
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector|\Illuminate\View\View
-     */
-    public function register(Request $request)
-    {
-        if ($request->getMethod() == 'POST') {
-            try
-            {
-                $cellphone = FctCommon::trimAll($request->get('cellphone'));
-                $password = null;
-                FctValidator::hasMobile($cellphone);
-
-                $captcha = FctCommon::trimAll($request->get('captcha'));
-                FctValidator::hasMobileCaptcha($captcha);
-                //csrf验证
-
-                //用户登录操作
-                $member = [];
-
-                //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('注册成功');
-                //return redirect($this->getRedirectSourceUrl(), 301, ['token' => $member->token], true);
-            }
-            catch (BusinessException $e)
-            {
-                return $this->autoReturn($e->getMessage(), $e->getCode());
-            }
-        }
-        return view('register');
     }
 
     /**更新
@@ -342,6 +310,7 @@ class MemberController extends BaseController
 
     /**退出
      * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
     public function logout(Request $request)
     {

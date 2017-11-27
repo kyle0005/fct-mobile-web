@@ -44,14 +44,7 @@ class MainController extends BaseController
         else
         {
 
-            $shareUrl = url('/', [], env('APP_SECURE'));
-            $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
-            if ($shopId > 0) {
-                $this->setShopId();
-                $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
-            } else {
-                $shareUrl .= '/';
-            }
+            $shareUrl = $this->myShareUrl(url('/', [], env('APP_SECURE') . '/'));
 
             return view('index', [
                 'title' => fct_title(),
@@ -76,13 +69,8 @@ class MainController extends BaseController
     {
         $result = Main::welcome();
 
-        $shareUrl = url('welcome', [], env('APP_SECURE'));
-        $shopId = intval($request->get(env('SHARE_SHOP_ID_KEY')));
-        if ($shopId > 0) {
-            $this->setShopId();
-            $shareUrl = $shareUrl . '?'.env('SHARE_SHOP_ID_KEY').'=' .$shopId;
-        }
-        
+        $shareUrl = $this->myShareUrl(url('welcome', [], env('APP_SECURE')));
+
         return view('welcome', [
             'title' => fct_title(),
             'slides' => json_encode($result, JSON_UNESCAPED_UNICODE),
@@ -169,7 +157,7 @@ class MainController extends BaseController
             'articles' => $result->articleList,
             'share' => [
                 'title' => '方寸堂 - 帮助中心',
-                'link' => url('help', [], env('APP_SECURE')),
+                'link' => $this->myShareUrl(url('help', [], env('APP_SECURE'))),
                 'img' => fct_cdn('/img/mobile/question-mark.png', 'https:' . env('STATIC_URL', '')),
                 'desc' => '方寸堂官方帮助中心,这里为用户提供平台使用常见问题的搜索与解答…',
             ],
