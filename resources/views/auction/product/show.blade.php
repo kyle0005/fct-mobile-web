@@ -70,10 +70,12 @@
                 <div class="left">
                     <div v-if="product.status !== 4 && parseInt((product.endTime - (new Date()).valueOf()) / 1000) > 0">
                         <img src="{{fct_cdn('/img/mobile/auction/remind-yw.png')}}"/>
-                        <div class='text'>距@{{ product.status === 1 ? '开始': '结束'}}仅剩：<m-time v-if="reload" :end-time="product.status === 1 ? product.startTime: product.endTime" :callback="end"></m-time></div>
+                        <div class='text'>距@{{ product.status === 1 ? '开始': '结束'}}仅剩：<span><span class="time-block">@{{ time_content.hour }}</span>时<span class="time-block">@{{ time_content.min }}</span>分<span class="time-block">@{{ time_content.sec }}</span>秒</span></div>
                     </div>
                 </div>
-                <a href="{{ url('auction', [], env('APP_SECURE')) }}" class="right">同场其他拍品<img src="{{fct_cdn('/img/mobile/head_r.png')}}"/></a>
+                <a href="{{ url('auction', [], env('APP_SECURE')) }}" class="right">
+                    同场其他拍品<img src="{{fct_cdn('/img/mobile/head_r.png')}}"/>
+                </a>
             </div>
         </section>
         <div class="aside" :class="{open:open,docked:docked}" @click.prevent="choose()">
@@ -89,8 +91,9 @@
 
                 </div>
                 <div class='send clearfix'>
-                    <input type='text' class='amount' placeholder='输入想要表达的信息' v-model="wsMsg"/>
-                    <a href="javascript:;" class='btn' @click="bindSendTap">发送</a>
+                    <input type='text' class='amount' :disabled="product.status === 4" placeholder='输入想要表达的信息' v-model="wsMsg"/>
+                    <a href="javascript:;" class='btn' @click="bindSendTap" v-if="product.status !== 4">发送</a>
+                    <a href="javascript:;" class='btn grey' v-else>发送</a>
                 </div>
                 <div class='slide'>
                     <img class='tips-img' src="{{fct_cdn('/img/mobile/auction/slide.png')}}"/>

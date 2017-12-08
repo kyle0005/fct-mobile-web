@@ -17,7 +17,7 @@ class AuctionOrder
     public static $resourceUrl = '/auction/order';
 
 
-    public static function getOrders($keywords, $status, $page)
+    public static function getOrders($keywords, $status, $page, $from='')
     {
         $pageIndex = $page < 1 ? 1 : $page;
         $pageSize = 20;
@@ -27,6 +27,7 @@ class AuctionOrder
             [
                 'q' => $keywords,
                 'status' => $status,
+                'from' => $from,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
             ],

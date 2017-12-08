@@ -22,18 +22,17 @@
                     <div class="right">@{{ item.statusName }}</div>
                 </div>
                 <ul class="list">
-                    <li class="product" v-for="(good, index) in item.orderGoods">
+                    <li class="product">
                         <div class="pro-item img-container">
-                            <img v-view="good.img" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
+                            <img v-view="item.goodsImg" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                         </div>
                         <div class="pro-item title-container">
-                            <div class="title">@{{ good.name }}</div>
-                            <div class="spec" v-if="good.specName && good.specName != null">规格:@{{ good.specName }}</div>
-                            <div class="spec">佣金:@{{ good.commission }}</div>
+                            <div class="title">@{{ item.goodsName }}</div>
+                            <div class="spec">佣金:@{{ item.commission }}</div>
                         </div>
                         <div class="pro-item price-container">
-                            <div class="price"><small class="pri-mark">￥</small>@{{ good.price }}</div>
-                            <div class="num">&times; @{{ good.buyCount }}</div>
+                            <div class="price"><small class="pri-mark">￥</small>@{{ item.bidPrice }}</div>
+                            <div class="num"></div>
                         </div>
                     </li>
                 </ul>

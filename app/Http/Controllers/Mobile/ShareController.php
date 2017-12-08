@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mobile;
 
+use App\AuctionOrder;
 use App\Exceptions\BusinessException;
 use App\Product;
 use App\ProductCategory;
@@ -61,6 +62,29 @@ class ShareController extends BaseController
         ]);
     }
 
+    public function getAuctionOrders(Request $request)
+    {
+        $keyword = $request->get('keyword', '');
+        $status = $request->get('status', -1);
+        $page = $request->get('page', 1);
+        try
+        {
+            $result = AuctionOrder::getOrders($keyword, $status, $page, 'shop');
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage(), $e->getCode());
+        }
+
+        if ($request->ajax())
+            return $this->returnAjaxSuccess("获取成功", null, $result);
+
+        return view('share.auctionorder-index', [
+            'title' => fct_title('我的订单'),
+            'status' => $status,
+            'orderlist' => $result
+        ]);
+    }
     public function getOrder(Request $request, $order_id)
     {
         try

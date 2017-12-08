@@ -50,7 +50,7 @@ class AuctionSignup
             env('API_URL') . sprintf('%s/create', self::$resourceUrl),
             [
                 'goods_id' => $productId,
-                'shop_id' => $shopId,
+                'shop_id' => $shopId
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );

@@ -32,7 +32,7 @@ class AuctionProduct
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
             ],
-            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
         );
 
@@ -51,7 +51,7 @@ class AuctionProduct
         $result = Base::http(
             env('API_URL') . sprintf('%s/detail/%d', self::$resourceUrl, $id),
             [],
-            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
         );
 

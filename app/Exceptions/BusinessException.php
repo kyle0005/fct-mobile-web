@@ -11,5 +11,5 @@ namespace App\Exceptions;
 
 class BusinessException extends \Exception
 {
-
+    protected $code = 404;
 }
