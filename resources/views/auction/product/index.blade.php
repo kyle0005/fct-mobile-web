@@ -34,8 +34,8 @@
                         <span class="description">@{{ item.intro }}</span>
                     </a>
                     <div class="ops clearfix">
-                        <img src="{{fct_cdn('/img/mobile/auction/viewcount.png')}}"><span>@{{ item.viewCount }}</span>
-                        <img src="{{fct_cdn('/img/mobile/auction/hammer.png')}}"><span>@{{ item.bidCount }}</span>
+                        <img src="{{fct_cdn('/img/mobile/clickAmount.png')}}"><span>@{{ item.viewCount }}</span>
+                        <img src="{{fct_cdn('/img/mobile/auction/pm-icon.png')}}"><span>@{{ item.bidCount }}</span>
                         <a href="javascript:;" class="right" @click="tip(item, index)" v-if="item.remindId > -1">
                             <img src="{{fct_cdn('/img/mobile/auction/remind-red.png')}}">@{{ item.remindId > 0 ? "取消提醒" : "提醒我"}}
                         </a>
