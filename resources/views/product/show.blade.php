@@ -212,8 +212,7 @@
                     <span class="left">容量</span>
                     <span class="right overText">
                         <span >@{{ product.volumes[0] }}CC<span v-if="product.volumes.length > 1">&nbsp;~&nbsp;@{{ product.volumes[1] }}CC</span></span>
-          <span v-else>@{{ product.volumes }}CC</span>
-        </span>
+                    </span>
                 </div>
                 <div class="item">
                     <span class="left">库存</span>

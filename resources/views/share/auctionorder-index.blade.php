@@ -28,7 +28,6 @@
                         </div>
                         <div class="pro-item title-container">
                             <div class="title">@{{ item.goodsName }}</div>
-                            <div class="spec">佣金:@{{ item.commission }}</div>
                         </div>
                         <div class="pro-item price-container">
                             <div class="price"><small class="pri-mark">￥</small>@{{ item.bidPrice }}</div>
@@ -37,7 +36,7 @@
                     </li>
                 </ul>
                 <div class="total">
-                    <div class="inner">共@{{ item.buyTotalCount }}件宝贝&nbsp;合计:<small class="pri-mark">￥</small><span class="payAmount">@{{ (item.payAmount).toFixed(2) }}</span>（含运费）</div>
+                    <div class="inner">合计佣金:<span class="payAmount pri"><small class="pri-mark">￥</small>@{{ item.commission }}</span></div>
                 </div>
             </div>
         </div>
@@ -53,9 +52,9 @@
     <script>
         config.status = {{ $status }};
         config.orderlist = {!! json_encode($orderlist, JSON_UNESCAPED_UNICODE) !!};
-        config.orderlist_url = "{{ url('my/share/orders', [], env('APP_SECURE')) }}"; // /my/share/orders
-        config.search_url = "{{ url('my/share/orders', [], env('APP_SECURE')) }}"; // /my/share/orders
-        config.detail_url = "{{ url('my/share/orders', [], env('APP_SECURE')) }}"; // /my/share/orders/12345678912345678
+        config.orderlist_url = "{{ url('my/share/auction/orders', [], env('APP_SECURE')) }}"; // /my/share/orders
+        config.search_url = "{{ url('my/share/auction/orders', [], env('APP_SECURE')) }}"; // /my/share/orders
+        config.detail_url = "{{ url('my/share/auction/orders', [], env('APP_SECURE')) }}"; // /my/share/orders/12345678912345678
     </script>
     <script src="{{ fct_cdn('/js/mobile/orderlist_m.js') }}"></script>
 

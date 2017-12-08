@@ -26,7 +26,7 @@
                     </div>
                 </div>
             </section>
-            <section class="info clearfix">
+            <section class="info clearfix" :class="{open:open,docked:docked}">
                 <div class="item clearfix">
                     <span class="left">市场估价</span>
                     <span class="right overText">￥@{{ product.marketPrice }}</span>
@@ -44,7 +44,7 @@
                     <span class="right overText">@{{ product.delaySecond }}</span>
                 </div>
             </section>
-            <section class='artist'>
+            <section class='artist' :class="{open:open,docked:docked}">
                 <img class='photo' :src="product.artistImg"/>
                 <img class='arrow' src="{{fct_cdn('/img/mobile/arrow_right.png')}}"/>
                 <div class='content'>
@@ -52,7 +52,7 @@
                     <span class='text overTextH3'>@{{ product.artistIntro }}</span>
                 </div>
             </section>
-            <section class="content" v-html="product.content"></section>
+            <section class="content" v-html="product.content" :class="{open:open,docked:docked}"></section>
         </section>
         <section class='det-container'>
             <div class='main'>

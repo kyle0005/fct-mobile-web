@@ -48,9 +48,12 @@
                     </div>
                 </div>
 
-                <div class="btn clearfix" v-if="item.status == 3 && item.commentStatus == 0">
-                    <div class="btn-container">
+                <div class="btn clearfix" v-else>
+                    <div class="btn-container" v-if="item.status == 3 && item.commentStatus == 0">
                         <a :href="'{{ url('my/orders', [], env('APP_SECURE')) }}/' + item.orderId + '/comments/create'" class="black">评价</a>
+                    </div>
+                    <div class="btn-container" v-else>
+                        <a :href="'{{ url('my/orders', [], env('APP_SECURE')) }}/' + item.orderId" class="black">查看详情</a>
                     </div>
                 </div>
             </div>

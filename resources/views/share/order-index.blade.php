@@ -29,7 +29,7 @@
                         <div class="pro-item title-container">
                             <div class="title">@{{ good.name }}</div>
                             <div class="spec" v-if="good.specName && good.specName != null">规格:@{{ good.specName }}</div>
-                            <div class="spec">佣金:@{{ good.commission }}</div>
+                            <div class="commission">佣金:@{{ good.commission }}</div>
                         </div>
                         <div class="pro-item price-container">
                             <div class="price"><small class="pri-mark">￥</small>@{{ good.price }}</div>
@@ -38,7 +38,7 @@
                     </li>
                 </ul>
                 <div class="total">
-                    <div class="inner">共@{{ item.buyTotalCount }}件宝贝&nbsp;合计:<small class="pri-mark">￥</small><span class="payAmount">@{{ (item.payAmount).toFixed(2) }}</span>（含运费）</div>
+                    <div class="inner">共@{{ item.buyTotalCount }}件宝贝&nbsp;合计佣金:<span class="payAmount pri"><small class="pri-mark">￥</small>@{{ item.commission }}</span></div>
                 </div>
             </div>
         </div>
