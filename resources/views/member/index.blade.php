@@ -151,6 +151,7 @@
                     </a>
                 </li>
             </ul>
+            <a href="{{ url('logout', [], env('APP_SECURE')) }}" class="user-sec logout">退出登录</a>
         </section>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
