@@ -53,6 +53,35 @@
             </ul>
         </section>
         <section class="user-sec">
+            <ul class="list auction">
+                <li>
+                    <a href="{{ url("my/auction/signup", [], env('APP_SECURE')) }}?status=1" class="link">
+                        <img src="{{ fct_cdn('/img/mobile/auction/my/pm-success.png') }}"><br>
+                        <span>拍卖中</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url("my/auction/signup", [], env('APP_SECURE')) }}?status=3" class="link">
+                        <img src="{{ fct_cdn('/img/mobile/auction/my/bm-waitpay.png') }}"><br>
+                        <span>竞拍成功</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url("my/auction/order", [], env('APP_SECURE')) }}" class="link">
+                        <img src="{{ fct_cdn('/img/mobile/auction/my/order.png') }}"><br>
+                        <span>拍卖订单</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url("my/auction/signup", [], env('APP_SECURE')) }}" class="link">
+                        <img class='bracket' src="{{ fct_cdn('/img/mobile/auction/my/bracket.png') }}">
+                        <img src="{{ fct_cdn('/img/mobile/auction/my/hammer.png') }}"><br>
+                        <span class="my">我的拍卖</span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        <section class="user-sec">
             <ul class="funcs-list">
                 <li>
                     <a href="{{ url('my/account', [], env('APP_SECURE')) }}" class="link">

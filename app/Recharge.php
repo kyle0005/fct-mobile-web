@@ -51,12 +51,13 @@ class Recharge
         return $result->data;
     }
 
-    public static function saveRecharge($payAmount)
+    public static function saveRecharge($payAmount, $canWithdraw)
     {
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
                 'pay_amount' => $payAmount,
+                'can_withdraw' => $canWithdraw,
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );

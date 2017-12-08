@@ -67,10 +67,14 @@ class RechargeController extends BaseController
     public function store(Request $request)
     {
         $payAmount = $request->get('charge_num', 0);
+        $canWithdraw = $request->get('can_withdraw', 0);
+        if (!$payAmount) {
+            $payAmount = intval($request->get('pay_amount', 0));
+        }
 
         try
         {
-            $result = Recharge::saveRecharge($payAmount);
+            $result = Recharge::saveRecharge($payAmount, $canWithdraw);
             if ($result < 1) {
                 return $this->autoReturn('充值异常');
             }

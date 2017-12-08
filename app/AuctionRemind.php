@@ -19,7 +19,7 @@ class AuctionRemind
     public static function saveRemind($productId)
     {
         $result = Base::http(
-            env('API_URL') . self::$resourceUrl,
+            env('API_URL') . sprintf('%s/set', self::$resourceUrl),
             [
                 'goods_id' => $productId,
             ],

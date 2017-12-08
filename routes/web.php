@@ -37,7 +37,6 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
     Route::get('error', 'Mobile\MainController@error');
     //用户
     Route::match(['get', 'post'], 'login', 'Mobile\MemberController@login');
-
     //第三方授权
         //授权回调
         Route::get('oauth/callback', 'Mobile\MemberController@oAuthCallback');
@@ -63,6 +62,10 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
         //ajax获取泥料数据
         Route::get('products/{product_id}/materials', 'Mobile\ProductController@getProductaMaterials')
             ->where('product_id', '[0-9]+');
+
+    //拍卖
+    Route::resource('auction', 'Mobile\AuctionProductController', ['index', 'show']);
+
     //大师
     Route::resource('artists', 'Mobile\ArtistController', ['index', 'show']);
         //ajax获取大师评论数据
@@ -81,12 +84,25 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
     /** 用户需要登录后操作 */
     Route::group(['middleware' => 'auth'], function ()
     {
-        //大师评论
-        Route::post('artists/{artist_id}/comments', 'Mobile\ArtistCommentController@store')
-            ->where('artist_id', '[0-9]+');
+        Route::get('express', 'Mobile\ExpressController@index');
         //上传图片
         //Route::get('upload/image', 'Mobile\UploadController@image');
         Route::post('upload/image', 'Mobile\UploadController@image');
+
+        //拍卖提醒
+        Route::post('remind', 'Mobile\AuctionRemindController@store');
+        //拍卖报名
+        Route::post('signup', 'Mobile\AuctionSignupController@store');
+        //拍卖报名
+        Route::post('bid', 'Mobile\AuctionBidController@store');
+        //拍卖创建订单
+        Route::get('auction/order/create', 'Mobile\AuctionOrderController@create');
+        Route::post('auction/order', 'Mobile\AuctionOrderController@store');
+
+
+        //大师评论
+        Route::post('artists/{artist_id}/comments', 'Mobile\ArtistCommentController@store')
+            ->where('artist_id', '[0-9]+');
 
         //购物车
         Route::resource('carts', 'Mobile\ShoppingCartController', ['index', 'store']);
@@ -99,6 +115,11 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
 
         //用户中心
         Route::get('my', 'Mobile\MemberController@index');
+
+        //拍卖报名列表
+        Route::get('my/auction/signup', 'Mobile\AuctionSignupController@index');
+        //拍卖订单
+        Route::resource('my/auction/order', 'Mobile\AuctionOrderController', ['index', 'show']);
 
         //用户中心订单
         Route::get('my/orders', 'Mobile\OrderController@index');

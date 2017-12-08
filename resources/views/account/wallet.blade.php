@@ -1,6 +1,6 @@
 @extends("layout")
 @section('content')
-    <div class="wallet-container">
+    <div class="wallet-container" id="wallet" v-cloak>
         <section class="top">
             <div class="inner">
                 <div>{{ $account->points }}<br>我的积分</div>
@@ -23,8 +23,8 @@
         <section class="items">
             <ul class="list">
                 <li>
-                    <a href="{{ url('my/account/recharge/create', [], env('APP_SECURE')) }}" class="link">
-                        <img src="{{ fct_cdn('/img/mobile/wallet_recharge.png') }}"><br>充值
+                    <a href="javascript:;" class="link" @click="comf">
+                        <img src="{{ fct_cdn('/img/mobile/wallet_recharge.png') }}"><br>交纳保证金
                     </a>
                 </li>
                 <li>
@@ -54,6 +54,12 @@
                 </li>
             </ul>
         </section>
-        <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :msg="msg"></confirm>
     </div>
+@endsection
+@section('javascript')
+    <script>
+        config.rechange_url = "{{ url('my/account/recharge', [], env('APP_SECURE')) }}";
+    </script>
+    <script src="{{fct_cdn('/js/mobile/wallet.js')}}"></script>
 @endsection

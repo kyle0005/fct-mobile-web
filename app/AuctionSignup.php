@@ -17,7 +17,7 @@ class AuctionSignup
     public static $resourceUrl = '/auction/signup';
 
 
-    public static function getSignups($keywords, $status, $page)
+    public static function getSignups($goodsName, $status, $page)
     {
         $pageIndex = $page < 1 ? 1 : $page;
         $pageSize = 20;
@@ -25,7 +25,7 @@ class AuctionSignup
         $result = Base::http(
             env('API_URL') . sprintf('%s/list', self::$resourceUrl),
             [
-                'q' => $keywords,
+                'goods_name' => $goodsName,
                 'status' => $status,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
@@ -44,12 +44,13 @@ class AuctionSignup
         return $pagination;
     }
 
-    public static function saveSignup($productId)
+    public static function saveSignup($productId, $shopId)
     {
         $result = Base::http(
             env('API_URL') . sprintf('%s/create', self::$resourceUrl),
             [
                 'goods_id' => $productId,
+                'shop_id' => $shopId,
             ],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()]
         );

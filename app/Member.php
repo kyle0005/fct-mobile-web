@@ -25,12 +25,13 @@ class Member
      * @return mixed|object|\Psr\Http\Message\ResponseInterface
      * @throws BusinessException
      */
-    public static function login($cellphone, $password, $captcha, $sessionId, $ip)
+    public static function login($inviterId, $cellphone, $password, $captcha, $sessionId, $ip)
     {
         $expireDay = 3;
         $result = Base::http(
             env('API_URL') . '/member/login',
             [
+                'inviter_id' => $inviterId,
                 'cellphone' => $cellphone,
                 'password' => $password,
                 'platform' => env('WEB_PLATFORM'),

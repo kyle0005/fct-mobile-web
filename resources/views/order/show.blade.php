@@ -17,7 +17,7 @@
         </section>
         <section class="detail">
             <div class="express" v-if="order_detail.orderReceiver.expressNO">
-                <a href="{{ url('my/orders/'. $entity->orderId .'/express', [], env('APP_SECURE')) }}" class="link">
+                <a :href="'{{ url('express', [], env('APP_SECURE')) }}?name=' + order_detail.orderReceiver.expressPlatform + '&number=' + order_detail.orderReceiver.expressNO" class="link">
                     <span class="img-container item">
                         <img src="{{ fct_cdn('/img/mobile/order_transport.png') }}">
                     </span>
@@ -87,17 +87,13 @@
                 <div class="del" v-if="order_detail.status == 0">
                     <a href="javascript:;" @click="confirm(order_detail.orderId, cancel)">关闭订单</a>
                </div>
-                <div class="comment" v-if="order_detail.status == 0">
-                    <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
-                </div>
-                <div class="comment" v-if="order_detail.status == 3 && order_detail.commentStatus == 0">
-                    <a :href="'{{ url('my/orders', [], env('APP_SECURE')) }}/' + order_detail.orderId + '/comments/create'">我要评价</a>
-                </div>
-
-                <div class="comment" v-if="order_detail.status == 2">
-                    <a href="javascript:;">
-                        <a href="javascript:;" @click="confirm(order_detail.orderId, finish)">确认收货</a>
-                    </a>
+                <div class="comment">
+                    <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId"
+                       v-if="order_detail.status == 0">我要付款</a>
+                    <a :href="'{{ url('my/orders', [], env('APP_SECURE')) }}/' + order_detail.orderId + '/comments/create'"
+                       v-if="order_detail.status == 3 && order_detail.commentStatus == 0">我要评价</a>
+                    <a href="javascript:;" @click="confirm(order_detail.orderId, finish)"
+                       v-if="order_detail.status == 2">确认收货</a>
                 </div>
             </div>
         </footer>

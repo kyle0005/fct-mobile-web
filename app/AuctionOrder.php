@@ -14,7 +14,7 @@ use App\Exceptions\BusinessException;
 class AuctionOrder
 {
 
-    public static $resourceUrl = '/auction/goods';
+    public static $resourceUrl = '/auction/order';
 
 
     public static function getOrders($keywords, $status, $page)

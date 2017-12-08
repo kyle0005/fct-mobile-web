@@ -45,6 +45,12 @@
                     </ul>
                     <ul class="lines clearfix">
                         <li class="item">
+                            <a href="{{ url('auction', [], env('APP_SECURE')) }}">
+                                <img src="{{ fct_cdn('/img/mobile/pm_logo.png') }}">
+                                <span>拍卖</span>
+                            </a>
+                        </li>
+                        <li class="item">
                             <a href="{{ url('artists', [], env('APP_SECURE')) }}">
                                 <img src="{{ fct_cdn('/img/mobile/menu1.png') }}">
                                 <span>守艺人</span>

@@ -82,27 +82,6 @@ class ProductOrder
         return $result->data;
     }
 
-    /**获取订单物流信息
-     * @param $orderId
-     * @return mixed
-     * @throws BusinessException
-     */
-    public static function getExpress($orderId)
-    {
-        $result = Base::http(
-            env('API_URL') . sprintf('%s/%s/express', self::$resourceUrl, $orderId),
-            [],
-            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
-            'GET'
-        );
-
-        if ($result->code != 200)
-        {
-            throw new BusinessException($result->msg);
-        }
-        return $result->data;
-    }
-
     /**保存订单
      * @param $points
      * @param $accountAmount

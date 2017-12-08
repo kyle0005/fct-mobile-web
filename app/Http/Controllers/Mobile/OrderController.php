@@ -260,22 +260,4 @@ class OrderController  extends BaseController
             return $this->autoReturn($e->getMessage(), $e->getCode());
         }
     }
-
-    public function getExpress(Request $request, $order_id) {
-
-        try
-        {
-            $result = ProductOrder::getExpress($order_id);
-        }
-        catch (BusinessException $e)
-        {
-            return $this->autoReturn($e->getMessage(), $e->getCode());
-        }
-
-        return view('order.express', [
-            'title' => fct_title('订单物流信息'),
-            'entity' => $result,
-        ]);
-    }
-
 }

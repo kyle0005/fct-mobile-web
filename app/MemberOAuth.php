@@ -71,12 +71,13 @@ class MemberOAuth
         return $member;
     }
 
-    public static function bindOAuth($openid, $cellphone, $captcha, $sessionId, $ip)
+    public static function bindOAuth($inviterId, $openid, $cellphone, $captcha, $sessionId, $ip)
     {
         $expireDay = 3;
         $result = Base::http(
             env('API_URL') . sprintf('%s/bind', self::$resourceUrl),
             [
+                'inviter_id' => $inviterId,
                 'openid' => $openid,
                 'cellphone' => $cellphone,
                 'platform' => env('WEIXIN_PLATFORM'),

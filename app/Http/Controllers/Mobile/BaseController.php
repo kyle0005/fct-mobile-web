@@ -54,9 +54,9 @@ class BaseController extends Controller
     {
         $memberId= intval(request()->get(env('SHARE_MEMBER_ID_KEY'), 0));
         //设置微店长分享的ID
-        if ($memberId > 0 && $memberId <> $this->getShopId())
+        if ($memberId > 0)
         {
-            Cookie::queue(env('SHARE_MEMBER_ID_KEY'), $memberId, 10080);
+            Cookie::queue(env('SHARE_MEMBER_ID_KEY'), $memberId, 43200);
         }
     }
 
@@ -76,9 +76,9 @@ class BaseController extends Controller
     {
         $shopId= intval(request()->get(env('SHARE_SHOP_ID_KEY'), 0));
         //设置微店长分享的ID
-        if ($shopId > 0 && $shopId <> $this->getShopId())
+        if ($shopId > 0)
         {
-            Cookie::queue(env('SHARE_SHOP_ID_KEY'), $shopId, 10080);
+            Cookie::queue(env('SHARE_SHOP_ID_KEY'), $shopId, 43200);
         }
     }
 
