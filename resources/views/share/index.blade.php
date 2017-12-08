@@ -46,9 +46,9 @@
                     </span>
                     <span class="center">
                       <span class="title">@{{ item.name }}</span>
-                    <span class="t1" v-if="item.price instanceof Array">价格：<small class="pri-mark">￥</small>@{{ item.price[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.price[1] }}</span>
+                    <span class="t1" v-if="item.price.length > 1">价格：<small class="pri-mark">￥</small>@{{ item.price[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.price[1] }}</span>
                       <span class="t1" v-else>价格：<small class="pri-mark">￥</small>@{{ item.price }}</span>
-                      <span class="t2" v-if="item.commission instanceof Array">佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
+                      <span class="t2" v-if="item.commission.length > 1">佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
                       <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission }}</strong></span>
                     </span>
                     <span class="right"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></span>

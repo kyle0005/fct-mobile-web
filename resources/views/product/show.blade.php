@@ -211,7 +211,7 @@
                 <div class="item">
                     <span class="left">容量</span>
                     <span class="right overText">
-          <span v-if="product.volumes instanceof Array">@{{ product.volumes[0] }}CC&nbsp;~&nbsp;@{{ product.volumes[1] }}CC</span>
+                        <span >@{{ product.volumes[0] }}CC<span v-if="product.volumes.length > 1">&nbsp;~&nbsp;@{{ product.volumes[1] }}CC</span></span>
           <span v-else>@{{ product.volumes }}CC</span>
         </span>
                 </div>

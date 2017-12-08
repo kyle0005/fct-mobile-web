@@ -73,9 +73,7 @@
                         <div class='text'>距@{{ product.status === 1 ? '开始': '结束'}}仅剩：<m-time v-if="reload" :end-time="product.status === 1 ? product.startTime: product.endTime" :callback="end"></m-time></div>
                     </div>
                 </div>
-                <div class="right">
-                    <a href="">同场其他拍品<img src="{{fct_cdn('/img/mobile/head_r.png')}}"/></a>
-                </div>
+                <a href="{{ url('auction', [], env('APP_SECURE')) }}" class="right">同场其他拍品<img src="{{fct_cdn('/img/mobile/head_r.png')}}"/></a>
             </div>
         </section>
         <div class="aside" :class="{open:open,docked:docked}" @click.prevent="choose()">
