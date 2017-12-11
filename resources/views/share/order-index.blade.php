@@ -29,7 +29,7 @@
                         <div class="pro-item title-container">
                             <div class="title">@{{ good.name }}</div>
                             <div class="spec" v-if="good.specName && good.specName != null">规格:@{{ good.specName }}</div>
-                            <div class="commission"><small class="pri-mark">￥</small>佣金:@{{ good.commission }}</div>
+                            <div class="commission">佣金:<small class="pri-mark">￥</small>@{{ good.commission }}</div>
                         </div>
                         <div class="pro-item price-container">
                             <div class="price"><small class="pri-mark">￥</small>@{{ good.price }}</div>

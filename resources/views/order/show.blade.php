@@ -84,8 +84,9 @@
             <div class="inner">
                 <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助"
                    class="chat"><img src="{{ fct_cdn('/img/mobile/order_chat.png') }}"><span class="text">在线客服</span></a>
+                <a href="javascript:;" class="logo"><img src="{{ fct_cdn('/img/mobile/logo2.png') }}"><span class="text">方寸首页</span></a>
                 <div class="del" v-if="order_detail.status == 0">
-                    <a href="javascript:;" @click="confirm(order_detail.orderId, cancel)">关闭订单</a>
+                    <a href="{{ url('/', [], env('APP_SECURE')) }}" @click="confirm(order_detail.orderId, cancel)">关闭订单</a>
                </div>
                 <div class="comment">
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId"
