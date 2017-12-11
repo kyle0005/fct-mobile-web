@@ -59,10 +59,11 @@
         <no-data v-if="nodata"></no-data>
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
-        <div class="qrcode-container" :class="{show:show}" @click="popqrcode()">
+        <div class="qrcode-container" :class="{show:show}">
             <div class="inner">
                 <img :src="qrurl" class="qrcode">
                 <div class="qrtitle">@{{ qrname }}</div>
+                <a href="javascript:;" class="fork" @click="popqrcode()"><img src="{{ fct_cdn('/img/mobile/share_fork.png') }}"></a>
             </div>
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
