@@ -24,7 +24,7 @@
             <ul class="list">
                 <li>
                     <a href="javascript:;" class="link" @click="comf">
-                        <img src="{{ fct_cdn('/img/mobile/wallet_recharge.png') }}"><br>交纳保证金
+                        <img src="{{ fct_cdn('/img/mobile/wallet_recharge.png') }}"><br>缴纳保证金
                     </a>
                 </li>
                 <li>
