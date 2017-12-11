@@ -19,7 +19,7 @@
                 <li class="items clearfix">
                     <div class="left">申请说明</div>
                     <div class="right">
-                        <textarea class="val-code" name="remark" placeholder="请输入申请说明" v-model="description"></textarea>
+                        <textarea name="remark" class="val-code" placeholder="请输入申请说明" v-model="description"></textarea>
                     </div>
                 </li>
             </ul>

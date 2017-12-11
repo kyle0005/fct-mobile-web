@@ -46,7 +46,7 @@
                 <div id="hdSlide2" class="yw-hd-slide-li yw-hd-slide-2"><s class="yw-hd-slide-bg"></s>
                     <div class="yw-hd-slide-con">
                         <h2 class="yw-hd-slide-h">匠人云集</h2>
-                        <p class="yw-hd-slide-p">300+&nbsp;位匠人入驻方寸堂；<span class="hidden"><br></span>心手相通，载大道于咫尺之器。</p>
+                        <p class="yw-hd-slide-p">30+&nbsp;位匠人入驻方寸堂；<span class="hidden"><br></span>心手相通，载大道于咫尺之器。</p>
                     </div>
                 </div>
                 <div id="hdSlide3" class="yw-hd-slide-li yw-hd-slide-3">
