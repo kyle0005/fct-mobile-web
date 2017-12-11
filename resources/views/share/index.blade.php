@@ -26,32 +26,31 @@
         </section>
         <ul class="list">
             <li>
-                <a href="{{ url('/', [], env('APP_SECURE')) .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}" class="link">
-                    <span class="left">
-                      <img src="{{ fct_cdn('/img/mobile/logo2.png') }}">
-                    </span>
-                    <span class="center">
-                      <span class="title">方寸堂 - 只为不同</span>
-                      <span class="t2">汇聚东方美学匠心之作的紫砂交流电商平台。</span>
-                    </span>
-                </a>
+                <div class="link">
+                    <a href="{{ url('/', [], env('APP_SECURE')) .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}"
+                       class="left"><img src="{{ fct_cdn('/img/mobile/logo2.png') }}"></a>
+                    <div class="center">
+                        <a href="{{ url('/', [], env('APP_SECURE')) .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}"
+                           class="title">方寸堂 - 只为不同</a>
+                        <span class="t2 overTextH2">汇聚东方美学匠心之作的紫砂交流电商平台。</span>
+                    </div>
+                </div>
                 <a href="javascript:;" class="right" @click="popqrcode(true)"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
             </li>
         </ul>
         <ul class="list" v-load-more="nextPage" type="1" v-if="shareList && shareList.length > 0">
             <li v-for="(item, index) in shareList">
-                <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="link">
-                    <span class="left">
-                        <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
-                    </span>
-                    <span class="center">
-                      <span class="title">@{{ item.name }}</span>
-                    <span class="t1" v-if="item.price.length > 1">价格：<small class="pri-mark">￥</small>@{{ item.price[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.price[1] }}</span>
-                      <span class="t1" v-else>价格：<small class="pri-mark">￥</small>@{{ item.price }}</span>
-                      <span class="t2" v-if="item.commission.length > 1">佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
-                      <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission }}</strong></span>
-                    </span>
-                </a>
+                <div class="link">
+                    <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'"
+                       class="left item"><img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}"></a>
+                    <div class="center item">
+                        <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="title">@{{ item.name }}</a>
+                        <span class="t1" v-if="item.price.length > 1">价格：<small class="pri-mark">￥</small>@{{ item.price[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.price[1] }}</span>
+                        <span class="t1" v-else>价格：<small class="pri-mark">￥</small>@{{ item.price }}</span>
+                        <span class="t2" v-if="item.commission.length > 1">佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
+                        <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission }}</strong></span>
+                    </div>
+                </div>
                 <a href="javascript:;" class="right" @click="popqrcode(false, item)"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
             </li>
         </ul>
@@ -63,7 +62,7 @@
             <div class="inner">
                 <img :src="qrurl" class="qrcode">
                 <div class="qrtitle">@{{ qrname }}</div>
-                <a href="javascript:;" class="fork" @click="popqrcode()"><img src="{{ fct_cdn('/img/mobile/share_fork.png') }}"></a>
+                <a href="javascript:;" class="fork" @click="popqrcode()"><img src="{{ fct_cdn('/img/mobile/share_fork2.png') }}"></a>
             </div>
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
