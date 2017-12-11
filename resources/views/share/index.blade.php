@@ -34,8 +34,8 @@
                       <span class="title">方寸堂 - 只为不同</span>
                       <span class="t2">汇聚东方美学匠心之作的紫砂交流电商平台。</span>
                     </span>
-                    <span class="right"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></span>
                 </a>
+                <a href="javascript:;" class="right" @click="popqrcode(true)"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
             </li>
         </ul>
         <ul class="list" v-load-more="nextPage" type="1" v-if="shareList && shareList.length > 0">
@@ -51,14 +51,20 @@
                       <span class="t2" v-if="item.commission.length > 1">佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
                       <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission }}</strong></span>
                     </span>
-                    <span class="right"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></span>
                 </a>
+                <a href="javascript:;" class="right" @click="popqrcode(false, item)"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
             </li>
         </ul>
 
         <no-data v-if="nodata"></no-data>
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
+        <div class="qrcode-container" :class="{show:show}" @click="popqrcode()">
+            <div class="inner">
+                <img :src="qrurl" class="qrcode">
+                <div class="qrtitle">@{{ qrname }}</div>
+            </div>
+        </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
 
         <footer class="footer">
@@ -80,6 +86,9 @@
 @section('javascript')
     <script>
         config.shareUrl = "{{ url('my/share', [], env('APP_SECURE')) }}";
+        config.shareParam = "{{ env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}";
+        config.shareTopUrl = "https://pan.baidu.com/share/qrcode?w=300&h=300&url={{ env('APP_URL') }}";
+        config.shareProUrl = "https://pan.baidu.com/share/qrcode?w=300&h=300&url={{env('APP_URL')}}/products";
         config.sort = ['综合排序', '人气最高', '利润最高'];
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.share = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
