@@ -1,18 +1,19 @@
 @extends("layout")
 @section('content')
     <div class="order-container" id="order" v-cloak>
+        <head-top></head-top>
         <section class="info">
             <div class="text">
-      <span v-if="order_detail.status == 0">
-        <img src="{{ fct_cdn('/img/mobile/fork_w.png') }}">待付款
-      </span>
+              <span v-if="order_detail.status == 0">
+                <img src="{{ fct_cdn('/img/mobile/fork_w.png') }}">待付款
+              </span>
                 <span v-if="order_detail.status !== 0 && order_detail.status !== 4">
-        <img src="{{ fct_cdn('/img/mobile/check_w.png') }}">付款成功
-        <span class="status">@{{ order_detail.statusName }}</span>
-      </span>
+                <img src="{{ fct_cdn('/img/mobile/check_w.png') }}">付款成功
+                <span class="status">@{{ order_detail.statusName }}</span>
+              </span>
                 <span v-if="order_detail.status == 4">
-        <img src="{{ fct_cdn('/img/mobile/fork_w.png') }}">订单关闭
-      </span>
+                <img src="{{ fct_cdn('/img/mobile/fork_w.png') }}">订单关闭
+              </span>
             </div>
         </section>
         <section class="detail">
@@ -84,10 +85,9 @@
             <div class="inner">
                 <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=订单帮助"
                    class="chat"><img src="{{ fct_cdn('/img/mobile/order_chat.png') }}"><span class="text">在线客服</span></a>
-                <a href="javascript:;" class="logo"><img src="{{ fct_cdn('/img/mobile/logo2.png') }}"><span class="text">方寸首页</span></a>
                 <div class="del" v-if="order_detail.status == 0">
                     <a href="{{ url('/', [], env('APP_SECURE')) }}" @click="confirm(order_detail.orderId, cancel)">关闭订单</a>
-               </div>
+                </div>
                 <div class="comment">
                     <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId"
                        v-if="order_detail.status == 0">我要付款</a>
@@ -104,9 +104,11 @@
 @endsection
 @section('javascript')
     <script>
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.order_detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
         config.cancel_url = "{{ url('my/orders', [], env('APP_SECURE')) }}";
         config.finish_url = "{{ url('my/orders', [], env('APP_SECURE')) }}";
     </script>
+    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/order.js') }}"></script>
 @endsection

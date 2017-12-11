@@ -11,6 +11,7 @@ namespace App\Http\Controllers\Mobile;
 
 use App\AuctionOrder;
 use App\Exceptions\BusinessException;
+use App\ProductCategory;
 use Illuminate\Http\Request;
 
 class AuctionOrderController extends BaseController
@@ -55,6 +56,7 @@ class AuctionOrderController extends BaseController
 
         return view('auction.order.show', [
             'title' => fct_title('订单详情'),
+            'categories' => ProductCategory::getCategories(),
             'entity' => $result,
         ]);
     }

@@ -1,18 +1,19 @@
 @extends("layout")
 @section('content')
     <div class="auctionorderdetail-container" id="order" v-cloak>
+        <head-top></head-top>
         <section class="info">
             <div class="text">
-      <span v-if="order_detail.status == 0">
-        <img src="{{fct_cdn('/img/mobile/fork_w.png')}}">待付款
-      </span>
+              <span v-if="order_detail.status == 0">
+                <img src="{{fct_cdn('/img/mobile/fork_w.png')}}">待付款
+              </span>
                 <span v-if="order_detail.status !== 0 && order_detail.status !== 4">
-        <img src="{{fct_cdn('/img/mobile/check_w.png')}}">付款成功
-        <span class="status">@{{ order_detail.statusName }}</span>
-      </span>
+                <img src="{{fct_cdn('/img/mobile/check_w.png')}}">付款成功
+                <span class="status">@{{ order_detail.statusName }}</span>
+              </span>
                 <span v-if="order_detail.status == 4">
-        <img src="{{fct_cdn('/img/mobile/fork_w.png')}}">订单关闭
-      </span>
+                <img src="{{fct_cdn('/img/mobile/fork_w.png')}}">订单关闭
+              </span>
             </div>
         </section>
         <section class="detail">
@@ -84,8 +85,10 @@
 @endsection
 @section('javascript')
     <script>
+        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.finish_url = "{{url('my/auction/order', [], env('APP_SECURE'))}}";
         config.order_detail = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
     </script>
+    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{fct_cdn('/js/mobile/auction_orderdetail.js')}}"></script>
 @endsection

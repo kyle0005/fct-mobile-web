@@ -194,6 +194,9 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
             Route::get('my/share/orders', 'Mobile\ShareController@getOrders');
                 Route::get('my/share/orders/{order_id}', 'Mobile\ShareController@getOrder')
                     ->where('order_id', '[0-9]+');
+
+        //申请开店
+        Route::resource('store', 'Mobile\MemberStoreController', ['create', 'store']);
     });
 });
 

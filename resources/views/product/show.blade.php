@@ -157,10 +157,7 @@
                 <div class="sale clearfix" v-if="product.hasDiscount">
                     <div class="left">
                         <span class="title" v-if="product.discount && product.discount.canBuy">限时购</span>
-                        <span class="title" v-else>秒杀</span>
-                        &ensp;享
-                        <span class="discount-color">
-                            @{{ product.discount.discountRate * 10 }}折，
+                        <span class="title" v-else>秒杀</span>&ensp;享<span class="discount-color">@{{ product.discount.discountRate * 10 }}折，
                             <span v-if="product.discount.singleCount > 0">限购@{{ product.discount.singleCount }}件</span>
                             <span v-else>不限购</span>
                         </span>

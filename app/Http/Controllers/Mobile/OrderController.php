@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Mobile;
 use App\Exceptions\BusinessException;
 use App\FctCommon;
 use App\FctValidator;
+use App\ProductCategory;
 use App\ProductOrder;
 use Illuminate\Http\Request;
 
@@ -52,6 +53,7 @@ class OrderController  extends BaseController
 
         return view('order.show', [
             'title' => fct_title('订单详情'),
+            'categories' => ProductCategory::getCategories(),
             'entity' => $result,
         ]);
     }
