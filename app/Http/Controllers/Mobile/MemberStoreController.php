@@ -17,7 +17,9 @@ class MemberStoreController extends BaseController
 {
     public function create(Request $request)
     {
-        return view('store.form');
+        return view('store.form', [
+            'title' => fct_title('申请开店'),
+        ]);
     }
 
     public function store(Request $request)
