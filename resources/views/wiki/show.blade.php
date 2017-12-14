@@ -9,7 +9,7 @@
                         <li v-for="(item, index) in encyclopedias_list" :name="'list' + index" :class="{red:index===encynum}">
                             <a href="javascript:;" @click="loadsingle(index, item.id)">
                               <span class="img-container">
-                                <img :src="item.image">
+                                <img :src="item.img">
                               </span>
                                 <span class="name-container overText">@{{ item.name }}</span>
                             </a>

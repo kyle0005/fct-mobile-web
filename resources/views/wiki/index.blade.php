@@ -17,7 +17,7 @@
                     <div v-for="(item, index) in list" class="swiper-slide inner-container" :key="index" slot="swiper-con">
                         <div class="items" v-for="(i_item, i_index) in item" :key="i_index">
                             <a :href="'{{ url('wiki/item', [], env('APP_SECURE')) }}?from_type=category&from_id=' + i_item.id" class="link">
-                                <img :src="i_item.image">
+                                <img :src="i_item.img">
                                 <span>@{{ i_item.name }}</span>
                             </a>
                         </div>
