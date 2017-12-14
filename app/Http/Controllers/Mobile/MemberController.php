@@ -127,8 +127,9 @@ class MemberController extends BaseController
                 return $this->autoReturn($e->getMessage(), $e->getCode());
             }
         }
-
-        $this->cacheRedirectSourceUrl('', true);
+        //有传地址就跳转到此地址
+        $returnUrl = $request->get(env('REDIRECT_KEY'), '');
+        $this->cacheRedirectSourceUrl($returnUrl, true);
 
         return view('login', ['title' => fct_title("用户登录")]);
     }
