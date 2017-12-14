@@ -75,7 +75,7 @@ class Main
             ["image" => "/img/mobile/welcome/guide1.jpg", "url" => "javascript:;"],
             ["image" => "/img/mobile/welcome/guide2.jpg", "url" => "javascript:;"],
             ["image" => "/img/mobile/welcome/guide3.jpg", "url" => "javascript:;"],
-            ["image" => "images/welcome/guide4.jpg", "url" => url('/', [], env('APP_SECURE'))],
+            ["image" => "/img/mobile/welcome/guide4.jpg", "url" => url('/', [], env('APP_SECURE'))],
         ];
 
         return $slides;
