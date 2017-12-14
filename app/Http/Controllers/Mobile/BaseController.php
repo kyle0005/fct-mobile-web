@@ -156,6 +156,11 @@ class BaseController extends Controller
 
             $message = '登录授权已过期，请重新登录';
             Member::cleanAuth();
+            $returnURL = request()->getUri();
+            if (request()->method() == 'POST') {
+                $returnURL = request()->server('HTTP_REFERER');
+            }
+            $url = sprintf('%s?%s=%s', $url, env('REDIRECT_KEY'), $returnURL);
         }
         if (request()->ajax()) {
             return json_encode([

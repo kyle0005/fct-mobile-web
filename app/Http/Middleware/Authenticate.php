@@ -23,7 +23,11 @@ class Authenticate
 
         Member::cleanAuth();
         //缓存当前地址
-        FctCommon::cacheRedirectURI($request->getUri(), true);
+        $returnURL = $request->getUri();
+        if ($request->method() == 'POST') {
+            $returnURL = request()->server('HTTP_REFERER');
+        }
+        FctCommon::cacheRedirectURI($returnURL, true);
 
         if ($request->ajax())
         {

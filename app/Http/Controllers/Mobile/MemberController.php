@@ -20,6 +20,9 @@ class MemberController extends BaseController
     {
         try
         {
+            //有传地址就跳转到此地址
+            $returnUrl = $request->get(env('REDIRECT_KEY'), '');
+            $this->cacheRedirectSourceUrl($returnUrl, true);
             $result = MemberOAuth::getURL();
             return redirect($result);
         }
