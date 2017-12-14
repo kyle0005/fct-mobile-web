@@ -16,7 +16,7 @@
                         <div class="title">方寸堂</div>
                         <div class="vtitle">只为不同</div>
                     </div>
-                    <img src="{{ fct_cdn('/img/mobile/logo2.png') }}" class="logo">
+                    <img src="{{ fct_cdn('/img/mobile/logo.png') }}" class="logo">
                     <div class="btn-container">
                         <a href="{{ url('/', [], env('APP_SECURE')) }}" class="btn">进入</a>
                     </div>
