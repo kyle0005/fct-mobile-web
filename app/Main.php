@@ -49,7 +49,7 @@ class Main
             );
 
             if ($result->code != 200) {
-                throw new BusinessException($result->msg);
+                throw new BusinessException($result->msg, $result->code);
             }
 
             $result = $result->data;
@@ -110,7 +110,7 @@ class Main
             );
 
             if ($result->code != 200) {
-                throw new BusinessException($result->msg);
+                throw new BusinessException($result->msg, $result->code);
             }
 
             $cacheResult = [
@@ -149,7 +149,7 @@ class Main
 
             if ($result->code != 200)
             {
-                throw new BusinessException($result->msg);
+                throw new BusinessException($result->msg, $result->code);
             }
 
             $cacheResult = $result->data;
@@ -186,7 +186,7 @@ class Main
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         $weChatConfig = $result->data;

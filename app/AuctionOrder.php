@@ -37,7 +37,7 @@ class AuctionOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         $pagination = Base::pagination($result->data, $pageIndex, $pageSize);
@@ -59,7 +59,7 @@ class AuctionOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return $result->data;
@@ -78,7 +78,7 @@ class AuctionOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return $result->data;
@@ -100,7 +100,7 @@ class AuctionOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return $result->data;

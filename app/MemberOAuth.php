@@ -30,7 +30,7 @@ class MemberOAuth
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         if(!$result->data)
         {
@@ -58,7 +58,7 @@ class MemberOAuth
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         $member = $result->data;
@@ -89,7 +89,7 @@ class MemberOAuth
         );
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         Member::setAuth($result->data, $expireDay);

@@ -22,17 +22,18 @@ class Authenticate
             return $next($request);
 
         Member::cleanAuth();
+        //缓存当前地址
+        FctCommon::cacheRedirectURI($request->getUri(), true);
+
         if ($request->ajax())
         {
             return new Response([
                 'code' => 404,
                 'message' => '登录授权已过期，请重新登录',
-                'url' => url('login', [], env('APP_SECURE')),
+                'url' => url(FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')),
                 'data' => [],
             ]);
         }
-
-        FctCommon::cacheRedirectURI($request->getUri(), true);
 
         return redirect(url(FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')));
     }

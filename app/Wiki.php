@@ -36,7 +36,7 @@ class Wiki
             );
 
             if ($result->code != 200) {
-                throw new BusinessException($result->msg);
+                throw new BusinessException($result->msg, $result->code);
             }
 
             $cacheResult = (object) [
@@ -84,7 +84,7 @@ class Wiki
             );
 
             if ($result->code != 200) {
-                throw new BusinessException($result->msg);
+                throw new BusinessException($result->msg, $result->code);
             }
 
             /*return ;*/

@@ -53,7 +53,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         $pagination = Base::pagination($result->data, $pageIndex, $pageSize);
@@ -77,7 +77,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         return $result->data;
     }
@@ -115,7 +115,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return $result->data;
@@ -149,7 +149,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return true;
@@ -170,7 +170,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return true;
@@ -191,7 +191,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return true;
@@ -216,7 +216,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         if ((!$result->data) || (!$result->data->goodsList))
@@ -251,7 +251,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return $result->data;
@@ -288,7 +288,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         $pagination = Base::pagination($result->data, $pageIndex, $pageSize);
@@ -312,7 +312,7 @@ class ProductOrder
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         return $result->data;
     }

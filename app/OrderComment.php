@@ -37,7 +37,7 @@ class OrderComment
             );
 
             if ($result->code != 200) {
-                throw new BusinessException($result->msg);
+                throw new BusinessException($result->msg, $result->code);
             }
 
             $pagination = Base::pagination($result->data, $pageIndex, $pageSize);
@@ -68,7 +68,7 @@ class OrderComment
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return true;

@@ -141,7 +141,7 @@
         config.ws_auction_url = "{{env('WS_API_URL')}}";
         config.auction_signup_url = "{{ url('signup', [], env('APP_SECURE')) }}";
         config.auction_bid_url = "{{ url('bid', [], env('APP_SECURE')) }}";
-        config.loginUrl = "{{ url('login', [], env('APP_SECURE')).'?'.env('REDIRECT_KEY').'='.url('auction/'.$entity->id, [], env('APP_SECURE'))}}";
+        config.loginUrl = "{{ url(\App\FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')).'?'.env('REDIRECT_KEY').'='.url('auction/'.$entity->id, [], env('APP_SECURE'))}}";
     </script>
     <template id="m_video">
         <div class="m-video-container">

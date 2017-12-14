@@ -43,7 +43,7 @@ class Member
         );
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         self::setAuth($result->data, $expireDay);
@@ -75,7 +75,7 @@ class Member
         );
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         //更新缓存
         if ($result)
@@ -102,7 +102,7 @@ class Member
         );
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         return $result;
     }
@@ -128,7 +128,7 @@ class Member
         );
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         return $result;
     }
@@ -157,7 +157,7 @@ class Member
         );
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         //更新缓存
         if ($result)
@@ -180,7 +180,7 @@ class Member
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         return $result->data;
@@ -203,7 +203,7 @@ class Member
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         return $result->data;
     }
@@ -223,7 +223,7 @@ class Member
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
         return $result->data;
     }
@@ -307,7 +307,7 @@ class Member
 
         if ($result->code != 200)
         {
-            throw new BusinessException($result->msg);
+            throw new BusinessException($result->msg, $result->code);
         }
 
         self::cleanAuth();
