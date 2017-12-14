@@ -121,9 +121,13 @@
                     <a href="javascript:;" class="lis add grey" v-else>+</a>
                     <div class="lis buy">
                         <a href="javascript:;" class="txt grey" v-if="product.status == 1">拍卖未开始</a>
-                        <a href="javascript:;" class="txt" v-else-if="product.status < 3" @click="bindDepositTap">预交保证金</a>
+                        <a href="javascript:;" class="txt " v-else-if="product.status < 3">
+                            <subpost :txt="depositText" ref="deppost" @callback="bindDepositTap" @succhandle="succhandle"></subpost>
+                        </a>
                         <a href="javascript:;" class="txt" v-else-if="product.status > 10">继续报名</a>
-                        <a href="javascript:;" class="txt" v-else-if="product.status === 3" @click="bindSubmitTap">我要出价</a>
+                        <a href="javascript:;" class="txt grey" v-else-if="product.status === 3" @click="bindSubmitTap">
+                            <subpost :txt="subText" ref="subpost" @callback="bindSubmitTap" @succhandle="succhandle"></subpost>
+                        </a>
                         <a href="javascript:;" class="txt grey" v-else-if="product.status === 4">拍卖结束</a>
                     </div>
                 </div>
