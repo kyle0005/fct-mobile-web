@@ -92,7 +92,7 @@
                 </div>
                 <div class='send clearfix'>
                     <input type='text' class='amount' :disabled="product.status === 4" placeholder='输入想要表达的信息' v-model="wsMsg"/>
-                    <a href="javascript:;" class='btn' @click="bindSendTap" v-if="product.status !== 4">发送</a>
+                    <a href="javascript:;" class='btn' @click="bindSendTap" v-if="product.status != 4">发送</a>
                     <a href="javascript:;" class='btn grey' v-else>发送</a>
                 </div>
                 <div class='slide'>
