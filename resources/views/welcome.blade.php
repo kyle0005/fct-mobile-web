@@ -9,7 +9,7 @@
                 <a href="{{ url('/', [], env('APP_SECURE')) }}" class="enter"  v-if="index==3"></a>
             </div>
         </m-swipe>
-        <transition name="fade">
+{{--        <transition name="fade">
             <div class="top" v-if="flagIndex">
                 <div class="inner">
                     <div class="text">
@@ -22,7 +22,7 @@
                     </div>
                 </div>
             </div>
-        </transition>
+        </transition>--}}
     </div>
 
     <script type="text/x-template" id="m_swipe">
