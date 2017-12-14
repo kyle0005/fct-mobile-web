@@ -6,7 +6,7 @@
                 <a :href="top.url" class="link">
                     <img :data-src="top.image" class="swiper-lazy silde-img">
                 </a>
-                <a href="{{ url('/', [], env('APP_SECURE')) }}" class="enter"  v-if="index==0"></a>
+                <a href="{{ url('/', [], env('APP_SECURE')) }}" class="enter"  v-if="index==3"></a>
             </div>
         </m-swipe>
         <transition name="fade">
