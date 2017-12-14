@@ -8,12 +8,16 @@
 
 if (!function_exists('fct_cdn'))
 {
-    function fct_cdn($path, $customDomain = '')
+    function fct_cdn($path, $hasFullUrl = false)
     {
         if (!$path)
             return '';
 
-        $domain = $customDomain ? $customDomain : env('STATIC_URL', '');
+        $domain = '';
+        if ($hasFullUrl) {
+            $domain = env('APP_SECURE') ? 'https:' : 'http:';
+        }
+        $domain .= env('STATIC_URL', '');
         return rtrim($domain, '/') . $path . '?_rd=' . '201712092121';
     }
 }
