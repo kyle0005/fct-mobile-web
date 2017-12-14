@@ -39,7 +39,7 @@ class WikiController extends BaseController
             'share' => [
                 'title' => fct_title('百科'),
                 'link' => $shareUrl,
-                'img' => fct_cdn('/img/mobile/wiki-logo.png'),
+                'img' => fct_cdn('/img/mobile/wiki-logo.png', true),
                 'desc' => '方寸堂百科，专注于紫砂领域知识的创建与分享。',
             ]
         ]);

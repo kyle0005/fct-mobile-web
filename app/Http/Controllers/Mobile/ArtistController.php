@@ -40,7 +40,7 @@ class ArtistController extends BaseController
             'share' => [
                 'title' => fct_title('守艺人'),
                 'link' => $shareUrl,
-                'img' => fct_cdn('/img/mobile/fc_logo.png', true),
+                'img' => fct_cdn('/img/mobile/share_logo.png', true),
                 'desc' => '守一种精神 做一个“匠人”',
             ]
         ]);

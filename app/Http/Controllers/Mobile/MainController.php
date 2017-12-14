@@ -54,7 +54,7 @@ class MainController extends BaseController
                 'share' => [
                     'title' => '方寸堂 - 只为不同',
                     'link' => $shareUrl,
-                    'img' => fct_cdn('/img/mobile/fc_logo.png', true),
+                    'img' => fct_cdn('/img/mobile/share_logo.png', true),
                     'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
                 ],
                 ]);
@@ -77,7 +77,7 @@ class MainController extends BaseController
             'share' => [
                 'title' => '方寸堂 - 只为不同',
                 'link' => $shareUrl,
-                'img' => fct_cdn('/img/mobile/fc_logo.png', 'https:' . env('STATIC_URL', '')),
+                'img' => fct_cdn('/img/mobile/share_logo.png', true),
                 'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
             ],
         ]);
