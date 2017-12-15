@@ -26,6 +26,7 @@ class FavoriteController extends BaseController
 
         return view('favorite.index', [
             'title' => fct_title('收藏列表'),
+            'fromType' => $fromType,
             'entries' => $result,
         ]);
     }
