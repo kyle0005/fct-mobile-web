@@ -41,7 +41,7 @@ class ProductOrder
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
-                'order_id' => urlencode($keyword),
+                'order_id' => $keyword,
                 'status' => $status,
                 'comment_status' => $commentStatus,
                 'page_index' => $pageIndex,
