@@ -19,7 +19,7 @@
                             <a href="javascript:;">
                                 <img src="{{ fct_cdn('/img/mobile/del.png') }}">
                                 <span class="items">
-                                  <subpost :txt="subText" :ref="'subpost' + index" @callback="del({item,index})" @succhandle="succhandle"></subpost>
+                                  <subpost :txt="subText" :ref="'subpost' + index" @callback="del({item,index})" @before="postBefore" @success="succhandle" @error="postError" @alert="postTip"></subpost>
                                 </span>
                             </a>
                         </div>
