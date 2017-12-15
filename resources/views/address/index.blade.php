@@ -12,7 +12,7 @@
                     <div class="opt">
                         <label :for="'address_' + index" class="radio-container">
                             <input type="radio" name="address" :value="addressStr(item)" @change="changeDefault(item)" v-model="picked" :id="'address_' + index" class="choose-radio">
-                            <span class="">默认地址({{item.isDefault}})</span>
+                            <span class="">默认地址(@{{item.isDefault}})</span>
                         </label>
                         <div class="options-container">
                             <a href="javascript:;" @click="edit(item)"><img src="{{ fct_cdn('/img/mobile/edit.png') }}"><span class="items">编辑</span></a>
