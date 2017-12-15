@@ -277,7 +277,7 @@ class ProductOrder
         $result = Base::http(
             env('API_URL') . sprintf('%s/shop', self::$resourceUrl),
             [
-                'order_id' => urlencode($keyword),
+                'order_id' => $keyword,
                 'status' => $status,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
