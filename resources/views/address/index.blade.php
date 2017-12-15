@@ -27,6 +27,7 @@
                 </div>
             </li>
         </ul>
+        <no-data v-if="nodata"></no-data>
 
         <div class="address-btn">
             <a href="{{ url('my/address/create', [], env('APP_SECURE')) }}">添加新地址</a>
