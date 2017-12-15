@@ -52,7 +52,7 @@
                     <div class="left">设置默认</div>
                     <div class="right clearfix">
                         <div class="switch-container">
-                            <input class="switch" name="" id="" type="checkbox" checked v-model="isDefault">
+                            <input class="switch" name="" id="" type="checkbox" unchecked v-model="isDefault">
                         </div>
                     </div>
                 </div>
