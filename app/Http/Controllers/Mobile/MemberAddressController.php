@@ -94,11 +94,10 @@ class MemberAddressController extends BaseController
         {
             MemberAddress::setDefault($id);
 
-            $redirectUrl = $this->getRedirectSourceUrl(true, false);
-            if (!$redirectUrl) {
-                $redirectUrl = url('my/address', [], env('APP_SECURE'));
+            $redirectUrl = null;
+            if (strpos($request->server('HTTP_REFERER'), '/my/address') === false) {
+                $redirectUrl = $this->getRedirectSourceUrl(true, false);
             }
-
             return $this->returnAjaxSuccess('设置默认成功', $redirectUrl);
         }
         catch (BusinessException $e)
