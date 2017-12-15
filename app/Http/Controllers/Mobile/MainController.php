@@ -18,10 +18,15 @@ use Illuminate\Http\Request;
 class MainController extends BaseController
 {
     /**商城首页
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     * @throws BusinessException
      */
     public function index(Request $request)
     {
+        if (!$this->isFirstVisit()) {
+            return redirect(url('welcome', [], env('APP_SECURE')));
+        }
         //?code={code}&level_id={id}
         $categoryId = $request->get('code');
         $levelId = $request->get('level_id');
@@ -67,8 +72,9 @@ class MainController extends BaseController
      */
     public function welcome(Request $request)
     {
+        //设置第一次访问过了
+        $this->setFirstVisit();
         $result = Main::welcome();
-
         $shareUrl = $this->myShareUrl(url('welcome', [], env('APP_SECURE')));
 
         return view('welcome', [

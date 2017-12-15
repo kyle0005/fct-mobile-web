@@ -31,6 +31,31 @@ class BaseController extends Controller
         view()->share('shareAvatar', $shareAvatar);
     }
 
+    /**第一次访问
+     * @return bool
+     */
+    protected function isFirstVisit()
+    {
+        $key = '_f_visit';
+        $bool = Cookie::has($key)
+            ? Cookie::get($key) : 0;
+        if ($bool) {
+            Cookie::queue($key, 1, 43200);
+            return true;
+        }
+
+        return false;
+    }
+    protected function setFirstVisit()
+    {
+        $key = '_f_visit';
+        Cookie::queue($key, 1, 43200);
+    }
+
+    /**我的分享
+     * @param $url
+     * @return string
+     */
     protected function myShareUrl($url)
     {
         $member = $this->memberLogged(false);
