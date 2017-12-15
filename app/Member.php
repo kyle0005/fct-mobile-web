@@ -310,6 +310,6 @@ class Member
             throw new BusinessException($result->msg, $result->code);
         }
 
-        self::cleanAuth();
+        self::cleanAuth(true);
     }
 }
