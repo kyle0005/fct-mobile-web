@@ -66,7 +66,7 @@ class MemberAddressController extends BaseController
         $city = $request->get('city');
         $region = $request->get('county');
         $address = $request->get('address');
-        $isDefault = $request->get('isDefault', 0) ? 1 : 0;
+        $isDefault = $request->get('isDefault') ? 1 : 0;
 
         try
         {
