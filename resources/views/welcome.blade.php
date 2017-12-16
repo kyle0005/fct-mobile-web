@@ -4,7 +4,7 @@
         <m-swipe swipeid="swipe" ref="swiper" :autoplay="0" effect="slide" @slideindex="slideindex">
             <div v-for="(top, index) in tops" class="swiper-slide" slot="swiper-con">
                 <a :href="top.url" class="link">
-                    <img :data-src="top.image" class="swiper-lazy silde-img">
+                    <img :src="top.image" class="swiper-lazy silde-img">
                 </a>
                 <a href="{{ url('/', [], env('APP_SECURE')) }}" class="enter"  v-if="index==3"></a>
             </div>
