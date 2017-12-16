@@ -124,7 +124,7 @@
                         <a href="javascript:;" class="txt " v-else-if="product.status < 3">
                             <subpost :txt="depositText" ref="deppost" @callback="bindDepositTap" @succhandle="succhandle"></subpost>
                         </a>
-                        <a href="javascript:;" class="txt" v-else-if="product.status > 10">继续报名</a>
+                        <a :href="'{{sprintf('%s?tradetype=auction_deposit&tradeid=', env('PAY_URL'))}}' + product.signupId" class="txt" v-else-if="product.status > 10">继续报名</a>
                         <a href="javascript:;" class="txt" v-else-if="product.status === 3" @click="bindSubmitTap">
                             <subpost :txt="subText" ref="subpost" @callback="bindSubmitTap" @succhandle="succhandle"></subpost>
                         </a>
