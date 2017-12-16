@@ -15,12 +15,6 @@
             <input type="hidden" name="avatar" :value="uploadImg.url">
             <section class="list-container">
                 <div class="line">
-                    <div class="left">用户ID</div>
-                    <div class="right">
-                        <input type="text" class="right-inp" :value="userinfo.memberId" readonly>
-                    </div>
-                </div>
-                <div class="line">
                     <div class="left">手机号码</div>
                     <div class="right">
                         <input type="text" class="right-inp" :value="userinfo.cellPhone" readonly>
