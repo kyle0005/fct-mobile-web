@@ -268,7 +268,9 @@
                     </li>
                 </ul>
             </section>
-            <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/' + artistsingle.id" class="for-more" v-if="artistsingle.isCooperation == 2">点击了解更多》</a>
+            <section class="comment" v-if="artistsingle.isCooperation == 2">
+                <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/' + artistsingle.id" class="for-more">点击了解更多》</a>
+            </section>
         </div>
     </script>
     <script type="text/x-template" id="pug">
