@@ -13,7 +13,7 @@
                         <span class="info live-now">正在直播</span>
                     </a>
                     <img :src="artist.banner">
-                    <div class="info join-num" :class="{fav:collected}" @click="collection"><i class="fa fa-heart"></i>@{{ artist.followCount }}人关注</div>
+                    <div class="info join-num" :class="{fav:collected}" @click="collection"><i class="fa fa-heart"></i>&nbsp;@{{ artist.followCount }}人</div>
                 </div>
             </div>
         </section>
