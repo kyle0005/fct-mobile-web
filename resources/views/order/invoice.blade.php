@@ -42,7 +42,8 @@
         @if (!$entity->orderInvoice)
         <div class="sub-btn">
             <a href="javascript:;">
-                <subpost :txt="subText" ref="subpost" @callback="sub" @succhandle="succhandle"></subpost>
+                <subpost :txt="'申请发票'" :status="true" ref="subpost" @callback="sub" @before="postBefore"
+                         @success="postSuc" @error="postError" @alert="postTip"></subpost>
             </a>
         </div>
         @endif

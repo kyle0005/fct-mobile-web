@@ -74,7 +74,7 @@ class ProductController extends BaseController
             'title' => fct_title($result->name),
             'categories' => ProductCategory::getCategories(),
             'product' => $result,
-            'chat_url' => 'https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid='
+            'chat_url' => 'https://static.meiqia.com/dist/standalone.html?_=t&eid=92491&clientid='
                 . ($member ? $member->memberId : "")
                 . '&metadata=' .urlencode(json_encode($chatDatas, JSON_UNESCAPED_UNICODE)),
             'share' => [

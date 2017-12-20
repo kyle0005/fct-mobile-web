@@ -56,7 +56,10 @@
         <footer class="foot-container">
             <div class="inner">
                 <div class="sub-btn">
-                    <a href="javascript:;" @click="confirm(closeApp)" v-if="product.status == 0">关闭申请</a>
+                    <a href="javascript:;" v-if="product.status == 0">
+                        <subpost :txt="'关闭申请'" :status="false" ref="closeref" @callback="confirm(closeApp)" @before="postBefore"
+                                 @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                    </a>
                     <a href="javascript:;" @click="sendback()" v-if="product.status == 1">寄回宝贝</a>
                 </div>
 
@@ -83,7 +86,8 @@
                                 </div>
                             </div>
                             <a href="javascript:;" class="sub">
-                                <subpost :txt="subText" ref="subpost" @callback="deliver" @succhandle="succhandle"></subpost>
+                                <subpost :txt="'确认提交'" :status="true" ref="subpost" @callback="deliver" @before="postBefore"
+                                         @success="postSuc" @error="postError" @alert="postTip"></subpost>
                             </a>
                         </form>
                     </div>

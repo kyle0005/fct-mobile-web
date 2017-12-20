@@ -81,7 +81,8 @@
                                 </li>
                                 <li class="add">
                                     <a href="javascript:;">
-                                        <subpost :txt="subText" ref="subpost" @callback="buy(0)" @succhandle="succhandle"></subpost>
+                                        <subpost :txt="'加入购物车'" :status="true" ref="subpost" @callback="buy(0)" @before="postBefore"
+                                                 @success="succhandle" @error="postError" @alert="postTip"></subpost>
                                     </a>
                                 </li>
                                 <li class="buy">
@@ -228,7 +229,7 @@
     <script type="text/x-template" id="artist">
         <div class="artist-contianer">
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
-            <no-data v-if="nodata"></no-data>
+            <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             <div class="top-container" v-if="titleshow">
                 <div class="inner o">
                     <ul class="top-list">
@@ -276,7 +277,7 @@
     <script type="text/x-template" id="pug">
         <div class="artist-contianer">
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
-            <no-data v-if="nodata"></no-data>
+            <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             <div class="top-container" v-if="titleshow">
                 <div class="inner o">
                     <ul class="top-list">
@@ -320,7 +321,7 @@
     </script>
     <script type="text/x-template" id="service">
         <div>
-            <no-data v-if="nodata"></no-data>
+            <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <section class="service">
                 <div class="service-container">
@@ -402,7 +403,7 @@
                 </li>
             </ul>
 
-            <no-data v-if="nodata"></no-data>
+            <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
         </section>

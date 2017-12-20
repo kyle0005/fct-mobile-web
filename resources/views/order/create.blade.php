@@ -56,7 +56,8 @@
                     <div class="right clearfix">
                         <div class="sub-container">
                             <a href="javascript:;" class="sub">
-                                <subpost :txt="coupText" ref="usecoup" @callback="getCoupon" @succhandle="succhandle"></subpost>
+                                <subpost :txt="'使用'" :status="true" ref="usecoup" @callback="getCoupon" @before="postBefore"
+                                         @success="succhandle" @error="postError" @alert="postTip"></subpost>
                             </a>
                         </div>
                     </div>
@@ -92,7 +93,8 @@
                     <div class="pri">应付：<small class="pri-mark">￥</small><span class="pri">@{{ toFloat(totalPrice) }}</span></div>
                     <div class="sub">
                         <a href="javascript:;" class="sub">
-                            <subpost :txt="payText" ref="paypost" @callback="pay" @succhandle="payhandle"></subpost>
+                            <subpost :txt="'我要付款'" :status="true" ref="paypost" @callback="pay" @before="postBefore"
+                                     @success="postSuc" @error="postError" @alert="postTip"></subpost>
                         </a>
                     </div>
                 </div>

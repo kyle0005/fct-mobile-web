@@ -4,13 +4,16 @@
         <head-top></head-top>
         <section class="live" id="live_container">
             <div class="container">
-                <div class="inner" v-if="haslive">
+                <div class="inner">
+                    <a href="javascript:;" class="play" v-if="haslive">
+                        <span class="fa-stack fa-lg">
+                          <i class="fa fa-circle-thin fa-stack-2x"></i>
+                          <i class="fa fa-play fa-stack-1x def"></i>
+                        </span>
+                        <span class="info live-now">正在直播</span>
+                    </a>
                     <img :src="artist.banner">
-                    <div class="info join-num">@{{ artist.followCount }}人关注</div>
-                </div>
-                <div class="inner" v-else>
-                    <img :src="artist.banner">
-                    <div class="info join-num">@{{ artist.followCount }}人关注</div>
+                    <div class="info join-num" :class="{fav:collected}" @click="collection">@{{ artist.followCount }}人关注</div>
                 </div>
             </div>
         </section>
@@ -58,7 +61,7 @@
                 </li>
             </ul>
 
-            <no-data v-if="nodata"></no-data>
+            <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
         </div>
@@ -85,7 +88,7 @@
                 </li>
             </ul>
 
-            <no-data v-if="nodata"></no-data>
+            <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         </div>
     </script>
@@ -111,7 +114,7 @@
                 </li>
             </ul>
 
-            <no-data v-if="nodata"></no-data>
+            <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
             <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
             <section class="sub-chat">
@@ -128,7 +131,8 @@
                                         <a href="javascript:;" class="cancel" @click.prevent="popchat()">取消</a>
                                         <span class="title">我来聊两句</span>
                                         <a href="javascript:;" class="send">
-                                            <subpost :txt="subText" ref="subpost" @callback="send" @succhandle="succhandle"></subpost>
+                                            <subpost :txt="'发送'" ref="subpost" :status="true" @callback="send" @before="postBefore"
+                                                     @success="postSuc" @error="postError" @alert="postTip"></subpost>
                                         </a>
                                     </div>
                                     <textarea class="textarea" v-model="message"></textarea>
@@ -159,6 +163,7 @@
         config.artistWorks_url = "{{ url('artists/' . $artist->id . '/products', [], env('APP_SECURE')) }}";
         config.artistChat_url = "{{ url('artists/' . $artist->id . '/comments', [], env('APP_SECURE')) }}";
         config.chat_url = "{{ url('artists/' . $artist->id . '/comments', [], env('APP_SECURE')) }}";
+        config.fav_url = "{!! url('my/favorites?from_type=1&from_id=' . $artist->id, [], env('APP_SECURE')) !!}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/hammer.js') }}"></script>

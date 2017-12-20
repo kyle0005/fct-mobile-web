@@ -37,12 +37,18 @@
                         <img src="{{fct_cdn('/img/mobile/clickAmount.png')}}"><span>@{{ item.viewCount }}</span>
                         <img src="{{fct_cdn('/img/mobile/auction/pm-icon.png')}}"><span>@{{ item.bidCount }}</span>
                         <a href="javascript:;" class="right" @click="tip(item, index)" v-if="item.remindId > -1">
-                            <img src="{{fct_cdn('/img/mobile/auction/remind-red.png')}}">@{{ item.remindId > 0 ? "取消提醒" : "提醒我"}}
+                            <img src="{{fct_cdn('/img/mobile/auction/remind-red.png')}}">
+                            <span class="text">
+                                <subpost v-if="item.remindId" :txt="'取消提醒'" :status="false" ref="tipsref" @callback="tip(item, index)" @before="postBefore"
+                                         @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                                <subpost v-else :txt="'提醒我'" :status="false" ref="tipsref" @callback="tip(item, index)" @before="postBefore"
+                                         @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                            </span>
                         </a>
                     </div>
                 </li>
             </ul>
-            <no-data v-if="nodata"></no-data>
+            <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             <img src="{{fct_cdn('/img/mobile/img_loader_s.gif')}}" class="list-loader" v-if="listloading">
             <img src="{{fct_cdn('/img/mobile/img_loader_s.gif')}}" class="pager-loader" v-if="pagerloading">
         </div>

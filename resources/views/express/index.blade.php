@@ -35,7 +35,7 @@
 
         <div class="footer">
             <div class="inner">
-                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}">
+                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=92491&clientid={{ $member->memberId }}">
                     <img src="{{ fct_cdn('/img/mobile/order_chat.png') }}">在线客服</a>
             </div>
         </div>

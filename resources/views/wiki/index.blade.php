@@ -24,7 +24,7 @@
                     </div>
                 </m-swipe>
 
-                <no-data v-if="nodata"></no-data>
+                <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
             </div>
         </section>
 

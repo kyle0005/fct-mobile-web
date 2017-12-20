@@ -8,7 +8,7 @@
             <div class="search-container" :class="{show:show_search}">
                 <div class="cancel-search">
                     <a href="javascript:;" class="fork">
-                        <subpost :txt="subText" ref="subpost" @callback="search(0)" @succhandle="succhandle"></subpost>
+                        <subpost :txt="'取消'" ref="subpost" @callback="search(0)" @succhandle="succhandle"></subpost>
                     </a>
                 </div>
                 <input type="search" class="search-input" :placeholder="placeholder" v-model="keywords">
@@ -55,7 +55,7 @@
                 </div>
             </div>
         </div>
-        <no-data v-if="nodata"></no-data>
+        <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
         <img src="{{fct_cdn('/img/mobile/img_loader_s.gif')}}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
         <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="orderId" :msg="msg"></confirm>

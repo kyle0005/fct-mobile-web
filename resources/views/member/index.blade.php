@@ -124,7 +124,7 @@
         <section class="user-sec">
             <ul class="funcs-list">
                 <li>
-                    <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=62925&clientid={{ $member->memberId }}&metadata=用户中心帮助" class="link">
+                    <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=92491&clientid={{ $member->memberId }}&metadata=用户中心帮助" class="link">
                       <span class="img-container item">
                       <img src="{{ fct_cdn('/img/mobile/u_chat.png') }}">
                       </span>

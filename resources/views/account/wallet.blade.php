@@ -24,7 +24,11 @@
             <ul class="list">
                 <li>
                     <a href="javascript:;" class="link" @click="comf">
-                        <img src="{{ fct_cdn('/img/mobile/wallet_recharge.png') }}"><br>缴纳保证金
+                        <img src="{{ fct_cdn('/img/mobile/wallet_recharge.png') }}">
+                        <span class="text">
+                            <subpost :txt="'交纳保证金'" :status="false" ref="confref" @callback="comf" @before="postBefore"
+                                     @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                        </span>
                     </a>
                 </li>
                 <li>

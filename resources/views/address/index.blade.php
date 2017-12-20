@@ -19,7 +19,8 @@
                             <a href="javascript:;">
                                 <img src="{{ fct_cdn('/img/mobile/del.png') }}">
                                 <span class="items">
-                                  <subpost :txt="subText" :ref="'subpost' + index" @callback="del({item,index})" @before="postBefore" @success="succhandle" @error="postError" @alert="postTip"></subpost>
+                                  <subpost :txt="'删除'" :status="false" :ref="'subpost' + index" @callback="confirm({'o':item, 'i':index}, del)" @before="postBefore"
+                                           @success="succhandle" @error="postError" @alert="postTip"></subpost>
                                 </span>
                             </a>
                         </div>
@@ -27,7 +28,7 @@
                 </div>
             </li>
         </ul>
-        <no-data v-if="nodata"></no-data>
+        <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
 
         <div class="address-btn">
             <a href="{{ url('my/address/create', [], env('APP_SECURE')) }}">添加新地址</a>

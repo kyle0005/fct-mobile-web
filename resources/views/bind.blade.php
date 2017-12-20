@@ -10,10 +10,11 @@
                     <div class="right">
                         <input name="cellphone" type="text" class="q" placeholder="请输入绑定手机号码" v-model.number="phoneNumber"/>
                         <div class="code-container">
-                            <a @click.prevent="getVerifyCode"
-                               class="get-code" :class="{right_phone_number:rightPhoneNumber}"
-                               v-show="!computedTime">获取验证码</a>
-                            <a class="get-code" @click.prevent v-show="computedTime">已发送(@{{computedTime}}s)</a>
+                            <a name="" @click.prevent="getVerifyCode" class="get-code" :class="{right_phone_number:rightPhoneNumber}" v-show="!computedTime">
+                                <subpost :txt="'获取验证码'" :status="false" ref="coderef" @callback="getVerifyCode" @before="postBefore"
+                                         @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                            </a>
+                            <a class="get-code" v-show="computedTime">已发送({{computedTime}}s)</a>
                         </div>
                     </div>
                 </li>
@@ -27,7 +28,8 @@
             </ul>
             <div class="log-btn">
                 <div class="sub">
-                    <subpost :txt="subText" ref="subpost" @callback="mobileMsgLogin" @succhandle="succhandle"></subpost>
+                    <subpost :txt="'绑定'" :status="true" ref="subpost" @callback="mobileMsgLogin" @before="postBefore"
+                             @success="postSuc" @error="postError" @alert="postTip"></subpost>
                 </div>
             </div>
         </form>

@@ -21,7 +21,7 @@
             </div>
         </section>
 
-        <no-data v-if="nodata"></no-data>
+        <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
@@ -42,7 +42,8 @@
                             <span class="date">@{{ couponitem.startTime }}-@{{ couponitem.endTime }}</span>
                             <span class="btn" v-if="couponitem.auditStatus == 0">
                                 <a href="javascript:;" class="use-btn">
-                                    <subpost :txt="useText" :ref="'subpost' + couponitem.id" @callback="sub(couponitem.id)" @succhandle="succhandle"></subpost>
+                                    <subpost :txt="'立即使用'" :status="true" :ref="'subpost' + couponitem.id" @callback="sub(couponitem.id)" @before="postBefore"
+                                             @success="postSuc" @error="postError" @alert="postTip"></subpost>
                                 </a>
                             </span>
                         </div>
