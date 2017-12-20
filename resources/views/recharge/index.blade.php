@@ -20,6 +20,9 @@
                 <div class="btn-container" v-if="item.status == 0">
                     <a :href="'{{  sprintf('%s?tradetype=recharge&tradeid=', env('PAY_URL')) }}' + item.id" class="btn">我要付款</a>
                 </div>
+                <div class="btn-container" v-else>
+                    <a href="javascript:;" class="btn">查看详情</a>
+                </div>
             </li>
         </ul>
 
