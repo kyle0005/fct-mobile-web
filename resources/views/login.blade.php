@@ -39,7 +39,7 @@
                                 <subpost :txt="'获取验证码'" :status="false" ref="coderef" @callback="getVerifyCode" @before="postBefore"
                                          @success="postSuc" @error="postError" @alert="postTip"></subpost>
                             </a>
-                            <a class="get-code" v-show="computedTime">已发送({{computedTime}}s)</a>
+                            <a class="get-code" v-show="computedTime">已发送(@{{computedTime}}s)</a>
                         </div>
                     </div>
                 </li>
