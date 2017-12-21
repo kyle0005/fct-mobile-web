@@ -8,7 +8,7 @@
 
 if (!function_exists('fct_cdn'))
 {
-    function fct_cdn($path, $hasFullUrl = false)
+    function fct_cdn($path, $hasFullUrl = false, $hasEnd=true)
     {
         if (!$path)
             return '';
@@ -18,7 +18,7 @@ if (!function_exists('fct_cdn'))
             $domain = env('APP_SECURE') ? 'https:' : 'http:';
         }
         $domain .= env('STATIC_URL', '');
-        return rtrim($domain, '/') . $path . '?_rd=' . '201712092121';
+        return rtrim($domain, '/') . $path . ($hasEnd?'?_rd=201712092121': '');
     }
 }
 

@@ -16,7 +16,7 @@
         </div>
         <div class="logistics-info" v-if="logistics && logistics.content && logistics.content.length > 0">
             <a :href="logistics.url" class="title">
-                <img src="{{ fct_cdn('/img/mobile/' . $entity->englishName . '.png') }}">本数据由<span class="name">@{{ logistics.expressPlatform }}</span>提供<span class="wei-arrow-right"></span>
+                <img :src="'{{ fct_cdn('/img/mobile/', false, false) }}' + logistics.englishName + '.png'">本数据由<span class="name">@{{ logistics.expressPlatform }}</span>提供<span class="wei-arrow-right"></span>
             </a>
             <div class="detail">
                 <ul>

@@ -21,7 +21,7 @@
                     <a :href="'{{  sprintf('%s?tradetype=recharge&tradeid=', env('PAY_URL')) }}' + item.id" class="btn">我要付款</a>
                 </div>
                 <div class="btn-container" v-else>
-                    <a href="javascript:;" class="btn">查看详情</a>
+                    <a href="javascript:;" class="btn" @click="popdetail(item, index)">查看详情</a>
                 </div>
             </li>
         </ul>
@@ -30,6 +30,7 @@
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+        <pop-detail v-if="showDetail" @fork="fork" :obj="item_obj" :imgpath="'{{fct_cdn('/img/mobile/', false, false)}}'"></pop-detail>
     </div>
 @endsection
 @section('javascript')
