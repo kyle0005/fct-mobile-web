@@ -74,4 +74,5 @@
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/auction.js') }}"></script>
+    {!! wechat_share($share) !!}
 @endsection

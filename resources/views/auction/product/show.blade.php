@@ -184,4 +184,5 @@
     <script src="{{fct_cdn('/js/mobile/common/tools.js')}}"></script>
     <script src="{{fct_cdn('/js/mobile/swiper.js')}}"></script>
     <script src="{{fct_cdn('/js/mobile/auction_detail.js')}}"></script>
+    {!! wechat_share($share) !!}
 @endsection
