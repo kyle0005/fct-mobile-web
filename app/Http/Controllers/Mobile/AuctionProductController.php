@@ -88,7 +88,7 @@ class AuctionProductController extends BaseController
             'share' => [
                 'title' => $shareTitle,
                 'link' => $this->myShareUrl(url('auction/' . $result->id, [], env('APP_SECURE'))),
-                'img' => fct_cdn($result->defaultImage, true),
+                'img' => $result->defaultImage,
                 'desc' => $result->intro,
             ]
         ]);
