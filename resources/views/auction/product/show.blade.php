@@ -29,11 +29,11 @@
             <section class="info clearfix" :class="{open:open,docked:docked}">
                 <div class="item clearfix">
                     <span class="left">市场估价</span>
-                    <span class="right overText">￥@{{ product.marketPrice }}</span>
+                    <span class="right overText"><small class="pri-mark">￥</small>@{{ product.marketPrice }}</span>
                 </div>
                 <div class="item clearfix">
                     <span class="left">保证金</span>
-                    <span class="right color-pri overText">￥@{{ product.deposit }}</span>
+                    <span class="right color-pri overText"><small class="pri-mark">￥</small>@{{ product.deposit }}</span>
                 </div>
                 <div class="item clearfix">
                     <span class="left">竞争周期</span>
