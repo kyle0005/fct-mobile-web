@@ -41,7 +41,7 @@ class AuctionProductController extends BaseController
             'share' => [
                 'title' => '方寸拍卖',
                 'link' => $this->myShareUrl(url('auction', [], env('APP_SECURE'))),
-                'img' => fct_cdn('/img/mobile/pm-logo.png', true),
+                'img' => fct_cdn('/img/mobile/share_logo.png', true),
                 'desc' => '小步走，慢慢来！',
             ]
         ]);
@@ -88,7 +88,7 @@ class AuctionProductController extends BaseController
             'share' => [
                 'title' => $shareTitle,
                 'link' => $this->myShareUrl(url('auction/' . $result->id, [], env('APP_SECURE'))),
-                'img' => fct_cdn('/img/mobile/pm-logo.png', true),
+                'img' => fct_cdn($result->defaultImage, true),
                 'desc' => $result->intro,
             ]
         ]);
