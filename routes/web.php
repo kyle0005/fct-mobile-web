@@ -65,6 +65,7 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
 
     //拍卖
     Route::resource('auction', 'Mobile\AuctionProductController', ['index', 'show']);
+        Route::resource('auction/artist', 'Mobile\AuctionArtistController', ['show']);
 
     //大师
     Route::resource('artists', 'Mobile\ArtistController', ['index', 'show']);
