@@ -45,12 +45,14 @@
                 </div>
             </section>
             <section class='artist' :class="{open:open,docked:docked}">
-                <img class='photo' :src="product.artistImg"/>
-                <img class='arrow' src="{{fct_cdn('/img/mobile/arrow_right.png')}}"/>
-                <div class='content'>
-                    <span class='title'>@{{ product.artistName }}</span><span class='vtitle'>@{{ product.artistTitle }}</span>
-                    <span class='text overTextH3'>@{{ product.artistIntro }}</span>
-                </div>
+                <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/' + product.artistId" class="link">
+                    <img class='photo' :src="product.artistImg"/>
+                    <img class='arrow' src="{{fct_cdn('/img/mobile/arrow_right.png')}}"/>
+                    <span class='content'>
+                        <span class='title'>@{{ product.artistName }}</span><span class='vtitle'>@{{ product.artistTitle }}</span>
+                        <span class='text overTextH3'>@{{ product.artistIntro }}</span>
+                    </span>
+                </a>
             </section>
             <section class="content" v-html="product.content" :class="{open:open,docked:docked}"></section>
         </section>
