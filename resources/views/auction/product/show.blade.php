@@ -48,7 +48,7 @@
                 <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/' + product.artistId" class="link" v-if="product.artistCooperate == 2">
                     <img class='photo' :src="product.artistImg"/>
                     <img class='arrow' src="{{fct_cdn('/img/mobile/arrow_right.png')}}"/>
-                    <span class='content'>
+                    <span class='cont'>
                         <span class='title'>@{{ product.artistName }}</span><span class='vtitle'>@{{ product.artistTitle }}</span>
                         <span class='text overTextH3'>@{{ product.artistIntro }}</span>
                     </span>
@@ -56,13 +56,13 @@
                 <a :href="'{{ url('auction/artist', [], env('APP_SECURE')) }}/' + product.artistId" class="link" v-else>
                     <img class='photo' :src="product.artistImg"/>
                     <img class='arrow' src="{{fct_cdn('/img/mobile/arrow_right.png')}}"/>
-                    <span class='content'>
+                    <span class='cont'>
                         <span class='title'>@{{ product.artistName }}</span><span class='vtitle'>@{{ product.artistTitle }}</span>
                         <span class='text overTextH3'>@{{ product.artistIntro }}</span>
                     </span>
                 </a>
             </section>
-            <section class="cont">
+            <section class="content">
                 {!! $entity->content !!}
             </section>
         </section>
