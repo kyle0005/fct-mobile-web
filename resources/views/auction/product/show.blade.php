@@ -62,7 +62,7 @@
                     </span>
                 </a>
             </section>
-            <section class="content" :class="{open:open,docked:docked}">
+            <section class="cont" :class="{open:open,docked:docked}">
                 {!! $entity->content !!}
             </section>
         </section>
