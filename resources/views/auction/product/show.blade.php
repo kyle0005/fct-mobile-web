@@ -44,7 +44,7 @@
                     <span class="right overText">@{{ product.delaySecond }}</span>
                 </div>
             </section>
-            <section class='artist' :class="{open:open,docked:docked}">
+            <section class='artist'>
                 <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/' + product.artistId" class="link" v-if="product.artistCooperate == 2">
                     <img class='photo' :src="product.artistImg"/>
                     <img class='arrow' src="{{fct_cdn('/img/mobile/arrow_right.png')}}"/>
@@ -62,7 +62,7 @@
                     </span>
                 </a>
             </section>
-            <section class="cont" :class="{open:open,docked:docked}">
+            <section class="cont">
                 {!! $entity->content !!}
             </section>
         </section>
