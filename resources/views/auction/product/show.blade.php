@@ -63,7 +63,7 @@
                 </a>
             </section>
             <section class="content" :class="{open:open,docked:docked}">
-                {!! $product->content !!}
+                {!! $entity->content !!}
             </section>
         </section>
         <section class='det-container'>
