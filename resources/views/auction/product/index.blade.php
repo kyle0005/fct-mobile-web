@@ -18,7 +18,7 @@
                           <span class="sale clearfix">
                             <span class="left">
                               <span class="title">@{{item.bidName}}</span>
-                              ￥@{{ item.bidPrice }}
+                              <small class="pri-mark">￥</small>@{{ item.bidPrice }}
                             </span>
                             <span class="right" v-if="item.status === 1 || item.status === 0">
                                 @{{item.status === 0 ? "开始" : "结束"}}时间：
