@@ -17,7 +17,7 @@
                           <img v-view="item.defaultImg" src="{{fct_cdn('/img/mobile/img_loader.gif')}}">
                           <span class="sale clearfix">
                             <span class="left">
-                              <span class="title">{{item.bidName}}</span>
+                              <span class="title">@{{item.bidName}}</span>
                               ￥@{{ item.bidPrice }}
                             </span>
                             <span class="right" v-if="item.status === 1 || item.status === 0">

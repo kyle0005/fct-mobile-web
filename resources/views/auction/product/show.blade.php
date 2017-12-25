@@ -74,7 +74,7 @@
                     <div class='status'>@{{ product.bidStatusName }}</div>
                 </div>
                 <div class='price'>
-                    <div class='up'>{{product.bidName}}：<span class='low'>最低+@{{ product.increasePrice }}</span></div>
+                    <div class='up'>@{{product.bidName}}：<span class='low'>最低+@{{ product.increasePrice }}</span></div>
                     <div class='down'>@{{ currentPrice }}元</div>
                 </div>
             </div>
