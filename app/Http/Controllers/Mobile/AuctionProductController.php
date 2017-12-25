@@ -66,6 +66,24 @@ class AuctionProductController extends BaseController
         $chatList = $result ? $result->chatList : [];
         unset($result->chatList);
 
+        $images = [];
+        $contentImages = [];
+        preg_match_all("/src=[\"|'| ]{0,}((?!\").)+\"/is", $result->content, $images);
+        if ($images && $images[0])
+        {
+            $content = $result->content;
+            foreach ($images[0] as $key=>$val) {
+                $imageKey = "image" . $key;
+                $content = str_replace($val, 'v-view="product.cImgs.'.$imageKey.'" src="'.fct_cdn('/img/mobile/img_loader.gif').'"', $content);
+                $val = str_replace("src=", "", str_replace('"', '', $val));
+                $contentImages[$imageKey] = $val;
+            }
+
+            $result->content = $content;
+        }
+
+        $result->cImgs = $contentImages;
+
         //ajax请求
         if ($request->ajax())
             return $this->returnAjaxSuccess("成功", null, $result);
