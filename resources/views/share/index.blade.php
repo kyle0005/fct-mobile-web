@@ -46,9 +46,9 @@
                     <div class="center item">
                         <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="title">@{{ item.name }}</a>
                         <span class="t1" v-if="item.price.length > 1">价格：<small class="pri-mark">￥</small>@{{ item.price[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.price[1] }}</span>
-                        <span class="t1" v-else>价格：<small class="pri-mark">￥</small>@{{ item.price }}</span>
+                        <span class="t1" v-else>价格：<small class="pri-mark">￥</small>@{{ item.price[0] }}</span>
                         <span class="t2" v-if="item.commission.length > 1">佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
-                        <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission }}</strong></span>
+                        <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}</strong></span>
                     </div>
                 </div>
                 <a href="javascript:;" class="right" @click="popqrcode(false, item)"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
