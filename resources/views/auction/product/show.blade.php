@@ -62,7 +62,9 @@
                     </span>
                 </a>
             </section>
-            <section class="content" v-html="product.content" :class="{open:open,docked:docked}"></section>
+            <section class="content" :class="{open:open,docked:docked}">
+                {!! $product->content !!}
+            </section>
         </section>
         <section class='det-container'>
             <div class='main'>
