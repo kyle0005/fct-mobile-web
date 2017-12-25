@@ -36,7 +36,7 @@
                     <span class="right color-pri overText"><small class="pri-mark">￥</small>@{{ product.deposit }}</span>
                 </div>
                 <div class="item clearfix">
-                    <span class="left">竞争周期</span>
+                    <span class="left">竞价时长</span>
                     <span class="right overText">@{{ product.duration }}</span>
                 </div>
                 <div class="item clearfix">
