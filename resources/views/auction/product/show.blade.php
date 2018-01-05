@@ -3,7 +3,18 @@
     <div class="auctiondetail-container" id="auctiondetail" v-cloak>
         <section class="overview-container">
             <section class="video-container">
-                <mVideo v-if="product.videoUrl" :poster="product.videoImg" :url="product.videoUrl" id="videotop"></mVideo>
+                <div class="m-video-container live-container" v-if="product.liveId !== '' && product.liveId !== null && product.liveId !== undefined">
+                    <div class="video-inner">
+                        <div v-if="isLiveLoad" class="play-container" @click="vodLive(live_url)">
+                            <img :src="product.videoImg" class="poster-img" />
+                            <img src="{{fct_cdn('/img/mobile/video_play.png')}}" class="poster-play" />
+                        </div>
+                        <div class="live-container">
+                            <div id="id_video_container"></div>
+                        </div>
+                    </div>
+                </div>
+                <mVideo v-else-if="product.videoUrl" :poster="product.videoImg" :url="product.videoUrl" id="videotop"></mVideo>
                 <m-swipe v-else swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
                     <div v-for="(top, index) in tops" class="swiper-slide" slot="swiper-con">
                         <a :href="top.url" class="link">
@@ -12,6 +23,7 @@
                     </div>
                 </m-swipe>
             </section>
+
             <section class="product-context">
                 <strong class="title">@{{ product.name }}</strong>
                 <div class="vice-title">@{{ product.subTitle }}</div>
@@ -118,9 +130,6 @@
         <footer class="foot-container">
             <div class="inner">
                 <div class="nav">
-                    <a :href="'{{ url('live', [], env('APP_SECURE')) }}?live_id=' + product.liveId" class="live" v-if="product.liveId !== '' && product.liveId !== null && product.liveId !== undefined">
-                        <img src="{{fct_cdn('/img/mobile/live.png')}}">
-                    </a>
                     <div class="con">
                         <div class="lis message">
                             <a href="javascript:;" class="foot-link" @click='choose'>
@@ -161,6 +170,7 @@
 @endsection
 @section('javascript')
     <script>
+        config.app_id = "{{ env('LIVE_APP_ID') }}";
         config.product = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
         config.chatList = {!! json_encode($chatList, JSON_UNESCAPED_UNICODE) !!};
         config.reload_url = "{{ url('auction/'.$entity->id, [], env('APP_SECURE')) }}";
