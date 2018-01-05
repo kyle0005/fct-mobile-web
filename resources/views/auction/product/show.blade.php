@@ -114,40 +114,48 @@
             </div>
         </div>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+
         <footer class="foot-container">
             <div class="inner">
                 <div class="nav">
-                    <div class="lis message">
-                        <a href="javascript:;" class="foot-link" @click='choose'>
-                            <img src="{{fct_cdn('/img/mobile/auction/hu.png')}}" v-if="open"/>
-                            <img src="{{fct_cdn('/img/mobile/auction/chat.png')}}" v-else/>
-                        </a>
+                    <a :href="'{{ url('live', [], env('APP_SECURE')) }}?live_id=' + product.liveId" class="live" v-if="product.liveId !== '' && product.liveId !== null && product.liveId !== undefined">
+                        <img src="{{fct_cdn('/img/mobile/live.png')}}">
+                    </a>
+                    <div class="con">
+                        <div class="lis message">
+                            <a href="javascript:;" class="foot-link" @click='choose'>
+                                <img src="{{fct_cdn('/img/mobile/auction/hu.png')}}" v-if="open"/>
+                                <img src="{{fct_cdn('/img/mobile/auction/chat.png')}}" v-else/>
+                            </a>
+                        </div>
+                        <div class="lis inp">
+                            <input type='number' class='input' :disabled="product.status !== 3" placeholder='最低加价100' v-model.number="addpri"/>
+                            <a href="javascript:;" class="fork" @click="clear" v-if="addpri > 0">
+                                <img src="{{fct_cdn('/img/mobile/auction/del-price.png')}}">
+                            </a>
+                        </div>
+                        <a href="javascript:;" class="lis add" v-if="product.status === 3" @click="add">+</a>
+                        <a href="javascript:;" class="lis add grey" v-else>+</a>
+                        <div class="lis buy">
+                            <a href="javascript:;" class="txt grey" v-if="product.status == 1">拍卖未开始</a>
+                            <a href="javascript:;" class="txt " v-else-if="product.status < 3">
+                                <subpost :txt="'预交保证金'" :status="true" ref="deppost" @callback="bindDepositTap" @before="postBefore"
+                                         @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                            </a>
+                            <a href="javascript:;" class="txt" v-else-if="product.status > 10">继续报名</a>
+                            <a href="javascript:;" class="txt grey" v-else-if="product.status === 3">
+                                <subpost :txt="'我要出价'" :status="true" ref="subpost" @callback="bindSubmitTap" @before="postBefore"
+                                         @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                            </a>
+                            <a href="javascript:;" class="txt grey" v-else-if="product.status === 4">拍卖结束</a>
+                        </div>
                     </div>
-                    <div class="lis inp">
-                        <input type='number' class='input' :disabled="product.status !== 3" placeholder='最低加价100' v-model.number="addpri"/>
-                        <a href="javascript:;" class="fork" @click="clear" v-if="addpri > 0">
-                            <img src="{{fct_cdn('/img/mobile/auction/del-price.png')}}">
-                        </a>
-                    </div>
-                    <a href="javascript:;" class="lis add" v-if="product.status === 3" @click="add">+</a>
-                    <a href="javascript:;" class="lis add grey" v-else>+</a>
-                    <div class="lis buy">
-                        <a href="javascript:;" class="txt grey" v-if="product.status == 1">拍卖未开始</a>
-                        <a href="javascript:;" class="txt " v-else-if="product.status < 3">
-                            <subpost :txt="'预交保证金'" :status="true" ref="deppost" @callback="bindDepositTap" @before="postBefore"
-                                     @success="postSuc" @error="postError" @alert="postTip"></subpost>
-                        </a>
-                        <a :href="'{{sprintf('%s?tradetype=auction_deposit&tradeid=', env('PAY_URL'))}}' + product.signupId" class="txt" v-else-if="product.status > 10">继续报名</a>
-                        <a href="javascript:;" class="txt" v-else-if="product.status === 3" @click="bindSubmitTap">
-                            <subpost :txt="'我要出价'" :status="true" ref="subpost" @callback="bindSubmitTap" @before="postBefore"
-                                     @success="postSuc" @error="postError" @alert="postTip"></subpost>
-                        </a>
-                        <a href="javascript:;" class="txt grey" v-else-if="product.status === 4">拍卖结束</a>
-                    </div>
+
                 </div>
             </div>
 
         </footer>
+
 
     </div>
 @endsection

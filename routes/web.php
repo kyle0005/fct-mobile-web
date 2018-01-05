@@ -25,6 +25,8 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
     Route::get('/', 'Mobile\MainController@index');
     //欢迎页
     Route::get('welcome', 'Mobile\MainController@welcome');
+    //直播
+    Route::get('live', 'Mobile\LiveController@show');
     //分享js接口
     Route::get('help', 'Mobile\MainController@getHelp');
     //app下载
