@@ -129,7 +129,7 @@
                             </a>
                         </div>
                         <div class="lis inp">
-                            <input type='number' class='input' :disabled="product.status !== 3" placeholder='最低加价100' v-model.number="addpri"/>
+                            <input type='number' class='input' :disabled="product.status !== 3" :placeholder="'最低加价' + product.increasePrice" v-model.number="addpri"/>
                             <a href="javascript:;" class="fork" @click="clear" v-if="addpri > 0">
                                 <img src="{{fct_cdn('/img/mobile/auction/del-price.png')}}">
                             </a>
