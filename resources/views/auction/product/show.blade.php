@@ -5,7 +5,7 @@
             <section class="video-container">
                 <div class="m-video-container live-container" v-if="product.liveId !== '' && product.liveId !== null && product.liveId !== undefined">
                     <div class="video-inner">
-                        <div v-if="isLiveLoad" class="play-container" @click="vodLive(live_url)">
+                        <div v-if="isLiveLoad" class="play-container" @click="vodLive(product.liveId)">
                             <img :src="product.videoImg" class="poster-img" />
                             <img src="{{fct_cdn('/img/mobile/video_play.png')}}" class="poster-play" />
                         </div>
