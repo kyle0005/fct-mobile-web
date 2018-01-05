@@ -12,8 +12,8 @@
 @endsection
 @section('javascript')
     <script>
-        config.app_id = {{ $appId }};
-        config.live_url = {{ $liveId }};
+        config.app_id = '{{ $appId }}';
+        config.live_url = '{{ $liveId }}';
     </script>
     <script src="{{ fct_cdn('/js/mobile/hammer.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/common/tools.js') }}"></script>
