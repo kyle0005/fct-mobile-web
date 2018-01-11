@@ -4,13 +4,15 @@
         <head-top></head-top>
         <section class="content" v-if="couponlist && couponlist.length > 0">
             <div class="list-item" v-for="(item, index) in couponlist">
-                <coupons :couponitem="item" @pop="pop" @succhandle="succhandle"></coupons>
+                <coupons :couponitem="item" @postBefore="postBefore"
+                         @postSuc="postSuc" @postError="postError" @postTip="postTip"></coupons>
             </div>
         </section>
 
         <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
+
     </div>
 
     <script type="text/x-template" id="coupon_item">
