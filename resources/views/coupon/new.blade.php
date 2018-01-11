@@ -30,7 +30,7 @@
                             <span class="btn">
                                 <a href="javascript:;" class="use-btn">
                                     <subpost :txt="'点击领取'" :status="true" :ref="'subpost' + couponitem.id" @callback="receive(couponitem.id)" @before="postBefore"
-                                             @success="postSuc" @error="postError" @alert="postTip""></subpost>
+                                             @success="postSuc" @error="postError" @alert="postTip"></subpost>
                                 </a>
                             </span>
                         </div>
