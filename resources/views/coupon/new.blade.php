@@ -4,8 +4,8 @@
         <head-top></head-top>
         <section class="content" v-if="couponlist && couponlist.length > 0">
             <div class="list-item" v-for="(item, index) in couponlist">
-                <coupons :couponitem="item" @postBefore="postBefore"
-                         @postSuc="postSuc" @postError="postError" @postTip="postTip"></coupons>
+                <coupons :couponitem="item" @postbefore="postBefore"
+                         @postsuc="postSuc" @posterror="postError" @posttip="postTip"></coupons>
             </div>
         </section>
 
