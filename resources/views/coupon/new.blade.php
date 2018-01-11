@@ -34,7 +34,7 @@
                                 </a>
                             </span>
                         </div>
-                        <div class="info clearfix">
+                        <div class="info clearfix" v-if="couponitem.typeId != 0">
                             <span class="text">详细信息</span>
                             <a href="javascript:;" class="pin" :class="{open:show_detail}" @click="showdetail()">
                                 <img src="{{ fct_cdn('/img/mobile/pin.png') }}">
@@ -43,7 +43,7 @@
                     </div>
                 </div>
             </div>
-            <div class="slide" :class="{open:show_detail}">
+            <div class="slide" :class="{open:show_detail}" v-if="couponitem.typeId != 0">
                 <ul class="pros clearfix">
                     <li v-for="(o, i) in couponitem.goods">
                         <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + o.id" class="link">
