@@ -68,6 +68,7 @@
             { code: 3, name: "往期回顾" },
         ];
         config.products = {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!};
+        config.isindex = true;
         config.auction_url = "{{url('auction', [], env('APP_SECURE'))}}";
         config.auction_remind_url = "{{url('remind', [], env('APP_SECURE'))}}";
 
