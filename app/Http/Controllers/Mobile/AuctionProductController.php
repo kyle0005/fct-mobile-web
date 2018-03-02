@@ -19,9 +19,9 @@ class AuctionProductController extends BaseController
     public function index(Request $request) {
 
         $name = $request->get('name', '');
-        $categoryId = $request->get('code', '');
+        $categoryId = $request->get('category_id', '');
         $artistId = $request->get('artist_id', '');
-        $status = $request->get('status', '');
+        $status = $request->get('code', '');
         $page = $request->get('page', 1);
         try
         {
