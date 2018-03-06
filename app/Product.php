@@ -120,6 +120,27 @@ class Product
         return $pagination;
     }
 
+    public static function getShareProduct($id)
+    {
+        $id = intval($id);
+        if (!$id) {
+            throw new BusinessException("无此宝贝");
+        }
+        $result = Base::http(
+            env('API_URL') . sprintf('%s/share/%d', self::$resourceUrl, $id),
+            [],
+            [env('MEMBER_TOKEN_NAME') => Member::getToken()],
+            'GET'
+        );
+
+        if ($result->code != 200)
+        {
+            throw new BusinessException($result->msg, $result->code);
+        }
+
+        return $result->data;
+    }
+
     public static function addVisitCount($id) {
 
         $limitVisitCacheName = 'p_v_' . $id;

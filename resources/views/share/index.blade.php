@@ -51,7 +51,7 @@
                         <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}</strong></span>
                     </div>
                 </div>
-                <a href="javascript:;" class="right" @click="popqrcode(false, item)"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
+                <a :href="'/my/share/' + item.id" class="right"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
             </li>
         </ul>
 
@@ -87,7 +87,7 @@
     <script>
         config.shareUrl = "{{ url('my/share', [], env('APP_SECURE')) }}";
         config.shareParam = "{{ env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}";
-        config.shareTopUrl = "https://pan.baidu.com/share/qrcode?w=300&h=300&url={{ env('APP_URL') }}";
+        config.shareTopUrl = "{{$homeShareUrl}}";
         config.shareProUrl = "https://pan.baidu.com/share/qrcode?w=300&h=300&url={{env('APP_URL')}}/products";
         config.sort = ['综合排序', '人气最高', '利润最高'];
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};

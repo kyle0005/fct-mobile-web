@@ -35,6 +35,28 @@ class ShareController extends BaseController
             'title' => fct_title('分享'),
             'categories' => ProductCategory::getCategories(),
             'entries' => $result,
+            'homeShareUrl' => "https://pan.baidu.com/share/qrcode?w=300&h=300&url="
+                . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/')))
+        ]);
+    }
+
+    public function show(Request $request, $id)
+    {
+        try
+        {
+            $result = Product::getShareProduct($id);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage(), $e->getCode());
+        }
+
+        $result->qrcdoeUrl = "https://pan.baidu.com/share/qrcode?w=300&h=300&url="
+            . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/products/' . $result->id)));
+
+        return view('share.show', [
+            'title' => fct_title('分享' . $result->name),
+            'entries' => $result,
         ]);
     }
 
