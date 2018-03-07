@@ -42,22 +42,30 @@ class ShareController extends BaseController
 
     public function show(Request $request, $id)
     {
-        try
-        {
-            $result = Product::getShareProduct($id);
-        }
-        catch (BusinessException $e)
-        {
-            return $this->autoReturn($e->getMessage(), $e->getCode());
-        }
+        $id = intval($id);
+        $title = "";
+        if ($id > 0) {
+            try {
+                $result = Product::getShareProduct($id);
+            } catch (BusinessException $e) {
+                return $this->autoReturn($e->getMessage(), $e->getCode());
+            }
 
-        $result->headPortrait = image_base64($result->headPortrait);
-        $result->defaultImage = image_base64($result->defaultImage);
-        $result->qrcodeUrl = image_base64("https://pan.baidu.com/share/qrcode?w=300&h=300&url="
-            . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/products/' . $result->id))));
-
+            $title = $result->name;
+            $result->headPortrait = image_base64($result->headPortrait);
+            $result->defaultImage = image_base64($result->defaultImage);
+            $result->qrcodeUrl = image_base64("https://pan.baidu.com/share/qrcode?w=300&h=300&url="
+                . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/products/' . $result->id))));
+        } else {
+            $title = '方寸堂';
+            $result = (object) [
+                'qrcodeUrl' => image_base64("https://pan.baidu.com/share/qrcode?w=300&h=300&url="
+                    . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/')))),
+                'backgroundUrl' => image_base64(fct_cdn('/img/mobile/share_bg', true)),
+            ];
+        }
         return view('share.show', [
-            'title' => fct_title('分享' . $result->name),
+            'title' => fct_title('分享' . $title),
             'entries' => $result,
         ]);
     }

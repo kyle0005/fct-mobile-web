@@ -2,7 +2,7 @@
 @section('content')
     <div class="screenshot-container" id="screenshot" v-cloak>
         <div class="result-container" id="con_result">
-            <div class="btn" id="btn">
+            <div class="btn" id="btn"  v-if="showBtn">
                 <a href="javascript:;" @click="pop" class="save">保存图片</a>
             </div>
         </div>
