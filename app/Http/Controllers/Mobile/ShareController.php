@@ -51,6 +51,7 @@ class ShareController extends BaseController
             return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
+        $result->headPortrait = "/img/mobile/head.jpg";
         $result->defaultImage= "/img/mobile/resource/pro.png";
         $result->qrcodeUrl = "/img/fct/qrcode-gzh.jpg";//"https://pan.baidu.com/share/qrcode?w=300&h=300&url="
             //. urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/products/' . $result->id)));
