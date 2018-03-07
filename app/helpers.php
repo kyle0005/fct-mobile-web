@@ -83,3 +83,14 @@ if (!function_exists('is_mobile'))
         }
     }
 }
+
+if (!function_exists(image_base64))
+{
+    function image_base64($url)
+    {
+        $info = getimagesize($url);
+        $data = fread(fopen($url, 'r'),filesize($url));
+
+        return 'data:' . $info['mime'] . ';base64,' .chunk_split(base64_encode($data));
+    }
+}
