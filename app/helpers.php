@@ -89,8 +89,7 @@ if (!function_exists(image_base64))
     function image_base64($url)
     {
         $info = getimagesize($url);
-        $data = fread(fopen($url, 'r'),filesize($url));
-
+        $data = file_get_contents($url);
         return 'data:' . $info['mime'] . ';base64,' .chunk_split(base64_encode($data));
     }
 }
