@@ -51,7 +51,7 @@ class ShareController extends BaseController
             return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
-        $result->qrcdoeUrl = "https://pan.baidu.com/share/qrcode?w=300&h=300&url="
+        $result->qrcodeUrl = "https://pan.baidu.com/share/qrcode?w=300&h=300&url="
             . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/products/' . $result->id)));
 
         return view('share.show', [
