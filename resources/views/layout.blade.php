@@ -8,7 +8,6 @@
     <meta name="apple-mobile-web-app-title" content="方寸堂">
     <meta name="keywords" content="">
     <meta name="description" content="">
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
     <link rel="dns-prefetch" href="//cdn.fangcun.com"/>
     <link rel="shortcut icon" href="//cdn.fangcun.com/static/img/favicon.png" type="image/png" />
     <!-- build:css styles/main.css -->
