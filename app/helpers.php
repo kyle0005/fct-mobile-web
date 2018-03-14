@@ -84,7 +84,7 @@ if (!function_exists('is_mobile'))
     }
 }
 
-if (!function_exists(image_base64))
+if (!function_exists('image_base64'))
 {
     function image_base64($url)
     {
