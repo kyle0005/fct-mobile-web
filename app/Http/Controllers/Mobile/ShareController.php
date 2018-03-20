@@ -55,12 +55,12 @@ class ShareController extends BaseController
             $result->headPortrait = image_base64($result->headPortrait);
             $result->defaultImage = image_base64($result->defaultImage);
             $result->qrcodeUrl = image_base64("https://pan.baidu.com/share/qrcode?w=300&h=300&url="
-                . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/products/' . $result->id))));
+                . urlencode($this->myShareUrl(url('products/' . $result->id, [], env('APP_SECURE')))));
         } else {
             $title = '方寸堂';
             $result = (object) [
                 'qrcodeUrl' => image_base64("https://pan.baidu.com/share/qrcode?w=300&h=300&url="
-                    . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/')))),
+                    . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE'))))),
                 'backgroundUrl' => image_base64(fct_cdn('/img/mobile/share_bg.png', true)),
             ];
         }
