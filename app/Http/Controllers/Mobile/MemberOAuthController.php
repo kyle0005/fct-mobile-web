@@ -64,7 +64,7 @@ class MemberOAuthController extends BaseController
 
         try
         {
-            MemberOAuth::bindOAuth($openid,$cellphone, $captcha, $sessionId, $request->ip());
+            MemberOAuth::bindOAuth($this->getInviterId(), $openid,$cellphone, $captcha, $sessionId, $request->ip());
             return $this->autoReturn("授权成功", 200, $this->getRedirectSourceUrl());
         }
         catch (BusinessException $e)

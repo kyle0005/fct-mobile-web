@@ -39,6 +39,20 @@
                 Copyright&nbsp&copy;&nbsp;2018&nbsp;,宜兴方寸堂版权所有
             </div>
         </div>
+
+        <div class="gift-pop" v-if="isADShow">
+            <div class="inner">
+                <img src="{{ fct_cdn('/img/mobile/gift_show.png') }}">
+                <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="link">&nbsp;</a>
+                <a href="javascript:;" class="close" @click="closegift()">&nbsp;</a>
+            </div>
+        </div>
+        <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="gift-icon" v-if="!isADShow">
+            <img src="{{ fct_cdn('/img/mobile/gift_icon.png') }}">
+        </a>
+        <a href="javascript:;" class="top" @click="top()">
+            <img src="{{ fct_cdn('/img/mobile/top.png') }}">
+        </a>
     </div>
 @endsection
 @section('javascript')
@@ -47,6 +61,7 @@
         config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
         config.productsRank = {!! json_encode($levels, JSON_UNESCAPED_UNICODE) !!};
         config.products = {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!};
+        config.isADShow = {!! $hasNewVisitor !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/main.js') }}"></script>

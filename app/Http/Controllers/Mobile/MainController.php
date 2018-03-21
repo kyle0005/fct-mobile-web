@@ -56,6 +56,7 @@ class MainController extends BaseController
                 'categories' => ProductCategory::getCategories(),
                 'levels' =>  $result->goodsGradeList,
                 'products' => $result->pagination,
+                'hasNewVisitor' => $this->hasNewVisitor(),
                 'share' => [
                     'title' => '方寸堂 - 只为不同',
                     'link' => $shareUrl,

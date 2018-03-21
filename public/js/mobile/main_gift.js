@@ -1,0 +1,1 @@
+"use strict";var app=new Vue({mounted:function(){this.initData()},data:{nodata:!1,isLogin:config.isLogin,showPop:!1},watch:{},methods:{initData:function(){},share:function(){this.showPop=!0}}}).$mount("#gift");

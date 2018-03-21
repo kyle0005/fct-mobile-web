@@ -233,4 +233,20 @@ class BaseController extends Controller
         return $member;
     }
 
+    /**是否新访客提示
+     * @return bool
+     */
+    protected function hasNewVisitor()
+    {
+        $cookieName = '_new_visitor';
+        $status = 0;
+        $member = $this->memberLogged(false);
+        if (!($member && $member->memberId > 0)){
+            //是否已经访问过
+            $bool = Cookie::has($cookieName) ? Cookie::get($cookieName) : 0;
+            if (!$bool) $status = 1;
+            Cookie::queue($cookieName, true, 10080);
+        }
+        return $status;
+    }
 }
