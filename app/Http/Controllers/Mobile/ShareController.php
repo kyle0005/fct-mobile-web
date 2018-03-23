@@ -36,7 +36,7 @@ class ShareController extends BaseController
             'categories' => ProductCategory::getCategories(),
             'entries' => $result,
             'homeShareUrl' => "https://pan.baidu.com/share/qrcode?w=300&h=300&url="
-                . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE') . '/')))
+                . urlencode($this->myShareUrl(url('/', [], env('APP_SECURE'))))
         ]);
     }
 

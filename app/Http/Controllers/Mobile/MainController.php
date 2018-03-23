@@ -49,7 +49,7 @@ class MainController extends BaseController
         else
         {
 
-            $shareUrl = $this->myShareUrl(url('/', [], env('APP_SECURE') . '/'));
+            $shareUrl = $this->myShareUrl(url('/', [], env('APP_SECURE')));
 
             return view('index', [
                 'title' => fct_title(),
