@@ -180,7 +180,7 @@
             <div class="video-inner">
                 <div v-if="!isVideoLoad" class="play-container" @click="loadVideo()">
                     <img :src="poster" class="poster-img" />
-                    <img src="public/img/mobile/video_play.png')}}" class="poster-play" />
+                    <img src="{{fct_cdn('/img/mobile/video_play.png')}}" class="poster-play" />
                 </div>
                 <video class="m-video" :src="url" :id="id" preload="metadata" controls v-else></video>
             </div>
