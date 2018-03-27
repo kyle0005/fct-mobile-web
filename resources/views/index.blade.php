@@ -50,9 +50,12 @@
         <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="gift-icon" v-if="!isADShow">
             <img src="{{ fct_cdn('/img/mobile/gift_icon.png') }}">
         </a>
-        <a href="javascript:;" class="top" @click="top()">
-            <img src="{{ fct_cdn('/img/mobile/top.png') }}">
-        </a>
+
+        <transition name="fade">
+            <a href="javascript:;" class="top" @click="top()" v-if="showTop">
+                <img src="{{ fct_cdn('/img/mobile/top.png') }}">
+            </a>
+        </transition>
     </div>
 @endsection
 @section('javascript')
