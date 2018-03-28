@@ -3,7 +3,7 @@
     <div class="auctiondetail-container" id="auctiondetail" v-cloak>
         <section class="overview-container">
             <section class="video-container">
-                <div class="m-video-container live-container" v-if="product.liveId">
+                <div class="m-video-container live-container" v-if="product.liveText">
                     <div class="video-inner">
                         <div class="live-container">
                             <div id="id_video_container"></div>
@@ -18,9 +18,8 @@
                         </a>
                     </div>
                 </m-swipe>
-                <div class="play-btn" :class="{t:!product.liveId && !product.videoUrl, b:product.liveId || product.videoUrl}" v-if="product.liveText !== '' && product.liveText !== null && product.liveText !== undefined">
+                <div class="play-btn" :class="{b:!product.liveId,t:product.liveId}" v-if="product.liveText&&showLiveTxt">
                     <a href="javascript:;" class="live-text-btn">
-                        <img src="{{fct_cdn('/img/mobile/video_play.png')}}" class="icon" v-if="!product.liveId && !product.videoUrl">
                         <span class="text">@{{product.liveText}}</span>
                     </a>
                 </div>
