@@ -3,6 +3,31 @@
     <div class="auctiondetail-container" id="auctiondetail" v-cloak>
         <section class="overview-container">
             <section class="video-container">
+                <div class="m-video-container live-container" v-if="product.liveId">
+                    <div class="video-inner">
+                        <div class="live-container">
+                            <div id="id_video_container"></div>
+                        </div>
+                    </div>
+                </div>
+                <mvideo class="live-container" v-else-if="product.videoUrl" :poster="product.videoImg" :url="product.videoUrl" id="videotop"></mvideo>
+                <m-swipe v-else swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
+                    <div v-for="(top, index) in tops" class="swiper-slide" slot="swiper-con">
+                        <a :href="top.url" class="link">
+                            <img :data-src="top" class="swiper-lazy silde-img">
+                        </a>
+                    </div>
+                </m-swipe>
+                <div class="play-btn" :class="{t:product.liveId == '' && product.videoUrl == '', b:product.liveId || product.videoUrl}" v-if="product.liveText !== '' && product.liveText !== null && product.liveText !== undefined">
+                    <a href="javascript:;" class="live-text-btn">
+                        <img src="{{fct_cdn('/img/mobile/video_play.png')}}" class="icon" v-if="product.liveId == '' && product.videoUrl == ''">
+                        <span class="text">{{product.liveText}}</span>
+                    </a>
+                </div>
+            </section>
+{{--
+
+            <section class="video-container">
                 <div class="m-video-container live-container" v-if="product.liveId !== '' && product.liveId !== null && product.liveId !== undefined">
                     <div class="video-inner">
                         <div class="live-container">
@@ -18,7 +43,7 @@
                         </a>
                     </div>
                 </m-swipe>
-            </section>
+            </section>--}}
 
             <section class="product-context">
                 <strong class="title">@{{ product.name }}</strong>
