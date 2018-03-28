@@ -21,7 +21,7 @@
                 <div class="play-btn" :class="{t:product.liveId == '' && product.videoUrl == '', b:product.liveId || product.videoUrl}" v-if="product.liveText !== '' && product.liveText !== null && product.liveText !== undefined">
                     <a href="javascript:;" class="live-text-btn">
                         <img src="{{fct_cdn('/img/mobile/video_play.png')}}" class="icon" v-if="product.liveId == '' && product.videoUrl == ''">
-                        <span class="text">{{product.liveText}}</span>
+                        <span class="text">@{{product.liveText}}</span>
                     </a>
                 </div>
             </section>
