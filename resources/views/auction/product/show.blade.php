@@ -1,29 +1,30 @@
 @extends("layout")
 @section('content')
     <div class="auctiondetail-container" id="auctiondetail" v-cloak>
-        <section class="overview-container">
-            <section class="video-container">
-                <div class="m-video-container live-container" v-if="product.liveText">
-                    <div class="video-inner">
-                        <div class="live-container">
-                            <div id="id_video_container"></div>
-                        </div>
+        <section class="video-container">
+            <div class="m-video-container live-container" v-if="product.liveText">
+                <div class="video-inner">
+                    <div class="live-container">
+                        <div id="id_video_container"></div>
                     </div>
                 </div>
-                <mvideo class="live-container" v-else-if="product.videoUrl" :poster="product.videoImg" :url="product.videoUrl" id="videotop"></mvideo>
-                <m-swipe v-else swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
-                    <div v-for="(top, index) in tops" class="swiper-slide" slot="swiper-con">
-                        <a :href="top.url" class="link">
-                            <img :data-src="top" class="swiper-lazy silde-img">
-                        </a>
-                    </div>
-                </m-swipe>
-                <div class="play-btn" :class="{b:!product.liveId,t:product.liveId}" v-if="product.liveText&&showLiveTxt">
-                    <a href="javascript:;" class="live-text-btn">
-                        <span class="text">@{{product.liveText}}</span>
+            </div>
+            <mvideo class="live-container" v-else-if="product.videoUrl" :poster="product.videoImg" :url="product.videoUrl" id="videotop"></mvideo>
+            <m-swipe v-else swipeid="swipe" ref="swiper" :autoplay="0" effect="slide">
+                <div v-for="(top, index) in tops" class="swiper-slide" slot="swiper-con">
+                    <a :href="top.url" class="link">
+                        <img :data-src="top" class="swiper-lazy silde-img">
                     </a>
                 </div>
-            </section>
+            </m-swipe>
+            <div class="play-btn" :class="{b:!product.liveId,t:product.liveId}" v-if="product.liveText&&showLiveTxt">
+                <img :src="product.videoImg" class="live-bg" v-if="!product.liveId">
+                <img src="{{fct_cdn('/img/mobile/video_play.png')}}" class="live-play-btn" v-if="!product.liveId">
+                <a href="javascript:;" class="live-text-btn">
+                    <span class="text">@{{product.liveText}}</span>
+                </a>
+            </div>
+        </section>
 {{--
 
             <section class="video-container">
