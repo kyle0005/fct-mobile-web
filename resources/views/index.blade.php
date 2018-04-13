@@ -65,6 +65,7 @@
         config.productsRank = {!! json_encode($levels, JSON_UNESCAPED_UNICODE) !!};
         config.products = {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!};
         config.isADShow = {!! $hasNewVisitor !!};
+        config.hasLogin = {!! $hasLogin !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/main.js') }}"></script>
