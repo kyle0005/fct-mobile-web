@@ -10,7 +10,7 @@
                 3、活动时间：至2018年6月6日结束
             </div>
             <a href="javascript:;" class="btn" v-if="isLogin" @click="share()">推荐领红包</a>
-            <a href="{{ url('login', [], env('APP_SECURE')) }}" class="btn" v-else=>注册领红包</a>
+            <a href="{{ url(\App\FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')) }}" class="btn" v-else>注册领红包</a>
         </div>
 
         <div class="share-pop" v-if="showPop">
