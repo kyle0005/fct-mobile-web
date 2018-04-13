@@ -43,15 +43,15 @@
         <div class="gift-pop" v-if="isADShow">
             <div class="inner">
                 <img src="{{ fct_cdn('/img/mobile/gift_show.png') }}">
-                <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="link" v-if="!hasLogin">&nbsp;</a>
+                <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="link" v-if="hasLogin">&nbsp;</a>
                 <a href="{{ url('login', [], env('APP_SECURE')) }}" class="link" v-else>&nbsp;</a>
                 <a href="javascript:;" class="close" @click="closegift()">&nbsp;</a>
             </div>
         </div>
-        <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="gift-icon" v-if="!hasLogin && !isADShow">
+        <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="gift-icon" v-if="hasLogin && !isADShow">
             <img src="{{ fct_cdn('/img/mobile/gift_icon.png') }}">
         </a>
-        <a href="{{ url('login', [], env('APP_SECURE')) }}" class="gift-icon" v-else-if="hasLogin && !isADShow">
+        <a href="{{ url('login', [], env('APP_SECURE')) }}" class="gift-icon" v-else-if="!hasLogin && !isADShow">
             <img src="{{ fct_cdn('/img/mobile/gift_icon.png') }}">
         </a>
 
