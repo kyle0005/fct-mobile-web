@@ -18,6 +18,8 @@ class MemberController extends BaseController
 {
     public function oAuth(Request $request)
     {
+        return $this->autoReturn("系统即将上线,敬请期待", 404, url('/', [], env('APP_SECURE')));
+
         try
         {
             //有传地址就跳转到此地址
