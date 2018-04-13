@@ -93,6 +93,7 @@ class MemberController extends BaseController
      */
     public function login(Request $request)
     {
+        return $this->autoReturn("系统即将上线,敬请期待", 404, url('/', [], env('APP_SECURE')));
         if ($request->getMethod() == 'POST') {
 
             try

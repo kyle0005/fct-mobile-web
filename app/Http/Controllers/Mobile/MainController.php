@@ -49,6 +49,9 @@ class MainController extends BaseController
         else
         {
 
+            $member = $this->memberLogged(false);
+            $hasLogin = $member && $member->memberId > 0 ? 1 : 0;
+
             $shareUrl = $this->myShareUrl(url('/', [], env('APP_SECURE')));
 
             return view('index', [
@@ -57,6 +60,7 @@ class MainController extends BaseController
                 'levels' =>  $result->goodsGradeList,
                 'products' => $result->pagination,
                 'hasNewVisitor' => $this->hasNewVisitor(),
+                'hasLogin' => $hasLogin,
                 'share' => [
                     'title' => '方寸堂 - 只为不同',
                     'link' => $shareUrl,

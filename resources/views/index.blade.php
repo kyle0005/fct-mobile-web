@@ -43,11 +43,15 @@
         <div class="gift-pop" v-if="isADShow">
             <div class="inner">
                 <img src="{{ fct_cdn('/img/mobile/gift_show.png') }}">
-                <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="link">&nbsp;</a>
+                <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="link" v-if="!hasLogin">&nbsp;</a>
+                <a href="{{ url('login', [], env('APP_SECURE')) }}" class="link" v-else>&nbsp;</a>
                 <a href="javascript:;" class="close" @click="closegift()">&nbsp;</a>
             </div>
         </div>
-        <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="gift-icon" v-if="!isADShow">
+        <a href="{{ url('gift/signup', [], env('APP_SECURE')) }}" class="gift-icon" v-if="!hasLogin && !isADShow">
+            <img src="{{ fct_cdn('/img/mobile/gift_icon.png') }}">
+        </a>
+        <a href="{{ url('login', [], env('APP_SECURE')) }}" class="gift-icon" v-else-if="hasLogin && !isADShow">
             <img src="{{ fct_cdn('/img/mobile/gift_icon.png') }}">
         </a>
 
@@ -65,6 +69,7 @@
         config.productsRank = {!! json_encode($levels, JSON_UNESCAPED_UNICODE) !!};
         config.products = {!! json_encode($products, JSON_UNESCAPED_UNICODE) !!};
         config.isADShow = {!! $hasNewVisitor !!};
+        config.hasLogin = {!! $hasLogin !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/main.js') }}"></script>
