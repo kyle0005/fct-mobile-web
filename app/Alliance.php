@@ -1,17 +1,24 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: rokite
+ * Date: 18-4-24
+ * Time: 上午10:10
+ */
 
 namespace App;
 
+
 use App\Exceptions\BusinessException;
 
-class Discount
+class Alliance
 {
-    public static $resourceUrl = '/promotion/discount';
+    public static $resourceUrl = '/member/alliance';
 
-    public static function getDiscount($id)
+    public static function getAlliance()
     {
         $result = Base::http(
-            env('API_URL') . sprintf('%s/%d', self::$resourceUrl, $id),
+            env('API_URL') . sprintf('%s', self::$resourceUrl),
             [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'

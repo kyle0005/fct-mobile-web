@@ -1,17 +1,24 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: rokite
+ * Date: 18-4-24
+ * Time: 上午10:14
+ */
 
 namespace App;
 
+
 use App\Exceptions\BusinessException;
 
-class Discount
+class AllianceStore
 {
-    public static $resourceUrl = '/promotion/discount';
+    public static $resourceUrl = '/member/alliance/store';
 
-    public static function getDiscount($id)
+    public static function find()
     {
         $result = Base::http(
-            env('API_URL') . sprintf('%s/%d', self::$resourceUrl, $id),
+            env('API_URL') . self::$resourceUrl,
             [],
             [env('MEMBER_TOKEN_NAME') => Member::getToken()],
             'GET'
@@ -22,6 +29,6 @@ class Discount
             throw new BusinessException($result->msg, $result->code);
         }
 
-        return $result->data;
+        return $result;
     }
 }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Mobile;
 
+use App\Discount;
+use App\Exceptions\BusinessException;
 use Illuminate\Http\Request;
 
 /**打折
@@ -10,18 +12,23 @@ use Illuminate\Http\Request;
  */
 class DiscountController extends BaseController
 {
-    public function index(Request $request)
-    {
-
-    }
 
     public function show(Request $request, $id)
     {
+        if ($id < 1)
+            return $this->autoReturn("此促销活动不存在");
+        try
+        {
+            $result = Discount::getDiscount($id);
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage(), $e->getCode());
+        }
 
-    }
-
-    public function store(Request $request)
-    {
-
+        return view('discount.show', [
+            'title' => fct_title($result->name),
+            'entity' => $result,
+        ]);
     }
 }

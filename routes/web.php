@@ -21,8 +21,15 @@ Route::group(['domain' => env('PC_DOMAIN', 'www.fangcun.com')], function () {
 
 Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
 {
-    //首页
-    Route::get('/', 'Mobile\MainController@index');
+    //新首页
+    Route::get('/', 'Mobile\SpecialController@home');
+    //搜索页
+    Route::get('search', 'Mobile\SearchController@index');
+    //促销详情
+    Route::get('discounts/{id}', 'Mobile\DiscountController@show')
+        ->where('id', '[0-9]+');
+    //原首页变更为宝贝列表页
+    Route::get('products', 'Mobile\MainController@index');
     //欢迎页
     Route::get('welcome', 'Mobile\MainController@welcome');
     //注册或邀请有礼
@@ -202,6 +209,13 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
 
         //申请开店
         Route::resource('store', 'Mobile\MemberStoreController', ['create', 'store']);
+        //联盟
+        Route::get('my/alliance', 'Mobile\AllianceController@index');
+            //联盟考核列表
+            Route::get('my/alliance/kpi', 'Mobile\AllianceKPIController@index');
+            //联盟成员列表
+            Route::get('my/alliance/store', 'Mobile\AllianceStoreController@index');
+
     });
 });
 
