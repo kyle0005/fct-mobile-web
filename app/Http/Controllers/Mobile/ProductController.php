@@ -62,21 +62,10 @@ class ProductController extends BaseController
         $result->cImgs = $contentImages;
 
         $shareUrl = $this->myShareUrl(url('products/'. $id, [], env('APP_SECURE')));
-
-        $member = Member::getAuth();
-        $chatDatas = [
-            "name" => $member ? $member->userName : "",
-            "tel" => $member ? $member->cellPhone : "",
-            "comment" => $result->name . '--' . url('product/' . $result->id, [], env('APP_SECURE')) . '"}',
-        ];
-
         return view('product.show', [
             'title' => fct_title($result->name),
             'categories' => ProductCategory::getCategories(),
             'product' => $result,
-            'chat_url' => 'https://static.meiqia.com/dist/standalone.html?_=t&eid=92491&clientid='
-                . ($member ? $member->memberId : "")
-                . '&metadata=' .urlencode(json_encode($chatDatas, JSON_UNESCAPED_UNICODE)),
             'share' => [
                 'title' => '发现一个宝贝 - '. $result->name,
                 'link' => $shareUrl,

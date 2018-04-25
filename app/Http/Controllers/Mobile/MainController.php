@@ -52,7 +52,7 @@ class MainController extends BaseController
             $member = $this->memberLogged(false);
             $hasLogin = $member && $member->memberId > 0 ? 1 : 0;
 
-            $shareUrl = $this->myShareUrl(url('/', [], env('APP_SECURE')));
+            $shareUrl = $this->myShareUrl(url('/products', [], env('APP_SECURE')));
 
             return view('index', [
                 'title' => fct_title(),

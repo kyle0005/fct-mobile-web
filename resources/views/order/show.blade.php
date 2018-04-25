@@ -83,7 +83,7 @@
         </section>
         <footer class="footer">
             <div class="inner">
-                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=92491&clientid={{ $member->memberId }}&metadata=订单帮助"
+                <a href="{!! api_chat_url(url('my/order/'.$entity->orderId, [], env('APP_SECURE')), '订单：'.$entity->orderId) !!}"
                    class="chat"><img src="{{ fct_cdn('/img/mobile/order_chat.png') }}"><span class="text">在线客服</span></a>
                 <div class="del" v-if="order_detail.status == 0">
                     <a href="javascript:;">

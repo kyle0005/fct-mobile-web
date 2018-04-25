@@ -249,4 +249,28 @@ class BaseController extends Controller
         }
         return $status;
     }
+
+    /** 聊天接口
+     * @param $url
+     * @param $name
+     * @return string
+     */
+    protected function getChatUrl($url, $name)
+    {
+        $member = $this->memberLogged(false);
+        $chatDatas = [];
+        if ($member && $member->memberId > 0) {
+            $chatDatas = [
+                "name" => $member->userName,
+                "tel" => $member->cellPhone,
+            ];
+        }
+
+        $chatDatas['comment'] =  $name . '--' . $url;
+
+        return 'https://static.meiqia.com/dist/standalone.html?_=t&eid=92491&clientid='
+            . (($member && $member->memberId > 0) ? $member->memberId : "")
+            . '&metadata=' .urlencode(json_encode($chatDatas, JSON_UNESCAPED_UNICODE));
+
+    }
 }

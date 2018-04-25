@@ -29,7 +29,14 @@ class SpecialController extends BaseController
 
         return view('special.home', [
             'title' => fct_title('方寸堂'),
+            'hasNewVisitor' => $this->hasNewVisitor(),
             'entity' => $result,
+            'share' => [
+                'title' => '方寸堂 - 只为不同',
+                'link' => $this->myShareUrl(url('/', [], env('APP_SECURE'))),
+                'img' => fct_cdn('/img/mobile/share_logo.png', true),
+                'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
+            ],
         ]);
     }
 }

@@ -61,7 +61,8 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
     //查看物流信息
     Route::match(['get', 'post'], 'find-express', 'Mobile\MainController@findExpress');
     //产品详情
-    Route::resource('products', 'Mobile\ProductController', ['show']);
+    Route::get('products/{id}', 'Mobile\ProductController@show')
+        ->where('id', '[0-9]+');
         //ajax获取评论数据
         Route::get('products/{product_id}/comments', 'Mobile\ProductController@getProductComments')
             ->where('product_id', '[0-9]+');
@@ -211,6 +212,8 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
         Route::resource('store', 'Mobile\MemberStoreController', ['create', 'store']);
         //联盟
         Route::get('my/alliance', 'Mobile\AllianceController@index');
+            //生成邀请码
+            Route::post('my/alliance/invite-code', 'Mobile\InviteCodeController@store');
             //联盟考核列表
             Route::get('my/alliance/kpi', 'Mobile\AllianceKPIController@index');
             //联盟成员列表

@@ -66,7 +66,7 @@
 
                             <ul class="nav">
                                 <li class="message" @click="">
-                                    <a href="{!! $chat_url !!}" class="foot-link">
+                                    <a href="{!! api_chat_url(url('products/'. $product->id, [], env('APP_SECURE')), $product->name) !!}" class="foot-link">
                                         <img src="{{ fct_cdn('/img/mobile/msg.png') }}">
                                     </a>
                                 </li>
@@ -94,7 +94,7 @@
                 </div>
                 <ul class="nav">
                     <li class="message" @click="">
-                        <a href="{!! $chat_url !!}" class="foot-link">
+                        <a href="{!! api_chat_url(url('products/'. $product->id, [], env('APP_SECURE')), $product->name) !!}" class="foot-link">
                             <img src="{{ fct_cdn('/img/mobile/msg.png') }}">
                         </a>
                     </li>

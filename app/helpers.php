@@ -93,3 +93,24 @@ if (!function_exists('image_base64'))
         return 'data:' . $info['mime'] . ';base64,' .chunk_split(base64_encode($data));
     }
 }
+
+if (!function_exists('api_chat_url'))
+{
+    function api_chat_url($url, $name)
+    {
+        $member = \App\Member::getAuth();
+        $chatDatas = [];
+        if ($member && $member->memberId > 0) {
+            $chatDatas = [
+                "name" => $member->userName,
+                "tel" => $member->cellPhone,
+            ];
+        }
+
+        $chatDatas['comment'] =  $name . '--' . $url;
+
+        return 'https://static.meiqia.com/dist/standalone.html?_=t&eid=92491&clientid='
+            . (($member && $member->memberId > 0) ? $member->memberId : "")
+            . '&metadata=' .urlencode(json_encode($chatDatas, JSON_UNESCAPED_UNICODE));
+    }
+}

@@ -35,7 +35,7 @@
 
         <div class="footer">
             <div class="inner">
-                <a href="https://static.meiqia.com/dist/standalone.html?_=t&eid=92491&clientid={{ $member->memberId }}">
+                <a href="{!! api_chat_url(url('express', [], env('APP_SECURE')) . "?name=$entity->name&number=$entity->number", "{$entity->name}单号：$entity->number") !!}">
                     <img src="{{ fct_cdn('/img/mobile/order_chat.png') }}">在线客服</a>
             </div>
         </div>
