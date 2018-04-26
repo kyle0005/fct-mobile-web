@@ -29,6 +29,10 @@ class SearchController extends BaseController
             return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
+        if ($request->ajax())
+            return $this->returnAjaxSuccess("获取成功", null, $result);
+
+
         return view('search.index', [
             'title' => fct_title($keyword ? "搜索 “ $keyword ”" : "搜索"),
             'entities' => $result,

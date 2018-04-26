@@ -4,10 +4,10 @@
         <section class="search-container">
             <div class="inner">
                 <div class="item search">
-                    <a href="javascript:;" class="search-link">
+                    <a href="javascript:;" class="search-link" @click="subSearch()">
                         <i class="fa fa-search"></i>
                     </a>
-                    <input type="search" class="search-input" placeholder="宝贝名称" v-model="search">
+                    <input type="search" class="search-input" placeholder="宝贝名称 守艺人名字 壶形" v-model="search">
                     <a href="javascript:;" class="fork-link" @click="clear">
                         <i class="fa fa-times-circle"></i>
                     </a>
@@ -189,7 +189,7 @@
     <script>
         config.isADShow = {!! $hasNewVisitor !!};
         config.index_n = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
-        config.searchUrl = "{{ url('search', [], env('APP_SECURE')) }}";
+        config.searchUrl = "{{ url('search', [], env('APP_SECURE')) }}?keyword=";
     </script>
     <script src="{{ fct_cdn('/js/mobile/hammer.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/swiper.js') }}"></script>

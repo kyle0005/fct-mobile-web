@@ -17,8 +17,10 @@ class MemberStoreController extends BaseController
 {
     public function create(Request $request)
     {
+        $code = $request->get('code', '');
         return view('store.form', [
             'title' => fct_title('申请开店'),
+            'inviteCode' => $code
         ]);
     }
 

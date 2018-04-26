@@ -34,6 +34,6 @@ class Search
             throw new BusinessException($result->msg, $result->code);
         }
 
-        return $result;
+        return $result->data;
     }
 }
