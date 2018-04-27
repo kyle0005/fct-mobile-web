@@ -39,7 +39,6 @@
                 Copyright&nbsp&copy;&nbsp;2018&nbsp;,宜兴方寸堂版权所有
             </div>
         </div>
-
         <transition name="fade">
             <a href="javascript:;" class="top" @click="top()" v-if="showTop">
                 <img src="{{ fct_cdn('/img/mobile/top.png') }}">
