@@ -89,7 +89,7 @@
                         <img :src="auctions[0].defaultImage">
                     </a>
                     <div class="sta">
-                        <div class="item left">@{{ auctions[0].statusName }}</div>
+                        <div class="item left" :class="{gray:auctions[0].status==0, red:auctions[0].status!==0}">@{{ auctions[0].statusName }}</div>
                         <div class="item right">@{{ auctions[0].bidCount }}次出价</div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                             <a :href="'{{ url('auction', [], env('APP_SECURE')) }}/'+item.id" class="link">
                                 <img :src="item.defaultImage">
                                 <span class="sta">
-                                    <span class="item left">@{{ item.statusName }}</span>
+                                    <span class="item left" :class="{gray:item.status==0, red:item.status!==0}">@{{ item.statusName }}</span>
                                     <span class="item right">@{{ item.bidCount }}次出价</span>
                                   </span>
                             </a>
