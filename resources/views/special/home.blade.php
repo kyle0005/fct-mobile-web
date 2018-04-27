@@ -95,7 +95,7 @@
                 </div>
                 <div class="others">
                     <ul class="ul clearfix">
-                        <li class="pro-item" v-for="(item, index) in auctions">
+                        <li class="pro-item" v-for="(item, index) in auctions_data">
                             <a :href="'{{ url('auction', [], env('APP_SECURE')) }}/'+item.id" class="link">
                                 <img :src="item.defaultImage">
                                 <span class="sta">
