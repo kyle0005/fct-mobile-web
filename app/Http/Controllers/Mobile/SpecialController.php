@@ -28,7 +28,7 @@ class SpecialController extends BaseController
         }
 
         return view('special.home', [
-            'title' => fct_title('方寸堂'),
+            'title' => fct_title(),
             'hasNewVisitor' => $this->hasNewVisitor(),
             'entity' => $result,
             'share' => [
