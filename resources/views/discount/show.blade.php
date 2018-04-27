@@ -14,19 +14,18 @@
         <section class="list">
             <ul class="ul">
                 <li class="item" v-for="(item, index) in presale.productList">
-                    <a href="javascript:" class="link">
+                    <a :href="'url("products", [], env('APP_SECURE'))/' + item.id" class="link">
                         <img :src="item.defaultImage">
                         <span class="pro-con">
-            <span class="title">@{{ item.name }}</span>
-            <span class="vtitle">@{{ item.subTitle }}</span>
-            <span class="price"><small>￥</small>@{{ item.discountPrice }}</span>
-            <del class="dprice"><small>￥</small>@{{ item.salePrice }}</del>
-          </span>
+                        <span class="title">@{{ item.name }}</span>
+                        <span class="vtitle">@{{ item.subTitle }}</span>
+                        <span class="price"><small>￥</small>@{{ item.discountPrice }}</span>
+                        <del class="dprice"><small>￥</small>@{{ item.salePrice }}</del>
+                      </span>
                     </a>
                     <span class="btn-container">
-          <a :href="'url('products', [], env('APP_SECURE'))/' + item.id" class="btn">马上抢购</a>
-        </span>
-
+                      <a :href="'url("products", [], env('APP_SECURE'))/' + item.id" class="btn">马上抢购</a>
+                    </span>
                 </li>
             </ul>
         </section>
