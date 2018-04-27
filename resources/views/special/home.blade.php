@@ -63,10 +63,15 @@
                 <div v-for="(item, index) in preSales" class="swiper-slide" slot="swiper-con">
                     <a :href="'{{ url('discounts', [], env('APP_SECURE')) }}/' + item.id" class="content">
                         <div class="left">
-                            <div class="title"><img src="{{ fct_cdn('/img/mobile/pre_sale.png') }}"><span class="t">预售宝贝</span></div>
+                            <div class="title">
+                                <img src="{{ fct_cdn('/img/mobile/pre_sale.png') }}">
+                                <span class="t" v-if="item.advanceSaleDays > 0">预售宝贝</span>
+                                <span class="t" v-else>特惠活动</span>
+                            </div>
                             <div class="text">距离@{{ item.status === 0 ? '开始': '结束'}}时间</div>
                             <div class="time"><m-time :end-time="item.discountTime" :callback="end"></m-time></div>
-                            <div class="tip">@{{ item.advanceSaleDays }}天后发货</div>
+                            <div class="tip" v-if="item.advanceSaleDays > 0">@{{ item.advanceSaleDays }}天后发货</div>
+                            <div class="tip" v-else>@{{ item.name }}</div>
                         </div>
                         <div class="right">
                             <img :src="item.defaultImage">

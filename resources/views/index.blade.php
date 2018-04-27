@@ -40,17 +40,6 @@
             </div>
         </div>
 
-        <div class="gift-pop" v-if="isADShow">
-            <div class="inner">
-                <img src="{{ fct_cdn('/img/mobile/gift_show.png') }}">
-                <a href="{{ url('gift/detail', [], env('APP_SECURE')) }}" class="link">&nbsp;</a>
-                <a href="javascript:;" class="close" @click="closegift()">&nbsp;</a>
-            </div>
-        </div>
-        <a href="{{ url('gift/detail', [], env('APP_SECURE')) }}" class="gift-icon" v-if="!isADShow">
-            <img src="{{ fct_cdn('/img/mobile/gift_icon.png') }}">
-        </a>
-
         <transition name="fade">
             <a href="javascript:;" class="top" @click="top()" v-if="showTop">
                 <img src="{{ fct_cdn('/img/mobile/top.png') }}">
