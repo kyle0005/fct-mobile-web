@@ -14,7 +14,7 @@
         <section class="list">
             <ul class="ul">
                 <li class="item" v-for="(item, index) in presale.productList">
-                    <a :href="'url("products", [], env('APP_SECURE'))/' + item.id" class="link">
+                    <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
                         <img :src="item.defaultImage">
                         <span class="pro-con">
                         <span class="title">@{{ item.name }}</span>
@@ -24,7 +24,7 @@
                       </span>
                     </a>
                     <span class="btn-container">
-                      <a :href="'url("products", [], env('APP_SECURE'))/' + item.id" class="btn">马上抢购</a>
+                      <a :href="'{{ url("products", [], env('APP_SECURE')) }}/' + item.id" class="btn">马上抢购</a>
                     </span>
                 </li>
             </ul>
