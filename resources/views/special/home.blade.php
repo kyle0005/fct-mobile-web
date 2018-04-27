@@ -75,7 +75,10 @@
                         </div>
                         <div class="right">
                             <img :src="item.defaultImage">
-                            <div class="t"><span class="s">限额@{{ item.singleCount }}位</span></div>
+                            <div class="t">
+                                <span class="s" v-if="item.singleCount > 0">限购@{{ item.singleCount }}件</span>
+                                <span class="s" v-else>不限购</span>
+                            </div>
                         </div>
                     </a>
                 </div>
