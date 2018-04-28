@@ -14,7 +14,7 @@
                 <div class="inner">
                     <div class="text">
                         <div class="title">方寸堂</div>
-                        <div class="vtitle">只为不同</div>
+                        <div class="vtitle">不只不同</div>
                     </div>
                     <img src="{{ fct_cdn('/img/mobile/logo.png') }}" class="logo">
                     <div class="btn-container">

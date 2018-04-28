@@ -31,7 +31,7 @@
                        class="left"><img src="{{ fct_cdn('/img/mobile/logo2.png') }}"></a>
                     <div class="center">
                         <a href="{{ url('/', [], env('APP_SECURE')) .'?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}"
-                           class="title">方寸堂 - 只为不同</a>
+                           class="title">方寸堂 - 不只不同</a>
                         <span class="t2 overTextH2">汇聚东方美学匠心之作的紫砂交流电商平台。</span>
                     </div>
                 </div>

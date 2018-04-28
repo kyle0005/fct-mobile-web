@@ -55,7 +55,7 @@
                     <div class="r">@{{ item.code }}</div>
                     <div class="r">@{{ item.expireTime }}</div>
                     <div class="r">
-                        <a href="javascript:;" class="opt">
+                        <a :href="'{{ url('store/create', [], env('APP_SECURE')) }}?code=' + item.code" class="opt">
                             <img src="{{ fct_cdn('/img/mobile/m_add.png') }}">
                         </a>
                     </div>
@@ -65,6 +65,9 @@
     </div>
 @endsection
 @section('javascript')
-    <script>config.union = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};</script>
+    <script>
+        config.union = {!! json_encode($entity, JSON_UNESCAPED_UNICODE) !!};
+        config.add_url = "{{ url('my/alliance/invite-code', [], env('APP_SECURE')) }}";
+    </script>
     <script src="{{ fct_cdn('/js/mobile/union.js') }}"></script>
 @endsection
