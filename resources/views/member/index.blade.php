@@ -129,7 +129,7 @@
                 </li>
             </ul>
         </section>
-        <section class="user-sec">
+        <section class="user-sec last">
             <ul class="funcs-list">
                 <li>
                     <a href="{!! api_chat_url(url('my', [], env('APP_SECURE')), '用户中心') !!}" class="link">
@@ -159,7 +159,9 @@
                     </a>
                 </li>
             </ul>
-            <a href="{{ url('logout', [], env('APP_SECURE')) }}" class="user-sec logout">退出登录</a>
+        </section>
+        <section class="log-sec">
+            <a href="{{ url('logout', [], env('APP_SECURE')) }}" class="logout">退出登录</a>
         </section>
 
         <footer class="footer">
