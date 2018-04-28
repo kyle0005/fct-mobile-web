@@ -144,7 +144,7 @@
                     <div class="inner">
                         <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
                             <img :src="item.defaultImage" class="pro-img">
-                            <span class="pro-title overTextH2">@{{ item.name }}</span>
+                            <span class="pro-title overText">@{{ item.name }}</span>
                             <span class="pro-price">
                                 <small>￥</small>@{{ item.discountPrice }}
                                 <del class="del" v-if="item.price > item.discountPrice"><small>￥</small>@{{ item.price }}</del>
