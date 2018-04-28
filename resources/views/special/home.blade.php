@@ -145,7 +145,10 @@
                         <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
                             <img :src="item.defaultImage" class="pro-img">
                             <span class="pro-title overTextH2">@{{ item.name }}</span>
-                            <span class="pro-price"><small>￥</small>@{{ item.price }}<del class="del"><small>￥</small>740</del></span>
+                            <span class="pro-price">
+                                <small>￥</small>@{{ item.discountPrice }}
+                                <del class="del" v-if="item.price > item.discountPrice"><small>￥</small>@{{ item.price }}</del>
+                            </span>
                             <span class="pro-mark">
                               <small class="marks" :class="'mark-' + (i - 1)" v-for="(i, index) in item.tags">@{{ tagN[i - 1] }}</small>
                             </span>
