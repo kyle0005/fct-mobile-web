@@ -20,7 +20,7 @@
                     </div>
                 </li>
                 <li class="items">
-                    <a href="javascript:;" class="inner">
+                    <a href="{{ url('my/alliance/store', [], env('APP_SECURE')) }}" class="inner">
                         <span class="pri">@{{ union.storeCount }}</span>
                         <span class="txt l">分店数</span>
                     </a>
@@ -28,7 +28,7 @@
             </ul>
         </section>
         <section class="kpi-container">
-            <div class="title">@{{ union.month }}月考核情况<a href="javascript:;" class="more">更多&nbsp;<i class="fa fa-caret-right"></i></a></div>
+            <div class="title">@{{ union.month }}月考核情况<a href="{{ url('my/alliance/kpi', [], env('APP_SECURE')) }}" class="more">更多&nbsp;<i class="fa fa-caret-right"></i></a></div>
             <ul class="detail">
                 <li class="items">考核指标</li>
                 <li class="items">累积销售额</li>

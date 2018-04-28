@@ -1,0 +1,1 @@
+"use strict";var app=new Vue({mounted:function(){},data:{list:config.list},watch:{},methods:{}}).$mount("#shoplist");

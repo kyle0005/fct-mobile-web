@@ -61,7 +61,7 @@
         <section class="presale" v-if="preSales.length > 0">
             <m-swipe swipeid="swipeN" ref="presale" :autoplay="0" pagination-type="custom">
                 <div v-for="(item, index) in preSales" class="swiper-slide" slot="swiper-con">
-                    <a :href="'{{ url('discounts', [], env('APP_SECURE')) }}/' + item.id" class="content">
+                    <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.goodsId" class="content">
                         <div class="left">
                             <div class="title">
                                 <img src="{{ fct_cdn('/img/mobile/pre_sale.png') }}">
@@ -157,13 +157,13 @@
         <footer class="footer">
             <div class="inner">
                 <a href="{{ url('/', [], env('APP_SECURE')) }}" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/i_home.png') }}"><br>首页
+                    <img src="{{ fct_cdn('/img/mobile/i_home_d.png') }}"><br>首页
                 </a>
                 <a href="{!! api_chat_url(url('/', [], env('APP_SECURE')), '首页') !!}" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/i_service.png') }}"><br>消息
+                    <img src="{{ fct_cdn('/img/mobile/i_service_g.png') }}"><br>消息
                 </a>
                 <a href="{{ url('my', [], env('APP_SECURE')) }}" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/i_account.png') }}"><br>我的
+                    <img src="{{ fct_cdn('/img/mobile/i_account_g.png') }}"><br>我的
                 </a>
             </div>
         </footer>

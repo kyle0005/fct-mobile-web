@@ -332,12 +332,12 @@ class MemberController extends BaseController
 
         return view("member.index", [
             'title' => fct_title('用户中心'),
-            'memberBanner' => (object) [
+            'user' => (object) [
                 'userName' =>$member->userName,
                 'headPortrait' => $member->headPortrait,
                 'shopId' => $member->shopId,
-            ],
-            'categories' => ProductCategory::getCategories(),
+                'allianceId' => $member->allianceId,
+            ]
         ]);
     }
 }

@@ -1,7 +1,6 @@
 @extends("layout")
 @section('content')
     <div class="user-container" id="user" v-cloak>
-        <head-top></head-top>
         <section class="banner">
             <img src="{{ fct_cdn('/img/mobile/resource/banner.png') }}" class="banner-img">
             <a href="{{ "my/profile" }}" class="banner-link">
@@ -119,6 +118,15 @@
                         <span class="wei-arrow-right"></span>
                     </a>
                 </li>
+                <li v-if="user.allianceId > 0">
+                    <a href="{{ url('my/alliance', [], env('APP_SECURE')) }}" class="link">
+                      <span class="img-container item">
+                      <img src="{{ fct_cdn('/img/mobile/alliance.png') }}">
+                      </span>
+                        <span class="item t">我的联盟</span>
+                        <span class="wei-arrow-right"></span>
+                    </a>
+                </li>
             </ul>
         </section>
         <section class="user-sec">
@@ -153,13 +161,26 @@
             </ul>
             <a href="{{ url('logout', [], env('APP_SECURE')) }}" class="user-sec logout">退出登录</a>
         </section>
+
+        <footer class="footer">
+            <div class="inner">
+                <a href="{{ url('/', [], env('APP_SECURE')) }}" class="link">
+                    <img src="{{ fct_cdn('/img/mobile/i_home_g.png') }}"><br>首页
+                </a>
+                <a href="{!! api_chat_url(url('/', [], env('APP_SECURE')), '首页') !!}" class="link">
+                    <img src="{{ fct_cdn('/img/mobile/i_service_g.png') }}"><br>消息
+                </a>
+                <a href="{{ url('my', [], env('APP_SECURE')) }}" class="link">
+                    <img src="{{ fct_cdn('/img/mobile/i_account_d.png') }}"><br>我的
+                </a>
+            </div>
+        </footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </div>
 @endsection
 @section('javascript')
     <script>
-        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
-        config.user = {!! json_encode($memberBanner, JSON_UNESCAPED_UNICODE) !!};
+        config.user = {!! json_encode($user, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/usercenter.js') }}"></script>
