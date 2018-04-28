@@ -4,7 +4,7 @@
         <section class="search-container">
             <div class="inner">
                 <img src="{{ fct_cdn('/img/mobile/logo2.png') }}" class="logo">
-                <input type="search" class="search-input" placeholder="" v-model="search">
+                <input type="search" class="search-input" placeholder="宝贝名称 守艺人名字 壶型" v-model="search">
                 <a href="javascript:;" class="search-link" @click="subSearch">
                     <i class="fa fa-search"></i>
                 </a>
