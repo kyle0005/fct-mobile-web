@@ -45,50 +45,6 @@
                         <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="btn">立即购买</a>
                     </div>
                 </li>
-
-
-                <!--<li class="item artist-n">
-                  <a href="javascript:;" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/resource/pro01.png') }}" class="img">
-                    <span class="con">
-                      <span class="name">顾景舟</span>
-                      <span class="text overTextH3">简介：简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</span>
-                    </span>
-                  </a>
-                </li>
-                <li class="item artist-t">
-                  <a href="javascript:;" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/resource/pro01.png') }}" class="img">
-                    <span class="con">
-                      <span class="name">顾景舟(1915-～～)</span>
-                      <span class="text overTextH3">职称：中国工艺美术师</span>
-                      <span class="text overTextH3">专业：制壶</span>
-                      <span class="text overTextH3">评审日期：2015年09月09日</span>
-                    </span>
-                  </a>
-                </li>
-                <li class="item category">
-                  <a href="javascript:;" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/resource/pro01.png') }}" class="img">
-                    <span class="con">
-                      <span class="name">半月</span>
-                      <span class="text overTextH3">简介：简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</span>
-                    </span>
-                  </a>
-                </li>
-                <li class="item product">
-                  <a href="javascript:;" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/resource/pro01.png') }}" class="img">
-                    <span class="con">
-                      <span class="name">梅花信xx 顾景舟</span>
-                      <span class="text overTextH3">品质一流 xxxxxx</span>
-                      <span class="price"><small>￥</small>234.00</span>
-                    </span>
-                  </a>
-                  <div class="btn-container">
-                    <a href="javascript:;" class="btn">立即购买</a>
-                  </div>
-                </li>-->
             </ul>
         </section>
     </div>
@@ -96,6 +52,7 @@
 @section('javascript')
     <script>
         config.isearch = {!! json_encode($entities, JSON_UNESCAPED_UNICODE) !!};
+        config.keyword = "{{ $keyword }}";
         config.searchUrl = "{{ url('search', [], env('APP_SECURE')) }}?keyword=";
     </script>
     <script src="{{ fct_cdn('/js/mobile/index_search.js') }}"></script>

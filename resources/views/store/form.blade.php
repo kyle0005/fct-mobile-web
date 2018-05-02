@@ -7,7 +7,7 @@
                 <li class="items clearfix">
                     <div class="left">邀&ensp;请&ensp;码</div>
                     <div class="right">
-                        <input type="text" name="code" class="" placeholder="请输入邀请码" v-model.number="inviteCode"/>
+                        <input type="text" name="code" class="" placeholder="请输入邀请码" v-model="inviteCode"/>
                     </div>
                 </li>
                 <li class="items clearfix">
@@ -35,6 +35,7 @@
 @endsection
 @section('javascript')
     <script>
+        config.code = "{{ $inviteCode }}";
         config.storeUrl = "{{ url('store', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/login_mem.js') }}"></script>

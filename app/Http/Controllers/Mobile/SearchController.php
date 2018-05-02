@@ -35,6 +35,7 @@ class SearchController extends BaseController
 
         return view('search.index', [
             'title' => fct_title($keyword ? "搜索 “ $keyword ”" : "搜索"),
+            'keyword' => $keyword,
             'entities' => $result,
         ]);
     }
