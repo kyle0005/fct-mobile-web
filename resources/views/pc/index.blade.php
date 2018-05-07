@@ -40,20 +40,20 @@
         <div class="yw-constr">
             <div class="yw-hd-slide-x">
                 <div id="hdSlide1" class="yw-hd-slide-li yw-hd-slide-1 active"><s class="yw-hd-slide-bg"></s>
-                    <div class="yw-hd-slide-con"><h2 class="yw-hd-slide-h">方寸之间，大有天地</h2>
-                        <p class="yw-hd-slide-p">有温度的匠人手作APP<span class="hidden"><br></span>汇聚东方美学匠心之作的紫砂平台</p></div>
+                    <div class="yw-hd-slide-con"><h2 class="yw-hd-slide-h">60＋发起人</h2>
+                        <p class="yw-hd-slide-p">历经万千时间，<span class="hidden"><br></span>倾力打造寻觅东方紫砂的平台。</p></div>
                 </div>
                 <div id="hdSlide2" class="yw-hd-slide-li yw-hd-slide-2"><s class="yw-hd-slide-bg"></s>
                     <div class="yw-hd-slide-con">
-                        <h2 class="yw-hd-slide-h">匠人云集</h2>
-                        <p class="yw-hd-slide-p">30+&nbsp;位匠人入驻方寸堂；<span class="hidden"><br></span>心手相通，载大道于咫尺之器。</p>
+                        <h2 class="yw-hd-slide-h">100＋手艺人</h2>
+                        <p class="yw-hd-slide-p">磨砺紫砂技艺，<span class="hidden"><br></span>汇聚于此创作有魂有质的作品。</p>
                     </div>
                 </div>
                 <div id="hdSlide3" class="yw-hd-slide-li yw-hd-slide-3">
                     <s class="yw-hd-slide-bg"></s>
                     <div class="yw-hd-slide-con">
-                        <h2 class="yw-hd-slide-h yw-font-helv">专注寻觅，原创好物</h2>
-                        <p class="yw-hd-slide-p">东方有美物，匠者心中藏；<span class="hidden"><br></span>携手共寻访，守艺亦传家</p>
+                        <h2 class="yw-hd-slide-h yw-font-helv">N＋寻觅人</h2>
+                        <p class="yw-hd-slide-p">远离世间喧嚣，<span class="hidden"><br></span>在此相遇邂逅一触即爱的好物。</p>
                     </div>
                 </div>
             </div>
