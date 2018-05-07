@@ -19,10 +19,10 @@
                     </div>
                     <div class="info-i">
                         <div>返点比例</div>
-                        <div class="c">@{{ item.rebateRatio * 100 }}%</div>
+                        <div class="c">@{{ item.rebateRatio }}%</div>
                     </div>
                 </div>
-                <div class="total">完成业绩<span class="s">@{{ item.finishSaleRatio * 100 }}%</span>，返点<span class="s">@{{ item.lastRebateRatio * 100 }}%</span>，返佣<span class="s"><small>￥</small>@{{ item.rebateAmount }}</span>。</div>
+                <div class="total">完成业绩<span class="s">@{{ item.finishSaleRatio }}%</span>，返点<span class="s">@{{ item.lastRebateRatio }}%</span>，返佣<span class="s"><small>￥</small>@{{ item.rebateAmount }}</span>。</div>
             </li>
         </ul>
         <no-data v-if="nodata" :imgurl="'{{ fct_cdn('/img/mobile/no_data.png') }}'" :text="'当前没有相关数据哟~'"></no-data>

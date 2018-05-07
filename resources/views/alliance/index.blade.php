@@ -4,7 +4,7 @@
         <section class="info-container">
             <div class="shop">
                 <div class="name">@{{ union.name }}<img src="{{ fct_cdn('/img/mobile/shop_v'.$entity->levelId.'.png') }}" class="rank"></div>
-                <div class="deposit"><span class="n">@{{ reversedNum }}</span>万保证金</div>
+                <div class="deposit"><span class="n">@{{ union.deposit }}</span>万保证金</div>
             </div>
             <ul class="detail">
                 <li class="items">
@@ -35,7 +35,7 @@
                 <li class="items">返点比例</li>
                 <li class="items"><small>￥</small>@{{ union.kpiAmount }}</li>
                 <li class="items"><small>￥</small>@{{ union.kpiSaleAmount }}</li>
-                <li class="items">@{{ reversedRatio }}%</li>
+                <li class="items">@{{ union.kpiRebateRatio }}%</li>
                 <li class="items"><span class="shop">“@{{ union.topAllianceName }}”</span>当前业绩最高</li>
             </ul>
         </section>
