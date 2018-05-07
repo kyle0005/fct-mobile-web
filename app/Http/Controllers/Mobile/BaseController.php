@@ -14,7 +14,7 @@ class BaseController extends Controller
 
     public function __construct(Request $request)
     {
-
+        return $this->autoReturn("系统即将上线,敬请期待", 404, url('/', [], env('APP_SECURE')));
         //店铺分享
         $this->setShopId();
         //设置邀请
