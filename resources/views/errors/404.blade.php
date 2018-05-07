@@ -1,7 +1,7 @@
 @extends("layout")
 @section('content')
     <div class="no-container" id="notfound" v-cloak>
-        <?php if (!env('if (env('APP_CLOSE'))')):?>
+        <?php if (!env('APP_CLOSE')):?>
         <head-top></head-top>
         <?php endif;?>
         <img src="{{ fct_cdn('/img/mobile/404.png') }}" class="icon">
