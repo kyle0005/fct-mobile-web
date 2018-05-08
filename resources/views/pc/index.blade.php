@@ -70,15 +70,15 @@
         <div class="yw-constr">
             <div class="yw-data-view">
                 <dl class="yw-data-dl yw-data-dl-1">
-                    <dt class="yw-data-dt"><i class="icons-pbm-p"></i>原创＋限量</dt>
+                    <dt class="yw-data-dt"><i class="icons-pbm-p"></i>原创+限量</dt>
                     <dd class="yw-data-dd">100%原人手制，紫砂名家原创设计。作品限量发售，杜绝数量泛滥，我们对作品拥有原创著作权和商标认证。</dd>
                 </dl>
                 <dl class="yw-data-dl yw-data-dl-2">
-                    <dt class="yw-data-dt"><i class="icons-pbm-b"></i>标价＋规范</dt>
+                    <dt class="yw-data-dt"><i class="icons-pbm-b"></i>标价+规范</dt>
                     <dd class="yw-data-dd">明码标价是我们敢于规范市场的第一步。所有首发单品不二价是我们对您做出的承诺。</dd>
                 </dl>
                 <dl class="yw-data-dl yw-data-dl-3">
-                    <dt class="yw-data-dt"><i class="icons-pbm-m"></i>保值＋受益</dt>
+                    <dt class="yw-data-dt"><i class="icons-pbm-m"></i>保值+受益</dt>
                     <dd class="yw-data-dd">保值换购和增值回购两大政策，让您成为紫砂壶的受益者。销售只是起点，服务没有终点。</dd>
                 </dl>
             </div>
