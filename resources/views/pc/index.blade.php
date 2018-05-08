@@ -70,19 +70,19 @@
         <div class="yw-constr">
             <div class="yw-data-view">
                 <dl class="yw-data-dl yw-data-dl-1">
-                    <dt class="yw-data-dt"><i class="icons-pbm-p"></i>原矿抟砂</dt>
-                    <dd class="yw-data-dd">每一粒砂料都来自于宜兴黄龙山紫砂矿料的精心抟炼而成。零添加，安心品茗。</dd>
+                    <dt class="yw-data-dt"><i class="icons-pbm-p"></i>原创＋限量</dt>
+                    <dd class="yw-data-dd">100%原人手制，紫砂名家原创设计。作品限量发售，杜绝数量泛滥，我们对作品拥有原创著作权和商标认证。</dd>
                 </dl>
                 <dl class="yw-data-dl yw-data-dl-2">
-                    <dt class="yw-data-dt"><i class="icons-pbm-b"></i>匠心传承</dt>
-                    <dd class="yw-data-dd">所有的砂壶，不论“全手工”与“半手工”都是出自作者本人之手匠心而作。无代工，放心把玩。</dd>
+                    <dt class="yw-data-dt"><i class="icons-pbm-b"></i>标价＋规范</dt>
+                    <dd class="yw-data-dd">明码标价是我们敢于规范市场的第一步。所有首发单品不二价是我们对您做出的承诺。</dd>
                 </dl>
                 <dl class="yw-data-dl yw-data-dl-3">
-                    <dt class="yw-data-dt"><i class="icons-pbm-m"></i>价值典藏</dt>
-                    <dd class="yw-data-dd">方寸堂首推的“换购计划”确保您的爱壶能青春不衰，价值不减。没风险，随心收藏。</dd>
+                    <dt class="yw-data-dt"><i class="icons-pbm-m"></i>保值＋受益</dt>
+                    <dd class="yw-data-dd">保值换购和增值回购两大政策，让您成为紫砂壶的受益者。销售只是起点，服务没有终点。</dd>
                 </dl>
             </div>
-            <p class="yw-data-desc">宜兴方寸堂文化传播有限公司，是一家由十多年从事紫砂艺术收藏的资深藏家组成的实力团队，公司设有紫砂研发中心、创作团队及新人培养基地，设立此平台的目的在于给天下壶友和紫砂艺人间搭建一个透明、便捷、真实的紫砂创作、交流平台。</p></div>
+            <p class="yw-data-desc">方寸堂，是一家由十多年从事紫砂艺术收藏的资深藏家组成的实力团队，公司设有紫砂研发中心、创作团队及新人培养基地，设立此平台的目的在于给天下壶友和紫砂艺人间搭建一个透明、便捷、真实的紫砂创作、交流平台。</p></div>
     </div>
 
     <div id="copyright" class="yw-copyright">
