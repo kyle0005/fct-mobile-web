@@ -9,7 +9,7 @@
                 2、推荐好友：点击下方推荐好友，成功使用手机注册即可再获得30元账户余额（可积累）<br>
                 3、活动时间：至2018年6月6日结束
             </div>
-            <a href="javascript:;" class="btn" v-if="isLogin" @click="share()">推荐领红包</a>
+            <a href="javascript:;" class="btn" v-if="isLogin" @click="share()">邀请领红包</a>
             <a href="{{ url(\App\FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')) }}" class="btn" v-else>注册领红包</a>
         </div>
 

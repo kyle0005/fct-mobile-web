@@ -19,7 +19,7 @@ class GiftController extends BaseController
         $member = $this->memberLogged(false);
         $hasLogin = $member && $member->memberId > 0 ? 1 : 0;
         $shareUrl = $this->myShareUrl(url('/', [], env('APP_SECURE')));
-        $title = $hasLogin ? '推荐有好礼' : '注册领红包';
+        $title = $hasLogin ? '邀请领红包' : '注册领红包';
 
         return view('gift.signup', [
             'title' => fct_title($title),
