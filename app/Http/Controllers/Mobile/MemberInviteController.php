@@ -23,6 +23,9 @@ class MemberInviteController extends BaseController
                 'userName' =>$member->userName,
                 'headPortrait' => $member->headPortrait,
             ],
+            "qrcodeUrl" => image_base64(gen_qrcode(urlencode($this->myShareUrl(url('/', [], env('APP_SECURE')))))),
+            "backgroundUrl" => image_base64(fct_cdn('/img/mobile/reg_invite_bg.png')),
+            "logoUrl" => image_base64(fct_cdn('/img/mobile/i_home_d.png'))
         ]);
     }
 }

@@ -114,3 +114,11 @@ if (!function_exists('api_chat_url'))
             . '&metadata=' .urlencode(json_encode($chatDatas, JSON_UNESCAPED_UNICODE));
     }
 }
+
+if (!function_exists('gen_qrcode'))
+{
+    function gen_qrcode($url = '')
+    {
+        return 'https://pan.baidu.com/share/qrcode?w=300&h=300&url=' . $url;
+    }
+}

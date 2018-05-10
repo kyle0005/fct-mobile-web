@@ -9,9 +9,9 @@
     <script>
         var config = {
             "user": {!! json_encode($user, JSON_UNESCAPED_UNICODE) !!},
-            "qrcodeUrl": "{{ fct_cdn('/img/mobile/qrcode.png') }}",
-            "backgroundUrl": "{{ fct_cdn('/img/mobile/reg_invite_bg.png') }}",
-            "logoUrl": "{{ fct_cdn('/img/mobile/i_home_d.png') }}",
+            "qrcodeUrl": {!! $qrcodeUrl !!},
+            "backgroundUrl": {!! $backgroundUrl !!},
+            "logoUrl": {!! $logoUrl !!},
             "textObj": {
                 "textInfo": "，领取了方寸堂200元，特来邀请您一起拿红包",
                 "textQrcode": "长按识别二维码获取奖金",
