@@ -5,9 +5,8 @@
     </div>
 @endsection
 @section('javascript')
-    <script src="{{ fct_cdn('/js/mobile/canvas2image.js') }}"></script>
     <script>
-        config.user = {!! json_encode($user, JSON_UNESCAPED_UNICODE) !!};
+        config.user = {!! json_encode($user, JSON_UNESCAPED_UNICODE) !!}
         config.qrcodeUrl = {!! json_encode($qrcodeUrl, JSON_UNESCAPED_UNICODE) !!};
         config.backgroundUrl = {!! json_encode($backgroundUrl, JSON_UNESCAPED_UNICODE) !!};
         config.logoUrl = {!! json_encode($logoUrl, JSON_UNESCAPED_UNICODE) !!};
@@ -18,9 +17,8 @@
                 "textLine1": "仅限于使用手机号注册并通过微信授权的用户有效",
                 "textLine2": "严禁恶意刷金，一经发现将取消相关奖励",
                 "textM": "·"
-            }
-
-        }
+        };
     </script>
+    <script src="{{ fct_cdn('/js/mobile/canvas2image.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/invite.js') }}"></script>
 @endsection
