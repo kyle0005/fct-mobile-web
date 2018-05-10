@@ -7,10 +7,10 @@
 @section('javascript')
     <script src="{{ fct_cdn('/js/mobile/canvas2image.js') }}"></script>
     <script>
-        config.user = {!! json_encode($user, JSON_UNESCAPED_UNICODE) !!},
-        config.qrcodeUrl = "{!! $qrcodeUrl !!}",
-        config.backgroundUrl = "{!! $backgroundUrl !!}",
-        config.logoUrl = "{!! $logoUrl !!}",
+        config.user = {!! json_encode($user, JSON_UNESCAPED_UNICODE) !!};
+        config.qrcodeUrl = {!! json_encode($qrcodeUrl, JSON_UNESCAPED_UNICODE) !!};
+        config.backgroundUrl = {!! json_encode($backgroundUrl, JSON_UNESCAPED_UNICODE) !!};
+        config.logoUrl = {!! json_encode($logoUrl, JSON_UNESCAPED_UNICODE) !!};
         config.textObj = {
                 "textInfo": "，领取了方寸堂200元，特来邀请您一起拿红包",
                 "textQrcode": "长按识别二维码获取奖金",
