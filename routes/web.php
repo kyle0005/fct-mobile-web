@@ -95,9 +95,11 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
     /** 用户需要登录后操作 */
     Route::group(['middleware' => 'auth'], function ()
     {
+        //物流单号查询
         Route::get('express', 'Mobile\ExpressController@index');
+        //生成邀请图片
+        Route::get('invite/share', 'Mobile\MemberInviteController@getShare');
         //上传图片
-        //Route::get('upload/image', 'Mobile\UploadController@image');
         Route::post('upload/image', 'Mobile\UploadController@image');
 
         //拍卖提醒
