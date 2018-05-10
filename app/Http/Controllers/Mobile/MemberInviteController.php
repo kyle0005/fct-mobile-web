@@ -18,7 +18,7 @@ class MemberInviteController extends BaseController
         $member = Member::getAuth();
 
         return view('invite.share', [
-            'title' => fct_title('售后详情'),
+            'title' => fct_title('生成分享图片'),
             'user' => (object) [
                 'userName' =>$member->userName,
                 'headPortrait' => $member->headPortrait,
