@@ -238,7 +238,7 @@
                 <a href="javascript:;" class="js-poster v-poster">
                     <img src="{{ fct_cdn('/img/fct/video.jpg') }}">
                 </a>
-                <video data-src="" class="js-v bot-v" controls></video>
+                <video data-src="http://1253930304.vod2.myqcloud.com/edc37625vodtransgzp1253930304/623f45497447398156032721087/v.f30.mp4" class="js-v bot-v" controls></video>
             </div>
             <div class="yw-contact-detail">
                 <dl class="yw-contact-dl">
