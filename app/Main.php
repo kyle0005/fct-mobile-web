@@ -72,10 +72,10 @@ class Main
     public static function welcome()
     {
         $slides = [
-            ["image" => "/img/mobile/welcome/guide1.jpg", "url" => "javascript:;"],
-            ["image" => "/img/mobile/welcome/guide2.jpg", "url" => "javascript:;"],
-            ["image" => "/img/mobile/welcome/guide3.jpg", "url" => "javascript:;"],
-            ["image" => "/img/mobile/welcome/guide4.jpg", "url" => "javascript:;"],
+            ["image" => fct_cdn("/img/mobile/welcome/guide1.jpg"), "url" => "javascript:;"],
+            ["image" => fct_cdn("/img/mobile/welcome/guide2.jpg"), "url" => "javascript:;"],
+            ["image" => fct_cdn("/img/mobile/welcome/guide3.jpg"), "url" => "javascript:;"],
+            ["image" => fct_cdn("/img/mobile/welcome/guide4.jpg"), "url" => "javascript:;"],
         ];
 
         return $slides;
