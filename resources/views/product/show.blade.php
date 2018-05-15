@@ -113,7 +113,7 @@
                     </li>
                     <li class="buy" :class="{ disabled: !product.hasBuy }">
                         <a href="javascript:;" @click="choose(1)" v-if="product.hasBuy">立即购买</a>
-                        <a href="javascript:;" v-else>等待开启</a>
+                        <a href="javascript:;" v-else>等待开始</a>
                     </li>
                 </ul>
             </div>
