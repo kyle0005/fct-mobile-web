@@ -63,7 +63,7 @@ class MainController extends BaseController
                     'title' => '方寸堂 - 不止不同',
                     'link' => $shareUrl,
                     'img' => fct_cdn('/img/mobile/share_logo.png', true),
-                    'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
+                    'desc' => 'N＋寻觅人，在此相遇邂逅一触即爱的好物。',
                 ],
                 ]);
         }

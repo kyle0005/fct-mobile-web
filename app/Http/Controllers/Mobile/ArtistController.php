@@ -41,7 +41,7 @@ class ArtistController extends BaseController
                 'title' => fct_title('守艺人'),
                 'link' => $shareUrl,
                 'img' => fct_cdn('/img/mobile/share_logo.png', true),
-                'desc' => '守一种精神 做一个“匠人”',
+                'desc' => '100＋手艺人，汇聚于此创作有魂有质的作品。',
             ]
         ]);
     }
