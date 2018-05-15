@@ -59,7 +59,7 @@
             </div>
         </section>
         <section class="presale" v-if="preSales.length > 0">
-            <m-swipe swipeid="swipeN" ref="presale" :autoplay="0" pagination-type="custom">
+            <m-swipe swipeid="swipeN" ref="presale" :autoplay="0" :pagination="preSales.length>1" pagination-type="custom">
                 <div v-for="(item, index) in preSales" class="swiper-slide" slot="swiper-con">
                     <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.goodsId" class="content">
                         <div class="left">
