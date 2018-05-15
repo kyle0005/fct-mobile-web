@@ -6,8 +6,8 @@
                 <div class="inner">
                     <div class="up clearfix">
                         <span class="remark">@{{ item.remark }}</span>
-                        <span class="point">@{{ item.behaviorType == 1 && item.points > 0 ? '+' : '-' }}@{{ item.points }}</span>
-                        <span class="pri">@{{ item.behaviorType == 1 && item.amount > 0 ? '+' : '-' }}@{{ item.amount }}</span>
+                        <span class="point">@{{ item.points > 0 ? (item.behaviorType == 1 ? '+' : '-') : '' }}@{{ item.points }}</span>
+                        <span class="pri">@{{ item.amount > 0 ? (item.behaviorType == 1 ? '+' : '-') : '' }}@{{ item.amount }}</span>
                     </div>
                     <div class="down clearfix">
                         <span class="remark">@{{ item.createTime }}</span>
