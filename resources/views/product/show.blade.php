@@ -183,9 +183,9 @@
                 </div>
                 <div class="price" v-else>暂无售价</div>
                 <div class="sale-info">
-                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">包邮&emsp;
-                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">保真保值&emsp;
-                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">30天无忧退换货
+                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">原人手制&emsp;
+                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">限量发行&emsp;
+                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">永久保值换购
                 </div>
                 <div class="view">
                     <div class="inner">

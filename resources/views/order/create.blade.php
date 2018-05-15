@@ -8,14 +8,14 @@
             </section>
             <section class="address" v-else>
                 <a href="{{ url('address/choose', [], env('APP_SECURE')) . '?' . env('REDIRECT_KEY') .'=' . ${env('REDIRECT_KEY')} }}" class="link">
-        <span class="left item">
-          <span class="overText">@{{ address.name }}</span>
-          <span class="def">默认</span>
-        </span>
+                    <span class="left item">
+                      <span class="overText">@{{ address.name }}</span>
+                      <span class="def">默认</span>
+                    </span>
                     <span class="right item">
-          <span>@{{ address.cellPhone }}</span>
-          <span class="overText">@{{ addressStr }}</span>
-        </span>
+                      <span>@{{ address.cellPhone }}</span>
+                      <span class="overText">@{{ addressStr }}</span>
+                    </span>
                     <span class="wei-arrow-right"></span>
                 </a>
             </section>
