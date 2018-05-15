@@ -24,9 +24,7 @@ class MainController extends BaseController
      */
     public function index(Request $request)
     {
-        if (!$this->isFirstVisit()) {
-            return redirect(url('welcome', [], env('APP_SECURE')));
-        }
+
         //?code={code}&level_id={id}
         $categoryId = $request->get('code');
         $levelId = $request->get('level_id');

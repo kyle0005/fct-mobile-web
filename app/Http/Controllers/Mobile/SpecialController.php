@@ -21,6 +21,10 @@ class SpecialController extends BaseController
         if (env('APP_CLOSE'))
             return $this->autoReturn("系统即将上线,敬请期待", 404, url('/', [], env('APP_SECURE')));
 
+        if (!$this->isFirstVisit()) {
+            return redirect(url('welcome', [], env('APP_SECURE')));
+        }
+
         try
         {
             $result = Special::getHome();
