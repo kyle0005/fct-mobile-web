@@ -238,7 +238,13 @@ class Member
                 '');
         }
 
-        return $result;
+        //防止退出没有清除token
+        $member = Cache::has($result) ? Cache::get($result) : false;
+        if ($member)
+            return $result;
+
+        Cookie::forget(env('MEMBER_COOKIE_NAME'));
+        return "";
     }
 
     public static function setAuth($member, $expireDay = 3)

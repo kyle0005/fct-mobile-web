@@ -9,10 +9,33 @@
 namespace App\Http\Controllers\Mobile;
 
 
+use App\Exceptions\BusinessException;
 use App\Member;
+use App\MemberInvite;
 
 class MemberInviteController extends BaseController
 {
+    public function index()
+    {
+        try
+        {
+            $tops = MemberInvite::getTop();
+            $invites = MemberInvite::findInvite();
+        }
+        catch (BusinessException $e)
+        {
+            return $this->autoReturn($e->getMessage(), $e->getCode());
+        }
+
+        return view('invite.index', [
+            'title' => fct_title('邀请分享'),
+            'entity' => (object) [
+                'tops' => $tops,
+                'invites' => $invites,
+            ],
+        ]);
+    }
+
     public function getShare()
     {
         $member = Member::getAuth();

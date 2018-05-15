@@ -25,6 +25,8 @@ Route::group(['domain' => env('MOBILE_DOMAIN', 'm.fangcun.com')], function ()
     Route::get('/', 'Mobile\SpecialController@home');
     //搜索页
     Route::get('search', 'Mobile\SearchController@index');
+    //邀请分享页
+    Route::get('invite', 'Mobile\MemberInviteController@index');
     //促销详情
     Route::get('discounts/{id}', 'Mobile\DiscountController@show')
         ->where('id', '[0-9]+');
