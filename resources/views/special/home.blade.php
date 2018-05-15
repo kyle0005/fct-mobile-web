@@ -45,7 +45,7 @@
         <section class="trance">
             <div class="inner">
                 <a href="{{ url('products', [], env('APP_SECURE')) }}" class="items">
-                    <img src="{{ fct_cdn('/img/mobile/index_ma.png') }}"><br>美壶
+                    <img src="{{ fct_cdn('/img/mobile/index_ma.png') }}"><br>紫砂壶
                 </a>
                 <a href="{{ url('auction', [], env('APP_SECURE')) }}" class="items">
                     <img src="{{ fct_cdn('/img/mobile/index_au.png') }}"><br>拍卖
