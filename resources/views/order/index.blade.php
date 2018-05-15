@@ -44,8 +44,10 @@
                         <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + item.orderId" class="black">我要付款</a>
                     </div>
                     <div class="btn-container">
-                        <subpost :txt="'关闭订单'" :status="false" :ref="'closesref' + index" @callback="confirm({'o':item, 'i':index}, cancel)"
-                                 @before="postBefore" @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                        <a href="javascript:;" class="grey">
+                            <subpost :txt="'关闭订单'" :status="false" :ref="'closesref' + index" @callback="confirm({'o':item, 'i':index}, cancel)"
+                                     @before="postBefore" @success="postSuc" @error="postError" @alert="postTip"></subpost>
+                        </a>
                     </div>
                 </div>
 
