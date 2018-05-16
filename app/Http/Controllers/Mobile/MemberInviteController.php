@@ -27,11 +27,23 @@ class MemberInviteController extends BaseController
             return $this->autoReturn($e->getMessage(), $e->getCode());
         }
 
+        $member = $this->memberLogged(false);
+        $hasLogin = $member && $member->memberId > 0 ? 1 : 0;
+        $shareUrl = $this->myShareUrl(url('/', [], env('APP_SECURE')));
+        $title = $hasLogin ? '邀请领红包' : '注册领红包';
+
         return view('invite.index', [
-            'title' => fct_title('邀请分享'),
+            'title' => fct_title($title),
             'entity' => (object) [
                 'tops' => $tops,
                 'invites' => $invites,
+            ],
+            'hasLogin' => $hasLogin,
+            'share' => [
+                'title' => '方寸堂 - ' . $title,
+                'link' => $shareUrl,
+                'img' => fct_cdn('/img/mobile/share_logo.png', true),
+                'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
             ],
         ]);
     }

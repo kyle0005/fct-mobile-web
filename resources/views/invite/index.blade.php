@@ -16,7 +16,7 @@
             </div>
         </section>
         <section class="content-container">
-            <div class="list-container">
+            <div class="list-container" v-if="isLogin">
                 <div class="title">
                     <div class="inner">我的邀请列表</div>
                 </div>
@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="btn-container">
-                <a href="javascript:;" class="btn">注册领红包</a>
+                <a href="{{ url(\App\FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')) }}" class="btn">注册领红包</a>
             </div>
         </section>
 
@@ -78,6 +78,7 @@
     <script>
         config.tips = {!! json_encode($entity->tops, JSON_UNESCAPED_UNICODE) !!};
         config.invitelist = {!! json_encode($entity->invites, JSON_UNESCAPED_UNICODE) !!};
+        config.isLogin = {!! $hasLogin !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/invite_list.js') }}"></script>
 @endsection
