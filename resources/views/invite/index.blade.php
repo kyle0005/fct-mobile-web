@@ -16,7 +16,7 @@
             </div>
         </section>
         <section class="content-container">
-            <div class="list-container" v-if="isLogin">
+            <div class="list-container" v-if="isLogin && invitelist.length > 0">
                 <div class="title">
                     <div class="inner">我的邀请列表</div>
                 </div>
@@ -93,6 +93,7 @@
         config.invitelist = {!! json_encode($entity->invites, JSON_UNESCAPED_UNICODE) !!};
         config.isLogin = {!! $hasLogin !!};
     </script>
+    <script src="{{ fct_cdn('/js/mobile/swiper.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/invite_list.js') }}"></script>
     {!! wechat_share($share) !!}
 @endsection
