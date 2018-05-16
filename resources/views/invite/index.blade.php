@@ -67,7 +67,7 @@
                         <img src="{{ fct_cdn('/img/mobile/invite_qrcode.png') }}">
                     </a>
                     <div class="btn">
-                        <a href="javascript:;" class="link">邀请领红包</a>
+                        <a href="javascript:;" class="link" @click="share()">邀请领红包</a>
                     </div>
                 </div>
             </div>
