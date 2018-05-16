@@ -25,7 +25,7 @@
                 "textLine2": "严禁恶意刷金，一经发现将取消相关奖励",
                 "textM": "·"
         };
-        config.msg = "保存分享图片";
+        config.msg = "长按保存图片";
     </script>
     <script src="{{ fct_cdn('/js/mobile/canvas2image.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/invite.js') }}"></script>
