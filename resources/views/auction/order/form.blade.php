@@ -38,8 +38,8 @@
                 </a>
             </section>
             <section class="options">
-                <div class="line">
-                    <div class="left" v-if="points > 0">
+                <div class="line" v-if="points > 0">
+                    <div class="left">
                         <span v-if="!usePoint">可用<span class="coupon">@{{ points }}</span>积分</span><span v-else>已用<span class="coupon">@{{ usedPoint }}</span>积分</span>
                     </div>
                     <div class="right clearfix">
@@ -58,7 +58,7 @@
                         </div>
                     </div>
                 </div>
-                <textarea name="remark" maxlength="150" v-model="remark" placeholder="可以写上您的要求...(限150字以内)" class="msg"></textarea>
+                <textarea name="remark" maxlength="150" v-model="remark" placeholder="可以写上您的要求…（限150字内）" class="msg"></textarea>
             </section>
             <section class="agreement">
                 <input type="checkbox" id="agree" name="agree" v-model="has_terms" class="ck">
@@ -83,9 +83,10 @@
     <script>
         config.address = {!! json_encode($address, JSON_UNESCAPED_UNICODE) !!};
         config.product = {!! json_encode($product, JSON_UNESCAPED_UNICODE) !!};
-        config.amount = {{$amount}};
+        config.accountAmount = {{$amount}};
         config.points = {{$points}};
         config.signup_id = {{$signupId}};
+        config.has_terms = true;
         config.pay_url = "{{url('auction/order', [], env('APP_SECURE'))}}"
     </script>
     <script src="{{fct_cdn('/js/mobile/auction_buy.js')}}"></script>
