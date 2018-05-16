@@ -29,6 +29,10 @@ class MemberStore
             throw new BusinessException($result->msg, $result->code);
         }
 
+        //更新缓存
+        if ($result)
+            self::cleanAuth(false);
+
         return $result->data;
     }
 }
