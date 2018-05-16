@@ -174,7 +174,7 @@
                                          @success="postSuc" @error="postError" @alert="postTip"></subpost>
                             </a>
                             <a href="javascript:;" class="txt" v-else-if="product.status > 10">继续报名</a>
-                            <a href="javascript:;" class="txt grey" v-else-if="product.status === 3">
+                            <a href="javascript:;" class="txt" v-else-if="product.status === 3">
                                 <subpost :txt="'我要出价'" :status="true" ref="subpost" @callback="bindSubmitTap" @before="postBefore"
                                          @success="postSuc" @error="postError" @alert="postTip"></subpost>
                             </a>
