@@ -31,7 +31,7 @@ class MemberStore
 
         //更新缓存
         if ($result)
-            self::cleanAuth(false);
+            Member::cleanAuth(false);
 
         return $result->data;
     }
