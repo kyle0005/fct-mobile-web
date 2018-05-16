@@ -33,7 +33,7 @@ class MemberStoreController extends BaseController
         try
         {
             MemberStore::saveStore($code, $name, $remark);
-            return $this->returnAjaxSuccess('申请店铺成功，请耐心等待审核。',
+            return $this->returnAjaxSuccess('申请开店成功',
                 url('/', [], env('APP_SECURE')));
         }
         catch (BusinessException $e)
