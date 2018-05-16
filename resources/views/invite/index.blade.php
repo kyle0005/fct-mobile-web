@@ -58,11 +58,24 @@
 
                 </div>
             </div>
-            <div class="btn-container">
+            <div class="btn-container" v-if="!isLogin">
                 <a href="{{ url(\App\FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')) }}" class="btn">注册领红包</a>
             </div>
+            <div class="btn-l-container" v-else>
+                <div class="inner">
+                    <a href="{{ url('invite/share', [], env('APP_SECURE')) }}" class="qr">
+                        <img src="{{ fct_cdn('/img/mobile/invite_qrcode.png') }}">
+                    </a>
+                    <div class="btn">
+                        <a href="javascript:;" class="link">邀请领红包</a>
+                    </div>
+                </div>
+            </div>
         </section>
-
+        <div class="share-pop" v-if="showPop">
+            <img src="{{ fct_cdn('/img/mobile/share_gift.png') }}" class="share-icon">
+            <div class="text">点击右上角分享到朋友圈</div>
+        </div>
     </div>
 @endsection
 @section('javascript')
@@ -81,4 +94,5 @@
         config.isLogin = {!! $hasLogin !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/invite_list.js') }}"></script>
+    {!! wechat_share($share) !!}
 @endsection
