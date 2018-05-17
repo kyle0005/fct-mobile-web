@@ -89,7 +89,7 @@
             <div class="content">
                 <div class="fir">
                     <a :href="'{{ url('auction', [], env('APP_SECURE')) }}/' + auctions[0].id" class="link">
-                        <img :src="auctions[0].defaultImage">
+                        <img v-view="auctions[0].defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                     </a>
                     <div class="sta">
                         <div class="item left" :class="{gray:auctions[0].status!=1, red:auctions[0].status==1}">@{{ auctions[0].statusName }}</div>
@@ -100,7 +100,7 @@
                     <ul class="ul clearfix">
                         <li class="pro-item" v-for="(item, index) in auctions_data">
                             <a :href="'{{ url('auction', [], env('APP_SECURE')) }}/'+item.id" class="link">
-                                <img :src="item.defaultImage">
+                                <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                                 <span class="sta">
                                     <span class="item left" :class="{gray:item.status!=1, red:item.status==1}">@{{ item.statusName }}</span>
                                     <span class="item right">@{{ item.bidCount }}次出价</span>
@@ -130,7 +130,7 @@
                 <div class="line" v-for="(item, index) in artists">
                     <div class="inner">
                         <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/'+item.id" class="link">
-                            <img :src="item.defaultImage" class="photo">
+                            <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="photo">
                         </a>
                     </div>
                 </div>
@@ -143,7 +143,7 @@
                 <div class="line" v-for="(item, index) in recommends">
                     <div class="inner">
                         <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
-                            <img :src="item.defaultImage" class="pro-img">
+                            <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="pro-img">
                             <span class="pro-title overText">@{{ item.name }}</span>
                             <span class="pro-price">
                                 <small>￥</small>@{{ item.discountPrice }}
