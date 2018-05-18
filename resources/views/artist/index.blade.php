@@ -11,7 +11,6 @@
                     <span class="art-con">
                         <span class="title">@{{ item.name }}</span><span class="">@{{ item.title }}</span><br>
                         <span class="product-num overText"><i class="fa fa-heart-o"></i>@{{ item.followCount }}</span>
-                        <span class="product-num overText"><img src="{{ fct_cdn('/img/mobile/zhh.png') }}" class="i-img">@{{ item.goodsCount }}</span>
                         <span class="intro overTextH3">@{{ item.intro }}</span>
                     </span>
                 </a>
