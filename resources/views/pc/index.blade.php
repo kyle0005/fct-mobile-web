@@ -274,7 +274,7 @@
             <div class="yw-footer-share">
                 <a href="{{ fct_cdn('/img/fct/qrcode-gzh.jpg') }}"
                    class="icon-share icon-share-weixin" title="方寸堂官方微信公众号" target="_blank">方寸堂官方微信公众号</a>
-                <a href="{{ fct_cdn('/img/fct/qrcode-weibo.jpg') }}" class="icon-share icon-share-weibo" title="方寸堂官方微博" target="_blank">方寸堂官方微博</a>
+                <a href="{{ fct_cdn('/img/fct/qrcode-weibo.png') }}" class="icon-share icon-share-weibo" title="方寸堂官方微博" target="_blank">方寸堂官方微博</a>
             </div>
         </div>
     </div>
