@@ -5,7 +5,7 @@
             <li v-for="(item, index) in walletaccountList">
                 <div class="inner">
                     <div class="up clearfix">
-                        <span class="remark">@{{ item.remark }}</span>
+                        <span class="remark overText">@{{ item.remark }}</span>
                         <span class="point">@{{ item.points > 0 ? (item.behaviorType == 1 ? '+' : '-') : '' }}@{{ item.points }}</span>
                         <span class="pri">@{{ item.amount > 0 ? (item.behaviorType == 1 ? '+' : '-') : '' }}@{{ item.amount }}</span>
                     </div>
