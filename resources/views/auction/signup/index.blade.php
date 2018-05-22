@@ -33,7 +33,7 @@
                             <div class="spec">保证金：@{{ item.deposit }}</div>
                         </div>
                         <div class="pro-item price-container">
-                            <div class="price"><small class="pri-mark">￥</small>@{{ item.deposit }}</div>
+                            <div class="price"><small class="pri-mark">￥</small>@{{ item.bidPrice }}</div>
                         </div>
                     </li>
                 </ul>
