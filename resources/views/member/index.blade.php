@@ -184,6 +184,5 @@
     <script>
         config.user = {!! json_encode($user, JSON_UNESCAPED_UNICODE) !!};
     </script>
-    <script src="{{ fct_cdn('/js/mobile/head.js') }}"></script>
     <script src="{{ fct_cdn('/js/mobile/usercenter.js') }}"></script>
 @endsection
