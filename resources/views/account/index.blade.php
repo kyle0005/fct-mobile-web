@@ -4,12 +4,12 @@
         <ul class="list" v-load-more="nextPage" v-if="walletaccountList && walletaccountList.length > 0">
             <li v-for="(item, index) in walletaccountList">
                 <div class="inner">
-                    <div class="up clearfix">
+                    <div class="up">
                         <span class="remark overText">@{{ item.remark }}</span>
                         <span class="point">@{{ item.points > 0 ? (item.behaviorType == 1 ? '+' : '-') : '' }}@{{ item.points }}</span>
                         <span class="pri">@{{ item.amount > 0 ? (item.behaviorType == 1 ? '+' : '-') : '' }}@{{ item.amount }}</span>
                     </div>
-                    <div class="down clearfix">
+                    <div class="down">
                         <span class="remark">@{{ item.createTime }}</span>
                         <span class="point">积分:@{{ item.balancePoints }}</span>
                         <span class="pri">余额:<small class="pri-mark">￥</small>@{{ item.balanceAmount }}</span>
