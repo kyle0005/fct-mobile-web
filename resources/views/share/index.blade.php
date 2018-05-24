@@ -35,7 +35,7 @@
                         <span class="t2 overTextH2">汇聚东方美学匠心之作的紫砂交流电商平台。</span>
                     </div>
                 </div>
-                <a href="/my/share/0" class="right"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
+                <a href="/my/share/0" class="right"><img src="{{ fct_cdn('/img/mobile/qr_code.png') }}"></a>
             </li>
         </ul>
         <ul class="list" v-load-more="nextPage" type="1" v-if="shareList && shareList.length > 0">
