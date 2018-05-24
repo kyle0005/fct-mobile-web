@@ -51,7 +51,7 @@
                         <span class="t2" v-else>佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}</strong></span>
                     </div>
                 </div>
-                <a :href="'/my/share/' + item.id" class="right"><img src="{{ fct_cdn('/img/mobile/share.png') }}"></a>
+                <a :href="'/my/share/' + item.id" class="right"><img src="{{ fct_cdn('/img/mobile/qr_code.png') }}"></a>
             </li>
         </ul>
 
