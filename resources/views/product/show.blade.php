@@ -26,7 +26,7 @@
                             <div class="choose" @click.stop="">
                                 <div class="clearfix">
                                     <div class="pro-img">
-                                        <img src="{{ fct_cdn('/img/mobile/resource/pro01.png') }}">
+                                        <img src="@{{ product.image }}">
                                     </div>
                                     <div class="info">
                                         <span class="title">@{{ product.name }}</span>
