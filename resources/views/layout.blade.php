@@ -77,7 +77,7 @@
         var config = {
             "index": "{{ url('/', [], env('APP_SECURE')) }}",
             "login": "{{ url('my', [], env('APP_SECURE')) }}",
-            "product_url": "{{ url('/', [], env('APP_SECURE')) }}"
+            "product_url": "{{ url('products', [], env('APP_SECURE')) }}"
         }
     </script>
     @yield('javascript')
