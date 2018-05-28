@@ -95,7 +95,7 @@ class MemberController extends BaseController
      */
     public function login(Request $request)
     {
-        return $this->autoReturn("系统即将上线,敬请期待", 404, url('/', [], env('APP_SECURE')));
+        //return $this->autoReturn("系统即将上线,敬请期待", 404, url('/', [], env('APP_SECURE')));
         if ($request->getMethod() == 'POST') {
 
             try
@@ -163,7 +163,7 @@ class MemberController extends BaseController
                 Member::updateInfo($username, $avatar, $gender, $birthday, $weixin);
 
                 //成功返回成功提示和跳转的url
-                return $this->returnAjaxSuccess('修改成功', url('my', [], env('APP_SECURE')));
+                //return $this->returnAjaxSuccess('修改成功', url('my', [], env('APP_SECURE')));
             }
             catch (BusinessException $e)
             {
