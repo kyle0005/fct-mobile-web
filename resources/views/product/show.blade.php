@@ -26,7 +26,7 @@
                             <div class="choose" @click.stop="">
                                 <div class="clearfix">
                                     <div class="pro-img">
-                                        <img src="@{{ product.defaultImage }}">
+                                        <img :src="product.defaultImage">
                                     </div>
                                     <div class="info">
                                         <span class="title">@{{ product.name }}</span>
