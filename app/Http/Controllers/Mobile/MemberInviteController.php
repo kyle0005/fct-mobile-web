@@ -55,7 +55,8 @@ class MemberInviteController extends BaseController
         return view('invite.share', [
             'title' => fct_title('生成分享图片'),
             'user' => (object) [
-                'userName' =>$member->userName,
+                'userName' =>mb_strlen($member->userName, 'utf-8') > 8
+                    ? (mb_substr($member->userName, 0, 7) . '...') : $member->userName,
                 'headPortrait' => $member->headPortrait,
             ],
             "qrcodeUrl" => image_base64(gen_qrcode(urlencode($this->myShareUrl(url('/', [], env('APP_SECURE')))))),
