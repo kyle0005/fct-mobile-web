@@ -163,7 +163,7 @@
                     <img src="{{ fct_cdn('/img/mobile/i_home_d.png') }}"><br>首页
                 </a>
                 <a href="{!! api_chat_url(url('/', [], env('APP_SECURE')), '首页') !!}" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/i_service_g.png') }}"><br>消息
+                    <img src="{{ fct_cdn('/img/mobile/i_service_g.png') }}"><br>客服
                 </a>
                 <a href="{{ url('my', [], env('APP_SECURE')) }}" class="link">
                     <img src="{{ fct_cdn('/img/mobile/i_account_g.png') }}"><br>我的
