@@ -151,7 +151,7 @@
                             </span>
                             <span class="pro-title overText">@{{ item.name }}</span>
                             <span class="pro-vtitle overTextH2">@{{ item.subTitle }}</span>
-                            <span class="pro-v">容量：<span class="v">@{{ item.volumes[0] }}CC<span v-if="product.volumes.length > 1">&nbsp;~&nbsp;@{{ product.volumes[1] }}CC</span></span></span>
+                            <span class="pro-v">容量：<span class="v">@{{ item.volumes[0] }}CC<span v-if="item.volumes.length > 1">&nbsp;~&nbsp;@{{ item.volumes[1] }}CC</span></span></span>
                         </a>
                     </div>
                 </div>
