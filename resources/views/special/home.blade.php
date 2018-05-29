@@ -146,7 +146,7 @@
                             <span class="img-container">
                               <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="pro-img">
                               <span class="pro-mark">
-                                <small class="marks" :class="'mark-' + i" v-for="(i, index) in item.tags">@{{ tagN[i] }}</small>
+                                  <small class="marks" :class="'mark-' + (i - 1)" v-for="(i, index) in item.tags">@{{ tagN[i - 1] }}</small>
                               </span>
                             </span>
                             <span class="pro-title overText">@{{ item.artistName }}《@{{ item.name }}》</span>
