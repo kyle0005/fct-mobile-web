@@ -117,7 +117,7 @@
             </div>
         </section>
         <section class="artist" v-if="artists.length > 0">
-            <div class="title">守艺人</div>
+            <div class="title">守艺人&nbsp;<a href="{{ url('artists', [], env('APP_SECURE')) }}" class="arr-link">更多&nbsp;<span class="arr"></span></a></div>
             <div class="art-list">
                 <div class="line des">
                     <div class="inner">
@@ -134,29 +134,31 @@
                         </a>
                     </div>
                 </div>
-
             </div>
         </section>
-        <section class="recommend" v-if="recommends.length > 0">
-            <div class="title">精选推荐<a href="{{ url('products', [], env('APP_SECURE')) }}" class="link">更多&nbsp;<span class="arr"></span></a></div>
+
+        <section class="recommend">
+            <div class="title">精选推荐</div>
             <div class="rec-list">
                 <div class="line" v-for="(item, index) in recommends">
                     <div class="inner">
                         <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
-                            <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="pro-img">
+                            <span class="img-container">
+                              <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="pro-img">
+                              <span class="pro-mark">
+                                <small class="marks" :class="'mark-' + i" v-for="(i, index) in item.tags">@{{ tagN[i] }}</small>
+                              </span>
+                            </span>
                             <span class="pro-title overText">@{{ item.name }}</span>
-                            <span class="pro-price">
-                                <small>￥</small>@{{ item.discountPrice }}
-                                <del class="del" v-if="item.price > item.discountPrice"><small>￥</small>@{{ item.price }}</del>
-                            </span>
-                            <span class="pro-mark">
-                              <small class="marks" :class="'mark-' + (i - 1)" v-for="(i, index) in item.tags">@{{ tagN[i - 1] }}</small>
-                            </span>
+                            <span class="pro-vtitle overTextH2">@{{ item.subTitle }}</span>
+                            <span class="pro-v">容量：<span class="v">@{{ item.volumes[0] }}CC<span v-if="product.volumes.length > 1">&nbsp;~&nbsp;@{{ product.volumes[1] }}CC</span></span></span>
                         </a>
                     </div>
                 </div>
             </div>
+            <a href="{{ url('products', [], env('APP_SECURE')) }}" class="arr-link">查看更多&nbsp;<span class="arr"></span></a>
         </section>
+
         <footer class="footer">
             <div class="inner">
                 <a href="{{ url('/', [], env('APP_SECURE')) }}" class="link">
