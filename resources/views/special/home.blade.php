@@ -149,7 +149,7 @@
                                 <small class="marks" :class="'mark-' + i" v-for="(i, index) in item.tags">@{{ tagN[i] }}</small>
                               </span>
                             </span>
-                            <span class="pro-title overText">@{{ item.name }}</span>
+                            <span class="pro-title overText">@{{ item.artistName }}《@{{ item.name }}》</span>
                             <span class="pro-vtitle overTextH2">@{{ item.subTitle }}</span>
                             <span class="pro-v">容量：<span class="v">@{{ item.volumes[0] }}CC<span v-if="item.volumes.length > 1">&nbsp;~&nbsp;@{{ item.volumes[1] }}CC</span></span></span>
                         </a>
