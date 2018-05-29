@@ -18,7 +18,7 @@ class MemberController extends BaseController
 {
     public function oAuth(Request $request)
     {
-        return $this->autoReturn("系统即将上线,敬请期待", 404, url('/', [], env('APP_SECURE')));
+        //return $this->autoReturn("系统即将上线,敬请期待", 404, url('/', [], env('APP_SECURE')));
 
         try
         {
