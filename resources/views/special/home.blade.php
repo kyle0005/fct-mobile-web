@@ -123,7 +123,7 @@
                 <div class="line des">
                     <div class="inner">
                         <div class="comma">
-                            <img src="{{ fct_cdn('/img/mobile/comma_l.png') }}"><span class="text">30+位匠人入驻</span><img src="{{ fct_cdn('/img/mobile/comma_r.png') }}">
+                            <img src="{{ fct_cdn('/img/mobile/comma_l.png') }}"><span class="text">60+位匠人入驻</span><img src="{{ fct_cdn('/img/mobile/comma_r.png') }}">
                         </div>
                         <div>心手相通<br>载大道与咫尺之器</div>
                     </div>
