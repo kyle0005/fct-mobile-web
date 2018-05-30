@@ -40,10 +40,10 @@ class MemberInviteController extends BaseController
             ],
             'hasLogin' => $hasLogin,
             'share' => [
-                'title' => '方寸堂 - ' . $title,
+                'title' => $title,
                 'link' => $shareUrl,
-                'img' => fct_cdn('/img/mobile/share_logo.png', true),
-                'desc' => '汇聚东方美学匠心之作的紫砂交流电商平台。',
+                'img' => fct_cdn('/img/mobile/gift-icon.png', true),
+                'desc' => '注册即送188，邀请好友再领壶回家。',
             ],
         ]);
     }
