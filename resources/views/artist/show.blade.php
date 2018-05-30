@@ -68,10 +68,10 @@
     </script>
     {{--艺术家作品--}}
     <script type="text/x-template" id="works">
-        <div class="tabs">
+        <a class="tabs">
             <ul class="pro-list" v-if="workslist && workslist.length > 0">
                 <li v-for="(item, index) in workslist">
-                    <div class="inner">
+                    <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="inner">
                         <div class="left">
                             <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                         </div>
@@ -80,10 +80,10 @@
                             <div class="text overTextH2" v-html="item.intro"></div>
                             <div class="price overText" v-if="item.price > 0">￥@{{ item.price }}</div>
                             <div class="price overText" v-else>暂无售价</div>
-                            <div class="btn-container">
-                                <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="btn">我要购买</a>
-                            </div>
                         </div>
+                    </a>
+                    <div class="btn-container">
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="btn">我要购买</a>
                     </div>
                 </li>
             </ul>

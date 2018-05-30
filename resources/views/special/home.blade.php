@@ -116,24 +116,36 @@
                 </div>
             </div>
         </section>
-        <section class="artist" v-if="artists.length > 0">
+
+        <section class="artist">
             <div class="title">守艺人&nbsp;<a href="{{ url('artists', [], env('APP_SECURE')) }}" class="arr-link">更多&nbsp;<span class="arr"></span></a></div>
             <div class="art-list">
                 <div class="line des">
                     <div class="inner">
                         <div class="comma">
-                            <img src="{{ fct_cdn('/img/mobile/comma_l.png') }}"><span class="text">60+位匠人入驻</span><img src="{{ fct_cdn('/img/mobile/comma_r.png') }}">
+                            <img src="{{ fct_cdn('/img/mobile/comma_l.png') }}"><span class="text">30+位匠人入驻</span><img src="{{ fct_cdn('/img/mobile/comma_r.png') }}">
                         </div>
                         <div>心手相通<br>载大道与咫尺之器</div>
                     </div>
                 </div>
-                <div class="line" v-for="(item, index) in artists">
+                <div class="line">
                     <div class="inner">
-                        <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/'+item.id" class="link">
-                            <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="photo">
+                        <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/'+artists[0].id" class="link">
+                            <img v-view="artists[0].defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="photo">
                         </a>
                     </div>
                 </div>
+            </div>
+            <div class="others">
+                <ul class="line-list clearfix">
+                    <li class="line" v-for="(item, index) in artists_data">
+                        <div class="inner">
+                            <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/'+item.id" class="link">
+                                <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}" class="photo">
+                            </a>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </section>
 
