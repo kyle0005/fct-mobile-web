@@ -33,10 +33,10 @@ if (!function_exists('wechat_share'))
         if (!\App\FctCommon::hasWeChat())
             return '';
 
-        $title = $share['title'];
-        $link = $share['link'];
-        $img = $share['img'];
-        $desc = $share['desc'];
+        $title = str_replace("\n", "<br />", $share['title']);
+        $link = str_replace("\n", "<br />", $share['link']);
+        $img = str_replace("\n", "<br />", $share['img']);
+        $desc = str_replace("\n", "<br />", $share['desc']);
         return '<script src="//res.wx.qq.com/open/js/jweixin-1.2.0.js"></script>'
             . '<script>' . \App\Main::weChatShare($title, $link, $img, $desc) . '</script>';
     }
