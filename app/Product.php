@@ -143,7 +143,7 @@ class Product
 
     public static function addVisitCount($id) {
 
-/*        $limitVisitCacheName = 'p_v_' . $id;
+        $limitVisitCacheName = 'p_v_' . $id;
         $longIp = ip2long(request()->ip());
         $visiters = [];
         if (Cache::has($limitVisitCacheName))
@@ -157,8 +157,8 @@ class Product
         //初次访问记录ip
         $visiters[] = $longIp;
         //获取当天过期时间变缓存
-        $cacheTime = (strtotime(date('Y-m-d 23:59:59')) - time()) / 60;
-        Cache::put($limitVisitCacheName, $visiters, $cacheTime);*/
+        $cacheTime = 30;//(strtotime(date('Y-m-d 23:59:59')) - time()) / 60;
+        Cache::put($limitVisitCacheName, $visiters, $cacheTime);
 
 
 
