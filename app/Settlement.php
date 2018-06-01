@@ -23,7 +23,7 @@ class Settlement
         $result = Base::http(
             env('API_URL') . self::$resourceUrl,
             [
-                'status' => $status ? 2 : 0,
+                'status' => $status == 2 ? 2 : 10,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,
             ],
