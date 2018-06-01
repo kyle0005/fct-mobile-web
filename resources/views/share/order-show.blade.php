@@ -54,7 +54,7 @@
         <section class="total">
             <div class="inner">
                 共<span class="pri-color">@{{ order_detail.buyTotalCount }}</span>件宝贝&nbsp;
-                佣金:<span class="pri-color"><small class="pri-mark">￥</small>{{(order_detail.commission).toFixed(2)}}</span>&nbsp;
+                佣金:<span class="pri-color"><small class="pri-mark">￥</small>@{{  (order_detail.commission).toFixed(2) }}</span>&nbsp;
                     合计:<span class="pri-color"><small class="pri-mark">￥</small>@{{ (order_detail.payAmount).toFixed(2) }}</span>（含运费）
             </div>
         </section>
