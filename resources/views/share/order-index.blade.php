@@ -40,6 +40,11 @@
                 <div class="total">
                     <div class="inner">共@{{ item.buyTotalCount }}件宝贝&nbsp;合计佣金:<span class="payAmount pri"><small class="pri-mark">￥</small>@{{ item.commission }}</span></div>
                 </div>
+                <div class="btn clearfix">
+                    <div class="btn-container">
+                        <a :href="'{{ url('my/share/orders', [], env('APP_SECURE')) }}/' + item.orderId" class="black">查看详情</a>
+                    </div>
+                </div>
             </div>
         </div>
 
