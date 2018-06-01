@@ -7,10 +7,13 @@
           <span class="photo-container">
             <img :src="user.headPortrait">
           </span>
-                <span class="info-container">
+            <span class="info-container">
             <span class="name">@{{ user.userName }}</span>
             <span class="rank">普通用户</span>
           </span>
+            </a>
+            <a href="{{ url('my/share', [], env('APP_SECURE')) }}" class="u-shop" v-if="user.shopId > 0">
+                <img src="{{ fct_cdn('/img/mobile/u_shop.png') }}">
             </a>
         </section>
         <section class="user-sec">
