@@ -96,8 +96,10 @@
                        v-if="order_detail.status == 0">我要付款</a>
                     <a :href="'{{ url('my/orders', [], env('APP_SECURE')) }}/' + order_detail.orderId + '/comments/create'"
                        v-if="order_detail.status == 3 && order_detail.commentStatus == 0">我要评价</a>
-                    <subpost :txt="'确认收货'" :status="false" ref="cancelref" @callback="confirm(order_detail.orderId, finish)" @before="postBefore"
-                             @success="postSuc" @error="postError" @alert="postTip" v-if="order_detail.status == 2"></subpost>
+                    <a href="javascript:;">
+                        <subpost :txt="'确认收货'" :status="false" ref="cancelref" @callback="confirm(order_detail.orderId, finish)" @before="postBefore"
+                                 @success="postSuc" @error="postError" @alert="postTip" v-if="order_detail.status == 2"></subpost>
+                    </a>
                 </div>
             </div>
         </footer>
