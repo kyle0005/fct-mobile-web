@@ -392,7 +392,7 @@
                                 <img v-view="item.headPortrait" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
                             </div>
                             <div class="user-opt">
-                                <div>@{{ item.userName }}</div>
+                                <div class="overText">@{{ item.userName }}</div>
                                 <div class="stars">
                                     <i class="fa fa-star" v-for="m in item.descScore"></i><i class="fa fa-star-o" v-for="n in c_star(item.descScore)"></i>
                                 </div>
