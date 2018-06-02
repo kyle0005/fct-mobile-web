@@ -268,7 +268,7 @@
         <div class="yw-constr">
             <div class="yw-footerbox">
                 <p class="yw-footer-copyright">
-                    Copyright&nbsp&copy;&nbsp;<script>document.write((new Date).getFullYear())</script>&nbsp;,宜兴方寸堂文化传媒有限公司<span class="br">版权所有</span></p>
+                    Copyright&nbsp&copy;&nbsp;<script>document.write((new Date).getFullYear())</script>&emsp;宜兴方寸堂文化传媒有限公司<span class="br">版权所有</span></p>
                 <p class="yw-footer-copyrightmore">苏公安备32028202000436号&nbsp;苏ICP备14043090号-4</p>
                 <p class="yw-footer-copyrightmore">联系电话：<a href="tel:051087410606" class="law">0510-87410606</a></p></div>
             <div class="yw-footer-share">
