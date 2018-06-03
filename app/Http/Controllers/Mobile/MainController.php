@@ -152,6 +152,7 @@ class MainController extends BaseController
 
     public function getHelp(Request $request)
     {
+        return $this->autoReturn("帮助中心正在更新中，我们会更好的服务于您。");
         try
         {
             $result = Main::getHelp();
