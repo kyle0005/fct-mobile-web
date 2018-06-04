@@ -134,7 +134,7 @@
                 <ul class="line-list clearfix">
                     <li class="line" v-for="(item, index) in newProduct">
                         <div class="inner">
-                            <a href="javascript:;" class="link">
+                            <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
                                 <img :src="item.defaultImage" class="photo">
                                 <span class="cont">
                                 <span class="title overText">@{{ item.name }}</span>
@@ -157,13 +157,11 @@
                 <div class="others">
                     <ul class="ul clearfix">
                         <li class="pro-item" v-for="(item, index) in preferenceProduct">
-                            <a href="javascript:;" class="link">
+                            <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
                                 <img :src="item.defaultImage">
                                 <span class="sta">
-                                <span class="item left"
-                                      :class="{gray:item.status==0, red:item.status!==0}"></span>
-                                <span class="item right">@{{ item.volumes[0] }}cc</span>
-                              </span>
+                                    <span class="item right">@{{ item.volumes[0] }}cc</span>
+                                </span>
                             </a>
                             <div class="detail">
                                 <div class="info">@{{ item.artistName }}@{{ item.name }}</div>
