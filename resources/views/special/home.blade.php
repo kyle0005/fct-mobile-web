@@ -117,8 +117,69 @@
             </div>
         </section>
 
+        <section class="newsale">
+            <div class="title">新品首发&nbsp;<a href="{{ url('products', [], env('APP_SECURE')) }}"
+                                            class="arr-link">更多&nbsp;<span class="arr"></span></a></div>
+            <div class="art-list">
+                <div class="line">
+                    <div class="inner">
+                        <div class="comma">
+                            <img src="{{ fct_cdn('/img/mobile/comma_l.png') }}"><span class="text">不止不同，美壶不断刷新</span><img src="{{ fct_cdn('/img/mobile/comma_r.png') }}">
+                        </div>
+                        <div class="txt">每一个作品<br>都有打动你的故事</div>
+                    </div>
+                </div>
+            </div>
+            <div class="others">
+                <ul class="line-list clearfix">
+                    <li class="line" v-for="(item, index) in newProduct">
+                        <div class="inner">
+                            <a href="javascript:;" class="link">
+                                <img :src="item.defaultImage" class="photo">
+                                <span class="cont">
+                                <span class="title overText">@{{ item.name }}</span>
+                                <span class="info">
+                                  <span class="left overText">@{{ item.artistName }}</span>
+                                  <span class="right">@{{ item.volumes[0] }}cc</span>
+                                </span>
+                              </span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+        </section>
+        <section class="optimization">
+            <div class="title">为你优选 <a href="{{ url('products', [], env('APP_SECURE')) }}"
+                                       class="link">更多&nbsp;<span class="arr"></span></a></div>
+            <div class="content">
+                <div class="others">
+                    <ul class="ul clearfix">
+                        <li class="pro-item" v-for="(item, index) in preferenceProduct">
+                            <a href="javascript:;" class="link">
+                                <img :src="item.defaultImage">
+                                <span class="sta">
+                                <span class="item left"
+                                      :class="{gray:item.status==0, red:item.status!==0}"></span>
+                                <span class="item right">@{{ item.volumes[0] }}cc</span>
+                              </span>
+                            </a>
+                            <div class="detail">
+                                <div class="info">@{{ item.artistName }}@{{ item.name }}</div>
+                                <div class="time">@{{ item.subTitle }}&nbsp;</div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+
         <section class="artist">
-            <div class="title">守艺人&nbsp;<a href="{{ url('artists', [], env('APP_SECURE')) }}" class="arr-link">更多&nbsp;<span class="arr"></span></a></div>
+            <div class="title">守艺人&nbsp;<a href="{{ url('artists', [], env('APP_SECURE')) }}"
+                                           class="arr-link">更多&nbsp;<span class="arr"></span></a></div>
             <div class="art-list">
                 <div class="line des">
                     <div class="inner">
