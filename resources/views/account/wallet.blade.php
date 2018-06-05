@@ -22,13 +22,18 @@
         </section>
         <section class="items">
             <ul class="list">
-                <li>
+{{--                <li>
                     <a href="javascript:;" class="link" @click="comf">
                         <img src="{{ fct_cdn('/img/mobile/wallet_recharge.png') }}">
                         <span class="text">
                             <subpost :txt="'交纳保证金'" :status="false" ref="confref" @callback="comf" @before="postBefore"
                                      @success="postSuc" @error="postError" @alert="postTip"></subpost>
                         </span>
+                    </a>
+                </li>--}}
+                <li>
+                    <a href="{{ url('my/coupons', [], env('APP_SECURE')) }}" class="link">
+                        <img src="{{ fct_cdn('/img/mobile/wallet_coupon.png') }}"><br>优惠券
                     </a>
                 </li>
                 <li>

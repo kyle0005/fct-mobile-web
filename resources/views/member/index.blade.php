@@ -94,7 +94,7 @@
                     <span class="wei-arrow-right"></span>
                     </a>
                 </li>
-                <li>
+{{--                <li>
                     <a href="{{ url('my/coupons', [], env('APP_SECURE')) }}" class="link">
                       <span class="img-container item">
                         <img src="{{ fct_cdn('/img/mobile/u_coupon.png') }}">
@@ -102,7 +102,7 @@
                         <span class="item t">优惠券</span>
                         <span class="wei-arrow-right"></span>
                     </a>
-                </li>
+                </li>--}}
                 <li>
                     <a href="{{ url('my/favorites', [], env('APP_SECURE')) }}?from_type=0" class="link">
                       <span class="img-container item">
