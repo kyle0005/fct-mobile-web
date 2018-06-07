@@ -38,7 +38,7 @@
                         <span class="con">
                             <span class="name">@{{ item.name }}</span>
                             <span class="text overTextH3">@{{ item.intro }}</span>
-                            <span class="price"><small>￥</small>@{{ item.extras.salePrice }}</span>
+                            <span class="price">@{{ item.extras.stockCount > 0 ? '有货' : '无货’ }}</span>
                           </span>
                     </a>
                     <div class="btn-container" v-if="item.fromType=='product'">
