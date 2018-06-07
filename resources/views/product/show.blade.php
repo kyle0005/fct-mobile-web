@@ -30,13 +30,7 @@
                                     </div>
                                     <div class="info">
                                         <span class="title">@{{ product.name }}</span>
-                                        <span class="price" v-if="product.hasLogin">
-                                            <small class="pri-mark">￥</small>@{{ showprice }}
-                                        </span>
-                                        <span class="price" v-else>
-                                            <a href="{{ url(\App\FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')) }}"
-                                               class="btn">登录可见</a>
-                                        </span>
+                                        <span class="price"><small class="pri-mark">￥</small>@{{ showprice }}</span>
                                         <span class="stock">库存：@{{ calstock }}</span>
                                     </div>
                                 </div>

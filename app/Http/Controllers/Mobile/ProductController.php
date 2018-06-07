@@ -60,15 +60,12 @@ class ProductController extends BaseController
         }
 
         $result->cImgs = $contentImages;
-        //是否可见价格
-        $result->hasLogin = $this->memberLogged() ? true : false;
 
         $shareUrl = $this->myShareUrl(url('products/'. $id, [], env('APP_SECURE')));
         return view('product.show', [
             'title' => fct_title($result->name),
             'categories' => ProductCategory::getCategories(),
             'product' => $result,
-
             'share' => [
                 'title' => '发现一个宝贝 - '. $result->name,
                 'link' => $shareUrl,
