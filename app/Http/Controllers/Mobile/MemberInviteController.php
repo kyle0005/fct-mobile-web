@@ -30,7 +30,7 @@ class MemberInviteController extends BaseController
         $member = $this->memberLogged(false);
         $hasLogin = $member && $member->memberId > 0 ? 1 : 0;
         $shareUrl = $this->myShareUrl(url('/', [], env('APP_SECURE')));
-        $title = $hasLogin ? ($member->userName . '邀请您领红包啦！') : '方寸堂 - 注册领红包';
+        $title = $hasLogin ? ($member->userName . '喊你免费来拿壶！') : '方寸堂 - 注册领红包';
 
         return view('invite.index', [
             'title' => fct_title($title),
@@ -42,7 +42,7 @@ class MemberInviteController extends BaseController
             'share' => [
                 'title' => $title,
                 'link' => $shareUrl,
-                'img' => fct_cdn('/img/mobile/gift-icon.png', true),
+                'img' => fct_cdn('/img/mobile/share_logo.png', true),
                 'desc' => '注册即送188，邀请好友再领壶回家。',
             ],
         ]);
