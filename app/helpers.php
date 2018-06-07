@@ -122,3 +122,41 @@ if (!function_exists('gen_qrcode'))
         return 'https://sapi.k780.com/?app=qr.get&level=L&size=6&data=' . $url;
     }
 }
+
+if (!function_exists('show_price')) {
+    function show_price($price, $isPrice = true, $discount = 0) {
+        if (is_login()) {
+            if ($price > 0) {
+                $str = ($isPrice ? '<small class="pri-mark">￥</small>' : '') . $price;
+                if ($discount > 0) {
+                    $str .= '&ensp;<del class="del-price">' . $discount . '</del>';
+                }
+                return $str;
+            }
+            return '暂无售价';
+        }
+        //登录成功后返回地址
+        //ajax请求取referer
+        if (request()->ajax()) {
+            $returnUrl = request()->server('HTTP_REFERER');
+        } else {
+            //取当前页地址
+            $returnUrl = url(request()->server('PATH_INFO'), [], env('APP_SECURE'));
+        }
+
+        return '<a href=' . to_login() . '?' . env('REDIRECT_KEY') . '=' . $returnUrl . '>登录可见价格</a>';
+    }
+}
+
+if (!function_exists('is_login')) {
+    function is_login() {
+        $member = \App\Member::getAuth();
+        return $member && $member->memberId > 0;
+    }
+}
+
+if (!function_exists('to_login')) {
+    function to_login() {
+        return url(\App\FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE'));
+    }
+}

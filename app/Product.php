@@ -58,6 +58,12 @@ class Product
             Cache::put($cacheKey, $cacheResult, $cacheTime);
         }
 
+        //未登录不显示价格
+        $cacheResult->promotionPrice = show_price($cacheResult->promotionPrice);
+        $cacheResult->salePrice = show_price(
+            $cacheResult->salePrice, false,
+            ($cacheResult->hasDiscount ? $cacheResult->salePrice: 0));
+
         return $cacheResult;
     }
 
@@ -80,6 +86,13 @@ class Product
         if ($result->code != 200)
         {
             throw new BusinessException($result->msg, $result->code);
+        }
+
+        if ($result->data) {
+            foreach ($result->data as $key => $val) {
+                $val->price = show_price($val->price);
+                $result->data[$key] = $val;
+            }
         }
 
         return $result->data;

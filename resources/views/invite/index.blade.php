@@ -59,7 +59,7 @@
                 </div>
             </div>
             <div class="btn-container" v-if="!isLogin">
-                <a href="{{ url(\App\FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')) }}" class="btn">注册领红包</a>
+                <a href="{{ to_login() }}" class="btn">注册领红包</a>
             </div>
             <div class="btn-l-container" v-else>
                 <div class="inner">

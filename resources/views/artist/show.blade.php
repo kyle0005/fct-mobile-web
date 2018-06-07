@@ -78,8 +78,7 @@
                         <div class="right">
                             <div class="title overText">@{{ item.name }}</div>
                             <div class="text overTextH2" v-html="item.intro"></div>
-                            <div class="price overText" v-if="item.price > 0">￥@{{ item.price }}</div>
-                            <div class="price overText" v-else>暂无售价</div>
+                            <div class="price overText" v-html="item.price"></div>
                         </div>
                     </a>
                     <div class="btn-container">

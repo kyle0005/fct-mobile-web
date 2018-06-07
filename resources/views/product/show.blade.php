@@ -108,13 +108,21 @@
                         <i class="fa fa-heart"></i>
                     </li>
                     <li class="add" :class="{ disabled: !product.hasCart }">
+                        @if(is_login())
                         <a href="javascript:;" @click="choose(0)" v-if="product.hasCart">加入购物车</a>
                         <a href="javascript:;" v-else>加入购物车</a>
+                        @else
+                            <a href="{{ to_login() }}">加入购物车</a>
+                        @endif
                     </li>
                     <li class="buy" :class="{ disabled: !product.hasBuy }">
-                        <a href="javascript:;" @click="choose(1)" v-if="product.hasBuy">立即购买</a>
-                        <a href="javascript:;" v-else-if="product.hasDiscount">等待开始</a>
-                        <a href="javascript:;" v-else>立即购买</a>
+                        @if(is_login())
+                            <a href="javascript:;" @click="choose(1)" v-if="product.hasBuy">立即购买</a>
+                            <a href="javascript:;" v-else-if="product.hasDiscount">等待开始</a>
+                            <a href="javascript:;" v-else>立即购买</a>
+                        @else
+                            <a href="{{ to_login() }}">立即购买</a>
+                        @endif
                     </li>
                 </ul>
             </div>
@@ -179,10 +187,7 @@
             <section class="product-context">
                 <strong class="title">@{{ product.name }}</strong>
                 <div class="vice-title">@{{ product.subTitle }}</div>
-                <div class="price" v-if="product.promotionPrice > 0">
-                    <small class="pri-mark">￥</small>@{{ product.promotionPrice }}&ensp;<del class="del-price" v-if="product.hasDiscount">@{{ product.salePrice }}</del>
-                </div>
-                <div class="price" v-else>暂无售价</div>
+                <div class="price" v-html="product.promotionPrice"></div>
                 <div class="sale-info">
                     <img src="{{ fct_cdn('/img/mobile/items.png') }}">原人手制&emsp;
                     <img src="{{ fct_cdn('/img/mobile/items.png') }}">限量发行&emsp;

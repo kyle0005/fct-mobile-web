@@ -34,11 +34,11 @@ class Authenticate
             return new Response([
                 'code' => 404,
                 'message' => '登录授权已过期，请重新登录',
-                'url' => url(FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')),
+                'url' => to_login(),
                 'data' => [],
             ]);
         }
 
-        return redirect(url(FctCommon::hasWeChat() ? 'oauth' : 'login', [], env('APP_SECURE')));
+        return redirect(to_login());
     }
 }
