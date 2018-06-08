@@ -84,38 +84,7 @@
                 </div>
             </m-swipe>
         </section>
-        <section class="auction" v-if="auctions.length > 0">
-            <div class="title">拍卖<a href="{{ url('auction', [], env('APP_SECURE')) }}" class="link">更多&nbsp;<span class="arr"></span></a></div>
-            <div class="content">
-                <div class="fir">
-                    <a :href="'{{ url('auction', [], env('APP_SECURE')) }}/' + auctions[0].id" class="link">
-                        <img v-view="auctions[0].defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
-                    </a>
-                    <div class="sta">
-                        <div class="item left" :class="{gray:auctions[0].status!=1, red:auctions[0].status==1}">@{{ auctions[0].statusName }}</div>
-                        <div class="item right">@{{ auctions[0].bidCount }}次出价</div>
-                    </div>
-                </div>
-                <div class="others">
-                    <ul class="ul clearfix">
-                        <li class="pro-item" v-for="(item, index) in auctions_data">
-                            <a :href="'{{ url('auction', [], env('APP_SECURE')) }}/'+item.id" class="link">
-                                <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
-                                <span class="sta">
-                                    <span class="item left" :class="{gray:item.status!=1, red:item.status==1}">@{{ item.statusName }}</span>
-                                    <span class="item right">@{{ item.bidCount }}次出价</span>
-                                  </span>
-                            </a>
-                            <div class="detail">
-                                <div class="info">@{{ item.name }}</div>
-                                <div class="time">结拍时间:&nbsp;@{{ item.auctionTime }}</div>
-                            </div>
-                        </li>
 
-                    </ul>
-                </div>
-            </div>
-        </section>
 
         <section class="newsale">
             <div class="title">新品首发&nbsp;<a href="{{ url('products', [], env('APP_SECURE')) }}?sort=-1"
@@ -174,6 +143,38 @@
             </div>
         </section>
 
+        <section class="auction" v-if="auctions.length > 0">
+            <div class="title">拍卖<a href="{{ url('auction', [], env('APP_SECURE')) }}" class="link">更多&nbsp;<span class="arr"></span></a></div>
+            <div class="content">
+                <div class="fir">
+                    <a :href="'{{ url('auction', [], env('APP_SECURE')) }}/' + auctions[0].id" class="link">
+                        <img v-view="auctions[0].defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
+                    </a>
+                    <div class="sta">
+                        <div class="item left" :class="{gray:auctions[0].status!=1, red:auctions[0].status==1}">@{{ auctions[0].statusName }}</div>
+                        <div class="item right">@{{ auctions[0].bidCount }}次出价</div>
+                    </div>
+                </div>
+                <div class="others">
+                    <ul class="ul clearfix">
+                        <li class="pro-item" v-for="(item, index) in auctions_data">
+                            <a :href="'{{ url('auction', [], env('APP_SECURE')) }}/'+item.id" class="link">
+                                <img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}">
+                                <span class="sta">
+                                    <span class="item left" :class="{gray:item.status!=1, red:item.status==1}">@{{ item.statusName }}</span>
+                                    <span class="item right">@{{ item.bidCount }}次出价</span>
+                                  </span>
+                            </a>
+                            <div class="detail">
+                                <div class="info">@{{ item.name }}</div>
+                                <div class="time">结拍时间:&nbsp;@{{ item.auctionTime }}</div>
+                            </div>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <section class="artist">
             <div class="title">守艺人&nbsp;<a href="{{ url('artists', [], env('APP_SECURE')) }}"
