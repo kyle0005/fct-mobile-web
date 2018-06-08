@@ -118,7 +118,7 @@
         </section>
 
         <section class="newsale">
-            <div class="title">新品首发&nbsp;<a href="{{ url('products', [], env('APP_SECURE')) }}"
+            <div class="title">新品首发&nbsp;<a href="{{ url('products', [], env('APP_SECURE')) }}?sort=-1"
                                             class="arr-link">更多&nbsp;<span class="arr"></span></a></div>
             <div class="art-list">
                 <div class="line">
