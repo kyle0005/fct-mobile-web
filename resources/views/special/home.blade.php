@@ -124,7 +124,7 @@
                 <div class="line">
                     <div class="inner">
                         <div class="comma">
-                            <img src="{{ fct_cdn('/img/mobile/comma_l.png') }}"><span class="text">不止不同，美壶不断刷新</span><img src="{{ fct_cdn('/img/mobile/comma_r.png') }}">
+                            <img src="{{ fct_cdn('/img/mobile/comma_l.png') }}"><span class="text">不止不同，美壶不断出新</span><img src="{{ fct_cdn('/img/mobile/comma_r.png') }}">
                         </div>
                         <div class="txt">每一个作品<br>都有打动你的故事</div>
                     </div>
