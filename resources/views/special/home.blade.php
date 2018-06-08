@@ -235,8 +235,11 @@
                 <a href="{{ url('/', [], env('APP_SECURE')) }}" class="link">
                     <img src="{{ fct_cdn('/img/mobile/i_home_d.png') }}"><br>首页
                 </a>
-                <a href="{!! api_chat_url(url('/', [], env('APP_SECURE')), '首页') !!}" class="link">
-                    <img src="{{ fct_cdn('/img/mobile/i_service_g.png') }}"><br>客服
+                <a href="{{ url('products', [], env('APP_SECURE')) }}" class="link">
+                    <img src="{{ fct_cdn('/img/mobile/i_hu_g.png') }}"><br>选壶
+                </a>
+                <a href="{{ url('artists', [], env('APP_SECURE')) }}" class="link">
+                    <img src="{{ fct_cdn('/img/mobile/i_artist_g.png') }}"><br>守艺人
                 </a>
                 <a href="{{ url('my', [], env('APP_SECURE')) }}" class="link">
                     <img src="{{ fct_cdn('/img/mobile/i_account_g.png') }}"><br>我的

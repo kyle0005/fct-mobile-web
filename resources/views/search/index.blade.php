@@ -12,8 +12,7 @@
         </section>
         <section class="content">
             <ul class="list">
-                <li class="item" v-for="(item, index) in isearch"
-                    :class="{'artist-n':item.fromType==='artist'&&!item.extras,'artist-t':item.fromType==='artist'&&item.extras,category:item.fromType==='category',product:item.fromType==='product'}">
+                <li class="item" v-for="(item, index) in isearch" :class="{'artist-n':item.fromType==='artist'&&!item.extras,'artist-t':item.fromType==='artist'&&item.extras,category:item.fromType==='category',product:item.fromType==='product'}">
                     <a :href="'{{ url('artists', [], env('APP_SECURE')) }}/' + item.id" class="link" v-if="item.fromType=='artist'">
                         <img :src="item.defaultImage" class="img">
                         <span class="con">
@@ -38,7 +37,7 @@
                         <span class="con">
                             <span class="name">@{{ item.name }}</span>
                             <span class="text overTextH3">@{{ item.intro }}</span>
-                            <span class="price">@{{ item.extras.stockCount > 0 ? '有货' : '无货’ }}</span>
+                            <span class="price">@{{ item.extras.stockCount > 0 ? '有货' : '无货' }}</span>
                           </span>
                     </a>
                     <div class="btn-container" v-if="item.fromType=='product'">

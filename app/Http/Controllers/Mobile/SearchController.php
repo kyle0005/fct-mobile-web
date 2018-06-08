@@ -49,7 +49,7 @@ class SearchController extends BaseController
 
         $volume_max = $request->get('volume_max', 0);
         $price_min = $request->get('price_min', 0);
-        $price_max = $request->get('keyword', 0);
+        $price_max = $request->get('price_max', 0);
         $sort = $request->get('sort', 0);
 
         $page_index = $request->get('page', 1);
