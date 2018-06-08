@@ -141,7 +141,7 @@ if (!function_exists('show_price')) {
             $returnUrl = request()->server('HTTP_REFERER');
         } else {
             //取当前页地址
-            $returnUrl = url(request()->server('PATH_INFO'), [], env('APP_SECURE'));
+            $returnUrl = url(request()->server('REQUEST_URI'), [], env('APP_SECURE'));
         }
 
         return '<a href=' . to_login() . '?' . env('REDIRECT_KEY') . '=' . $returnUrl . '>登录可见价格</a>';
