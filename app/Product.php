@@ -88,12 +88,12 @@ class Product
             throw new BusinessException($result->msg, $result->code);
         }
 
-        if ($result->data) {
+/*        if ($result->data) {
             foreach ($result->data as $key => $val) {
                 $val->price = show_price($val->price);
                 $result->data[$key] = $val;
             }
-        }
+        }*/
 
         return $result->data;
     }

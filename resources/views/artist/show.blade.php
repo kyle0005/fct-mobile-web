@@ -78,7 +78,7 @@
                         <div class="right">
                             <div class="title overText">@{{ item.name }}</div>
                             <div class="text overTextH2" v-html="item.intro"></div>
-                            <div class="price overText" v-html="item.price"></div>
+                            <div class="price overText">@{{ item.stockCount > 0?'有货':'无货' }}</div>
                         </div>
                     </a>
                     <div class="btn-container">
