@@ -38,8 +38,8 @@ class Search
     }
 
     public static function searchProducts(
-        $keyword, $category_id, $artist_id, $volume_min,
-        $volume_max, $price_min, $price_max, $sort,
+        $keyword, $category_id, $artist_id, $price_min,
+        $price_max, $volume_min, $volume_max, $sort,
         $page_index, $is_search_filter
     ) {
         $page_index = $page_index > 1 ? $page_index : 1;
