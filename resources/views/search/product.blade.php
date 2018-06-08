@@ -173,4 +173,5 @@
         config.url = "{{ url('products', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/index_search_n.js') }}"></script>
+    {!! wechat_share($share) !!}
 @endsection

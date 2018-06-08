@@ -75,6 +75,12 @@ class SearchController extends BaseController
         return view('search.product', [
             'title' => fct_title($keyword ? "搜索 “ $keyword ”" : "搜索"),
             'result' => $result,
+            'share' => [
+                'title' => '选壶 - 方寸堂',
+                'link' => $$this->myShareUrl(url('/products', [], env('APP_SECURE'))),
+                'img' => fct_cdn('/img/mobile/share_logo.png', true),
+                'desc' => 'N＋寻觅人，在此相遇邂逅一触即爱的好物。',
+            ],
         ]);
     }
 
