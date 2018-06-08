@@ -159,7 +159,7 @@
     <script>
         config.search =  {!! json_encode($result->search, JSON_UNESCAPED_UNICODE) !!};
         config.result =  {!! json_encode($result->products, JSON_UNESCAPED_UNICODE) !!};
-        config.url = "{{ url('search/products', [], env('APP_SECURE')) }}";
+        config.url = "{{ url('products', [], env('APP_SECURE')) }}";
     </script>
     <script src="{{ fct_cdn('/js/mobile/index_search_n.js') }}"></script>
 @endsection
