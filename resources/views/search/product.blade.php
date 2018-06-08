@@ -98,25 +98,25 @@
                                     </ul>
                                     <ul class="lines clearfix">
                                         <li class="item">
-                                            <a href="javascript:;">
-                                                <img src="https://cdn.fangcun.com/static/img/mobile/pm_logo.png')}}">
+                                            <a href="{{ url('auction', [], env('APP_SECURE')) }}">
+                                                <img src="{{fct_cdn('/img/mobile/pm_logo.png')}}">
                                                 <span>拍卖</span>
                                             </a>
                                         </li>
                                         <li class="item">
-                                            <a href="javascript:;">
+                                            <a href="{{ url('artists', [], env('APP_SECURE')) }}">
                                                 <img src="{{fct_cdn('/img/mobile/menu1.png')}}">
                                                 <span>守艺师</span>
                                             </a>
                                         </li>
                                         <li class="item">
-                                            <a href="javascript:;">
+                                            <a href="{{ url('wiki', [], env('APP_SECURE')) }}">
                                                 <img src="{{fct_cdn('/img/mobile/menu2.png')}}">
                                                 <span>百科</span>
                                             </a>
                                         </li>
                                         <li class="item">
-                                            <a href="javascript:;">
+                                            <a href="{{ url('welcome', [], env('APP_SECURE')) }}">
                                                 <img src="{{fct_cdn('/img/mobile/menu5.png')}}">
                                                 <span>品牌理念</span>
                                             </a>
