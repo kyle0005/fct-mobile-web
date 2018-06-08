@@ -22,6 +22,14 @@ class Discount
             throw new BusinessException($result->msg, $result->code);
         }
 
+        if ($result->data) {
+            foreach ($result->data as $key => $val) {
+                $val->discountPrice = show_price($val->discountPrice);
+                $val->salePrice = show_price($val->salePrice);
+                $result->data[$key] = $val;
+            }
+        }
+
         return $result->data;
     }
 }

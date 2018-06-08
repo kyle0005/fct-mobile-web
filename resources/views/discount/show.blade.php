@@ -19,8 +19,8 @@
                         <span class="pro-con">
                         <span class="title">@{{ item.name }}</span>
                         <span class="vtitle">@{{ item.subTitle }}</span>
-                        <span class="price"><small>￥</small>@{{ item.discountPrice }}</span>
-                        <del class="dprice"><small>￥</small>@{{ item.salePrice }}</del>
+                        <span class="price" v-html="item.discountPrice"></span>
+                        <del class="dprice" v-html="item.salePrice"></del>
                       </span>
                     </a>
                     <span class="btn-container">

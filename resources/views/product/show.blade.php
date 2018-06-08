@@ -30,7 +30,8 @@
                                     </div>
                                     <div class="info">
                                         <span class="title">@{{ product.name }}</span>
-                                        <span class="price"><small class="pri-mark">￥</small>@{{ showprice }}</span>
+                                        <span class="price" v-if="product.specification.length > 0"><small class="pri-mark">￥</small>@{{ showprice }}</span>
+                                        <span class="price" v-html="showprice" v-else></span>
                                         <span class="stock">库存：@{{ calstock }}</span>
                                     </div>
                                 </div>
