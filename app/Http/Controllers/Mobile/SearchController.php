@@ -44,7 +44,7 @@ class SearchController extends BaseController
     {
         $keyword = $request->get('keyword', '');
         $category_id = $request->get('category_id', '');
-        $artist_id = $request->get('artist_id', 0);
+        $artist_id = $request->get('author', 0);
         $volume_min = $request->get('volume_min', 0);
 
         $volume_max = $request->get('volume_max', 0);
@@ -54,7 +54,6 @@ class SearchController extends BaseController
 
         $page_index = $request->get('page', 1);
         $is_search_filter = !$request->ajax();
-
 
         try
         {
