@@ -164,7 +164,7 @@
                                 </span>
                             </a>
                             <div class="detail">
-                                <div class="info">@{{ item.artistName }}@{{ item.name }}</div>
+                                <div class="info">@{{ item.artistName }}《@{{ item.name }}》</div>
                                 <div class="time">@{{ item.subTitle }}&nbsp;</div>
                             </div>
                         </li>
