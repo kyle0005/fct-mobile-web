@@ -73,7 +73,7 @@ class SearchController extends BaseController
 
 
         return view('search.product', [
-            'title' => fct_title($keyword ? "搜索 “ $keyword ”" : "搜索"),
+            'title' => fct_title("选壶"),
             'result' => $result,
             'share' => [
                 'title' => '选壶 - 方寸堂',
