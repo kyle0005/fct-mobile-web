@@ -43,7 +43,7 @@ class Search
         $page_index, $is_search_filter
     ) {
         $page_index = $page_index > 1 ? $page_index : 1;
-        $pageSize = 20;
+        $pageSize = 10;
         
         $result = Base::http(
             env('API_URL') . sprintf('%s/product', self::$resourceUrl),

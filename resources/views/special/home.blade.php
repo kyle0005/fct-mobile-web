@@ -232,7 +232,7 @@
 
         <footer class="footer">
             <div class="inner">
-                <a href="{{ url('/', [], env('APP_SECURE')) }}" class="link">
+                <a href="{{ url('/', [], env('APP_SECURE')) }}" class="link chosen">
                     <img src="{{ fct_cdn('/img/mobile/i_home_d.png') }}"><br>首页
                 </a>
                 <a href="{{ url('products', [], env('APP_SECURE')) }}" class="link">

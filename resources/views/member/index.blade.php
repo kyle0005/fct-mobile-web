@@ -178,7 +178,7 @@
                 <a href="{{ url('artists', [], env('APP_SECURE')) }}" class="link">
                     <img src="{{ fct_cdn('/img/mobile/i_artist_g.png') }}"><br>守艺人
                 </a>
-                <a href="{{ url('my', [], env('APP_SECURE')) }}" class="link">
+                <a href="{{ url('my', [], env('APP_SECURE')) }}" class="link chosen">
                     <img src="{{ fct_cdn('/img/mobile/i_account_d.png') }}"><br>我的
                 </a>
             </div>
