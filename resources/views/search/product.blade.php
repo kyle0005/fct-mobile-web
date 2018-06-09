@@ -147,7 +147,7 @@
             <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
             <img :src="item.defaultImage" class="img">
             <span class="con">
-                <span class="name overText">@{{ item.name }}</span>
+                <span class="name overText">@{{ item.artistName }}《@{{ item.name }}》</span>
                 <span class="text overText">@{{ item.subTitle }}</span>
                 <span class="volumes"><span class="volumes-b">@{{ item.volumes[0] }}CC</span><span v-if="item.volumes.length>1">&nbsp;─&nbsp;</span><span class="volumes-b" v-if="item.volumes.length>1">@{{ item.volumes[1] }}CC</span></span>
                 <span class="price">@{{ item.stockCount > 0 ? "有货" : "无货" }}</span>
