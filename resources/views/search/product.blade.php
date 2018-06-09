@@ -18,25 +18,25 @@
             <div class="items">
             <a href="javascript:;" class="link" @click="toggle(0)">
                 <span class="txt">综合</span>
-                <img src="{{ fct_cdn('img/mobile/arr_down.png')}}" class="arr">
+                <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
             </a>
             </div>
             <div class="items">
             <a href="javascript:;" class="link" @click="toggle(1)">
                 <span class="txt">作者</span>
-                <img src="{{ fct_cdn('img/mobile/arr_down.png')}}" class="arr">
+                <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
             </a>
             </div>
             <div class="items">
             <a href="javascript:;" class="link" @click="toggle(2)">
                 <span class="txt">价格</span>
-                <img src="{{ fct_cdn('img/mobile/arr_down.png')}}" class="arr">
+                <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
             </a>
             </div>
             <div class="items">
             <a href="javascript:;" class="link" @click="toggle(3)">
                 <span class="txt">容量</span>
-                <img src="{{ fct_cdn('img/mobile/arr_down.png')}}" class="arr">
+                <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
             </a>
             </div>
             <div class="items">
@@ -159,8 +159,8 @@
             </div>
         </li>
         </ul>
-        <no-data v-if="nodata" :imgurl="'{{ fct_cdn('img/mobile/no_data.png')}}'" :text="'当前没有相关数据哟~'"></no-data>
-        <img src="{{ fct_cdn('img/mobile/img_loader_s.gif')}}" class="list-loader" v-if="listloading">
+        <no-data v-if="nodata" :imgurl="'{{ fct_cdn('/img/mobile/no_data.png')}}'" :text="'当前没有相关数据哟~'"></no-data>
+        <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif')}}" class="list-loader" v-if="listloading">
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
     </section>
     </div>
