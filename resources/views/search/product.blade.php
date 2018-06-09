@@ -73,7 +73,7 @@
                         <span class="txt">排序：</span><span class="so-pri"
                                                         v-for="(item, index) in priceSorts"
                                                         :class="{chosen:index===pri_cache_tab}"
-                                                        @click="priceSortsV(index)">{{ item.name }}</span>
+                                                        @click="priceSortsV(index)">@{{ item.name }}</span>
                     </div>
                     <div class="btn-container">
                         <a href="javascript:;" class="btn" @click="priceSortsVOK()">确认</a>
@@ -90,7 +90,7 @@
                         <span class="txt">区域：</span>
                         <div class="choose">
                         <span class="so-pri" v-for="(item, index) in volumes" :class="{chosen:index===vol_cache_tab}"
-                                @click="volumesV(index)">{{ item.min === 0 ? "" : item.min }}<span v-if="item.min !== 0 && item.max !== 0">-</span>{{ item.max === 0 ? "" : item.max}}CC<span v-if="item.min === 0">以下</span><span v-if="item.max === 0">以上</span></span>
+                                @click="volumesV(index)">@{{ item.min === 0 ? "" : item.min }}<span v-if="item.min !== 0 && item.max !== 0">-</span>@{{ item.max === 0 ? "" : item.max}}CC<span v-if="item.min === 0">以下</span><span v-if="item.max === 0">以上</span></span>
                         </div>
 
                     </div>
