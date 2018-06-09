@@ -109,7 +109,7 @@
                                 <span class="title overText">@{{ item.name }}</span>
                                 <span class="info">
                                   <span class="left overText">@{{ item.artistName }}</span>
-                                  <span class="right">@{{ item.volumes[0] }}cc</span>
+                                  <span class="right">@{{ item.volumes[0] }}CC</span>
                                 </span>
                               </span>
                             </a>
@@ -129,7 +129,7 @@
                             <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="link">
                                 <img :src="item.defaultImage">
                                 <span class="sta">
-                                    <span class="item right">@{{ item.volumes[0] }}cc</span>
+                                    <span class="item right">@{{ item.volumes[0] }}CC</span>
                                 </span>
                             </a>
                             <div class="detail">
