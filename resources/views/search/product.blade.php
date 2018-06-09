@@ -169,6 +169,7 @@
 @section('javascript')
     <script>
         config.search =  {!! json_encode($result->search, JSON_UNESCAPED_UNICODE) !!};
+        config.filter =  {!! json_encode($result->filter, JSON_UNESCAPED_UNICODE) !!};
         config.result =  {!! json_encode($result->products, JSON_UNESCAPED_UNICODE) !!};
         config.url = "{{ url('products', [], env('APP_SECURE')) }}";
     </script>
