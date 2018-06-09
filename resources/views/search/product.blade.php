@@ -51,7 +51,7 @@
                     <ul class="types">
                     <li class="types-item" v-for="(types, index) in sorts" :class="{chosen:index===sort_tab}"
                         @click="sortsV(types, index)">
-                        {{ types.name }}
+                        @{{ types.name }}
                     </li>
                     </ul>
                 </div>
@@ -59,7 +59,7 @@
                     <ul class="types">
                     <li class="types-item" v-for="(types, index) in artists" :class="{chosen:index===art_tab}"
                         @click="artistsV(types, index)">
-                        {{ types.name }}
+                        @{{ types.name }}
                     </li>
                     </ul>
                 </div>
@@ -103,7 +103,7 @@
                     <ul class="types">
                     <li class="item" v-for="(types, index) in categorys" :class="{chosen:index===cat_tab}"
                         @click="categorysV(types, index)">
-                        <span>{{ types.name }}</span>
+                        <span>@{{ types.name }}</span>
                         <i class="fa fa-angle-right"></i>
                     </li>
                     </ul>
