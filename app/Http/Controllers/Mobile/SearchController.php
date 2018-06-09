@@ -71,7 +71,17 @@ class SearchController extends BaseController
         if ($request->ajax())
             return $this->returnAjaxSuccess("获取成功", null, $result->products);
 
-
+        $result->filter = (object) [
+            "keyword" => $keyword,
+            "category_id" => $category_id,
+            "artist_id" => $artist_id,
+            "volume_min" => $volume_min,
+            "volume_max" => $volume_max,
+            "price_min" => $price_min,
+            "price_max" => $price_max,
+            "sort" => $sort,
+            "page_index" => $page_index,
+        ];
         return view('search.product', [
             'title' => fct_title("选壶"),
             'result' => $result,
