@@ -5,8 +5,8 @@
         <div class="inner-container">
         <div class="search-inp">
             <div class="inner">
-                <a href="{{ url('/', [], env('APP_SECURE')) }}">
-                <img src="{{ fct_cdn('/img/mobile/search_logo.png')}}" class="logo">
+            <a href="{{ url('/', [], env('APP_SECURE')) }}">
+                <img src="{{ fct_cdn('/img/mobile/search_logo.png') }}" class="logo">
             </a>
             <input type="search" class="search-input" placeholder="" v-model="search">
             <a href="javascript:;" class="search-link" @click="subSearch">
@@ -18,25 +18,25 @@
             <div class="items">
             <a href="javascript:;" class="link" @click="toggle(0)">
                 <span class="txt">综合</span>
-                <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
+                <img src="{{ fct_cdn('/img/mobile/arr_down.png') }}" class="arr">
             </a>
             </div>
             <div class="items">
             <a href="javascript:;" class="link" @click="toggle(1)">
                 <span class="txt">作者</span>
-                <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
+                <img src="{{ fct_cdn('/img/mobile/arr_down.png') }}" class="arr">
             </a>
             </div>
             <div class="items">
             <a href="javascript:;" class="link" @click="toggle(2)">
                 <span class="txt">价格</span>
-                <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
+                <img src="{{ fct_cdn('/img/mobile/arr_down.png') }}" class="arr">
             </a>
             </div>
             <div class="items">
             <a href="javascript:;" class="link" @click="toggle(3)">
                 <span class="txt">容量</span>
-                <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
+                <img src="{{ fct_cdn('/img/mobile/arr_down.png') }}" class="arr">
             </a>
             </div>
             <div class="items">
@@ -51,7 +51,7 @@
                     <ul class="types">
                     <li class="types-item" v-for="(types, index) in sorts" :class="{chosen:index===sort_tab}"
                         @click="sortsV(types, index)">
-                        @{{ types.name }}
+                        {{ types.name }}
                     </li>
                     </ul>
                 </div>
@@ -59,7 +59,7 @@
                     <ul class="types">
                     <li class="types-item" v-for="(types, index) in artists" :class="{chosen:index===art_tab}"
                         @click="artistsV(types, index)">
-                        @{{ types.name }}
+                        {{ types.name }}
                     </li>
                     </ul>
                 </div>
@@ -73,7 +73,7 @@
                         <span class="txt">排序：</span><span class="so-pri"
                                                         v-for="(item, index) in priceSorts"
                                                         :class="{chosen:index===pri_cache_tab}"
-                                                        @click="priceSortsV(index)">@{{ item.name }}</span>
+                                                        @click="priceSortsV(index)">{{ item.name }}</span>
                     </div>
                     <div class="btn-container">
                         <a href="javascript:;" class="btn" @click="priceSortsVOK()">确认</a>
@@ -90,7 +90,7 @@
                         <span class="txt">区域：</span>
                         <div class="choose">
                         <span class="so-pri" v-for="(item, index) in volumes" :class="{chosen:index===vol_cache_tab}"
-                                @click="volumesV(index)">@{{ item.min === 0 ? "" : item.min }}<span v-if="item.min !== 0 && item.max !== 0">-</span>@{{ item.max === 0 ? "" : item.max}}CC<span v-if="item.min === 0">以下</span><span v-if="item.max === 0">以上</span></span>
+                                @click="volumesV(index)">{{ item.min === 0 ? "" : item.min }}<span v-if="item.min !== 0 && item.max !== 0">-</span>{{ item.max === 0 ? "" : item.max}}CC<span v-if="item.min === 0">以下</span><span v-if="item.max === 0">以上</span></span>
                         </div>
 
                     </div>
@@ -103,37 +103,37 @@
                     <ul class="types">
                     <li class="item" v-for="(types, index) in categorys" :class="{chosen:index===cat_tab}"
                         @click="categorysV(types, index)">
-                        <span>@{{ types.name }}</span>
+                        <span>{{ types.name }}</span>
                         <i class="fa fa-angle-right"></i>
                     </li>
                     </ul>
                     <ul class="lines clearfix">
-                        <li class="item">
-                            <a href="{{ url('auction', [], env('APP_SECURE')) }}">
-                                <img src="{{ fct_cdn('/img/mobile/search_auction.png')}}">
-                                <span>拍卖</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="{{ url('artists', [], env('APP_SECURE')) }}">
-                                <img src="{{ fct_cdn('/img/mobile/search_artist.png')}}">
-                                <span>守艺师</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="{{ url('wiki', [], env('APP_SECURE')) }}">
-                                <img src="{{ fct_cdn('/img/mobile/search_en.png')}}">
-                                <span>百科</span>
-                            </a>
-                        </li>
-                        <li class="item">
-                            <a href="{{ url('welcome', [], env('APP_SECURE')) }}">
-                                <img src="{{ fct_cdn('/img/mobile/search_brand.png')}}">
-                                <span>品牌理念</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+                    <li class="item">
+                        <a href="{{ url('auction', [], env('APP_SECURE')) }}">
+                            <img src="{{ fct_cdn('/img/mobile/search_auction.png')}}">
+                            <span>拍卖</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('artists', [], env('APP_SECURE')) }}">
+                            <img src="{{ fct_cdn('/img/mobile/search_artist.png')}}">
+                            <span>守艺师</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('wiki', [], env('APP_SECURE')) }}">
+                            <img src="{{ fct_cdn('/img/mobile/search_en.png')}}">
+                            <span>百科</span>
+                        </a>
+                    </li>
+                    <li class="item">
+                        <a href="{{ url('welcome', [], env('APP_SECURE')) }}">
+                            <img src="{{ fct_cdn('/img/mobile/search_brand.png')}}">
+                            <span>品牌理念</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
                 </div>
                 <div class="cover" @click="toggle(-1)"></div>
             </div>
