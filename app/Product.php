@@ -59,7 +59,7 @@ class Product
         }
 
         //未登录不显示价格
-        $cacheResult->promotionPrice = show_price($cacheResult->promotionPrice, false, ($cacheResult->hasDiscount ? $cacheResult->salePrice: 0));
+        $cacheResult->promotionPrice = show_price($cacheResult->promotionPrice, true, ($cacheResult->hasDiscount ? $cacheResult->salePrice: 0));
 
         return $cacheResult;
     }
