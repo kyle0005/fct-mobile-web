@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mobile;
 
+use App\Artist;
 use App\AuctionOrder;
 use App\Exceptions\BusinessException;
 use App\Product;
@@ -30,10 +31,25 @@ class ShareController extends BaseController
 
         if ($request->ajax())
             return $this->returnAjaxSuccess('获取成功', null, $result);
+        $sorts = [
+            (object) [
+                'name' => '综合排序',
+                'value' => 0,
+            ],
+            (object) [
+                'name' => '人气最高',
+                'value' => 1,
+            ],
+            (object) [
+                'name' => '利润最高',
+                'value' => 2,
+            ],
+        ];
 
         return view('share.index', [
             'title' => fct_title('分享'),
-            'categories' => ProductCategory::getCategories(),
+            'artists' => Artist::getFilterArtists(),
+            'sorts' => $sorts,
             'entries' => $result,
             'homeShareUrl' => gen_qrcode(urlencode($this->myShareUrl(url('/', [], env('APP_SECURE')))))
         ]);

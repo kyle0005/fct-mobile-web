@@ -44,7 +44,7 @@
                     <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'"
                        class="left item"><img v-view="item.defaultImage" src="{{ fct_cdn('/img/mobile/img_loader.gif') }}"></a>
                     <div class="center item">
-                        <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="title">@{{ item.name }}</a>
+                        <a :href="'/products/' + item.id + '{{ '?' . env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}'" class="title">@{{ item.artistName }}《@{{ item.name }}》</a>
                         <span class="t1" v-if="item.price.length > 1">价格：<small class="pri-mark">￥</small>@{{ item.price[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.price[1] }}</span>
                         <span class="t1" v-else>价格：<small class="pri-mark">￥</small>@{{ item.price[0] }}</span>
                         <span class="t2" v-if="item.commission.length > 1">佣金：<strong class="pri"><small class="pri-mark">￥</small>@{{ item.commission[0] }}&sim;<small class="pri-mark">￥</small>@{{ item.commission[1] }}</strong></span>
@@ -80,8 +80,8 @@
     <script>
         config.shareUrl = "{{ url('my/share', [], env('APP_SECURE')) }}";
         config.shareParam = "{{ env('SHARE_SHOP_ID_KEY') . '=' . $member->shopId }}";
-        config.sort = ['综合排序', '人气最高', '利润最高'];
-        config.productsType = {!! json_encode($categories, JSON_UNESCAPED_UNICODE) !!};
+        config.sorts = {!! json_encode($sorts, JSON_UNESCAPED_UNICODE) !!};
+        config.artists = {!! json_encode($artists, JSON_UNESCAPED_UNICODE) !!};
         config.share = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
     </script>
     <script src="{{ fct_cdn('/js/mobile/share.js') }}"></script>

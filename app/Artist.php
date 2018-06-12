@@ -53,6 +53,38 @@ class Artist
         return $cacheResult;
     }
 
+    public static function getFilterArtists()
+    {
+        $cacheKey = 'artists_filters';
+        $cacheTime = 1440;
+        $cacheResult = false;
+
+        if (Cache::has($cacheKey))
+        {
+            $cacheResult = Cache::get($cacheKey);
+        }
+
+        if (!$cacheResult) {
+
+            $pageSize = 20;
+            $result = Base::http(
+                env('API_URL') . sprintf('%s/filters', self::$resourceUrl),
+                [],
+                [],
+                'GET'
+            );
+
+            if ($result->code != 200) {
+                throw new BusinessException($result->msg, $result->code);
+            }
+
+            $cacheResult = $result->data;
+            Cache::put($cacheKey, $cacheResult, $cacheTime);
+        }
+
+        return $cacheResult;
+    }
+
     public static function getArtist($id)
     {
         $cacheKey = 'artist_' . $id;
