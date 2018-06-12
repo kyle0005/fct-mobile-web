@@ -11,6 +11,8 @@
 @endsection
 @section('javascript')
     <script>
+        config.imgTxt = "美在于一眼倾心，更在于百看不厌。";
+        config.tips = [ "原人手制", "限量发行", "永久保值换购" ];
         config.imgObj = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
         config.tipsImg = {!! json_encode($tipsImg, JSON_UNESCAPED_UNICODE) !!};
         config.msg = '长按保存图片';
