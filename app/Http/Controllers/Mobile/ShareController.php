@@ -80,6 +80,7 @@ class ShareController extends BaseController
         return view('share.show', [
             'title' => fct_title('分享' . $title),
             'entries' => $result,
+            'tipsImg' => image_base64(fct_cdn('/img/mobile/items.png', true)),
         ]);
     }
 

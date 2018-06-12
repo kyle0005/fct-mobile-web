@@ -12,6 +12,7 @@
 @section('javascript')
     <script>
         config.imgObj = {!! json_encode($entries, JSON_UNESCAPED_UNICODE) !!};
+        config.tipsImg = "{!! $tipsImg !!}"
         config.msg = '长按保存图片';
     </script>
     <script src="{{ fct_cdn('/js/mobile/canvas2image.js') }}"></script>
