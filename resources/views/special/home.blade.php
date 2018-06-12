@@ -51,7 +51,7 @@
                     <img src="{{ fct_cdn('/img/mobile/index_au.png') }}"><br>拍卖
                 </a>
                 <a href="{{ url('artists', [], env('APP_SECURE')) }}" class="items">
-                    <img src="{{ fct_cdn('/img/mobile/index_ar.png') }}"><br>手艺人
+                    <img src="{{ fct_cdn('/img/mobile/index_ar.png') }}"><br>守艺人
                 </a>
                 <a href="{{ url('wiki', [], env('APP_SECURE')) }}" class="items">
                     <img src="{{ fct_cdn('/img/mobile/index_en.png') }}"><br>百科
