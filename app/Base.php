@@ -25,6 +25,7 @@ class Base
         } elseif ($formParams && !$hasMultipart) {
 
             $options['form_params'] = $formParams;
+
         } elseif ($hasMultipart) {
 
             $multiparts = [];
@@ -46,6 +47,9 @@ class Base
 
         if ($headers) {
             $options['headers'] = $headers;
+        }
+        if (!$hasMultipart) {
+            $options['headers']['Content-Type'] = 'application/x-www-form-urlencoded; charset=utf-8';
         }
 
         try
