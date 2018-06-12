@@ -102,7 +102,7 @@ class Product
      * @return mixed
      * @throws BusinessException
      */
-    public static function getShareProducts($categoryCode, $name, $sortIndex, $page)
+    public static function getShareProducts($artistId, $name, $sortIndex, $page)
     {
         $pageIndex = $page < 1 ? 1 : $page;
         $pageSize = 10;
@@ -111,7 +111,7 @@ class Product
             env('API_URL') . sprintf('%s/share', self::$resourceUrl),
             [
                 'name' => $name,
-                'code' => $categoryCode,
+                'artistId' => $artistId,
                 'sort_index' => $sortIndex,
                 'page_index' => $pageIndex,
                 'page_size' => $pageSize,

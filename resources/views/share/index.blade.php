@@ -4,23 +4,48 @@
         <section class="top">
             <div class="inner">
                 <div class="item sort">
-                    <select class="sel" v-model="sortsel" @change="sel">
-                        <option v-for="(item, index) in sort" :value="index">@{{ item }}</option>
-                    </select>
+                    <a href="javascript:;" class="link" @click="toggle(0)">
+                        <span class="txt">综合</span>
+                        <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
+                    </a>
                 </div>
                 <div class="item category">
-                    <select class="sel" v-model="categary" @change="cate">
-                        <option v-for="(item, index) in productsType" :value="item.code">@{{ item.name }}</option>
-                    </select>
+                    <a href="javascript:;" class="link" @click="toggle(1)">
+                        <span class="txt">作者</span>
+                        <img src="{{ fct_cdn('/img/mobile/arr_down.png')}}" class="arr">
+                    </a>
                 </div>
                 <div class="item search">
                     <a href="javascript:;" class="search-link" @click="subSearch">
                         <i class="fa fa-search"></i>
                     </a>
                     <input type="search" class="search-input" placeholder="宝贝名称" v-model="search">
-                    <a href="javascript:;" class="fork-link" @click="clear">
+                    <a href="javascript:;" class="fork-link" v-if="search" @click="clear">
                         <i class="fa fa-times-circle"></i>
                     </a>
+                </div>
+                <div class="sorts-pop">
+                    <div class="aside" :class="{open:open,docked:docked}" @click="toggle(-1)">
+                        <div class="container">
+                            <div class="head-sorts" v-if="showPop==0" @click.stop="">
+                                <ul class="types">
+                                    <li class="types-item" v-for="(types, index) in sorts" :class="{chosen:index===sort_tab}"
+                                        @click="sortsV(types, index)">
+                                        @{{ types.name }}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="head-artists" v-if="showPop==1" @click.stop="">
+                                <ul class="types">
+                                    <li class="types-item" v-for="(types, index) in artists" :class="{chosen:index===art_tab}"
+                                        @click="artistsV(types, index)">
+                                        @{{ types.name }}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="cover" @click="toggle(-1)"></div>
+                    </div>
                 </div>
             </div>
         </section>

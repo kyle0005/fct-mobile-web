@@ -14,7 +14,7 @@ class ShareController extends BaseController
 {
     public function index(Request $request)
     {
-        $code = $request->get('code', '');
+        $artistId = $request->get('author', 0);
         $name = $request->get('keyword', '');
         $sortIndex = intval($request->get('sort', 0));
         $page = intval($request->get('page', 1));
@@ -22,7 +22,7 @@ class ShareController extends BaseController
         try
         {
 
-            $result = Product::getShareProducts($code, $name, $sortIndex, $page);
+            $result = Product::getShareProducts($artistId, $name, $sortIndex, $page);
         }
         catch (BusinessException $e)
         {

@@ -65,8 +65,6 @@ class Artist
         }
 
         if (!$cacheResult) {
-
-            $pageSize = 20;
             $result = Base::http(
                 env('API_URL') . sprintf('%s/filters', self::$resourceUrl),
                 [],
@@ -75,7 +73,6 @@ class Artist
             );
 
             if ($result->code != 200) {
-                throw new BusinessException($result->msg, $result->code);
             }
 
             $cacheResult = $result->data;
