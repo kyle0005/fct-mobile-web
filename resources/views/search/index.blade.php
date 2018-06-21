@@ -36,12 +36,12 @@
                         <img :src="item.defaultImage" class="img">
                         <span class="con">
                             <span class="name">@{{ item.name }}</span>
-                            <span class="text overTextH3">@{{ item.intro }}</span>
+                            <span class="text overText">@{{ item.intro }}</span>
                             <span class="price">@{{ item.extras.stockCount > 0 ? '有货' : '无货' }}</span>
                           </span>
                     </a>
                     <div class="btn-container" v-if="item.fromType=='product'">
-                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="btn">立即购买</a>
+                        <a :href="'{{ url('products', [], env('APP_SECURE')) }}/' + item.id" class="btn">@{{ item.extras.stockCount > 0 ? '立即购买' : '我去看看' }}</a>
                     </div>
                 </li>
             </ul>

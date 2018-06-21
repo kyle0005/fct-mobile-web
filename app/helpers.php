@@ -18,7 +18,7 @@ if (!function_exists('fct_cdn'))
             $domain = env('APP_SECURE') ? 'https:' : 'http:';
         }
         $domain .= env('STATIC_URL', '');
-        return rtrim($domain, '/') . $path . ($hasEnd?'?_rd=201806211705': '');
+        return rtrim($domain, '/') . $path . ($hasEnd?'?_rd=201806211809': '');
     }
 }
 
