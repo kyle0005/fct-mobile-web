@@ -68,7 +68,7 @@
         </section>
 
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
-        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="orderId" :msg="msg"></confirm>
+        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="orderId" :title="msg"></confirm>
     </div>
 @endsection
 @section('javascript')

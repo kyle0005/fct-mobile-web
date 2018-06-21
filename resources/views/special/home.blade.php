@@ -254,14 +254,13 @@
                 <a href="javascript:;" class="close" @click="closegift()">&nbsp;</a>
             </div>
         </div>
+        <a href="javascript:;" class="tel-icon" @click="confirm">
+            <img src="{{ fct_cdn('/img/mobile/i_tel.png') }}">
+        </a>
         <a href="{{ url('invite', [], env('APP_SECURE')) }}" class="gift-icon" v-if="!isADShow">
             <img src="{{ fct_cdn('/img/mobile/gift_icon.png') }}">
         </a>
-        <transition name="fade">
-            <a href="javascript:;" class="top" @click="top()" v-if="showTop">
-                <img src="{{ fct_cdn('/img/mobile/top.png') }}">
-            </a>
-        </transition>
+        <confirm v-if="showConfirm" @ok="ok" @no="no" :callback="call" :title="'联系方式'" :msg="'18018320606（刘先生）'" :oktxt="'拨打'"></confirm>
     </div>
 @endsection
 @section('javascript')

@@ -61,7 +61,7 @@
             <div class="inner">
                 <span v-if="order_detail.orderId">订单编号：@{{ order_detail.orderId }}<br></span>
                 <span v-if="order_detail.payOrderId">支付单号：@{{ order_detail.payOrderId }}<br></span>
-                <span v-if="order_detail.payPlatform">支付方式：@{{ order_detail.payPlatform }}<br></span>
+                <span v-if="order_detail.payName">支付方式：@{{ order_detail.payName }}<br></span>
                 <span v-if="order_detail.createTime">创建时间：@{{ order_detail.createTime }}<br></span>
                 <span v-if="order_detail.payTime">付款时间：@{{ order_detail.payTime }}<br></span>
                 <span v-if="order_detail.expiresTime">发货时间：@{{ order_detail.expiresTime }}<br></span>
@@ -80,7 +80,7 @@
             </div>
         </footer>
         <pop v-if="showAlert" :showHide="showAlert" @close="close" :msg="msg"></pop>
-        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="orderId" :msg="msg"></confirm>
+        <confirm v-if="showConfirm" :showHide="showConfirm" @ok="ok" @no="no" :callback="callback" :obj="orderId" :title="msg"></confirm>
     </div>
 @endsection
 @section('javascript')

@@ -18,7 +18,14 @@
         </m-swipe>
         <no-data v-if="nodata" imgurl="{{ fct_cdn('/img/mobile/no_data.png') }}" :text="'当前没有相关数据哟~'"></no-data>
         <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="list-loader" v-if="listloading">
-        <img src="{{ fct_cdn('/img/mobile/img_loader_s.gif') }}" class="pager-loader" v-if="pagerloading">
+        <div class="pager-loading-txt" v-if="pagerloading">加载中...</div>
+        <div class="pager-loaded" v-if="isLastPage">
+            <div class="title">
+                <div class="lines">
+                    <div class="text">我是有底线的</div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script type="text/x-template" id="m_swipe">
