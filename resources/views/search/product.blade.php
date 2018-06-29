@@ -63,22 +63,13 @@
                     </li>
                     </ul>
                 </div>
-                <div class="head-priceSorts" v-if="showPop==2" @click.stop="">
-                    <div class="inner">
-                    <div class="de">
-                        <span class="txt">筛选：</span><input type="text" class="pri-inp" placeholder="最低价" v-model="lowpri_cache"><span
-                        class="mark">─</span><input type="text" class="pri-inp" placeholder="最高价" v-model="highpri_cache">
-                    </div>
-                    <div class="so">
-                        <span class="txt">排序：</span><span class="so-pri"
-                                                        v-for="(item, index) in priceSorts"
-                                                        :class="{chosen:index===pri_cache_tab}"
-                                                        @click="priceSortsV(index)">@{{ item.name }}</span>
-                    </div>
-                    <div class="btn-container">
-                        <a href="javascript:;" class="btn" @click="priceSortsVOK()">确认</a>
-                    </div>
-                    </div>
+                <div class="head-priceSorts-n" v-if="showPop==2" @click.stop="">
+                    <ul class="types">
+                        <li class="types-item" v-for="(types, index) in priceSorts" :class="{chosen:index===pri_tab}"
+                            @click="priceSortsVn(types, index)">
+                            @{{ types.name }}
+                        </li>
+                    </ul>
                 </div>
                 <div class="head-volumes" v-if="showPop==3" @click.stop="">
                     <div class="inner">
