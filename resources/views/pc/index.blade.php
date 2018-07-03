@@ -248,8 +248,13 @@
                 </dl>
                 <dl class="yw-contact-dl">
                     <dt class="yw-contact-dt">公司地址</dt>
-                    <dd class="yw-contact-dd">分店地址：</dd>
+                    <dd class="yw-contact-dd">宜兴市丁蜀镇陶瓷城E区2834号</dd>
+                    <dd class="yw-contact-dd">上海市闵行区北松公路58号</dd>
+                </dl>
+                <dl class="yw-contact-dl">
+                    <dt class="yw-contact-dt">分店地址</dt>
                     <dd class="yw-contact-dd">西安市莲湖区西市中路西市佳园7号楼10105号</dd>
+                    <dd class="yw-contact-dd"></dd>
                 </dl>
             </div>
             <div class="yw-contact-map">
