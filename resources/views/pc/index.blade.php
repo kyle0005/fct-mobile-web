@@ -247,9 +247,9 @@
                     <dd class="yw-contact-dd">电话：18018320606</dd>
                 </dl>
                 <dl class="yw-contact-dl">
-                    <dt class="yw-contact-dt">加入我们</dt>
-                    <dd class="yw-contact-dd">刘先生</dd>
-                    <dd class="yw-contact-dd">电话：0510-87410606</dd>
+                    <dt class="yw-contact-dt">公司地址</dt>
+                    <dd class="yw-contact-dd">分店地址：</dd>
+                    <dd class="yw-contact-dd">西安市莲湖区西市中路西市佳园7号楼10105号</dd>
                 </dl>
                 <dl class="yw-contact-dl">
                     <dt class="yw-contact-dt">公司地址</dt>
@@ -258,6 +258,7 @@
                 </dl>
             </div>
             <div class="yw-contact-map">
+                <span class="yw-local-xa"><i class="icon-local"></i>西安</span>
                 <span class="yw-local-sh"><i class="icon-local"></i>上海</span>
                 <span class="yw-local-yx">宜兴<i class="icon-local"></i></span>
             </div>
