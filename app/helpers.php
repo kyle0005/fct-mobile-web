@@ -119,7 +119,7 @@ if (!function_exists('gen_qrcode'))
 {
     function gen_qrcode($url = '')
     {
-        return 'https://api.qrserver.com/v1/create-qr-code/?data=' . $url;
+        return 'https://api.fangcun.com/image/genqrcode?text=' . $url;
     }
 }
 
