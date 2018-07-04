@@ -119,7 +119,7 @@ if (!function_exists('gen_qrcode'))
 {
     function gen_qrcode($url = '')
     {
-        return 'https://sapi.k780.com/?app=qr.get&level=L&size=6&data=' . $url;
+        return 'https://api.qrserver.com/v1/create-qr-code/?data=' . $url;
     }
 }
 
