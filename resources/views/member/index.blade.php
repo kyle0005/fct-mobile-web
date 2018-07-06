@@ -152,12 +152,12 @@
                         <span class="wei-arrow-right"></span>
                     </a>
                 </li>
-                <li v-if="user.shopId > 0">
+                <li v-if="user.shopId < 1">
                     <a href="{{ url('my/share', [], env('APP_SECURE')) }}" class="link">
                       <span class="img-container item">
                       <img src="{{ fct_cdn('/img/mobile/u_share.png') }}">
                       </span>
-                        <span class="item t">分享给朋友，一起赚钱！</span>
+                        <span class="item t">申请开店</span>
                         <span class="wei-arrow-right"></span>
                     </a>
                 </li>
