@@ -14,7 +14,7 @@
                 </div>
                 <div class="comment">
                     <m-textarea  ref="text"></m-textarea>
-                    <upload ref="uploadimg"></upload>
+                    <upload ref="uploadimg" @pop="alert"></upload>
                 </div>
             </div>
             <div class="bot">
