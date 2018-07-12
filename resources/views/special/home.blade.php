@@ -249,9 +249,11 @@
         </footer>
         <div class="gift-pop" v-if="isADShow">
             <div class="inner">
-                <img src="{{ fct_cdn('/img/mobile/gift_show.png') }}">
+                <div class="img-container">
+                    <img src="{{ fct_cdn('/img/mobile/gift_show.png') }}">
+                    <a href="javascript:;" class="close" @click="closegift()">&nbsp;</a>
+                </div>
                 <a href="{{ url('invite', [], env('APP_SECURE')) }}" class="link">&nbsp;</a>
-                <a href="javascript:;" class="close" @click="closegift()">&nbsp;</a>
             </div>
         </div>
         <a href="javascript:;" class="tel-icon" @click="confirm">

@@ -58,8 +58,15 @@
 
                 </div>
             </div>
-            <div class="btn-container" v-if="!isLogin">
-                <a href="{{ to_login() }}" class="btn">注册领红包</a>
+            <div class="btn-l-container" v-if="!isLogin">
+                <div class="inner">
+                    <a href="{{ url('/', [], env('APP_SECURE')) }}" class="qr">
+                        <img src="{{ fct_cdn('/img/mobile/home.png') }}">
+                    </a>
+                    <div class="btn">
+                        <a href="{{ to_login() }}" class="link">注册领红包</a>
+                    </div>
+                </div>
             </div>
             <div class="btn-l-container" v-else>
                 <div class="inner">
