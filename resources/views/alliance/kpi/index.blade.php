@@ -11,11 +11,11 @@
                     </div>
                     <div class="info-i">
                         <div>线上销售额</div>
-                        <div class="c">@{{ item.storeCount }}</div>
+                        <div class="c"><small>￥</small>@{{ item.onlineSaleAmount }}</div>
                     </div>
                     <div class="info-i">
                         <div>线下销售额</div>
-                        <div class="c"><small>￥</small>@{{ item.saleAmount }}</div>
+                        <div class="c"><small>￥</small>@{{ item.offlineSaleAmount }}</div>
                     </div>
                     <div class="info-i">
                         <div>累计佣金</div>
