@@ -36,6 +36,7 @@
                 <li class="items"><small>￥</small>@{{ union.onlineSaleAmount }}</li>
                 <li class="items"><small>￥</small>@{{ union.offlineSaleAmount }}</li>
                 <li class="items"><small>￥</small>@{{ union.commission }}</li>
+                <li class="items"></li>
             </ul>
         </section>
         <section class="invite-container">
