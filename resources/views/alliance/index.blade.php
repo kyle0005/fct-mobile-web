@@ -10,13 +10,13 @@
                 <li class="items">
                     <div class="inner">
                         <span class="pri"><small>￥</small>@{{ union.saleAmount }}</span>
-                        <span class="txt">总销售额</span>
+                        <span class="txt">线上销售</span>
                     </div>
                 </li>
                 <li class="items">
                     <div class="inner">
-                        <span class="pri"><small>￥</small>@{{ union.rebateAmount }}</span>
-                        <span class="txt">总返金额</span>
+                        <span class="pri"><small>￥</small>@{{ union.purchaseAmount }}</span>
+                        <span class="txt">进货金额</span>
                     </div>
                 </li>
                 <li class="items">
@@ -31,12 +31,13 @@
             <div class="title">@{{ union.month }}月考核情况<a href="{{ url('my/alliance/kpi', [], env('APP_SECURE')) }}" class="more">更多&nbsp;<i class="fa fa-caret-right"></i></a></div>
             <ul class="detail">
                 <li class="items">考核指标</li>
-                <li class="items">累积销售额</li>
-                <li class="items">返点比例</li>
+                <li class="items">线上销售</li>
+                <li class="items">线下销售</li>
+                <li class="items">累计佣金</li>
                 <li class="items"><small>￥</small>@{{ union.kpiAmount }}</li>
-                <li class="items"><small>￥</small>@{{ union.kpiSaleAmount }}</li>
-                <li class="items">@{{ union.kpiRebateRatio }}%</li>
-                <li class="items"><span class="shop">“@{{ union.topAllianceName }}”</span>当前业绩最高</li>
+                <li class="items"><small>￥</small>@{{ union.onlineSaleAmount }}</li>
+                <li class="items"><small>￥</small>@{{ union.offlineSaleAmount }}</li>
+                <li class="items"><small>￥</small>@{{ union.commission }}</li>
             </ul>
         </section>
         <section class="invite-container">
