@@ -30,11 +30,9 @@
         <section class="kpi-container">
             <div class="title">@{{ union.month }}月考核情况<a href="{{ url('my/alliance/kpi', [], env('APP_SECURE')) }}" class="more">更多&nbsp;<i class="fa fa-caret-right"></i></a></div>
             <ul class="detail">
-                <li class="items">考核指标</li>
                 <li class="items">线上销售</li>
                 <li class="items">线下销售</li>
                 <li class="items">累计佣金</li>
-                <li class="items"><small>￥</small>@{{ union.kpiAmount }}</li>
                 <li class="items"><small>￥</small>@{{ union.onlineSaleAmount }}</li>
                 <li class="items"><small>￥</small>@{{ union.offlineSaleAmount }}</li>
                 <li class="items"><small>￥</small>@{{ union.commission }}</li>

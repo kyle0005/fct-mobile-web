@@ -6,6 +6,10 @@
                 <div class="t-date">@{{ item.createTime }}</div>
                 <div class="info-list">
                     <div class="info-i">
+                        <div>考核指标</div>
+                        <div class="c"><small>￥</small>@{{ item.kpiAmount }}</div>
+                    </div>
+                    <div class="info-i">
                         <div>线上销售额</div>
                         <div class="c"><small>￥</small>@{{ item.onlineSaleAmount }}</div>
                     </div>
