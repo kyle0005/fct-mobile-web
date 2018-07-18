@@ -92,8 +92,10 @@
                     </a>
                 </div>
                 <div class="comment">
-                    <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId"
-                       v-if="order_detail.status == 0">我要付款</a>
+                    <a v-if="item.payStatus != 2 && order_detail.status == 0"
+                       :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + order_detail.orderId">我要付款</a>
+                    <a v-else-if="order_detail.status == 0" href="javascript:;" class="grey">已付:<small class="pri-mark">￥</small>@{{entity.paidAmount}}</a>
+
                     <a :href="'{{ url('my/orders', [], env('APP_SECURE')) }}/' + order_detail.orderId + '/comments/create'"
                        v-if="order_detail.status == 3 && order_detail.commentStatus == 0">我要评价</a>
                     <a href="javascript:;" v-if="order_detail.status == 2">

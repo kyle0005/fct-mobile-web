@@ -41,7 +41,8 @@
                 </div>
                 <div class="btn clearfix" v-if="item.status == 0">
                     <div class="btn-container">
-                        <a :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + item.orderId" class="black">我要付款</a>
+                        <a v-if="item.payStatus != 2" :href="'{{  sprintf('%s?tradetype=buy&tradeid=', env('PAY_URL')) }}' + item.orderId" class="black">我要付款</a>
+                        <a v-else href="javascript:;" class="grey">已付:<small class="pri-mark">￥</small>@{{entity.paidAmount}}</a>
                     </div>
                     <div class="btn-container">
                         <a href="javascript:;" class="grey">
