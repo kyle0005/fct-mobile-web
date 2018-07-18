@@ -10,19 +10,19 @@
                         <div class="c"><small>￥</small>@{{ item.kpiAmount }}</div>
                     </div>
                     <div class="info-i">
-                        <div>分店数</div>
+                        <div>线上销售额</div>
                         <div class="c">@{{ item.storeCount }}</div>
                     </div>
                     <div class="info-i">
-                        <div>销售额</div>
+                        <div>线下销售额</div>
                         <div class="c"><small>￥</small>@{{ item.saleAmount }}</div>
                     </div>
                     <div class="info-i">
-                        <div>返点比例</div>
-                        <div class="c">@{{ item.rebateRatio }}%</div>
+                        <div>累计佣金</div>
+                        <div class="c"><small>￥</small>@{{ item.commission }}</div>
                     </div>
                 </div>
-                <div class="total">完成业绩<span class="s">@{{ item.finishSaleRatio }}%</span>，返点<span class="s">@{{ item.lastRebateRatio }}%</span>，返佣<span class="s"><small>￥</small>@{{ item.rebateAmount }}</span>。</div>
+                <div class="total">有效线上销售<span class="s"><small>￥</small>@{{ item.effectiveSaleAmount }}%</span>，回扣金额<span class="s"><small>￥</small>@{{ item.rebateAmount }}</span>。</div>
             </li>
         </ul>
         <no-data v-if="nodata" :imgurl="'{{ fct_cdn('/img/mobile/no_data.png') }}'" :text="'当前没有相关数据哟~'"></no-data>
