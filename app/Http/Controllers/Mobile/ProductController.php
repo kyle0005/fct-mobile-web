@@ -67,10 +67,10 @@ class ProductController extends BaseController
             'categories' => ProductCategory::getCategories(),
             'product' => $result,
             'share' => [
-                'title' => '发现一个宝贝 - '. $result->name,
+                'title' => $result->artistNames . '制《' .$result->name. '》',
                 'link' => $shareUrl,
                 'img' => $result->defaultImage,
-                'desc' => $result->intro,
+                'desc' => $result->subTitle,
             ]
         ]);
     }
