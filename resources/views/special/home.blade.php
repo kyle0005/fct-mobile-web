@@ -252,8 +252,8 @@
                 <div class="img-container">
                     <img src="{{ fct_cdn('/img/mobile/gift_show.png') }}">
                     <a href="javascript:;" class="close" @click="closegift()">&nbsp;</a>
+                    <a href="{{ url('invite', [], env('APP_SECURE')) }}" class="link">&nbsp;</a>
                 </div>
-                <a href="{{ url('invite', [], env('APP_SECURE')) }}" class="link">&nbsp;</a>
             </div>
         </div>
         <a href="javascript:;" class="tel-icon" @click="confirm">
