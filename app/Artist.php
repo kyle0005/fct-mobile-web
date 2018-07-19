@@ -29,7 +29,7 @@ class Artist
 
         if (!$cacheResult) {
 
-            $pageSize = 20;
+            $pageSize = 30;
             $result = Base::http(
                 env('API_URL') . self::$resourceUrl,
                 [
