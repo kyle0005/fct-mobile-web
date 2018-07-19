@@ -39,7 +39,7 @@
                 <li class="items"></li>
             </ul>
         </section>
-        <section class="invite-container">
+        <section class="invite-container" v-if="union.inviteCount > 0 && inviteCodes.length > 0">
             <div class="title">
                 <div class="t">邀请开店</div>
                 <div class="vt" v-if="union.inviteCount > 0">有<span class="n">@{{ union.inviteCount }}</span>张邀请码</div>
