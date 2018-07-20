@@ -3,7 +3,9 @@
     <div class="isearch-container" id="isearch" v-cloak>
         <section class="search-container">
             <div class="inner">
-                <img src="{{ fct_cdn('/img/mobile/logo2.png') }}" class="logo">
+                <a href="{{ url('/', [], env('APP_SECURE')) }}">
+                    <img src="{{ fct_cdn('/img/mobile/search_logo.png') }}" class="logo">
+                </a>
                 <form @submit.prevent="subSearch" autocomplete="off" action="">
                     <input type="search" class="search-input" placeholder="宝贝名称 守艺人名字 壶型" v-model="search">
                 </form>
