@@ -44,7 +44,7 @@
                 <img src="{{ fct_cdn('/img/mobile/arr_down.png') }}" class="arr">
             </a>
             </div>
-            <div class="items">
+            <div class="items li">
             <a href="javascript:;" class="link" @click="toggle(4)">
                 <i class="fa fa-bars"></i>
             </a>
