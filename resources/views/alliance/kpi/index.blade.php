@@ -22,7 +22,7 @@
                         <div class="c"><small>￥</small>@{{ item.commission }}</div>
                     </div>
                 </div>
-                <div class="total">有效线上销售<span class="s"><small>￥</small>@{{ item.effectiveSaleAmount }}%</span>，回扣金额<span class="s"><small>￥</small>@{{ item.rebateAmount }}</span>。</div>
+                <div class="total">有效线上销售<span class="s"><small>￥</small>@{{ item.effectiveSaleAmount }}</span>，应返金额<span class="s"><small>￥</small>@{{ item.rebateAmount }}</span>。</div>
             </li>
         </ul>
         <no-data v-if="nodata" :imgurl="'{{ fct_cdn('/img/mobile/no_data.png') }}'" :text="'当前没有相关数据哟~'"></no-data>
