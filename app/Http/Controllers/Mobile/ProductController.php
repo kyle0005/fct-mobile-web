@@ -73,7 +73,7 @@ class ProductController extends BaseController
                 .$result->artistNames.',宜兴紫砂大师'
                 .$result->artistNames.',方寸堂,宜兴方寸堂',
             'description' => '方寸堂旗下宜兴紫砂壶名家'
-                .$result->artistNames.'采用原矿'
+                .$result->artistNames.'采用'
                 .$result->materialNames.'经过全手工制作的'
                 .$result->name.'壶，全场正品限量发行，支持保值换购。',
             'categories' => ProductCategory::getCategories(),
