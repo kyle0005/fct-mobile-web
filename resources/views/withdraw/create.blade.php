@@ -5,7 +5,7 @@
             <div class="item">
                 <div class="inner">
                     <span class="left">提现金额</span>
-                    <span class="right"><input type="tel" name="money" class="inp" v-model.lazy="amount" :placeholder="'可提现金额<small class=\"pri-mark\">￥</small>' + withdrawals.withdrawAmount"></span>
+                    <span class="right"><input type="tel" name="money" class="inp" v-model.lazy="amount" :placeholder="'可提现金额￥' + withdrawals.withdrawAmount"></span>
                 </div>
             </div>
             <div class="item">
