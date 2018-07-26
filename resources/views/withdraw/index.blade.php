@@ -5,7 +5,7 @@
             <li v-for="(item, index) in withdrawalRecordList">
                 <div class="inner">
                     <div class="up clearfix">
-                        <span class="h-l">@{{ item.bankName }}（@{{ item.bankAccount }}）</span>
+                        <span class="h-l overText">@{{ item.bankName }}（@{{ item.bankAccount }}）</span>
                         <span class="h-r"><small class="pri-mark">￥</small>@{{ item.amount }}</span>
                     </div>
                     <div class="down clearfix">
