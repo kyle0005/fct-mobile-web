@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 /** 不用登录页面 */
 Route::group(['domain' => env('PC_DOMAIN', 'www.fangcun.com')], function () {
     Route::get('/', 'PC\MainController@index');
+    Route::get('/thr/slider', 'PC\THRController@getSlider');
     Route::resource('articles', 'PC\ArticleController', ['index', 'show']);
 });
 
