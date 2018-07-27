@@ -22,14 +22,6 @@ class THRController extends BaseController
                 'image' => fct_cdn('/img/fct/thr/sw2.jpg'),
                 'url' => 'javascript:;'
             ],
-            [
-                'image' => fct_cdn('/img/fct/thr/sw3.jpg'),
-                'url' => 'javascript:;'
-            ],
-            [
-                'image' => fct_cdn('/img/fct/thr/sw4.jpg'),
-                'url' => 'javascript:;'
-            ],
         ]);
     }
 }
