@@ -249,10 +249,8 @@
                     <ul class="top-list">
                         <li v-for="(item, index) in artist" :class="{red:index===art_num}">
                             <a href="javascript:;" @click="loadsingle(index)">
-                                <span class="img-container" v-if="item.isAnonymous != 1"><img :src="item.headPortrait"/></span>
-                                <span class="img-container" v-else><img src="{{ fct_cdn('/img/head.jpg') }}"/></span>
-                                <span class="name-container overText" v-if="item.isAnonymous != 1">@{{ item.name }}</span>
-                                <span class="name-container overText" v-else>匿名</span>
+                                <span class="img-container"><img :src="item.headPortrait"/></span>
+                                <span class="name-container overText">@{{ item.name }}</span>
                             </a>
                         </li>
                     </ul>
