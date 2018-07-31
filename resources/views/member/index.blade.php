@@ -153,7 +153,7 @@
                     </a>
                 </li>
                 <li v-if="user.shopId < 1">
-                    <a href="{{ url('my/share', [], env('APP_SECURE')) }}" class="link">
+                    <a href="{{ url('store/create', [], env('APP_SECURE')) }}" class="link">
                       <span class="img-container item">
                       <img src="{{ fct_cdn('/img/mobile/u_share.png') }}">
                       </span>
