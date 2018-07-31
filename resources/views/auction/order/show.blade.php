@@ -75,7 +75,7 @@
                 <div class="comment">
                     <a :href="'{{sprintf('%s?tradetype=auction_order&tradeid=', env('PAY_URL'))}}' + order_detail.orderId"
                        v-if="order_detail.status === 0">我要付款</a>
-                    <a href="javascript:;" @click="confirm(order_detail.orderId, finish)" v-if="order_detail.status === 2">确认收货</a>
+                    {{--<a href="javascript:;" @click="confirm(order_detail.orderId, finish)" v-if="order_detail.status === 2">确认收货</a>--}}
                 </div>
             </div>
         </footer>
