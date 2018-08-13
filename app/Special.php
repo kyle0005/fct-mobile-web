@@ -31,6 +31,6 @@ class Special
 
         $entity = $result->data;
         $entity->product = $entity->recommend;
-        return ;
+        return $entity;
     }
 }
