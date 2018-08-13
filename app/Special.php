@@ -29,6 +29,8 @@ class Special
             throw new BusinessException($result->msg, $result->code);
         }
 
-        return $result->data;
+        $entity = $result->data;
+        $entity->product = $entity->recommend;
+        return ;
     }
 }
