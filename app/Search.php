@@ -71,13 +71,12 @@ class Search
         $newResult = (object) ["search" => null, "products" => null];
         if ($is_search_filter) {
             $newResult->search = (object) [
-                "keywrod" => $keyword,
+                "keyword" => $keyword,
                 "sorts" => $result->data->sorts,
                 "artists" => $result->data->artists,
                 "priceSorts" => $result->data->priceSorts,
                 "volumes" => $result->data->volumes,
                 "categorys" => ProductCategory::getCategories(),
-                "products" => null,
             ];
         }
         $newResult->products = Base::pagination($result->data->products, $page_index, $pageSize);
