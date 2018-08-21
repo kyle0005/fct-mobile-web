@@ -184,6 +184,16 @@
                         距<span v-if="product.discount.hasBegin">结束</span><span v-else>开始</span>仅剩<m-time :endTime="product.discount.discountTime" :callback="end"></m-time>
                     </div>
                 </div>
+                <div class="sale clearfix" v-else-if="product.advanceSaleDays">
+                    <div class="left">
+                        <span class="title">预售</span>
+                        <span class="discount-color">
+                            &ensp;
+                            <span>付款后@{{ product.advanceSaleDays }}天后发货</span>
+                        </span>
+                    </div>
+                    <div class="right">&nbsp;</div>
+                </div>
             </section>
             <section class="product-context">
                 <strong class="title">@{{ product.name }}</strong>
