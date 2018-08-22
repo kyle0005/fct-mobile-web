@@ -16,6 +16,19 @@
                 <img src="{{ fct_cdn('/img/mobile/u_shop.png') }}">
             </a>
         </section>
+        <section class="user-sec" v-if="user.shopId > 0">
+            <ul class="funcs-list">
+                <li>
+                    <a href="{{ url('my/share', [], env('APP_SECURE')) }}" class="link">
+                        <span class="img-container item">
+                        <img src="{{ fct_cdn('/img/mobile/u_shop.png') }}">
+                        </span>
+                        <span class="item t">店长管理</span>
+                        <span class="wei-arrow-right"></span>
+                    </a>
+                </li>
+            </ul>
+        </section>
         <section class="user-sec">
             <a href="{{ url("my/orders", [], env('APP_SECURE')) }}?status=-1" class="order">
                 <span>我的订单</span>
@@ -94,15 +107,6 @@
                     <span class="wei-arrow-right"></span>
                     </a>
                 </li>
-{{--                <li>
-                    <a href="{{ url('my/coupons', [], env('APP_SECURE')) }}" class="link">
-                      <span class="img-container item">
-                        <img src="{{ fct_cdn('/img/mobile/u_coupon.png') }}">
-                      </span>
-                        <span class="item t">优惠券</span>
-                        <span class="wei-arrow-right"></span>
-                    </a>
-                </li>--}}
                 <li>
                     <a href="{{ url('my/favorites', [], env('APP_SECURE')) }}?from_type=0" class="link">
                       <span class="img-container item">
@@ -135,20 +139,20 @@
         <section class="user-sec last">
             <ul class="funcs-list">
                 <li>
-                    <a href="{!! api_chat_url(url('my', [], env('APP_SECURE')), '用户中心') !!}" class="link">
-                      <span class="img-container item">
-                      <img src="{{ fct_cdn('/img/mobile/u_chat.png') }}">
-                      </span>
-                        <span class="item t">在线客服</span>
-                        <span class="wei-arrow-right"></span>
-                    </a>
-                </li>
-                <li>
                     <a href="{{ url('help', [], env('APP_SECURE')) }}" class="link">
                           <span class="img-container item">
                           <img src="{{ fct_cdn('/img/mobile/u_help.png') }}">
                           </span>
                         <span class="item t">帮助中心</span>
+                        <span class="wei-arrow-right"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{!! api_chat_url(url('my', [], env('APP_SECURE')), '用户中心') !!}" class="link">
+                      <span class="img-container item">
+                      <img src="{{ fct_cdn('/img/mobile/u_chat.png') }}">
+                      </span>
+                        <span class="item t">在线客服</span>
                         <span class="wei-arrow-right"></span>
                     </a>
                 </li>
