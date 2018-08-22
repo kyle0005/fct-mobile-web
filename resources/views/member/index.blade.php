@@ -21,7 +21,7 @@
                 <li>
                     <a href="{{ url('my/share', [], env('APP_SECURE')) }}" class="link">
                         <span class="img-container item">
-                        <img src="{{ fct_cdn('/img/mobile/u_shop.png') }}">
+                        <img src="{{ fct_cdn('/img/mobile/u_shop_l.png') }}">
                         </span>
                         <span class="item t">店长管理</span>
                         <span class="wei-arrow-right"></span>
