@@ -87,7 +87,7 @@
                                     </a>
                                 </li>
                                 <li class="buy">
-                                    <a href="javascript:;" @click="buy(1)">立即购买</a>
+                                    <a href="javascript:;" @click="buy(1)">@{{ product.advanceSaleDays > 0 ? '全款预定':'立即购买' }}</a>
                                 </li>
                             </ul>
                         </form>
@@ -108,9 +108,9 @@
                     <li class="collection" :class="{red:collected}"  @click="collection()">
                         <i class="fa fa-heart"></i>
                     </li>
-                    <li class="add" :class="{ disabled: !product.hasCart }">
+                    <li class="add" :class="{ disabled: product.advanceSaleDays > 0 || !product.hasCart }">
                         @if(is_login())
-                        <a href="javascript:;" @click="choose(0)" v-if="product.hasCart">加入购物车</a>
+                        <a href="javascript:;" @click="choose(0)" v-if="product.hasCart && product.advanceSaleDays <= 0">加入购物车</a>
                         <a href="javascript:;" v-else>加入购物车</a>
                         @else
                             <a href="{{ to_login() }}">加入购物车</a>
@@ -118,11 +118,11 @@
                     </li>
                     <li class="buy" :class="{ disabled: !product.hasBuy }">
                         @if(is_login())
-                            <a href="javascript:;" @click="choose(1)" v-if="product.hasBuy">立即购买</a>
+                            <a href="javascript:;" @click="choose(1)" v-if="product.hasBuy">@{{ product.advanceSaleDays > 0 ? '全款预定':'立即购买' }}</a>
                             <a href="javascript:;" v-else-if="product.hasDiscount">等待开始</a>
                             <a href="javascript:;" v-else>立即购买</a>
                         @else
-                            <a href="{{ to_login() }}">立即购买</a>
+                            <a href="{{ to_login() }}">@{{ product.advanceSaleDays > 0 ? '全款预定':'立即购买' }}</a>
                         @endif
                     </li>
                 </ul>
@@ -189,7 +189,7 @@
                         <span class="title">预售</span>
                         <span class="discount-color">
                             &ensp;
-                            <span>付款后@{{ product.advanceSaleDays }}天后发货</span>
+                            <span>付款后预计@{{ product.advanceSaleDays }}天内发货</span>
                         </span>
                     </div>
                     <div class="right">&nbsp;</div>
@@ -202,7 +202,7 @@
                 <div class="sale-info">
                     <img src="{{ fct_cdn('/img/mobile/items.png') }}">原人手制&emsp;
                     <img src="{{ fct_cdn('/img/mobile/items.png') }}">限量发行&emsp;
-                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">永久保值换购
+                    <img src="{{ fct_cdn('/img/mobile/items.png') }}">保值换购
                 </div>
                 <div class="view">
                     <div class="inner">
