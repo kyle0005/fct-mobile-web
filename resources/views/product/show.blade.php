@@ -31,7 +31,8 @@
                                     <div class="info">
                                         <span class="title">@{{ product.name }}</span>
                                         <span class="price"><small class="pri-mark">￥</small>@{{ showprice }}</span>
-                                        <span class="stock">库存：@{{ calstock }} @{{product.stockCount}}</span>
+                                        <span class="stock" v-if="product.stockCount > 0 && product.advanceSaleDays > 0">无现货，接受预定</span>
+                                        <span class="stock" v-else>库存：@{{ calstock }}</span>
                                     </div>
                                 </div>
                                 <input id="pro_id" name="product_id" type="hidden" :value="product.id">
