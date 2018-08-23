@@ -238,7 +238,8 @@
                 </div>
                 <div class="item">
                     <span class="left">库存</span>
-                    <span class="right">@{{ calstock }}</span>
+                    <span class="right" v-if="product.stockCount > 0 && product.advanceSaleDays > 0">无现货(可预定)</span>
+                    <span class="right" v-else>@{{ calstock }}</span>
                 </div>
                 <div class="item">
                     <span class="left">编号</span>
