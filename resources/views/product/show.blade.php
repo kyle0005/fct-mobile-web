@@ -80,7 +80,7 @@
                                 <li class="collection" :class="{red:collected}"  @click="collection()">
                                     <i class="fa fa-heart"></i>
                                 </li>
-                                <li class="add">
+                                <li class="add" :class="{ disabled: product.advanceSaleDays > 0 || !product.hasCart }">
                                     <a href="javascript:;">
                                         <subpost :txt="'加入购物车'" :status="true" ref="subpost" @callback="buy(0)" @before="postBefore"
                                                  @success="succhandle" @error="postError" @alert="postTip"></subpost>
