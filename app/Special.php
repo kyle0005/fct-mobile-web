@@ -30,7 +30,7 @@ class Special
         }
 
         $entity = $result->data;
-        //$entity->product = $entity->recommend;
+        $entity->product = $entity->recommend;
         return $entity;
     }
 }
