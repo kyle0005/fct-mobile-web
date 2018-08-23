@@ -30,9 +30,8 @@
                                     </div>
                                     <div class="info">
                                         <span class="title">@{{ product.name }}</span>
-                                        <span class="price" v-if="product.specification.length > 0"><small class="pri-mark">￥</small>@{{ showprice }}</span>
-                                        <span class="price" v-html="showprice" v-else></span>
-                                        <span class="stock">库存：@{{ calstock }}</span>
+                                        <span class="price"><small class="pri-mark">￥</small>@{{ showprice }}</span>
+                                        <span class="stock">库存：@{{ calstock }} @{{product.stockCount}}</span>
                                     </div>
                                 </div>
                                 <input id="pro_id" name="product_id" type="hidden" :value="product.id">

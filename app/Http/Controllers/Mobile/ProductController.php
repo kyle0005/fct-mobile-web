@@ -21,7 +21,8 @@ class ProductController extends BaseController
     /**宝贝详情
      * @param Request $request
      * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     * @throws BusinessException
      */
     public function show(Request $request, $id)
     {
