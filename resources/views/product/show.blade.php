@@ -81,10 +81,11 @@
                                     <i class="fa fa-heart"></i>
                                 </li>
                                 <li class="add" :class="{ disabled: product.advanceSaleDays > 0 || !product.hasCart }">
-                                    <a href="javascript:;">
+                                    <a href="javascript:;" v-if="product.hasCart && product.advanceSaleDays <= 0">
                                         <subpost :txt="'加入购物车'" :status="true" ref="subpost" @callback="buy(0)" @before="postBefore"
                                                  @success="succhandle" @error="postError" @alert="postTip"></subpost>
                                     </a>
+                                    <a href="javascript:;" v-else>加入购物车</a>
                                 </li>
                                 <li class="buy">
                                     <a href="javascript:;" @click="buy(1)">@{{ product.advanceSaleDays > 0 ? '全款预定':'立即购买' }}</a>
