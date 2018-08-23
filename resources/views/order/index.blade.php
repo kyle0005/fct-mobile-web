@@ -28,6 +28,7 @@
                         </div>
                         <div class="pro-item title-container">
                             <div class="title">@{{ good.name }}</div>
+                            <div class="spec">编号:@{{ good.code }}</div>
                             <div class="spec" v-if="good.specName && good.specName != null">规格:@{{ good.specName }}</div>
                         </div>
                         <div class="pro-item price-container">
